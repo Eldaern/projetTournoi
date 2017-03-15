@@ -19,7 +19,7 @@ namespace projetTournoi
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //coucou
+            //coucou tu veux voir ma bite 
         }
     }
 }
