@@ -25,5 +25,10 @@ namespace projetTournoi
             //coucou tu veux voir ma bite 
             //Git c'est cool
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
