@@ -24,5 +24,10 @@ namespace projetTournoi
             int i = 2;
             //coucou tu veux voir ma bite 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
