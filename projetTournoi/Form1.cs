@@ -20,8 +20,9 @@ namespace projetTournoi
         private void Form1_Load(object sender, EventArgs e)
         {
             //coucou
-
-            int i = 0;
+            //Fusion
+            int i = 2;
+            //coucou tu veux voir ma bite 
         }
     }
 }
