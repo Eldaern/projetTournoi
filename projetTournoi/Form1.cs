@@ -23,6 +23,7 @@ namespace projetTournoi
             //Fusion
             int i = 2;
             //coucou tu veux voir ma bite 
+            // allan
             //Git c'est cool
         }
 
