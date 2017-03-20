@@ -31,6 +31,25 @@ namespace projetTournoi
         {
 
         }
-        
+
+        private void MainMenu_Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Connexion_Panel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void CP_BT_Connexion_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CP_BT_Inscription_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
