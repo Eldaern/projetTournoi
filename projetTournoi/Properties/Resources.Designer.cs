@@ -63,16 +63,6 @@ namespace projetTournoi.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Flag_EN {
-            get {
-                object obj = ResourceManager.GetObject("Flag_EN", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Flag_EN1 {
             get {
                 object obj = ResourceManager.GetObject("Flag_EN1", resourceCulture);
@@ -83,39 +73,9 @@ namespace projetTournoi.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Flag_FR {
-            get {
-                object obj = ResourceManager.GetObject("Flag_FR", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Flag_FR1 {
-            get {
-                object obj = ResourceManager.GetObject("Flag_FR1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Flag_FR2 {
             get {
                 object obj = ResourceManager.GetObject("Flag_FR2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Flag_of_France_svg {
-            get {
-                object obj = ResourceManager.GetObject("Flag_of_France.svg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
