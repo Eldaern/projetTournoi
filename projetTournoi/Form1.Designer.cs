@@ -42,12 +42,14 @@
             this.Langue_EN_bt.DialogResult = System.Windows.Forms.DialogResult.Yes;
             this.Langue_EN_bt.FlatAppearance.BorderSize = 0;
             this.Langue_EN_bt.ForeColor = System.Drawing.Color.Transparent;
+            this.Langue_EN_bt.Image = global::projetTournoi.Properties.Resources.Flag_EN;
             this.Langue_EN_bt.Location = new System.Drawing.Point(624, 9);
             this.Langue_EN_bt.Margin = new System.Windows.Forms.Padding(0);
             this.Langue_EN_bt.Name = "Langue_EN_bt";
             this.Langue_EN_bt.Size = new System.Drawing.Size(71, 39);
             this.Langue_EN_bt.TabIndex = 1;
             this.Langue_EN_bt.UseVisualStyleBackColor = false;
+            this.Langue_EN_bt.Click += new System.EventHandler(this.Langue_EN_bt_Click);
             // 
             // Langue_FR_bt
             // 
@@ -55,12 +57,14 @@
             this.Langue_FR_bt.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Langue_FR_bt.BackColor = System.Drawing.Color.Transparent;
             this.Langue_FR_bt.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Langue_FR_bt.Location = new System.Drawing.Point(704, 9);
+            this.Langue_FR_bt.Image = global::projetTournoi.Properties.Resources.Flag_FR;
+            this.Langue_FR_bt.Location = new System.Drawing.Point(698, 9);
             this.Langue_FR_bt.Margin = new System.Windows.Forms.Padding(0);
             this.Langue_FR_bt.Name = "Langue_FR_bt";
             this.Langue_FR_bt.Size = new System.Drawing.Size(71, 39);
             this.Langue_FR_bt.TabIndex = 0;
             this.Langue_FR_bt.UseVisualStyleBackColor = false;
+            this.Langue_FR_bt.Click += new System.EventHandler(this.Langue_FR_bt_Click);
             // 
             // Main_Forme
             // 

@@ -63,9 +63,9 @@ namespace projetTournoi.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Flag_EN1 {
+        internal static System.Drawing.Bitmap Flag_EN {
             get {
-                object obj = ResourceManager.GetObject("Flag_EN1", resourceCulture);
+                object obj = ResourceManager.GetObject("Flag_EN", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace projetTournoi.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Flag_FR2 {
+        internal static System.Drawing.Bitmap Flag_FR {
             get {
-                object obj = ResourceManager.GetObject("Flag_FR2", resourceCulture);
+                object obj = ResourceManager.GetObject("Flag_FR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

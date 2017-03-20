@@ -22,6 +22,15 @@ namespace projetTournoi
             //Debut
         }
 
+        private void Langue_EN_bt_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void Langue_FR_bt_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }
