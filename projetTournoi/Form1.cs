@@ -16,7 +16,7 @@ namespace projetTournoi
     {
         int CurentPanel = 1;
         int PreviousPanel = 1;
-        string file = System.IO.File.ReadAllText("french.txt");
+        string file = Properties.Resources.french;
         public Main_Forme()
         {
             InitializeComponent();
@@ -33,13 +33,13 @@ namespace projetTournoi
 
         private void Langue_EN_bt_Click(object sender, EventArgs e)
         {
-            file = System.IO.File.ReadAllText("english.txt");
+            file = Properties.Resources.english;
             chargerTexte();
         }
 
         private void Langue_FR_bt_Click(object sender, EventArgs e)
         {
-            file = System.IO.File.ReadAllText("french.txt");
+            file = Properties.Resources.french;
             chargerTexte();
         }
 
