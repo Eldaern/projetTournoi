@@ -61,6 +61,40 @@ namespace projetTournoi.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à {
+        ///	&quot;connexion&quot; : &quot;sign in&quot;,
+        ///	&quot;inscription&quot; : &quot;register&quot;,
+        ///	&quot;retour&quot; : &quot;back&quot;,
+        ///
+        ///	&quot;Cherch_Tour&quot; : &quot;Search a tounament&quot;,
+        ///	&quot;Créer_Org&quot; : &quot;Create an organisation&quot;,
+        ///	&quot;Créer_Tour&quot; : &quot;Create a tournament&quot;,
+        ///
+        ///	&quot;Nom&quot; : &quot;Name&quot;,
+        ///	&quot;Type&quot; : &quot;Type&quot;,
+        ///	&quot;Jeu&quot; : &quot;Game&quot;,
+        ///	&quot;Mode&quot; : &quot;Mode&quot;,
+        ///	&quot;Ville&quot; : &quot;City&quot;,
+        ///	&quot;Rafraîchir&quot; : &quot;Refresh&quot;,
+        ///	&quot;Chercher&quot; : &quot;Search&quot;,
+        ///
+        ///	&quot;Heure&quot; : &quot;Hour&quot;,
+        ///	&quot;Pays&quot; : &quot;State&quot;,
+        ///	&quot;Rue&quot; : &quot;Street&quot;,
+        ///	&quot;Num&quot; : &quot;Num&quot;,
+        ///	&quot;Créer&quot; : &quot;Create&quot;,
+        ///
+        ///	&quot;Description&quot; : &quot;Description&quot;,
+        ///
+        ///	&quot;Gérer_org&quot; : &quot;Mana [le reste de la chaîne a été tronqué]&quot;;.
+        /// </summary>
+        internal static string english {
+            get {
+                return ResourceManager.GetString("english", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Flag_EN {
@@ -77,6 +111,40 @@ namespace projetTournoi.Properties {
             get {
                 object obj = ResourceManager.GetObject("Flag_FR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à {
+        ///	&quot;connexion&quot; : &quot;connexion&quot;,
+        ///	&quot;inscription&quot; : &quot;inscription&quot;,
+        ///	&quot;retour&quot; : &quot;retour&quot;,
+        ///
+        ///	&quot;Cherch_Tour&quot; : &quot;Chercher un tournoi&quot;,
+        ///	&quot;Créer_Org&quot; : &quot;Créer une organisation&quot;,
+        ///	&quot;Créer_Tour&quot; : &quot;Créer un Tournoi&quot;,
+        ///
+        ///	&quot;Nom&quot; : &quot;Nom&quot;,
+        ///	&quot;Type&quot; : &quot;Type&quot;,
+        ///	&quot;Jeu&quot; : &quot;Jeu&quot;,
+        ///	&quot;Mode&quot; : &quot;Mode&quot;,
+        ///	&quot;Ville&quot; : &quot;Ville&quot;,
+        ///	&quot;Rafraîchir&quot; : &quot;Rafraîchir&quot;,
+        ///	&quot;Chercher&quot; : &quot;Chercher&quot;,
+        ///
+        ///	&quot;Heure&quot; : &quot;Heure&quot;,
+        ///	&quot;Pays&quot; : &quot;Pays&quot;,
+        ///	&quot;Rue&quot; : &quot;Rue&quot;,
+        ///	&quot;Num&quot; : &quot;Num&quot;,
+        ///	&quot;Créer&quot; : &quot;Créer&quot;,
+        ///
+        ///	&quot;Description&quot; : &quot;Description&quot;,
+        ///
+        ///	&quot;Gérer_org&quot; :  [le reste de la chaîne a été tronqué]&quot;;.
+        /// </summary>
+        internal static string french {
+            get {
+                return ResourceManager.GetString("french", resourceCulture);
             }
         }
     }

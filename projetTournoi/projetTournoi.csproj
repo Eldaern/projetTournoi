@@ -87,22 +87,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flag_of_France.svg.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Flag_FR.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Flag_EN.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flag_EN1.png" />
+    <None Include="Resources\french.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flag_FR1.png" />
+    <None Include="Resources\french.txt" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Flag_FR2.png" />
+    <None Include="Resources\english.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

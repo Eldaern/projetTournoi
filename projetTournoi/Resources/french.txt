@@ -1,0 +1,28 @@
+﻿{
+	"connexion" : "connexion",
+	"inscription" : "inscription",
+	"retour" : "retour",
+
+	"Cherch_Tour" : "Chercher un tournoi",
+	"Créer_Org" : "Créer une organisation",
+	"Créer_Tour" : "Créer un Tournoi",
+
+	"Nom" : "Nom",
+	"Type" : "Type",
+	"Jeu" : "Jeu",
+	"Mode" : "Mode",
+	"Ville" : "Ville",
+	"Rafraîchir" : "Rafraîchir",
+	"Chercher" : "Chercher",
+
+	"Heure" : "Heure",
+	"Pays" : "Pays",
+	"Rue" : "Rue",
+	"Num" : "Num",
+	"Créer" : "Créer",
+
+	"Description" : "Description",
+
+	"Gérer_org" : "Gérer l'organisation",
+	"Ajouter" : "Ajouter"
+}

@@ -1,0 +1,28 @@
+﻿{
+	"connexion" : "sign in",
+	"inscription" : "register",
+	"retour" : "back",
+
+	"Cherch_Tour" : "Search a tounament",
+	"Créer_Org" : "Create an organisation",
+	"Créer_Tour" : "Create a tournament",
+
+	"Nom" : "Name",
+	"Type" : "Type",
+	"Jeu" : "Game",
+	"Mode" : "Mode",
+	"Ville" : "City",
+	"Rafraîchir" : "Refresh",
+	"Chercher" : "Search",
+
+	"Heure" : "Hour",
+	"Pays" : "State",
+	"Rue" : "Street",
+	"Num" : "Num",
+	"Créer" : "Create",
+
+	"Description" : "Description",
+
+	"Gérer_org" : "Manage the organisation",
+	"Ajouter" : "Add"
+}
