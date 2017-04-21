@@ -16,7 +16,9 @@ namespace projetTournoi
     {
         int CurentPanel = 1;
         int PreviousPanel = 1;
-        string file = Properties.Resources.french;
+        int dureeTooltip = 10000;
+        static string file = Properties.Resources.french;
+        Textes textes = JsonConvert.DeserializeObject<Textes>(file);
         public Main_Forme()
         {
             InitializeComponent();
@@ -171,15 +173,16 @@ namespace projetTournoi
 
         private void helpButton_Click(object sender, EventArgs e)
         {
-            Help_ToolTip_langage.Show("changer la langue de l'application", Langue_EN_bt);
-            Help_Tooltip_Connexion.Show("Se connecter ou s'inscrire", CP_BT_Connexion);
-            Help_Tooltip_Retour.Show("Revenir au menu précédent", BackButton);
+            textes = JsonConvert.DeserializeObject<Textes>(file);
+            Help_ToolTip_langage.Show(textes.Help_langage , Langue_EN_bt, dureeTooltip);
+            Help_Tooltip_Connexion.Show(textes.Help_connexion, CP_BT_Connexion, dureeTooltip);
+            Help_Tooltip_Retour.Show(textes.Help_retour, BackButton, dureeTooltip);
             switch (CurentPanel)
             {
                 case 1:
-                    Help_toolTip_1.Show("Chercher un tournoi selon plusieurs critères", MainMenu_BT_CherchTour);
-                    Help_tooltip_2.Show("Créer une organisation\npour pouvoir\nregrouper des joueurs", MainMenu_BT_CreeOrg);
-                    Help_tooltip_3.Show("Créer un nouveau tournoi",MainMenu_BT_CreeTour);
+                    Help_toolTip_1.Show(textes.Help_chercher, MainMenu_BT_CherchTour, dureeTooltip);
+                    Help_tooltip_2.Show(textes.Help_créerOrg, MainMenu_BT_CreeOrg, dureeTooltip);
+                    Help_tooltip_3.Show(textes.Help_créerTour,MainMenu_BT_CreeTour, dureeTooltip);
                     break;
                 case 2:
 
@@ -304,7 +307,7 @@ namespace projetTournoi
 
         private void chargerTexte()
         {
-            Textes textes = JsonConvert.DeserializeObject<Textes>(file);
+            textes = JsonConvert.DeserializeObject<Textes>(file);
             CP_BT_Connexion.Text = textes.connexion;
             CP_BT_Inscription.Text = textes.inscription;
             BackButton.Text = textes.retour;

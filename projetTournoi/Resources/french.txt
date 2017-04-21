@@ -24,5 +24,12 @@
 	"Description" : "Description",
 
 	"Gérer_org" : "Gérer l'organisation",
-	"Ajouter" : "Ajouter"
+	"Ajouter" : "Ajouter",
+
+	"Help_langage" : "changer la langue de l'application",
+	"Help_connexion" : "Se connecter ou s'inscrire",
+	"Help_retour" : "Revenir au menu précédent",
+	"Help_chercher" : "Chercher un tournoi selon plusieurs critères",
+	"Help_créerOrg" : "Créer une organisation\npour pouvoir\nregrouper des joueurs",
+	"Help_créerTour" : "Créer un nouveau tournoi"
 }

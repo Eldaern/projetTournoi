@@ -24,5 +24,12 @@
 	"Description" : "Description",
 
 	"Gérer_org" : "Manage the organisation",
-	"Ajouter" : "Add"
+	"Ajouter" : "Add",
+
+	"Help_langage" : "Change the Application's language",
+	"Help_connexion" : "login or sign in",
+	"Help_retour" : "Return to the previous menu",
+	"Help_chercher" : "Search a tournament by several critera",
+	"Help_créerOrg" : "Create an organisation\nto regroup players",
+	"Help_créerTour" : "Create a new tournament"
 }
