@@ -31,5 +31,8 @@
 	"Help_retour" : "Return to the previous menu",
 	"Help_chercher" : "Search a tournament by several critera",
 	"Help_créerOrg" : "Create an organisation\nto regroup players",
-	"Help_créerTour" : "Create a new tournament"
+	"Help_créerTour" : "Create a new tournament",
+
+	"Help_rafraîchir" : "Clear all textfields",
+	"Help_LancerRecherche" : "Start the research" 
 }

@@ -31,5 +31,8 @@
 	"Help_retour" : "Revenir au menu précédent",
 	"Help_chercher" : "Chercher un tournoi selon plusieurs critères",
 	"Help_créerOrg" : "Créer une organisation\npour pouvoir\nregrouper des joueurs",
-	"Help_créerTour" : "Créer un nouveau tournoi"
+	"Help_créerTour" : "Créer un nouveau tournoi",
+
+	"Help_rafraîchir" : "Vider les champs de recherche",
+	"Help_LancerRecherche" : "Lancer la recherche" 
 }

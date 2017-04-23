@@ -21,5 +21,7 @@ namespace projetTournoi
         public string Gérer_org, Ajouter;
 
         public string Help_langage, Help_connexion, Help_retour, Help_chercher, Help_créerOrg, Help_créerTour;
+
+        public string Help_rafraîchir, Help_LancerRecherche;
     }
 }
