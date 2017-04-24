@@ -31,6 +31,7 @@ namespace projetTournoi
             PreviousPanel = 1;
             CurentPanel = 1;
             chargerTexte();
+            BackButton.Visible = false;
         }
 
         private void Langue_EN_bt_Click(object sender, EventArgs e)
@@ -155,6 +156,7 @@ namespace projetTournoi
             Chercher_Tournoi_Panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 2;
+            BackButton.Visible = true;
         }
 
         private void MainMenu_BT_CreeOrg_Click(object sender, EventArgs e)
@@ -162,6 +164,7 @@ namespace projetTournoi
             CreeOrg_Panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 3;
+            BackButton.Visible = true;
         }
 
         private void MainMenu_BT_CreeTour_Click(object sender, EventArgs e)
@@ -169,6 +172,7 @@ namespace projetTournoi
             Cree_Tournoi_Panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 4;
+            BackButton.Visible = true;
         }
 
         private void helpButton_Click(object sender, EventArgs e)
@@ -176,7 +180,9 @@ namespace projetTournoi
             textes = JsonConvert.DeserializeObject<Textes>(file);
             Help_ToolTip_langage.Show(textes.Help_langage , Langue_EN_bt, dureeTooltip);
             Help_Tooltip_Connexion.Show(textes.Help_connexion, CP_BT_Connexion, dureeTooltip);
-            Help_Tooltip_Retour.Show(textes.Help_retour, BackButton, dureeTooltip);
+            if (CurentPanel != 1){
+                Help_Tooltip_Retour.Show(textes.Help_retour, BackButton, dureeTooltip);
+            }
             switch (CurentPanel)
             {
                 case 1:
@@ -280,6 +286,7 @@ namespace projetTournoi
             Chercher_Tournoi_Panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 2;
+            BackButton.Visible = true;
         }
 
         private void MNG_BT_CreeTour_Click(object sender, EventArgs e)
@@ -287,6 +294,7 @@ namespace projetTournoi
             Cree_Tournoi_Panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 4;
+            BackButton.Visible = true;
         }
 
         private void MNG_BT_GererOrg_Click(object sender, EventArgs e)
@@ -294,6 +302,7 @@ namespace projetTournoi
             Gerer_Org_Panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 5;
+            BackButton.Visible = true;
         }
 
         private void Gerer_Org_BT_Chercher_Click(object sender, EventArgs e)
@@ -360,26 +369,31 @@ namespace projetTournoi
                     MainMenu_Panel.BringToFront();
                     PreviousPanel = 1;
                     CurentPanel = 1;
+                    BackButton.Visible = false;
                     break;
                 case 2:
                     Chercher_Tournoi_Panel.BringToFront();
                     PreviousPanel = CurentPanel;
                     CurentPanel = 2;
+                    BackButton.Visible = true;
                     break;
                 case 3:
                     CreeOrg_Panel.BringToFront();
                     PreviousPanel = CurentPanel;
                     CurentPanel = 3;
+                    BackButton.Visible = true;
                     break;
                 case 4:
                     Cree_Tournoi_Panel.BringToFront();
                     PreviousPanel = CurentPanel;
                     CurentPanel = 4;
+                    BackButton.Visible = true;
                     break;
                 case 5:
                     Gerer_Org_Panel.BringToFront();
                     PreviousPanel = CurentPanel;
                     CurentPanel = 5;
+                    BackButton.Visible = true;
                     break;
             }
         }
