@@ -58,13 +58,13 @@
             this.CreeTour_Label_Title = new System.Windows.Forms.Label();
             this.helpButton = new System.Windows.Forms.Button();
             this.Chercher_Tournoi_Panel = new System.Windows.Forms.Panel();
+            this.ChercheTour_ComboBox_Mode = new System.Windows.Forms.ComboBox();
             this.ChercheTour_ComboBox_Type = new System.Windows.Forms.ComboBox();
             this.ChercheTour_ComboBox_Jeu = new System.Windows.Forms.ComboBox();
             this.ChercheTour_BT_Chercher = new System.Windows.Forms.Button();
             this.ChercheTour_BT_Rafraîchir = new System.Windows.Forms.Button();
             this.ChercheTour_TextBox_Ville = new System.Windows.Forms.TextBox();
             this.ChercheTour_Label_Ville = new System.Windows.Forms.Label();
-            this.ChercheTour_TextBox_Mode = new System.Windows.Forms.TextBox();
             this.ChercheTour_Label_Mode = new System.Windows.Forms.Label();
             this.ChercheTour_Label_Jeu = new System.Windows.Forms.Label();
             this.ChercheTour_DTPicker = new System.Windows.Forms.DateTimePicker();
@@ -332,6 +332,11 @@
             // CreeTour_CB_Type
             // 
             this.CreeTour_CB_Type.FormattingEnabled = true;
+            this.CreeTour_CB_Type.Items.AddRange(new object[] {
+            "BO1",
+            "BO3",
+            "BO5",
+            "Libre"});
             this.CreeTour_CB_Type.Location = new System.Drawing.Point(332, 136);
             this.CreeTour_CB_Type.Name = "CreeTour_CB_Type";
             this.CreeTour_CB_Type.Size = new System.Drawing.Size(121, 21);
@@ -342,6 +347,32 @@
             // CreeTour_CB_heure
             // 
             this.CreeTour_CB_heure.FormattingEnabled = true;
+            this.CreeTour_CB_heure.Items.AddRange(new object[] {
+            "00 H",
+            "01 H",
+            "02 H",
+            "03 H",
+            "04 H",
+            "05 H",
+            "06 H",
+            "07 H",
+            "08 H",
+            "09 H",
+            "10 H",
+            "11 H",
+            "12 H",
+            "13 H",
+            "14 H",
+            "15 H",
+            "16 H",
+            "17 H",
+            "18 H",
+            "19 H",
+            "20 H",
+            "21 H",
+            "22 H",
+            "23 H",
+            "24 H"});
             this.CreeTour_CB_heure.Location = new System.Drawing.Point(471, 136);
             this.CreeTour_CB_heure.Name = "CreeTour_CB_heure";
             this.CreeTour_CB_heure.Size = new System.Drawing.Size(121, 21);
@@ -410,13 +441,13 @@
             // 
             // Chercher_Tournoi_Panel
             // 
+            this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_ComboBox_Mode);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_ComboBox_Type);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_ComboBox_Jeu);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_BT_Chercher);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_BT_Rafraîchir);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_TextBox_Ville);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_Label_Ville);
-            this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_TextBox_Mode);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_Label_Mode);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_Label_Jeu);
             this.Chercher_Tournoi_Panel.Controls.Add(this.ChercheTour_DTPicker);
@@ -430,9 +461,22 @@
             this.Chercher_Tournoi_Panel.TabIndex = 5;
             this.Chercher_Tournoi_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Chercher_Tournoi_Panel_Paint);
             // 
+            // ChercheTour_ComboBox_Mode
+            // 
+            this.ChercheTour_ComboBox_Mode.FormattingEnabled = true;
+            this.ChercheTour_ComboBox_Mode.Location = new System.Drawing.Point(218, 175);
+            this.ChercheTour_ComboBox_Mode.Name = "ChercheTour_ComboBox_Mode";
+            this.ChercheTour_ComboBox_Mode.Size = new System.Drawing.Size(121, 21);
+            this.ChercheTour_ComboBox_Mode.TabIndex = 18;
+            // 
             // ChercheTour_ComboBox_Type
             // 
             this.ChercheTour_ComboBox_Type.FormattingEnabled = true;
+            this.ChercheTour_ComboBox_Type.Items.AddRange(new object[] {
+            "BO1",
+            "BO3",
+            "BO5",
+            "Libre"});
             this.ChercheTour_ComboBox_Type.Location = new System.Drawing.Point(459, 86);
             this.ChercheTour_ComboBox_Type.Name = "ChercheTour_ComboBox_Type";
             this.ChercheTour_ComboBox_Type.Size = new System.Drawing.Size(107, 21);
@@ -484,14 +528,6 @@
             this.ChercheTour_Label_Ville.TabIndex = 12;
             this.ChercheTour_Label_Ville.Text = "Ville :";
             this.ChercheTour_Label_Ville.Click += new System.EventHandler(this.ChercheTour_Label_Ville_Click);
-            // 
-            // ChercheTour_TextBox_Mode
-            // 
-            this.ChercheTour_TextBox_Mode.Location = new System.Drawing.Point(218, 177);
-            this.ChercheTour_TextBox_Mode.Name = "ChercheTour_TextBox_Mode";
-            this.ChercheTour_TextBox_Mode.Size = new System.Drawing.Size(100, 20);
-            this.ChercheTour_TextBox_Mode.TabIndex = 11;
-            this.ChercheTour_TextBox_Mode.TextChanged += new System.EventHandler(this.ChercheTour_TextBox_Mode_TextChanged);
             // 
             // ChercheTour_Label_Mode
             // 
@@ -717,9 +753,9 @@
             // 
             // Gerer_Org_TextBox_Nom
             // 
-            this.Gerer_Org_TextBox_Nom.Location = new System.Drawing.Point(267, 84);
+            this.Gerer_Org_TextBox_Nom.Location = new System.Drawing.Point(283, 84);
             this.Gerer_Org_TextBox_Nom.Name = "Gerer_Org_TextBox_Nom";
-            this.Gerer_Org_TextBox_Nom.Size = new System.Drawing.Size(124, 20);
+            this.Gerer_Org_TextBox_Nom.Size = new System.Drawing.Size(108, 20);
             this.Gerer_Org_TextBox_Nom.TabIndex = 7;
             // 
             // Gerer_Org_Label_Nom
@@ -873,7 +909,6 @@
         private System.Windows.Forms.DateTimePicker ChercheTour_DTPicker;
         private System.Windows.Forms.TextBox ChercheTour_TextBox_Ville;
         private System.Windows.Forms.Label ChercheTour_Label_Ville;
-        private System.Windows.Forms.TextBox ChercheTour_TextBox_Mode;
         private System.Windows.Forms.Label ChercheTour_Label_Mode;
         private System.Windows.Forms.Button ChercheTour_BT_Chercher;
         private System.Windows.Forms.Button ChercheTour_BT_Rafraîchir;
@@ -914,6 +949,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NomTournoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lieu;
+        private System.Windows.Forms.ComboBox ChercheTour_ComboBox_Mode;
     }
 }
 

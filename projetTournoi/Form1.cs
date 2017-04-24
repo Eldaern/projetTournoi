@@ -159,6 +159,12 @@ namespace projetTournoi
             PreviousPanel = 1;
             CurentPanel = 2;
             BackButton.Visible = true;
+            int nbr = dataClass.torDS.Tables["jeux"].Rows.Count;
+            for (int cpt = 0; cpt < nbr; cpt++)
+            {
+                string nom = (string)dataClass.torDS.Tables["jeux"].Rows[cpt].ItemArray.GetValue(1);
+                ChercheTour_ComboBox_Jeu.Items.Add(nom);
+            }
         }
 
         private void MainMenu_BT_CreeOrg_Click(object sender, EventArgs e)
@@ -240,11 +246,6 @@ namespace projetTournoi
 
         }
 
-        private void ChercheTour_TextBox_Mode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ChercheTour_Label_Ville_Click(object sender, EventArgs e)
         {
 
@@ -258,7 +259,7 @@ namespace projetTournoi
         private void ChercheTour_BT_Rafraîchir_Click(object sender, EventArgs e)
         {
             ChercheTour_ComboBox_Jeu.SelectedIndex = -1;
-            ChercheTour_TextBox_Mode.Clear();
+            ChercheTour_ComboBox_Mode.SelectedIndex = -1;
             ChercheTour_TextBox_Nom.Clear();
             ChercheTour_ComboBox_Type.SelectedIndex = -1;
             ChercheTour_TextBox_Ville.Clear();

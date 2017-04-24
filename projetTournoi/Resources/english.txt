@@ -10,7 +10,7 @@
 	"Nom" : "Name",
 	"Type" : "Type",
 	"Jeu" : "Game",
-	"Mode" : "Mode",
+	"Mode" : "Style",
 	"Ville" : "City",
 	"Rafraîchir" : "Refresh",
 	"Chercher" : "Search",
