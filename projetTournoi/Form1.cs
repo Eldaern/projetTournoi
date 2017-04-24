@@ -31,7 +31,8 @@ namespace projetTournoi
         private void Main_Forme_Load(object sender, EventArgs e)
         {
             //Debut
-            MainMenu_Panel.BringToFront();
+            Main_Menu_Gerer_Panel.BringToFront();
+            //MainMenu_Panel.BringToFront();
             PreviousPanel = 1;
             CurentPanel = 1;
             chargerTexte();
