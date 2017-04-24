@@ -156,7 +156,7 @@ namespace projetTournoi
         private void MainMenu_BT_CherchTour_Click(object sender, EventArgs e)
         {
             Chercher_Tournoi_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 1;
             CurentPanel = 2;
             BackButton.Visible = true;
         }
@@ -164,7 +164,7 @@ namespace projetTournoi
         private void MainMenu_BT_CreeOrg_Click(object sender, EventArgs e)
         {
             CreeOrg_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 1;
             CurentPanel = 3;
             BackButton.Visible = true;
         }
@@ -172,7 +172,7 @@ namespace projetTournoi
         private void MainMenu_BT_CreeTour_Click(object sender, EventArgs e)
         {
             Cree_Tournoi_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 1;
             CurentPanel = 4;
             BackButton.Visible = true;
             int nbr = dataClass.torDS.Tables["jeux"].Rows.Count;
@@ -225,22 +225,12 @@ namespace projetTournoi
 
         }
 
-        private void ChercheTour_TextBox_Type_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ChercheTour_Label_Jeu_Click(object sender, EventArgs e)
         {
 
         }
 
         private void ChercheTour_DTPicker_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ChercheTour_TextBox_Jeu_TextChanged(object sender, EventArgs e)
         {
 
         }
@@ -267,10 +257,10 @@ namespace projetTournoi
 
         private void ChercheTour_BT_Rafraîchir_Click(object sender, EventArgs e)
         {
-            ChercheTour_TextBox_Jeu.Clear();
+            ChercheTour_ComboBox_Jeu.SelectedIndex = -1;
             ChercheTour_TextBox_Mode.Clear();
             ChercheTour_TextBox_Nom.Clear();
-            ChercheTour_TextBox_Type.Clear();
+            ChercheTour_ComboBox_Type.SelectedIndex = -1;
             ChercheTour_TextBox_Ville.Clear();
         }
 
@@ -292,7 +282,7 @@ namespace projetTournoi
         private void MNG_BT_CherchTour_Click(object sender, EventArgs e)
         {
             Chercher_Tournoi_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 7;
             CurentPanel = 2;
             BackButton.Visible = true;
         }
@@ -300,7 +290,7 @@ namespace projetTournoi
         private void MNG_BT_CreeTour_Click(object sender, EventArgs e)
         {
             Cree_Tournoi_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 7;
             CurentPanel = 4;
             BackButton.Visible = true;
         }
@@ -308,7 +298,7 @@ namespace projetTournoi
         private void MNG_BT_GererOrg_Click(object sender, EventArgs e)
         {
             Gerer_Org_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 7;
             CurentPanel = 5;
             BackButton.Visible = true;
         }
@@ -380,33 +370,39 @@ namespace projetTournoi
                     break;
                 case 2:
                     Chercher_Tournoi_Panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    PreviousPanel = 1;
                     CurentPanel = 2;
                     BackButton.Visible = true;
                     break;
                 case 3:
                     CreeOrg_Panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    PreviousPanel = 1;
                     CurentPanel = 3;
                     BackButton.Visible = true;
                     break;
                 case 4:
                     Cree_Tournoi_Panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    PreviousPanel = 1;
                     CurentPanel = 4;
                     BackButton.Visible = true;
                     break;
                 case 5:
                     Gerer_Org_Panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    PreviousPanel = 7;
                     CurentPanel = 5;
                     BackButton.Visible = true;
                     break;
                 case 6:
                     List_Tournoi_panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    PreviousPanel = 2;
                     CurentPanel = 6;
                     BackButton.Visible = true;
+                    break;
+                case 7:
+                    Main_Menu_Gerer_Panel.BringToFront();
+                    PreviousPanel = 7;
+                    CurentPanel = 7;
+                    BackButton.Visible = false;
                     break;
             }
         }
