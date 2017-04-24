@@ -395,7 +395,21 @@ namespace projetTournoi
                     CurentPanel = 5;
                     BackButton.Visible = true;
                     break;
+                case 6:
+                    List_Tournoi_panel.BringToFront();
+                    PreviousPanel = CurentPanel;
+                    CurentPanel = 6;
+                    BackButton.Visible = true;
+                    break;
             }
+        }
+
+        private void ChercheTour_BT_Chercher_Click(object sender, EventArgs e)
+        {
+            List_Tournoi_panel.BringToFront();
+            PreviousPanel = CurentPanel;
+            CurentPanel = 6;
+            BackButton.Visible = true;
         }
     }
 }
