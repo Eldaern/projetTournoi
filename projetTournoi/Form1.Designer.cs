@@ -198,7 +198,6 @@
             this.CP_BT_Inscription.TabIndex = 1;
             this.CP_BT_Inscription.Text = "inscription";
             this.CP_BT_Inscription.UseVisualStyleBackColor = true;
-            this.CP_BT_Inscription.Click += new System.EventHandler(this.CP_BT_Inscription_Click);
             // 
             // CP_BT_Connexion
             // 

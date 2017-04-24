@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
 
+
 namespace projetTournoi
 {
     public partial class Main_Forme : Form
@@ -59,11 +60,7 @@ namespace projetTournoi
         {
 
         }
-
-        private void CP_BT_Inscription_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void Cree_Tournoi_Panel_Paint(object sender, PaintEventArgs e)
         {
@@ -303,7 +300,6 @@ namespace projetTournoi
 
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
         {
-
         }
 
         private void chargerTexte()
@@ -383,5 +379,6 @@ namespace projetTournoi
                     break;
             }
         }
+
     }
 }
