@@ -28,7 +28,7 @@ namespace projetTournoi
         {
             //Debut
             MainMenu_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 1;
             CurentPanel = 1;
             chargerTexte();
         }
@@ -358,7 +358,7 @@ namespace projetTournoi
             {
                 case 1:
                     MainMenu_Panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    PreviousPanel = 1;
                     CurentPanel = 1;
                     break;
                 case 2:
