@@ -10,7 +10,7 @@
 	"Nom" : "Nom",
 	"Type" : "Type",
 	"Jeu" : "Jeu",
-	"Mode" : "Mode",
+	"Mode" : "Genre",
 	"Ville" : "Ville",
 	"Rafraîchir" : "Rafraîchir",
 	"Chercher" : "Chercher",
