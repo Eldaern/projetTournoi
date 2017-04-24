@@ -13,6 +13,7 @@ using System.IO;
 
 namespace projetTournoi
 {
+
     public partial class Main_Forme : Form
     {
         int CurentPanel = 1;
@@ -20,6 +21,8 @@ namespace projetTournoi
         int dureeTooltip = 10000;
         static string file = Properties.Resources.french;
         Textes textes = JsonConvert.DeserializeObject<Textes>(file);
+        dataTor dataClass=new dataTor();
+
         public Main_Forme()
         {
             InitializeComponent();
@@ -33,6 +36,8 @@ namespace projetTournoi
             CurentPanel = 1;
             chargerTexte();
             BackButton.Visible = false;
+            dataClass.updTor();
+
         }
 
         private void Langue_EN_bt_Click(object sender, EventArgs e)
@@ -170,7 +175,13 @@ namespace projetTournoi
             PreviousPanel = 1;
             CurentPanel = 4;
             BackButton.Visible = true;
-        }
+            int nbr = dataClass.torDS.Tables["jeux"].Rows.Count;
+            for (int cpt = 0; cpt <nbr ; cpt++)
+            {
+                string nom = (string)dataClass.torDS.Tables["jeux"].Rows[cpt].ItemArray.GetValue(1);
+                CreeTour_CB_Jeu.Items.Add(nom);
+            }
+         }
 
         private void helpButton_Click(object sender, EventArgs e)
         {

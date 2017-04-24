@@ -13,10 +13,9 @@ namespace projetTournoi
 
         public TorDBDataSet torDS;
 
-        public TorDBDataSet updTor()
+        public void updTor()
         {
             torDS = connTor.UpDataSet();
-            return torDS;
         }
     }
 }
