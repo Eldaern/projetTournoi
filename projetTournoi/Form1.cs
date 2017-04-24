@@ -305,7 +305,18 @@ namespace projetTournoi
 
         private void Gerer_Org_BT_Chercher_Click(object sender, EventArgs e)
         {
-
+            Gerer_Org_TextBox_Nom.Clear();
+            string rechercheNom="any";
+            rechercheNom = Gerer_Org_TextBox_Nom.Text.ToString();
+            
+            DataSet tmp=new DataSet();
+            tmp.Merge(dataClass.torDS.Tables["Utilisateur"].Select("LoginU like '%" + rechercheNom+"%'" ,"[N°] ASC"));
+            int nbr = tmp.Tables["Utilisateur"].Rows.Count;
+            for (int cpt = 0; cpt < nbr; cpt++)
+            {
+             string nomAdd = (string)tmp.Tables["Utilisateur"].Rows[cpt].ItemArray.GetValue(6);
+                Gerer_Org_ListBox.Items.Add(nomAdd);
+            }
         }
 
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)

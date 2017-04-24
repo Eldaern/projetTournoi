@@ -58,6 +58,8 @@
             this.CreeTour_Label_Title = new System.Windows.Forms.Label();
             this.helpButton = new System.Windows.Forms.Button();
             this.Chercher_Tournoi_Panel = new System.Windows.Forms.Panel();
+            this.ChercheTour_ComboBox_Type = new System.Windows.Forms.ComboBox();
+            this.ChercheTour_ComboBox_Jeu = new System.Windows.Forms.ComboBox();
             this.ChercheTour_BT_Chercher = new System.Windows.Forms.Button();
             this.ChercheTour_BT_Rafraîchir = new System.Windows.Forms.Button();
             this.ChercheTour_TextBox_Ville = new System.Windows.Forms.TextBox();
@@ -97,8 +99,6 @@
             this.Help_tooltip_3 = new System.Windows.Forms.ToolTip(this.components);
             this.List_Tournoi_panel = new System.Windows.Forms.Panel();
             this.LT_DataGrid = new System.Windows.Forms.DataGridView();
-            this.ChercheTour_ComboBox_Jeu = new System.Windows.Forms.ComboBox();
-            this.ChercheTour_ComboBox_Type = new System.Windows.Forms.ComboBox();
             this.imageJeu = new System.Windows.Forms.DataGridViewImageColumn();
             this.NomJeu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomTournoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -430,6 +430,22 @@
             this.Chercher_Tournoi_Panel.TabIndex = 5;
             this.Chercher_Tournoi_Panel.Paint += new System.Windows.Forms.PaintEventHandler(this.Chercher_Tournoi_Panel_Paint);
             // 
+            // ChercheTour_ComboBox_Type
+            // 
+            this.ChercheTour_ComboBox_Type.FormattingEnabled = true;
+            this.ChercheTour_ComboBox_Type.Location = new System.Drawing.Point(459, 86);
+            this.ChercheTour_ComboBox_Type.Name = "ChercheTour_ComboBox_Type";
+            this.ChercheTour_ComboBox_Type.Size = new System.Drawing.Size(107, 21);
+            this.ChercheTour_ComboBox_Type.TabIndex = 17;
+            // 
+            // ChercheTour_ComboBox_Jeu
+            // 
+            this.ChercheTour_ComboBox_Jeu.FormattingEnabled = true;
+            this.ChercheTour_ComboBox_Jeu.Location = new System.Drawing.Point(445, 133);
+            this.ChercheTour_ComboBox_Jeu.Name = "ChercheTour_ComboBox_Jeu";
+            this.ChercheTour_ComboBox_Jeu.Size = new System.Drawing.Size(121, 21);
+            this.ChercheTour_ComboBox_Jeu.TabIndex = 16;
+            // 
             // ChercheTour_BT_Chercher
             // 
             this.ChercheTour_BT_Chercher.Location = new System.Drawing.Point(358, 213);
@@ -758,22 +774,6 @@
             this.LT_DataGrid.Size = new System.Drawing.Size(767, 170);
             this.LT_DataGrid.TabIndex = 0;
             // 
-            // ChercheTour_ComboBox_Jeu
-            // 
-            this.ChercheTour_ComboBox_Jeu.FormattingEnabled = true;
-            this.ChercheTour_ComboBox_Jeu.Location = new System.Drawing.Point(445, 133);
-            this.ChercheTour_ComboBox_Jeu.Name = "ChercheTour_ComboBox_Jeu";
-            this.ChercheTour_ComboBox_Jeu.Size = new System.Drawing.Size(121, 21);
-            this.ChercheTour_ComboBox_Jeu.TabIndex = 16;
-            // 
-            // ChercheTour_ComboBox_Type
-            // 
-            this.ChercheTour_ComboBox_Type.FormattingEnabled = true;
-            this.ChercheTour_ComboBox_Type.Location = new System.Drawing.Point(459, 86);
-            this.ChercheTour_ComboBox_Type.Name = "ChercheTour_ComboBox_Type";
-            this.ChercheTour_ComboBox_Type.Size = new System.Drawing.Size(107, 21);
-            this.ChercheTour_ComboBox_Type.TabIndex = 17;
-            // 
             // imageJeu
             // 
             this.imageJeu.HeaderText = "image";
@@ -809,13 +809,13 @@
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
+            this.Controls.Add(this.Gerer_Org_Panel);
+            this.Controls.Add(this.Main_Menu_Gerer_Panel);
+            this.Controls.Add(this.MainMenu_Panel);
             this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
-            this.Controls.Add(this.Gerer_Org_Panel);
-            this.Controls.Add(this.Main_Menu_Gerer_Panel);
-            this.Controls.Add(this.MainMenu_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
