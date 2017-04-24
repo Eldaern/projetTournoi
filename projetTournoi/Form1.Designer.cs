@@ -99,6 +99,11 @@
             this.LT_DataGrid = new System.Windows.Forms.DataGridView();
             this.ChercheTour_ComboBox_Jeu = new System.Windows.Forms.ComboBox();
             this.ChercheTour_ComboBox_Type = new System.Windows.Forms.ComboBox();
+            this.imageJeu = new System.Windows.Forms.DataGridViewImageColumn();
+            this.NomJeu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomTournoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -742,6 +747,12 @@
             // LT_DataGrid
             // 
             this.LT_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LT_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.imageJeu,
+            this.NomJeu,
+            this.NomTournoi,
+            this.Date,
+            this.Lieu});
             this.LT_DataGrid.Location = new System.Drawing.Point(0, 1);
             this.LT_DataGrid.Name = "LT_DataGrid";
             this.LT_DataGrid.Size = new System.Drawing.Size(767, 170);
@@ -763,6 +774,31 @@
             this.ChercheTour_ComboBox_Type.Size = new System.Drawing.Size(107, 21);
             this.ChercheTour_ComboBox_Type.TabIndex = 17;
             // 
+            // imageJeu
+            // 
+            this.imageJeu.HeaderText = "image";
+            this.imageJeu.Name = "imageJeu";
+            // 
+            // NomJeu
+            // 
+            this.NomJeu.HeaderText = "Jeu";
+            this.NomJeu.Name = "NomJeu";
+            // 
+            // NomTournoi
+            // 
+            this.NomTournoi.HeaderText = "Nom";
+            this.NomTournoi.Name = "NomTournoi";
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            // 
+            // Lieu
+            // 
+            this.Lieu.HeaderText = "Lieu";
+            this.Lieu.Name = "Lieu";
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -773,13 +809,13 @@
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
+            this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
-            this.Controls.Add(this.List_Tournoi_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -873,6 +909,11 @@
         private System.Windows.Forms.DataGridView LT_DataGrid;
         private System.Windows.Forms.ComboBox ChercheTour_ComboBox_Jeu;
         private System.Windows.Forms.ComboBox ChercheTour_ComboBox_Type;
+        private System.Windows.Forms.DataGridViewImageColumn imageJeu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomJeu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomTournoi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Lieu;
     }
 }
 
