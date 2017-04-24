@@ -97,6 +97,8 @@
             this.Help_tooltip_2 = new System.Windows.Forms.ToolTip(this.components);
             this.Help_Tooltip_Retour = new System.Windows.Forms.ToolTip(this.components);
             this.Help_tooltip_3 = new System.Windows.Forms.ToolTip(this.components);
+            this.List_Tournoi_panel = new System.Windows.Forms.Panel();
+            this.LT_DataGrid = new System.Windows.Forms.DataGridView();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -104,6 +106,8 @@
             this.CreeOrg_Panel.SuspendLayout();
             this.Main_Menu_Gerer_Panel.SuspendLayout();
             this.Gerer_Org_Panel.SuspendLayout();
+            this.List_Tournoi_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LT_DataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -429,6 +433,7 @@
             this.ChercheTour_BT_Chercher.TabIndex = 15;
             this.ChercheTour_BT_Chercher.Text = "Chercher";
             this.ChercheTour_BT_Chercher.UseVisualStyleBackColor = true;
+            this.ChercheTour_BT_Chercher.Click += new System.EventHandler(this.ChercheTour_BT_Chercher_Click);
             // 
             // ChercheTour_BT_Rafraîchir
             // 
@@ -742,6 +747,22 @@
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
+            // List_Tournoi_panel
+            // 
+            this.List_Tournoi_panel.Controls.Add(this.LT_DataGrid);
+            this.List_Tournoi_panel.Location = new System.Drawing.Point(12, 62);
+            this.List_Tournoi_panel.Name = "List_Tournoi_panel";
+            this.List_Tournoi_panel.Size = new System.Drawing.Size(767, 302);
+            this.List_Tournoi_panel.TabIndex = 8;
+            // 
+            // LT_DataGrid
+            // 
+            this.LT_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LT_DataGrid.Location = new System.Drawing.Point(0, 1);
+            this.LT_DataGrid.Name = "LT_DataGrid";
+            this.LT_DataGrid.Size = new System.Drawing.Size(767, 170);
+            this.LT_DataGrid.TabIndex = 0;
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -758,6 +779,7 @@
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
+            this.Controls.Add(this.List_Tournoi_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -773,6 +795,8 @@
             this.Main_Menu_Gerer_Panel.ResumeLayout(false);
             this.Gerer_Org_Panel.ResumeLayout(false);
             this.Gerer_Org_Panel.PerformLayout();
+            this.List_Tournoi_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LT_DataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -847,6 +871,8 @@
         private System.Windows.Forms.ToolTip Help_tooltip_2;
         private System.Windows.Forms.ToolTip Help_Tooltip_Retour;
         private System.Windows.Forms.ToolTip Help_tooltip_3;
+        private System.Windows.Forms.Panel List_Tournoi_panel;
+        private System.Windows.Forms.DataGridView LT_DataGrid;
     }
 }
 
