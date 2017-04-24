@@ -31,7 +31,8 @@ namespace projetTournoi
         private void Main_Forme_Load(object sender, EventArgs e)
         {
             //Debut
-            MainMenu_Panel.BringToFront();
+            //MainMenu_Panel.BringToFront();
+            Main_Menu_Gerer_Panel.BringToFront();
             PreviousPanel = 1;
             CurentPanel = 1;
             chargerTexte();
@@ -306,13 +307,21 @@ namespace projetTournoi
 
         private void Gerer_Org_BT_Chercher_Click(object sender, EventArgs e)
         {
-            Gerer_Org_TextBox_Nom.Clear();
+            Gerer_Org_ListBox.Items.Clear();
             string rechercheNom="any";
             rechercheNom = Gerer_Org_TextBox_Nom.Text.ToString();
-            
+            int nbr = 0;
             DataSet tmp=new DataSet();
             tmp.Merge(dataClass.torDS.Tables["Utilisateur"].Select("LoginU like '%" + rechercheNom+"%'" ,"[N°] ASC"));
-            int nbr = tmp.Tables["Utilisateur"].Rows.Count;
+            try
+            {
+                nbr = tmp.Tables["Utilisateur"].Rows.Count;
+            }
+            catch(Exception ex)
+            {
+                Gerer_Org_ListBox.Items.Clear();
+                MessageBox.Show("Utilisater inconnu");
+            }
             for (int cpt = 0; cpt < nbr; cpt++)
             {
              string nomAdd = (string)tmp.Tables["Utilisateur"].Rows[cpt].ItemArray.GetValue(6);
