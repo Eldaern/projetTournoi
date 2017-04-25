@@ -22,6 +22,7 @@ namespace projetTournoi
         static string file = Properties.Resources.french;
         Textes textes = JsonConvert.DeserializeObject<Textes>(file);
         dataTor dataClass=new dataTor();
+        connection conn = new connection();
 
         public Main_Forme()
         {
@@ -157,7 +158,8 @@ namespace projetTournoi
             }
             else
             {
-
+                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text, CreeTour_DTPicker.Value.ToString(), CreeTour_CB_Type.SelectedItem.ToString(), CreeTour_CB_Jeu.SelectedIndex + 1, CreeTour_CB_heure.SelectedItem.ToString(), " ", CreeTour_TextBox_Ville.Text, CreeTour_TextBox_Ville.Text, Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text);
+                MessageBox.Show("Tournoi créé");
             }
         }
 
