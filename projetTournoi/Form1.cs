@@ -431,6 +431,27 @@ namespace projetTournoi
 
         private void ChercheTour_BT_Chercher_Click(object sender, EventArgs e)
         {
+            RechercheTournoi tournoi = new RechercheTournoi();
+            if (ChercheTour_TextBox_Nom.Text != null)
+            {
+                tournoi.nom = ChercheTour_TextBox_Nom.Text;
+            }
+            if (ChercheTour_ComboBox_Type.SelectedItem != null)
+            {
+                tournoi.type = ChercheTour_ComboBox_Type.SelectedItem.ToString();
+            }
+            if (ChercheTour_ComboBox_Jeu.SelectedItem != null)
+            {
+                tournoi.jeu = ChercheTour_ComboBox_Jeu.SelectedItem.ToString() ;
+            }
+            if (ChercheTour_ComboBox_Mode.SelectedItem != null)
+            {
+                tournoi.mode = ChercheTour_ComboBox_Mode.SelectedItem.ToString();
+            }
+            if (ChercheTour_TextBox_Ville.Text != null)
+            {
+                tournoi.ville = ChercheTour_TextBox_Ville.Text;
+            }
             List_Tournoi_panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 6;

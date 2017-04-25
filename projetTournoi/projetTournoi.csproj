@@ -60,6 +60,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RechercheTournoi.cs" />
     <Compile Include="Textes.cs" />
     <Compile Include="TorDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

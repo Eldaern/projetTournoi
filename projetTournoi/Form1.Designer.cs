@@ -244,6 +244,7 @@
             // 
             // CreeTour_ComboBox_Pays
             // 
+            this.CreeTour_ComboBox_Pays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CreeTour_ComboBox_Pays.FormattingEnabled = true;
             this.CreeTour_ComboBox_Pays.Location = new System.Drawing.Point(262, 177);
             this.CreeTour_ComboBox_Pays.Name = "CreeTour_ComboBox_Pays";
@@ -331,6 +332,7 @@
             // 
             // CreeTour_CB_Type
             // 
+            this.CreeTour_CB_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CreeTour_CB_Type.FormattingEnabled = true;
             this.CreeTour_CB_Type.Items.AddRange(new object[] {
             "BO1",
@@ -341,11 +343,11 @@
             this.CreeTour_CB_Type.Name = "CreeTour_CB_Type";
             this.CreeTour_CB_Type.Size = new System.Drawing.Size(121, 21);
             this.CreeTour_CB_Type.TabIndex = 6;
-            this.CreeTour_CB_Type.Text = "Type";
             this.CreeTour_CB_Type.SelectedIndexChanged += new System.EventHandler(this.CreeTour_CB_Type_SelectedIndexChanged);
             // 
             // CreeTour_CB_heure
             // 
+            this.CreeTour_CB_heure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CreeTour_CB_heure.FormattingEnabled = true;
             this.CreeTour_CB_heure.Items.AddRange(new object[] {
             "00 H",
@@ -377,17 +379,16 @@
             this.CreeTour_CB_heure.Name = "CreeTour_CB_heure";
             this.CreeTour_CB_heure.Size = new System.Drawing.Size(121, 21);
             this.CreeTour_CB_heure.TabIndex = 5;
-            this.CreeTour_CB_heure.Text = "heure";
             this.CreeTour_CB_heure.SelectedIndexChanged += new System.EventHandler(this.CreeTour_CB_heure_SelectedIndexChanged);
             // 
             // CreeTour_CB_Jeu
             // 
+            this.CreeTour_CB_Jeu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CreeTour_CB_Jeu.FormattingEnabled = true;
             this.CreeTour_CB_Jeu.Location = new System.Drawing.Point(192, 136);
             this.CreeTour_CB_Jeu.Name = "CreeTour_CB_Jeu";
             this.CreeTour_CB_Jeu.Size = new System.Drawing.Size(121, 21);
             this.CreeTour_CB_Jeu.TabIndex = 4;
-            this.CreeTour_CB_Jeu.Text = "Jeu";
             this.CreeTour_CB_Jeu.SelectedIndexChanged += new System.EventHandler(this.CreeTour_CB_Jeu_SelectedIndexChanged);
             // 
             // CreeTour_DTPicker
@@ -463,6 +464,7 @@
             // 
             // ChercheTour_ComboBox_Mode
             // 
+            this.ChercheTour_ComboBox_Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ChercheTour_ComboBox_Mode.FormattingEnabled = true;
             this.ChercheTour_ComboBox_Mode.Location = new System.Drawing.Point(218, 175);
             this.ChercheTour_ComboBox_Mode.Name = "ChercheTour_ComboBox_Mode";
@@ -471,6 +473,7 @@
             // 
             // ChercheTour_ComboBox_Type
             // 
+            this.ChercheTour_ComboBox_Type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ChercheTour_ComboBox_Type.FormattingEnabled = true;
             this.ChercheTour_ComboBox_Type.Items.AddRange(new object[] {
             "BO1",
@@ -484,6 +487,7 @@
             // 
             // ChercheTour_ComboBox_Jeu
             // 
+            this.ChercheTour_ComboBox_Jeu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ChercheTour_ComboBox_Jeu.FormattingEnabled = true;
             this.ChercheTour_ComboBox_Jeu.Location = new System.Drawing.Point(445, 133);
             this.ChercheTour_ComboBox_Jeu.Name = "ChercheTour_ComboBox_Jeu";
@@ -807,7 +811,7 @@
             this.Lieu});
             this.LT_DataGrid.Location = new System.Drawing.Point(0, 1);
             this.LT_DataGrid.Name = "LT_DataGrid";
-            this.LT_DataGrid.Size = new System.Drawing.Size(767, 170);
+            this.LT_DataGrid.Size = new System.Drawing.Size(767, 287);
             this.LT_DataGrid.TabIndex = 0;
             // 
             // imageJeu
@@ -845,13 +849,13 @@
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
+            this.Controls.Add(this.Chercher_Tournoi_Panel);
+            this.Controls.Add(this.Cree_Tournoi_Panel);
+            this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
             this.Controls.Add(this.List_Tournoi_panel);
-            this.Controls.Add(this.Chercher_Tournoi_Panel);
-            this.Controls.Add(this.Cree_Tournoi_Panel);
-            this.Controls.Add(this.CreeOrg_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
