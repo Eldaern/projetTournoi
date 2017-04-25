@@ -53,6 +53,18 @@ namespace projetTournoi
             conn.Close();
             return ds;
         }
+
+        public void UpDataBase(TorDBDataSet ds)
+        {/*
+            conn = new SqlConnection();
+            cmd = new SqlCommand();
+            dtad = new SqlDataAdapter();
+            conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+            conn.Open();
+            SqlCommandBuilder objCommandBuilder = new SqlCommandBuilder(dtad);
+            dtad.Update(ds, "Equipe");*/
+
+        }
     }
 
 

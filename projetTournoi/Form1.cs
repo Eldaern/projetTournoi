@@ -31,8 +31,8 @@ namespace projetTournoi
         private void Main_Forme_Load(object sender, EventArgs e)
         {
             //Debut
-            //MainMenu_Panel.BringToFront();
-            Main_Menu_Gerer_Panel.BringToFront();
+            MainMenu_Panel.BringToFront();
+            //Main_Menu_Gerer_Panel.BringToFront();
             PreviousPanel = 1;
             CurentPanel = 1;
             chargerTexte();
@@ -152,6 +152,7 @@ namespace projetTournoi
         private void CreeTour_BT_Creer_Click(object sender, EventArgs e)
         {
 
+            
         }
 
         private void MainMenu_BT_CherchTour_Click(object sender, EventArgs e)
@@ -434,6 +435,7 @@ namespace projetTournoi
             PreviousPanel = CurentPanel;
             CurentPanel = 6;
             BackButton.Visible = true;
+
         }
     }
 }
