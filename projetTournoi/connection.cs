@@ -54,16 +54,18 @@ namespace projetTournoi
             return ds;
         }
 
-        public void UpDataBase(TorDBDataSet ds)
-        {/*
-            conn = new SqlConnection();
-            cmd = new SqlCommand();
-            dtad = new SqlDataAdapter();
-            conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
-            conn.Open();
-            SqlCommandBuilder objCommandBuilder = new SqlCommandBuilder(dtad);
-            dtad.Update(ds, "Equipe");*/
+        public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, string heure, string organisation,string Ville, string pays, int numero, string rue)
+        {
+            TorDBDataSet ds= UpDataSet();
+            DataRow[] frows= ds.Tables["Lieu"].Select( "Ville like '"+Ville+"' and Pays like '"+pays+"' and Nuermo like '"+numero +"' rue like '"+rue+"'", "[N°] ASC");
+            if (frows[0] == null)
+            {
 
+            }
+            else
+            {
+                int idLieu = (int)frows[0].ItemArray.GetValue(0);
+            }
         }
     }
 
