@@ -246,6 +246,8 @@
             // 
             this.CreeTour_ComboBox_Pays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CreeTour_ComboBox_Pays.FormattingEnabled = true;
+            this.CreeTour_ComboBox_Pays.Items.AddRange(new object[] {
+            "Belgique"});
             this.CreeTour_ComboBox_Pays.Location = new System.Drawing.Point(262, 177);
             this.CreeTour_ComboBox_Pays.Name = "CreeTour_ComboBox_Pays";
             this.CreeTour_ComboBox_Pays.Size = new System.Drawing.Size(116, 21);
@@ -849,13 +851,13 @@
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
-            this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
             this.Controls.Add(this.List_Tournoi_panel);
+            this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";

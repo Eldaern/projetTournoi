@@ -151,8 +151,14 @@ namespace projetTournoi
 
         private void CreeTour_BT_Creer_Click(object sender, EventArgs e)
         {
+            if (CreeTour_TextBox_Nom.Text == "" || CreeTour_CB_Jeu.SelectedIndex == -1 || CreeTour_CB_Type.SelectedIndex == -1 || CreeTour_CB_heure.SelectedIndex == -1 || CreeTour_ComboBox_Pays.SelectedIndex == -1 || CreeTour_TextBox_Ville.Text == "" || CreeTour_TextBox_Rue.Text == "" || CreeTour_TextBox_Num.Text == "")
+            {
+                MessageBox.Show("informations incomplètes");
+            }
+            else
+            {
 
-            
+            }
         }
 
         private void MainMenu_BT_CherchTour_Click(object sender, EventArgs e)
@@ -179,16 +185,8 @@ namespace projetTournoi
 
         private void MainMenu_BT_CreeTour_Click(object sender, EventArgs e)
         {
-            Cree_Tournoi_Panel.BringToFront();
             PreviousPanel = 1;
-            CurentPanel = 4;
-            BackButton.Visible = true;
-            int nbr = dataClass.torDS.Tables["jeux"].Rows.Count;
-            for (int cpt = 0; cpt <nbr ; cpt++)
-            {
-                string nom = (string)dataClass.torDS.Tables["jeux"].Rows[cpt].ItemArray.GetValue(1);
-                CreeTour_CB_Jeu.Items.Add(nom);
-            }
+            creationTournoi();
          }
 
         private void helpButton_Click(object sender, EventArgs e)
@@ -292,10 +290,8 @@ namespace projetTournoi
 
         private void MNG_BT_CreeTour_Click(object sender, EventArgs e)
         {
-            Cree_Tournoi_Panel.BringToFront();
             PreviousPanel = 7;
-            CurentPanel = 4;
-            BackButton.Visible = true;
+            creationTournoi();
         }
 
         private void MNG_BT_GererOrg_Click(object sender, EventArgs e)
@@ -403,10 +399,8 @@ namespace projetTournoi
                     BackButton.Visible = true;
                     break;
                 case 4:
-                    Cree_Tournoi_Panel.BringToFront();
                     PreviousPanel = 1;
-                    CurentPanel = 4;
-                    BackButton.Visible = true;
+                    creationTournoi();
                     break;
                 case 5:
                     Gerer_Org_Panel.BringToFront();
@@ -456,7 +450,19 @@ namespace projetTournoi
             PreviousPanel = CurentPanel;
             CurentPanel = 6;
             BackButton.Visible = true;
+        }
 
+        public void creationTournoi()
+        {
+            Cree_Tournoi_Panel.BringToFront();
+            CurentPanel = 4;
+            BackButton.Visible = true;
+            int nbr = dataClass.torDS.Tables["jeux"].Rows.Count;
+            for (int cpt = 0; cpt < nbr; cpt++)
+            {
+                string nom = (string)dataClass.torDS.Tables["jeux"].Rows[cpt].ItemArray.GetValue(1);
+                CreeTour_CB_Jeu.Items.Add(nom);
+            }
         }
     }
 }
