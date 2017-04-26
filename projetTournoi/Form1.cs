@@ -39,6 +39,8 @@ namespace projetTournoi
             chargerTexte();
             BackButton.Visible = false;
             dataClass.updTor();
+            CreeTour_DTPicker.Format = DateTimePickerFormat.Custom;
+            CreeTour_DTPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
 
         }
 
@@ -158,7 +160,7 @@ namespace projetTournoi
             }
             else
             {
-                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text, CreeTour_DTPicker.Value.ToString(), CreeTour_CB_Type.SelectedItem.ToString(), CreeTour_CB_Jeu.SelectedIndex + 1, CreeTour_CB_heure.SelectedItem.ToString(), " ", CreeTour_TextBox_Ville.Text, CreeTour_TextBox_Ville.Text, Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text);
+                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text, CreeTour_DTPicker.Value.ToString(), CreeTour_CB_Type.SelectedItem.ToString(), CreeTour_CB_Jeu.SelectedIndex + 1, CreeTour_CB_heure.SelectedItem.ToString(), CreeTour_DTPicker.Text, CreeTour_TextBox_Ville.Text, CreeTour_TextBox_Ville.Text, Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text);
                 MessageBox.Show("Tournoi créé");
             }
         }
