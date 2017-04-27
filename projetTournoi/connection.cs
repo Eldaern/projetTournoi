@@ -57,7 +57,7 @@ namespace projetTournoi
         public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, string heure, string organisation,string Ville, string pays, int numero, string rue)
         {
             TorDBDataSet ds= UpDataSet();
-            DataRow[] frows= ds.Tables["Lieu"].Select( "Ville like '"+Ville+"' and Pays like '"+pays+"' and Nuermo like '"+numero +"' rue like '"+rue+"'", "[N°] ASC");
+            DataRow[] frows= ds.Tables["Lieu"].Select( "Ville like '"+Ville+"' and Pays like '"+pays+"' and Numero like '"+numero +"'and rue like '"+rue+"'", "[N°] ASC");
             if (frows[0] == null)
             {
                 string cmds = "INSERT INTO Lieu ([N°],Ville,Pays,Numero,rue) VALUES (@val1, @val2, @val3, @val4, @val5 )";
