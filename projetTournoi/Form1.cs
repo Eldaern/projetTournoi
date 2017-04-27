@@ -467,6 +467,10 @@ namespace projetTournoi
                 string nom = (string)dataClass.torDS.Tables["jeux"].Rows[cpt].ItemArray.GetValue(1);
                 CreeTour_CB_Jeu.Items.Add(nom);
             }
+            CreeTour_CB_Jeu.SelectedIndex = 0;
+            CreeTour_CB_Type.SelectedIndex = 0;
+            CreeTour_CB_heure.SelectedIndex = 0;
+            CreeTour_ComboBox_Pays.SelectedIndex = 0;
         }
     }
 }
