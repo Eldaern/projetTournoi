@@ -57,14 +57,28 @@ namespace projetTournoi
         public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, string heure, string organisation,string Ville, string pays, int numero, string rue)
         {
             TorDBDataSet ds= UpDataSet();
-            DataRow[] frows= ds.Tables["Lieu"].Select( "Ville like '"+Ville+"' and Pays like '"+pays+"' and Numero like '"+numero +"'and rue like '"+rue+"'", "[N°] ASC");
-            if (frows[0] == null)
+            DataRow[] frows = ds.Tables["Lieu"].Select("Ville like '" + Ville + "' and Pays like '" + pays + "' and Numero like '" + numero + "' and rue like '" + rue + "'", "[N°] ASC");
+            bool exist=false;
+            try//cause wtf
+            {
+                if (frows[0] != null)
+                {
+                    exist = true;
+                }
+            }
+            catch(Exception e)
+            {
+                exist = false;
+            }
+
+            if (exist==false)
             {
                 string cmds = "INSERT INTO Lieu ([N°],Ville,Pays,Numero,rue) VALUES (@val1, @val2, @val3, @val4, @val5 )";
                 using (SqlCommand comm = new SqlCommand())
                 {
                     SqlConnection conn=new SqlConnection();
                     conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                    comm.Connection = conn;
                     comm.CommandText = cmds;
                     comm.Parameters.AddWithValue("@val1", ds.Tables["Lieu"].Rows.Count + 1);
                     comm.Parameters.AddWithValue("@val2", Ville);
@@ -85,7 +99,7 @@ namespace projetTournoi
             }
             else
             {
-                int idLieu = (int)frows[0].ItemArray.GetValue(0);
+                //int idLieu = (int)frows[0].ItemArray.GetValue(0);
             }
         }
     }
