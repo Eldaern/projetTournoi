@@ -59,6 +59,7 @@ namespace projetTournoi
             TorDBDataSet ds= UpDataSet();
             DataRow[] frows = ds.Tables["Lieu"].Select("Ville like '" + Ville + "' and Pays like '" + pays + "' and Numero = '" + numero + "' and rue like '" + rue + "'", "[N°] ASC");
             bool exist=false;
+            int idLieu = 0;
             try//cause wtf
             {
                 if (frows[0] != null)
@@ -80,7 +81,8 @@ namespace projetTournoi
                     conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                     comm.Connection = conn;
                     comm.CommandText = cmds;
-                    comm.Parameters.AddWithValue("@val1", ds.Tables["Lieu"].Rows.Count + 1);
+                    idLieu = ds.Tables["Lieu"].Rows.Count + 1;
+                    comm.Parameters.AddWithValue("@val1", idLieu);
                     comm.Parameters.AddWithValue("@val2", Ville);
                     comm.Parameters.AddWithValue("@val3", pays);
                     comm.Parameters.AddWithValue("@val4", numero);
@@ -99,33 +101,33 @@ namespace projetTournoi
             }
             else
             {
-                int idLieu = (int)frows[0].ItemArray.GetValue(0);
-                string cmds = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux, Lieu, Organisation) VALUES (@val1, @val2, @val3, @val4, @val5 @val6 @val7 )";
-                using (SqlCommand comm = new SqlCommand())
+               idLieu = (int)frows[0].ItemArray.GetValue(0);
+               
+             }
+            string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu) VALUES (@val1, @val2, @val3, @val4, @val5, @val6)";//, @val7)";
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds2;
+                comm2.Parameters.AddWithValue("@val1",UpDataSet().Tables["Tournoi"].Rows.Count + 1);
+                comm2.Parameters.AddWithValue("@val2", nom);
+                comm2.Parameters.AddWithValue("@val3", date);
+                comm2.Parameters.AddWithValue("@val4", tipe);
+                comm2.Parameters.AddWithValue("@val5", jeu);
+                comm2.Parameters.AddWithValue("@val6", idLieu);
+                comm2.Parameters.AddWithValue("@val7", "null");
+                try
                 {
-                    SqlConnection conn = new SqlConnection();
-                    conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
-                    comm.Connection = conn;
-                    comm.CommandText = cmds;
-                    comm.Parameters.AddWithValue("@val1", UpDataSet().Tables["Tournoi"].Rows.Count + 1);
-                    comm.Parameters.AddWithValue("@val2", nom);
-                    comm.Parameters.AddWithValue("@val3", date);
-                    comm.Parameters.AddWithValue("@val4", tipe);
-                    comm.Parameters.AddWithValue("@val5", jeu+1);
-                    comm.Parameters.AddWithValue("@val6", idLieu);
-                    comm.Parameters.AddWithValue("@val7",organisation);
-                    try
-                    {
-                        conn.Open();
-                        comm.ExecuteNonQuery();
-                    }
-                    catch (SqlException e)
-                    {
-
-                    }
-                    conn.Close();
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
                 }
+                catch (SqlException e)
+                {
 
+                }
+                conn.Close();
             }
         }
     }
