@@ -112,8 +112,8 @@ namespace projetTournoi
                     comm.Parameters.AddWithValue("@val3", date);
                     comm.Parameters.AddWithValue("@val4", tipe);
                     comm.Parameters.AddWithValue("@val5", jeu+1);
-                    comm.Parameters.AddWithValue("@val5", idLieu);
-                    comm.Parameters.AddWithValue("@val5",organisation);
+                    comm.Parameters.AddWithValue("@val6", idLieu);
+                    comm.Parameters.AddWithValue("@val7",organisation);
                     try
                     {
                         conn.Open();
