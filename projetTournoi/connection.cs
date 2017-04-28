@@ -54,7 +54,7 @@ namespace projetTournoi
             return ds;
         }
 
-        public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, string heure, string organisation,string Ville, string pays, int numero, string rue)
+        public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, string organisation,string Ville, string pays, int numero, string rue)
         {
             TorDBDataSet ds= UpDataSet();
             DataRow[] frows = ds.Tables["Lieu"].Select("Ville like '" + Ville + "' and Pays like '" + pays + "' and Numero = '" + numero + "' and rue like '" + rue + "'", "[N°] ASC");
@@ -99,7 +99,33 @@ namespace projetTournoi
             }
             else
             {
-                //int idLieu = (int)frows[0].ItemArray.GetValue(0);
+                int idLieu = (int)frows[0].ItemArray.GetValue(0);
+                string cmds = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux, Lieu, Organisation) VALUES (@val1, @val2, @val3, @val4, @val5 @val6 @val7 )";
+                using (SqlCommand comm = new SqlCommand())
+                {
+                    SqlConnection conn = new SqlConnection();
+                    conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                    comm.Connection = conn;
+                    comm.CommandText = cmds;
+                    comm.Parameters.AddWithValue("@val1", UpDataSet().Tables["Tournoi"].Rows.Count + 1);
+                    comm.Parameters.AddWithValue("@val2", nom);
+                    comm.Parameters.AddWithValue("@val3", date);
+                    comm.Parameters.AddWithValue("@val4", tipe);
+                    comm.Parameters.AddWithValue("@val5", jeu+1);
+                    comm.Parameters.AddWithValue("@val5", idLieu);
+                    comm.Parameters.AddWithValue("@val5",organisation);
+                    try
+                    {
+                        conn.Open();
+                        comm.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+
+                    }
+                    conn.Close();
+                }
+
             }
         }
     }
