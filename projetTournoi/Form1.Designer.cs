@@ -50,7 +50,6 @@
             this.CreeTour_TextBox_Ville = new System.Windows.Forms.TextBox();
             this.CreeTour_Label_Ville = new System.Windows.Forms.Label();
             this.CreeTour_CB_Type = new System.Windows.Forms.ComboBox();
-            this.CreeTour_CB_heure = new System.Windows.Forms.ComboBox();
             this.CreeTour_CB_Jeu = new System.Windows.Forms.ComboBox();
             this.CreeTour_DTPicker = new System.Windows.Forms.DateTimePicker();
             this.CreeTour_TextBox_Nom = new System.Windows.Forms.TextBox();
@@ -230,7 +229,6 @@
             this.Cree_Tournoi_Panel.Controls.Add(this.CreeTour_TextBox_Ville);
             this.Cree_Tournoi_Panel.Controls.Add(this.CreeTour_Label_Ville);
             this.Cree_Tournoi_Panel.Controls.Add(this.CreeTour_CB_Type);
-            this.Cree_Tournoi_Panel.Controls.Add(this.CreeTour_CB_heure);
             this.Cree_Tournoi_Panel.Controls.Add(this.CreeTour_CB_Jeu);
             this.Cree_Tournoi_Panel.Controls.Add(this.CreeTour_DTPicker);
             this.Cree_Tournoi_Panel.Controls.Add(this.CreeTour_TextBox_Nom);
@@ -341,79 +339,19 @@
             "BO3",
             "BO5",
             "Libre"});
-            this.CreeTour_CB_Type.Location = new System.Drawing.Point(332, 136);
+            this.CreeTour_CB_Type.Location = new System.Drawing.Point(425, 132);
             this.CreeTour_CB_Type.Name = "CreeTour_CB_Type";
-            this.CreeTour_CB_Type.Size = new System.Drawing.Size(121, 21);
+            this.CreeTour_CB_Type.Size = new System.Drawing.Size(167, 21);
             this.CreeTour_CB_Type.TabIndex = 6;
             this.CreeTour_CB_Type.SelectedIndexChanged += new System.EventHandler(this.CreeTour_CB_Type_SelectedIndexChanged);
-            // 
-            // CreeTour_CB_heure
-            // 
-            this.CreeTour_CB_heure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CreeTour_CB_heure.FormattingEnabled = true;
-            this.CreeTour_CB_heure.Items.AddRange(new object[] {
-            "00 H 00",
-            "00 H 30",
-            "01 H 00",
-            "01 H 30",
-            "02 H 00",
-            "02 H 30",
-            "03 H 00",
-            "03 H 30",
-            "04 H 00",
-            "04 H 30",
-            "05 H 00",
-            "05 H 30",
-            "06 H 00",
-            "06 H 30",
-            "07 H 00",
-            "07 H 30",
-            "08 H 00",
-            "08 H 30",
-            "09 H 00",
-            "09 H 30",
-            "10 H 00",
-            "10 H 30",
-            "11 H 00",
-            "11 H 30",
-            "12 H 00",
-            "12 H 30",
-            "13 H 00",
-            "13 H 30",
-            "14 H 00",
-            "14 H 30",
-            "15 H 00",
-            "15 H 30",
-            "16 H 00",
-            "16 H 30",
-            "17 H 00",
-            "17 H 30",
-            "18 H 00",
-            "18 H 30",
-            "19 H 00",
-            "19 H 30",
-            "20 H 00",
-            "20 H 30",
-            "21 H 00",
-            "21 H 30",
-            "22 H 00",
-            "22 H 30",
-            "23 H 00",
-            "23 H 30",
-            "24 H 00"});
-            this.CreeTour_CB_heure.Location = new System.Drawing.Point(471, 136);
-            this.CreeTour_CB_heure.Name = "CreeTour_CB_heure";
-            this.CreeTour_CB_heure.Size = new System.Drawing.Size(121, 21);
-            this.CreeTour_CB_heure.TabIndex = 5;
-            this.CreeTour_CB_heure.SelectedIndexChanged += new System.EventHandler(this.CreeTour_CB_heure_SelectedIndexChanged);
             // 
             // CreeTour_CB_Jeu
             // 
             this.CreeTour_CB_Jeu.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CreeTour_CB_Jeu.FormattingEnabled = true;
-            this.CreeTour_CB_Jeu.Location = new System.Drawing.Point(192, 136);
+            this.CreeTour_CB_Jeu.Location = new System.Drawing.Point(211, 133);
             this.CreeTour_CB_Jeu.Name = "CreeTour_CB_Jeu";
-            this.CreeTour_CB_Jeu.Size = new System.Drawing.Size(121, 21);
+            this.CreeTour_CB_Jeu.Size = new System.Drawing.Size(161, 21);
             this.CreeTour_CB_Jeu.TabIndex = 4;
             this.CreeTour_CB_Jeu.SelectedIndexChanged += new System.EventHandler(this.CreeTour_CB_Jeu_SelectedIndexChanged);
             // 
@@ -919,7 +857,6 @@
         private System.Windows.Forms.TextBox CreeTour_TextBox_Nom;
         private System.Windows.Forms.Label CreeTour_Label_Ville;
         private System.Windows.Forms.ComboBox CreeTour_CB_Type;
-        private System.Windows.Forms.ComboBox CreeTour_CB_heure;
         private System.Windows.Forms.ComboBox CreeTour_CB_Jeu;
         private System.Windows.Forms.TextBox CreeTour_TextBox_Num;
         private System.Windows.Forms.Label CreeTour_Label_Num;

@@ -154,13 +154,13 @@ namespace projetTournoi
 
         private void CreeTour_BT_Creer_Click(object sender, EventArgs e)
         {
-            if (CreeTour_TextBox_Nom.Text == "" || CreeTour_CB_Jeu.SelectedIndex == -1 || CreeTour_CB_Type.SelectedIndex == -1 || CreeTour_CB_heure.SelectedIndex == -1 || CreeTour_ComboBox_Pays.SelectedIndex == -1 || CreeTour_TextBox_Ville.Text == "" || CreeTour_TextBox_Rue.Text == "" || CreeTour_TextBox_Num.Text == "")
+            if (CreeTour_TextBox_Nom.Text == "" || CreeTour_CB_Jeu.SelectedIndex == -1 || CreeTour_CB_Type.SelectedIndex == -1 || CreeTour_ComboBox_Pays.SelectedIndex == -1 || CreeTour_TextBox_Ville.Text == "" || CreeTour_TextBox_Rue.Text == "" || CreeTour_TextBox_Num.Text == "")
             {
                 MessageBox.Show("informations incomplètes");
             }
             else
             {
-                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text, CreeTour_DTPicker.Value.ToString(), CreeTour_CB_Type.SelectedItem.ToString(), CreeTour_CB_Jeu.SelectedIndex + 1, CreeTour_CB_heure.SelectedItem.ToString(), CreeTour_DTPicker.Text, CreeTour_TextBox_Ville.Text, CreeTour_ComboBox_Pays.SelectedItem.ToString(), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text);
+                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text, CreeTour_DTPicker.Value.ToString(), CreeTour_CB_Type.SelectedItem.ToString(), CreeTour_CB_Jeu.SelectedIndex + 1, CreeTour_DTPicker.Text, CreeTour_TextBox_Ville.Text, CreeTour_ComboBox_Pays.SelectedItem.ToString(), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text);
                 MessageBox.Show("Tournoi créé");
             }
         }
@@ -358,7 +358,6 @@ namespace projetTournoi
             CreeTour_Label_Nom.Text = textes.Nom+" :";
             CreeTour_CB_Jeu.Text = textes.Jeu;
             CreeTour_CB_Type.Text = textes.Type;
-            CreeTour_CB_heure.Text = textes.Heure;
             CreeTour_Label_Pays.Text = textes.Pays+" :";
             CreeTour_Label_Ville.Text = textes.Ville + " :";
             CreeTour_Label_Rue.Text = textes.Rue + " :";
@@ -469,7 +468,6 @@ namespace projetTournoi
             }
             CreeTour_CB_Jeu.SelectedIndex = 0;
             CreeTour_CB_Type.SelectedIndex = 0;
-            CreeTour_CB_heure.SelectedIndex = 0;
             CreeTour_ComboBox_Pays.SelectedIndex = 0;
         }
     }
