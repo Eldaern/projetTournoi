@@ -40,7 +40,9 @@ namespace projetTournoi
             BackButton.Visible = false;
             dataClass.updTor();
             CreeTour_DTPicker.Format = DateTimePickerFormat.Custom;
-            CreeTour_DTPicker.CustomFormat = "yyyy-MM-dd hh:mm:ss";
+            CreeTour_DTPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            ChercheTour_DTPicker.Format = DateTimePickerFormat.Custom;
+            ChercheTour_DTPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
 
         }
 
@@ -433,15 +435,15 @@ namespace projetTournoi
             {
                 tournoi.nom = ChercheTour_TextBox_Nom.Text;
             }
-            if (ChercheTour_ComboBox_Type.SelectedItem != null)
+            if (ChercheTour_ComboBox_Type.SelectedIndex != -1)
             {
                 tournoi.type = ChercheTour_ComboBox_Type.SelectedItem.ToString();
             }
-            if (ChercheTour_ComboBox_Jeu.SelectedItem != null)
+            if (ChercheTour_ComboBox_Jeu.SelectedIndex != -1)
             {
                 tournoi.jeu = ChercheTour_ComboBox_Jeu.SelectedItem.ToString() ;
             }
-            if (ChercheTour_ComboBox_Mode.SelectedItem != null)
+            if (ChercheTour_ComboBox_Mode.SelectedIndex != -1)
             {
                 tournoi.mode = ChercheTour_ComboBox_Mode.SelectedItem.ToString();
             }
@@ -453,6 +455,7 @@ namespace projetTournoi
             PreviousPanel = CurentPanel;
             CurentPanel = 6;
             BackButton.Visible = true;
+
         }
 
         public void creationTournoi()

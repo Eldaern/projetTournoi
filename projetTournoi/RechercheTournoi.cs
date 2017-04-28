@@ -19,5 +19,10 @@ namespace projetTournoi
             this.mode = "any";
             this.ville = "any";
         }
+
+        ~RechercheTournoi()
+        {
+
+        }
     }
 }
