@@ -2691,11 +2691,9 @@ namespace projetTournoi {
             
             private global::System.Data.DataColumn columnDateTournoi;
             
-            private global::System.Data.DataColumn columnType;
+            private global::System.Data.DataColumn columntipe;
             
             private global::System.Data.DataColumn columnJeux;
-            
-            private global::System.Data.DataColumn columnHeureTournoi;
             
             private global::System.Data.DataColumn columnLieu;
             
@@ -2760,9 +2758,9 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TypeColumn {
+            public global::System.Data.DataColumn tipeColumn {
                 get {
-                    return this.columnType;
+                    return this.columntipe;
                 }
             }
             
@@ -2771,14 +2769,6 @@ namespace projetTournoi {
             public global::System.Data.DataColumn JeuxColumn {
                 get {
                     return this.columnJeux;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HeureTournoiColumn {
-                get {
-                    return this.columnHeureTournoi;
                 }
             }
             
@@ -2835,25 +2825,24 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TournoiRow AddTournoiRow(int _N_, string Nom, System.DateTime DateTournoi, string Type, jeuxRow parentjeuxRowByFK_Tournoi_jeux, System.DateTime HeureTournoi, LieuRow parentLieuRowByFK_Tournoi_Lieu, OrganisationRow parentOrganisationRowByFK_Tournoi_Organisation) {
+            public TournoiRow AddTournoiRow(int _N_, string Nom, System.DateTime DateTournoi, string tipe, jeuxRow parentjeuxRowByFK_Tournoi_jeux, LieuRow parentLieuRowByFK_Tournoi_Lieu, OrganisationRow parentOrganisationRowByFK_Tournoi_Organisation) {
                 TournoiRow rowTournoiRow = ((TournoiRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         _N_,
                         Nom,
                         DateTournoi,
-                        Type,
+                        tipe,
                         null,
-                        HeureTournoi,
                         null,
                         null};
                 if ((parentjeuxRowByFK_Tournoi_jeux != null)) {
                     columnValuesArray[4] = parentjeuxRowByFK_Tournoi_jeux[0];
                 }
                 if ((parentLieuRowByFK_Tournoi_Lieu != null)) {
-                    columnValuesArray[6] = parentLieuRowByFK_Tournoi_Lieu[0];
+                    columnValuesArray[5] = parentLieuRowByFK_Tournoi_Lieu[0];
                 }
                 if ((parentOrganisationRowByFK_Tournoi_Organisation != null)) {
-                    columnValuesArray[7] = parentOrganisationRowByFK_Tournoi_Organisation[0];
+                    columnValuesArray[6] = parentOrganisationRowByFK_Tournoi_Organisation[0];
                 }
                 rowTournoiRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowTournoiRow);
@@ -2887,9 +2876,8 @@ namespace projetTournoi {
                 this._columnN_ = base.Columns["N°"];
                 this.columnNom = base.Columns["Nom"];
                 this.columnDateTournoi = base.Columns["DateTournoi"];
-                this.columnType = base.Columns["Type"];
+                this.columntipe = base.Columns["tipe"];
                 this.columnJeux = base.Columns["Jeux"];
-                this.columnHeureTournoi = base.Columns["HeureTournoi"];
                 this.columnLieu = base.Columns["Lieu"];
                 this.columnOrganisation = base.Columns["Organisation"];
             }
@@ -2905,12 +2893,10 @@ namespace projetTournoi {
                 base.Columns.Add(this.columnNom);
                 this.columnDateTournoi = new global::System.Data.DataColumn("DateTournoi", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDateTournoi);
-                this.columnType = new global::System.Data.DataColumn("Type", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnType);
+                this.columntipe = new global::System.Data.DataColumn("tipe", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntipe);
                 this.columnJeux = new global::System.Data.DataColumn("Jeux", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnJeux);
-                this.columnHeureTournoi = new global::System.Data.DataColumn("HeureTournoi", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHeureTournoi);
                 this.columnLieu = new global::System.Data.DataColumn("Lieu", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLieu);
                 this.columnOrganisation = new global::System.Data.DataColumn("Organisation", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2920,7 +2906,7 @@ namespace projetTournoi {
                 this._columnN_.AllowDBNull = false;
                 this._columnN_.Unique = true;
                 this.columnNom.MaxLength = 2147483647;
-                this.columnType.MaxLength = 255;
+                this.columntipe.MaxLength = 255;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4253,17 +4239,17 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Type {
+            public string tipe {
                 get {
                     try {
-                        return ((string)(this[this.tableTournoi.TypeColumn]));
+                        return ((string)(this[this.tableTournoi.tipeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Type\' dans la table \'Tournoi\' est DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'tipe\' dans la table \'Tournoi\' est DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableTournoi.TypeColumn] = value;
+                    this[this.tableTournoi.tipeColumn] = value;
                 }
             }
             
@@ -4280,22 +4266,6 @@ namespace projetTournoi {
                 }
                 set {
                     this[this.tableTournoi.JeuxColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime HeureTournoi {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableTournoi.HeureTournoiColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'HeureTournoi\' dans la table \'Tournoi\' est DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableTournoi.HeureTournoiColumn] = value;
                 }
             }
             
@@ -4390,14 +4360,14 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTypeNull() {
-                return this.IsNull(this.tableTournoi.TypeColumn);
+            public bool IstipeNull() {
+                return this.IsNull(this.tableTournoi.tipeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTypeNull() {
-                this[this.tableTournoi.TypeColumn] = global::System.Convert.DBNull;
+            public void SettipeNull() {
+                this[this.tableTournoi.tipeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4410,18 +4380,6 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetJeuxNull() {
                 this[this.tableTournoi.JeuxColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHeureTournoiNull() {
-                return this.IsNull(this.tableTournoi.HeureTournoiColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHeureTournoiNull() {
-                this[this.tableTournoi.HeureTournoiColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7446,9 +7404,8 @@ SELECT [N°], Tournoi, Position, Equipe FROM Resultat WHERE ([N°] = @N_)";
             tableMapping.ColumnMappings.Add("N°", "N°");
             tableMapping.ColumnMappings.Add("Nom", "Nom");
             tableMapping.ColumnMappings.Add("DateTournoi", "DateTournoi");
-            tableMapping.ColumnMappings.Add("Type", "Type");
+            tableMapping.ColumnMappings.Add("Type", "tipe");
             tableMapping.ColumnMappings.Add("Jeux", "Jeux");
-            tableMapping.ColumnMappings.Add("HeureTournoi", "HeureTournoi");
             tableMapping.ColumnMappings.Add("Lieu", "Lieu");
             tableMapping.ColumnMappings.Add("Organisation", "Organisation");
             this._adapter.TableMappings.Add(tableMapping);
@@ -7525,8 +7482,7 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FROM " +
-                "dbo.Tournoi";
+            this._commandCollection[0].CommandText = "SELECT [N°], Nom, DateTournoi, Type, Jeux, Lieu, Organisation FROM Tournoi";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
