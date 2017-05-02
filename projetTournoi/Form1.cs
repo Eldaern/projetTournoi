@@ -456,9 +456,9 @@ namespace projetTournoi
             CurentPanel = 6;
             DataSet ds = tournoiOBj.RechercheTournoiDS();
             int cpt= ds.Tables["Tournoi"].Rows.Count;
-            for (int i=0; i<cpt; i++)
+            for (int i=1; i<cpt; i++)
             {
-                LT_DataGrid.Rows.Add(ds.Tables["jeux"].Rows[(int)ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(4)].ItemArray.GetValue(4).ToString(), ds.Tables["jeux"].Rows[(int)ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(0)].ItemArray.GetValue(1).ToString(), ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(1).ToString(), ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(2).ToString(),ds.Tables["Ville"].Rows[(int)ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(5)].ItemArray.GetValue(1).ToString());
+                LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(4));
             }
             BackButton.Visible = true;
 

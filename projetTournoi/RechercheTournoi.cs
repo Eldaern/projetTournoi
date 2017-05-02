@@ -13,12 +13,12 @@ namespace projetTournoi
         connection ConDD=new connection();
         public RechercheTournoi()
         {
-            this.nom = "any";
-            this.type = "any";
-            this.date = "any";
-            this.jeu = "any";
-            this.mode = "any";
-            this.ville = "any";
+            this.nom = "%";
+            this.type = "%";
+            this.date = "%";
+            this.jeu = "is not null";
+            this.mode = "%";
+            this.ville = "%";
         }
         
         public DataSet RechercheTournoiDS()
