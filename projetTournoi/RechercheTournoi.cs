@@ -21,9 +21,9 @@ namespace projetTournoi
             this.ville = "%";
         }
         
-        public DataSet RechercheTournoiDS()
+        public DataSet RechercheTournoiDS(RechercheTournoi tournoi)
         {
-            return ConDD.rechercheDunTournoi(this);
+            return ConDD.rechercheDunTournoi(tournoi);
         }
 
         ~RechercheTournoi()

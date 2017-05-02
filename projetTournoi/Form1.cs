@@ -431,9 +431,9 @@ namespace projetTournoi
         private void ChercheTour_BT_Chercher_Click(object sender, EventArgs e)
         {
             RechercheTournoi tournoi = new RechercheTournoi();
-            if (ChercheTour_TextBox_Nom.Text != null)
+            if (ChercheTour_TextBox_Nom.Text != "")
             {
-                tournoi.nom = ChercheTour_TextBox_Nom.Text;
+                tournoi.nom = ChercheTour_TextBox_Nom.Text.ToString();
             }
             if (ChercheTour_ComboBox_Type.SelectedIndex != -1)
             {
@@ -447,18 +447,18 @@ namespace projetTournoi
             {
                 tournoi.mode = ChercheTour_ComboBox_Mode.SelectedItem.ToString();
             }
-            if (ChercheTour_TextBox_Ville.Text != null)
+            if (ChercheTour_TextBox_Ville.Text != "")
             {
-                tournoi.ville = ChercheTour_TextBox_Ville.Text;
+                tournoi.ville = ChercheTour_TextBox_Ville.Text.ToString();
             }
             List_Tournoi_panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 6;
-            DataSet ds = tournoiOBj.RechercheTournoiDS();
+            DataSet ds = tournoiOBj.RechercheTournoiDS(tournoi);
             int cpt= ds.Tables["Tournoi"].Rows.Count;
             for (int i=1; i<cpt; i++)
             {
-                LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(4));
+                LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3));
             }
             BackButton.Visible = true;
 
