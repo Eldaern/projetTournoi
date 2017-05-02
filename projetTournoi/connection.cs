@@ -54,13 +54,13 @@ namespace projetTournoi
             return ds;
         }
 
-        public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, string organisation,string Ville, string pays, int numero, string rue)
+        public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, int organisation,string Ville, string pays, int numero, string rue)
         {
             TorDBDataSet ds= UpDataSet();
             DataRow[] frows = ds.Tables["Lieu"].Select("Ville like '" + Ville + "' and Pays like '" + pays + "' and Numero = '" + numero + "' and rue like '" + rue + "'", "[N°] ASC");
             bool exist=false;
             int idLieu = 0;
-            try//cause wtf
+            try
             {
                 if (frows[0] != null)
                 {
@@ -104,7 +104,7 @@ namespace projetTournoi
                idLieu = (int)frows[0].ItemArray.GetValue(0);
                
              }
-            string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu) VALUES (@val1, @val2, @val3, @val4, @val5, @val6)";//, @val7)";
+            string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7)";
             using (SqlCommand comm2 = new SqlCommand())
             {
                 SqlConnection conn = new SqlConnection();
@@ -117,7 +117,7 @@ namespace projetTournoi
                 comm2.Parameters.AddWithValue("@val4", tipe);
                 comm2.Parameters.AddWithValue("@val5", jeu);
                 comm2.Parameters.AddWithValue("@val6", idLieu);
-                comm2.Parameters.AddWithValue("@val7", "null");
+                comm2.Parameters.AddWithValue("@val7", "null"); //Remplacer
                 try
                 {
                     conn.Open();
