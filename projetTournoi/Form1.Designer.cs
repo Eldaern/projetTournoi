@@ -104,10 +104,10 @@
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detail_Tournoi_Panel = new System.Windows.Forms.Panel();
-            this.Detail_Tour_Textbox_Description = new System.Windows.Forms.RichTextBox();
-            this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
-            this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
             this.Detail_Tour_BT_Inscrire = new System.Windows.Forms.Button();
+            this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
+            this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
+            this.Detail_Tour_Textbox_Description = new System.Windows.Forms.RichTextBox();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -779,9 +779,9 @@
             this.NomTournoi,
             this.Date,
             this.Lieu});
-            this.LT_DataGrid.Location = new System.Drawing.Point(0, 1);
+            this.LT_DataGrid.Location = new System.Drawing.Point(3, 1);
             this.LT_DataGrid.Name = "LT_DataGrid";
-            this.LT_DataGrid.Size = new System.Drawing.Size(767, 287);
+            this.LT_DataGrid.Size = new System.Drawing.Size(764, 287);
             this.LT_DataGrid.TabIndex = 0;
             // 
             // imageJeu
@@ -820,30 +820,6 @@
             this.Detail_Tournoi_Panel.Size = new System.Drawing.Size(767, 303);
             this.Detail_Tournoi_Panel.TabIndex = 9;
             // 
-            // Detail_Tour_Textbox_Description
-            // 
-            this.Detail_Tour_Textbox_Description.Location = new System.Drawing.Point(139, 21);
-            this.Detail_Tour_Textbox_Description.Name = "Detail_Tour_Textbox_Description";
-            this.Detail_Tour_Textbox_Description.Size = new System.Drawing.Size(453, 96);
-            this.Detail_Tour_Textbox_Description.TabIndex = 0;
-            this.Detail_Tour_Textbox_Description.Text = "";
-            // 
-            // Detail_Tour_listBox_Equipes
-            // 
-            this.Detail_Tour_listBox_Equipes.FormattingEnabled = true;
-            this.Detail_Tour_listBox_Equipes.Location = new System.Drawing.Point(139, 146);
-            this.Detail_Tour_listBox_Equipes.Name = "Detail_Tour_listBox_Equipes";
-            this.Detail_Tour_listBox_Equipes.Size = new System.Drawing.Size(120, 95);
-            this.Detail_Tour_listBox_Equipes.TabIndex = 1;
-            // 
-            // Detail_Tour_listBox_Joueurs
-            // 
-            this.Detail_Tour_listBox_Joueurs.FormattingEnabled = true;
-            this.Detail_Tour_listBox_Joueurs.Location = new System.Drawing.Point(299, 146);
-            this.Detail_Tour_listBox_Joueurs.Name = "Detail_Tour_listBox_Joueurs";
-            this.Detail_Tour_listBox_Joueurs.Size = new System.Drawing.Size(120, 95);
-            this.Detail_Tour_listBox_Joueurs.TabIndex = 2;
-            // 
             // Detail_Tour_BT_Inscrire
             // 
             this.Detail_Tour_BT_Inscrire.Location = new System.Drawing.Point(472, 146);
@@ -853,24 +829,48 @@
             this.Detail_Tour_BT_Inscrire.Text = "Inscrire";
             this.Detail_Tour_BT_Inscrire.UseVisualStyleBackColor = true;
             // 
+            // Detail_Tour_listBox_Joueurs
+            // 
+            this.Detail_Tour_listBox_Joueurs.FormattingEnabled = true;
+            this.Detail_Tour_listBox_Joueurs.Location = new System.Drawing.Point(299, 146);
+            this.Detail_Tour_listBox_Joueurs.Name = "Detail_Tour_listBox_Joueurs";
+            this.Detail_Tour_listBox_Joueurs.Size = new System.Drawing.Size(120, 95);
+            this.Detail_Tour_listBox_Joueurs.TabIndex = 2;
+            // 
+            // Detail_Tour_listBox_Equipes
+            // 
+            this.Detail_Tour_listBox_Equipes.FormattingEnabled = true;
+            this.Detail_Tour_listBox_Equipes.Location = new System.Drawing.Point(139, 146);
+            this.Detail_Tour_listBox_Equipes.Name = "Detail_Tour_listBox_Equipes";
+            this.Detail_Tour_listBox_Equipes.Size = new System.Drawing.Size(120, 95);
+            this.Detail_Tour_listBox_Equipes.TabIndex = 1;
+            // 
+            // Detail_Tour_Textbox_Description
+            // 
+            this.Detail_Tour_Textbox_Description.Location = new System.Drawing.Point(139, 21);
+            this.Detail_Tour_Textbox_Description.Name = "Detail_Tour_Textbox_Description";
+            this.Detail_Tour_Textbox_Description.Size = new System.Drawing.Size(453, 96);
+            this.Detail_Tour_Textbox_Description.TabIndex = 0;
+            this.Detail_Tour_Textbox_Description.Text = "";
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
-            this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
+            this.Controls.Add(this.List_Tournoi_panel);
+            this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
-            this.Controls.Add(this.List_Tournoi_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
