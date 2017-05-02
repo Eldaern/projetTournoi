@@ -23,7 +23,7 @@ namespace projetTournoi
         Textes textes = JsonConvert.DeserializeObject<Textes>(file);
         dataTor dataClass=new dataTor();
         connection conn = new connection();
-
+        RechercheTournoi tournoiOBj = new RechercheTournoi();
         public Main_Forme()
         {
             InitializeComponent();
@@ -454,6 +454,12 @@ namespace projetTournoi
             List_Tournoi_panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 6;
+            DataSet ds = tournoiOBj.RechercheTournoiDS();
+            int cpt= ds.Tables["Tournoi"].Rows.Count;
+            for (int i=0; i<cpt; i++)
+            {
+                LT_DataGrid.Rows.Add(ds.Tables["jeux"].Rows[(int)ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(4)].ItemArray.GetValue(4).ToString(), ds.Tables["jeux"].Rows[(int)ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(0)].ItemArray.GetValue(1).ToString(), ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(1).ToString(), ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(2).ToString(),ds.Tables["Ville"].Rows[(int)ds.Tables["Tournoi"].Rows[cpt].ItemArray.GetValue(5)].ItemArray.GetValue(1).ToString());
+            }
             BackButton.Visible = true;
 
         }

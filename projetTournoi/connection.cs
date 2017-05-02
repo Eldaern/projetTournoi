@@ -21,11 +21,11 @@ namespace projetTournoi
             dtad = new SqlDataAdapter();
             conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
             conn.Open();
-            TorDBDataSet ds=new TorDBDataSet();
+            TorDBDataSet ds = new TorDBDataSet();
             cmd.Connection = conn;
             cmd.CommandText = "select * from Equipe";
             dtad.SelectCommand = cmd;
-            dtad.Fill(ds,"Equipe");
+            dtad.Fill(ds, "Equipe");
             cmd.CommandText = "select * from EquipeTournoi";
             dtad.SelectCommand = cmd;
             dtad.Fill(ds, "Equipe-Tournoi");
@@ -54,11 +54,11 @@ namespace projetTournoi
             return ds;
         }
 
-        public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, int organisation,string Ville, string pays, int numero, string rue)
+        public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, int organisation, string Ville, string pays, int numero, string rue)
         {
-            TorDBDataSet ds= UpDataSet();
+            TorDBDataSet ds = UpDataSet();
             DataRow[] frows = ds.Tables["Lieu"].Select("Ville like '" + Ville + "' and Pays like '" + pays + "' and Numero = '" + numero + "' and rue like '" + rue + "'", "[N°] ASC");
-            bool exist=false;
+            bool exist = false;
             int idLieu = 0;
             try
             {
@@ -67,17 +67,17 @@ namespace projetTournoi
                     exist = true;
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 exist = false;
             }
 
-            if (exist==false)
+            if (exist == false)
             {
                 string cmds = "INSERT INTO Lieu ([N°],Ville,Pays,Numero,rue) VALUES (@val1, @val2, @val3, @val4, @val5 )";
                 using (SqlCommand comm = new SqlCommand())
                 {
-                    SqlConnection conn=new SqlConnection();
+                    SqlConnection conn = new SqlConnection();
                     conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                     comm.Connection = conn;
                     comm.CommandText = cmds;
@@ -92,18 +92,18 @@ namespace projetTournoi
                         conn.Open();
                         comm.ExecuteNonQuery();
                     }
-                    catch(SqlException e)
+                    catch (SqlException e)
                     {
-                        
+
                     }
                     conn.Close();
                 }
             }
             else
             {
-               idLieu = (int)frows[0].ItemArray.GetValue(0);
-               
-             }
+                idLieu = (int)frows[0].ItemArray.GetValue(0);
+
+            }
             string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7)";
             using (SqlCommand comm2 = new SqlCommand())
             {
@@ -111,7 +111,7 @@ namespace projetTournoi
                 conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                 comm2.Connection = conn;
                 comm2.CommandText = cmds2;
-                comm2.Parameters.AddWithValue("@val1",UpDataSet().Tables["Tournoi"].Rows.Count + 1);
+                comm2.Parameters.AddWithValue("@val1", UpDataSet().Tables["Tournoi"].Rows.Count + 1);
                 comm2.Parameters.AddWithValue("@val2", nom);
                 comm2.Parameters.AddWithValue("@val3", date);
                 comm2.Parameters.AddWithValue("@val4", tipe);
@@ -130,6 +130,29 @@ namespace projetTournoi
                 conn.Close();
             }
         }
+
+        public DataSet rechercheDunTournoi(RechercheTournoi tournoi)
+        {
+            DataSet ds = new DataSet();
+            conn = new SqlConnection();
+            cmd = new SqlCommand();
+            dtad = new SqlDataAdapter();
+            conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+            conn.Open();
+            cmd.Connection = conn;
+            cmd.CommandText = "select * from jeux where [N°]="+ tournoi.jeu;
+            dtad.SelectCommand = cmd;
+            dtad.Fill(ds, "jeux");
+            cmd.CommandText = "select * from Lieu where Ville like '" + tournoi.ville+"'";
+            dtad.SelectCommand = cmd;
+            dtad.Fill(ds, "lieu");
+            cmd.CommandText = "select * from Tournoi where lieu.Ville like '" + tournoi.ville + "' and jeux.[N°] = " +tournoi.jeu;
+            dtad.SelectCommand = cmd;
+            dtad.Fill(ds, "Tournoi");
+            conn.Close();
+            return ds;
+        }
+
     }
 
 
