@@ -10,7 +10,7 @@ namespace projetTournoi
     public class RechercheTournoi
     {
         public string nom, type, date, jeu, mode, ville;
-        
+        connection ConDD=new connection();
         public RechercheTournoi()
         {
             this.nom = "any";
@@ -21,6 +21,10 @@ namespace projetTournoi
             this.ville = "any";
         }
         
+        public DataSet RechercheTournoiDS()
+        {
+            return ConDD.rechercheDunTournoi(this);
+        }
 
         ~RechercheTournoi()
         {
