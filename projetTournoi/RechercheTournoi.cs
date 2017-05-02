@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace projetTournoi
 {
     public class RechercheTournoi
     {
         public string nom, type, date, jeu, mode, ville;
-
+        
         public RechercheTournoi()
         {
             this.nom = "any";
@@ -19,6 +20,7 @@ namespace projetTournoi
             this.mode = "any";
             this.ville = "any";
         }
+        
 
         ~RechercheTournoi()
         {
