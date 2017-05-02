@@ -173,6 +173,7 @@ namespace projetTournoi
             PreviousPanel = 1;
             CurentPanel = 2;
             BackButton.Visible = true;
+            ChercheTour_ComboBox_Jeu.Items.Clear();
             int nbr = dataClass.torDS.Tables["jeux"].Rows.Count;
             for (int cpt = 0; cpt < nbr; cpt++)
             {
@@ -441,7 +442,8 @@ namespace projetTournoi
             }
             if (ChercheTour_ComboBox_Jeu.SelectedIndex != -1)
             {
-                tournoi.jeu = ChercheTour_ComboBox_Jeu.SelectedItem.ToString() ;
+                int tnj = ChercheTour_ComboBox_Jeu.SelectedIndex + 1;
+                tournoi.jeu = tnj.ToString();
             }
             if (ChercheTour_ComboBox_Mode.SelectedIndex != -1)
             {
@@ -456,7 +458,9 @@ namespace projetTournoi
             CurentPanel = 6;
             DataSet ds = tournoiOBj.RechercheTournoiDS(tournoi);
             int cpt= ds.Tables["Tournoi"].Rows.Count;
-            for (int i=1; i<cpt; i++)
+            LT_DataGrid.Rows.Clear();
+            LT_DataGrid.Refresh();
+            for (int i=0; i<cpt; i++)
             {
                 LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3));
             }
@@ -469,6 +473,7 @@ namespace projetTournoi
             Cree_Tournoi_Panel.BringToFront();
             CurentPanel = 4;
             BackButton.Visible = true;
+            CreeTour_CB_Jeu.Items.Clear();
             int nbr = dataClass.torDS.Tables["jeux"].Rows.Count;
             for (int cpt = 0; cpt < nbr; cpt++)
             {

@@ -16,7 +16,7 @@ namespace projetTournoi
             this.nom = "%";
             this.type = "%";
             this.date = "%";
-            this.jeu = "is not null";
+            this.jeu = "null";
             this.mode = "%";
             this.ville = "%";
         }

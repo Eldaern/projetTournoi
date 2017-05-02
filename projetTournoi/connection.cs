@@ -104,7 +104,7 @@ namespace projetTournoi
                 idLieu = (int)frows[0].ItemArray.GetValue(0);
 
             }
-            string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7)";
+            string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu) VALUES (@val1, @val2, @val3, @val4, @val5, @val6)";
             using (SqlCommand comm2 = new SqlCommand())
             {
                 SqlConnection conn = new SqlConnection();
@@ -117,7 +117,7 @@ namespace projetTournoi
                 comm2.Parameters.AddWithValue("@val4", tipe);
                 comm2.Parameters.AddWithValue("@val5", jeu);
                 comm2.Parameters.AddWithValue("@val6", idLieu);
-                comm2.Parameters.AddWithValue("@val7", "null"); //Remplacer
+                //comm2.Parameters.AddWithValue("@val7", "null"); //Remplacer
                 try
                 {
                     conn.Open();
@@ -140,7 +140,7 @@ namespace projetTournoi
             conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
             conn.Open();
             cmd.Connection = conn;
-            cmd.CommandText = "select jeux.nom, tournoi.Nom, tournoi.DateTournoi, Lieu.Ville from Tournoi, Lieu, jeux where Lieu.[N°]=Tournoi.Lieu and jeux.[N°]=Tournoi.Jeux and lieu.Ville like '" + tournoi.ville + "' and jeux.[N°] " +tournoi.jeu;
+            cmd.CommandText = "select jeux.nom, tournoi.Nom, tournoi.DateTournoi, Lieu.Ville from Tournoi, Lieu, jeux where Lieu.[N°]=Tournoi.Lieu and jeux.[N°]=Tournoi.Jeux and lieu.Ville like '" + tournoi.ville + "' and jeux.[N°]= ISNULL(" +tournoi.jeu+",jeux.[N°])";
             dtad.SelectCommand = cmd;
             dtad.Fill(ds, "Tournoi");
             conn.Close();
