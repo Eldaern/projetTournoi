@@ -3044,8 +3044,6 @@ namespace projetTournoi {
             
             private global::System.Data.DataColumn columnLogin;
             
-            private global::System.Data.DataColumn columnMDP;
-            
             private global::System.Data.DataColumn columnemail;
             
             private global::System.Data.DataColumn columnnbr_connexion_reussies;
@@ -3098,14 +3096,6 @@ namespace projetTournoi {
             public global::System.Data.DataColumn LoginColumn {
                 get {
                     return this.columnLogin;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MDPColumn {
-                get {
-                    return this.columnMDP;
                 }
             }
             
@@ -3170,12 +3160,11 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UtilisateurRow AddUtilisateurRow(int _N_, string Login, string MDP, string email, int nbr_connexion_reussies, int nbr_connexion_ratees) {
+            public UtilisateurRow AddUtilisateurRow(int _N_, string Login, string email, int nbr_connexion_reussies, int nbr_connexion_ratees) {
                 UtilisateurRow rowUtilisateurRow = ((UtilisateurRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         _N_,
                         Login,
-                        MDP,
                         email,
                         nbr_connexion_reussies,
                         nbr_connexion_ratees};
@@ -3210,7 +3199,6 @@ namespace projetTournoi {
             internal void InitVars() {
                 this._columnN_ = base.Columns["N°"];
                 this.columnLogin = base.Columns["Login"];
-                this.columnMDP = base.Columns["MDP"];
                 this.columnemail = base.Columns["email"];
                 this.columnnbr_connexion_reussies = base.Columns["nbr connexion reussies"];
                 this.columnnbr_connexion_ratees = base.Columns["nbr connexion ratees"];
@@ -3225,8 +3213,6 @@ namespace projetTournoi {
                 base.Columns.Add(this._columnN_);
                 this.columnLogin = new global::System.Data.DataColumn("Login", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLogin);
-                this.columnMDP = new global::System.Data.DataColumn("MDP", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMDP);
                 this.columnemail = new global::System.Data.DataColumn("email", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnemail);
                 this.columnnbr_connexion_reussies = new global::System.Data.DataColumn("nbr connexion reussies", typeof(int), null, global::System.Data.MappingType.Element);
@@ -3238,7 +3224,6 @@ namespace projetTournoi {
                 this._columnN_.AllowDBNull = false;
                 this._columnN_.Unique = true;
                 this.columnLogin.MaxLength = 2147483647;
-                this.columnMDP.MaxLength = 2147483647;
                 this.columnemail.MaxLength = 2147483647;
             }
             
@@ -4472,22 +4457,6 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MDP {
-                get {
-                    try {
-                        return ((string)(this[this.tableUtilisateur.MDPColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'MDP\' dans la table \'Utilisateur\' est DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableUtilisateur.MDPColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string email {
                 get {
                     try {
@@ -4546,18 +4515,6 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLoginNull() {
                 this[this.tableUtilisateur.LoginColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMDPNull() {
-                return this.IsNull(this.tableUtilisateur.MDPColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMDPNull() {
-                this[this.tableUtilisateur.MDPColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7936,7 +7893,6 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             tableMapping.DataSetTable = "Utilisateur";
             tableMapping.ColumnMappings.Add("N°", "N°");
             tableMapping.ColumnMappings.Add("Login", "Login");
-            tableMapping.ColumnMappings.Add("MDP", "MDP");
             tableMapping.ColumnMappings.Add("email", "email");
             tableMapping.ColumnMappings.Add("nbr connexion reussies", "nbr connexion reussies");
             tableMapping.ColumnMappings.Add("nbr connexion ratees", "nbr connexion ratees");
@@ -7994,8 +7950,8 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees] " +
-                "FROM dbo.Utilisateur";
+            this._commandCollection[0].CommandText = "SELECT [N°], Login, email, [nbr connexion reussies], [nbr connexion ratees] FROM " +
+                "Utilisateur";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

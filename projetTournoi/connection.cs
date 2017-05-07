@@ -153,7 +153,7 @@ namespace projetTournoi
             conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
             conn.Open();
             cmd.Connection = conn;
-            cmd.CommandText = "select jeux.nom, tournoi.Nom, tournoi.DateTournoi, Lieu.Ville from Tournoi, Lieu, jeux where Lieu.[N°]=Tournoi.Lieu and jeux.[N°]=Tournoi.Jeux and lieu.Ville like '" + tournoi.ville + "' and jeux.[N°]= ISNULL(" +tournoi.jeu+",jeux.[N°])";
+            cmd.CommandText = "select jeux.nom, tournoi.Nom, tournoi.DateTournoi, Lieu.Ville from Tournoi, Lieu, jeux where Lieu.[N°]=Tournoi.Lieu and jeux.[N°]=Tournoi.Jeux and lieu.Ville like '" + tournoi.ville + "' and jeux.[N°]= ISNULL(" +tournoi.jeu+ ",jeux.[N°]) and Tournoi.Nom like '%"+ tournoi.nom +"%' and Tournoi.tipe like '"+tournoi.type+"' and jeux.Genre like '"+tournoi.mode+"' and Tournoi.DateTournoi like '"+tournoi.date+"'";
             dtad.SelectCommand = cmd;
             dtad.Fill(ds, "Tournoi");
             conn.Close();
