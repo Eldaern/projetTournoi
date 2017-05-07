@@ -8,7 +8,7 @@ namespace projetTournoi
 {
     public class Textes
     {
-        public string connexion, inscription, retour;
+        public string connexion, inscription, retour,rafraichir;
 
         public string Cherch_Tour, Créer_Org, Créer_Tour;
 
@@ -23,5 +23,7 @@ namespace projetTournoi
         public string Help_langage, Help_connexion, Help_retour, Help_chercher, Help_créerOrg, Help_créerTour;
 
         public string Help_rafraîchir, Help_LancerRecherche;
+
+        public string Help_BT_refresh;
     }
 }

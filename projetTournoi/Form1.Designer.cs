@@ -108,6 +108,7 @@
             this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
             this.Detail_Tour_Textbox_Description = new System.Windows.Forms.RichTextBox();
             this.BT_Rafraîchir = new System.Windows.Forms.Button();
+            this.Help_Tooltip_Refresh = new System.Windows.Forms.ToolTip(this.components);
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -857,9 +858,9 @@
             // 
             // BT_Rafraîchir
             // 
-            this.BT_Rafraîchir.Location = new System.Drawing.Point(554, 9);
+            this.BT_Rafraîchir.Location = new System.Drawing.Point(517, 9);
             this.BT_Rafraîchir.Name = "BT_Rafraîchir";
-            this.BT_Rafraîchir.Size = new System.Drawing.Size(50, 39);
+            this.BT_Rafraîchir.Size = new System.Drawing.Size(87, 39);
             this.BT_Rafraîchir.TabIndex = 10;
             this.BT_Rafraîchir.Text = "refresh";
             this.BT_Rafraîchir.UseVisualStyleBackColor = true;
@@ -987,6 +988,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lieu;
         private System.Windows.Forms.Button BT_Rafraîchir;
+        private System.Windows.Forms.ToolTip Help_Tooltip_Refresh;
     }
 }
 

@@ -2,6 +2,7 @@
 	"connexion" : "connexion",
 	"inscription" : "inscription",
 	"retour" : "retour",
+	"rafraichir" : "rafraîchir",
 
 	"Cherch_Tour" : "Chercher un tournoi",
 	"Créer_Org" : "Créer une organisation",
@@ -34,5 +35,7 @@
 	"Help_créerTour" : "Créer un nouveau tournoi",
 
 	"Help_rafraîchir" : "Vider les champs de recherche",
-	"Help_LancerRecherche" : "Lancer la recherche" 
+	"Help_LancerRecherche" : "Lancer la recherche",
+
+	"Help_BT_refresh" : "Rafraîchir la base de données" 
 }
