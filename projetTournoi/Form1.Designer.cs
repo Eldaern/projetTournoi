@@ -98,15 +98,15 @@
             this.Help_tooltip_3 = new System.Windows.Forms.ToolTip(this.components);
             this.List_Tournoi_panel = new System.Windows.Forms.Panel();
             this.LT_DataGrid = new System.Windows.Forms.DataGridView();
+            this.NomJeu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomTournoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detail_Tournoi_Panel = new System.Windows.Forms.Panel();
             this.Detail_Tour_BT_Inscrire = new System.Windows.Forms.Button();
             this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
             this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
             this.Detail_Tour_Textbox_Description = new System.Windows.Forms.RichTextBox();
-            this.NomJeu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomTournoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -435,6 +435,12 @@
             // 
             this.ChercheTour_ComboBox_Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ChercheTour_ComboBox_Mode.FormattingEnabled = true;
+            this.ChercheTour_ComboBox_Mode.Items.AddRange(new object[] {
+            "TCG",
+            "MOBA",
+            "FPS",
+            "Arcade",
+            "Versus Fighting"});
             this.ChercheTour_ComboBox_Mode.Location = new System.Drawing.Point(218, 175);
             this.ChercheTour_ComboBox_Mode.Name = "ChercheTour_ComboBox_Mode";
             this.ChercheTour_ComboBox_Mode.Size = new System.Drawing.Size(121, 21);
@@ -784,6 +790,26 @@
             this.LT_DataGrid.Size = new System.Drawing.Size(445, 287);
             this.LT_DataGrid.TabIndex = 0;
             // 
+            // NomJeu
+            // 
+            this.NomJeu.HeaderText = "Jeu";
+            this.NomJeu.Name = "NomJeu";
+            // 
+            // NomTournoi
+            // 
+            this.NomTournoi.HeaderText = "Nom";
+            this.NomTournoi.Name = "NomTournoi";
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            // 
+            // Lieu
+            // 
+            this.Lieu.HeaderText = "Lieu";
+            this.Lieu.Name = "Lieu";
+            // 
             // Detail_Tournoi_Panel
             // 
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_Inscrire);
@@ -827,26 +853,6 @@
             this.Detail_Tour_Textbox_Description.Size = new System.Drawing.Size(453, 96);
             this.Detail_Tour_Textbox_Description.TabIndex = 0;
             this.Detail_Tour_Textbox_Description.Text = "";
-            // 
-            // NomJeu
-            // 
-            this.NomJeu.HeaderText = "Jeu";
-            this.NomJeu.Name = "NomJeu";
-            // 
-            // NomTournoi
-            // 
-            this.NomTournoi.HeaderText = "Nom";
-            this.NomTournoi.Name = "NomTournoi";
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            // 
-            // Lieu
-            // 
-            this.Lieu.HeaderText = "Lieu";
-            this.Lieu.Name = "Lieu";
             // 
             // Main_Forme
             // 
