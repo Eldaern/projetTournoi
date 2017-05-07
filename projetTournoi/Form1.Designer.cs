@@ -107,6 +107,7 @@
             this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
             this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
             this.Detail_Tour_Textbox_Description = new System.Windows.Forms.RichTextBox();
+            this.BT_Rafraîchir = new System.Windows.Forms.Button();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -854,24 +855,34 @@
             this.Detail_Tour_Textbox_Description.TabIndex = 0;
             this.Detail_Tour_Textbox_Description.Text = "";
             // 
+            // BT_Rafraîchir
+            // 
+            this.BT_Rafraîchir.Location = new System.Drawing.Point(554, 9);
+            this.BT_Rafraîchir.Name = "BT_Rafraîchir";
+            this.BT_Rafraîchir.Size = new System.Drawing.Size(50, 39);
+            this.BT_Rafraîchir.TabIndex = 10;
+            this.BT_Rafraîchir.Text = "refresh";
+            this.BT_Rafraîchir.UseVisualStyleBackColor = true;
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
+            this.Controls.Add(this.BT_Rafraîchir);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
+            this.Controls.Add(this.MainMenu_Panel);
+            this.Controls.Add(this.List_Tournoi_panel);
+            this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
-            this.Controls.Add(this.MainMenu_Panel);
-            this.Controls.Add(this.List_Tournoi_panel);
-            this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -974,6 +985,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NomTournoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lieu;
+        private System.Windows.Forms.Button BT_Rafraîchir;
     }
 }
 
