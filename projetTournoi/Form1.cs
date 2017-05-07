@@ -42,7 +42,7 @@ namespace projetTournoi
             CreeTour_DTPicker.Format = DateTimePickerFormat.Custom;
             CreeTour_DTPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
             ChercheTour_DTPicker.Format = DateTimePickerFormat.Custom;
-            ChercheTour_DTPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            ChercheTour_DTPicker.CustomFormat = " ";
 
         }
 
@@ -246,7 +246,8 @@ namespace projetTournoi
 
         private void ChercheTour_DTPicker_ValueChanged(object sender, EventArgs e)
         {
-
+            ChercheTour_DTPicker.Format = DateTimePickerFormat.Custom;
+            ChercheTour_DTPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
         }
 
         private void ChercheTour_Label_Mode_Click(object sender, EventArgs e)
@@ -271,6 +272,8 @@ namespace projetTournoi
             ChercheTour_TextBox_Nom.Clear();
             ChercheTour_ComboBox_Type.SelectedIndex = -1;
             ChercheTour_TextBox_Ville.Clear();
+            ChercheTour_DTPicker.Format = DateTimePickerFormat.Custom;
+            ChercheTour_DTPicker.CustomFormat = " ";
         }
 
         private void CO_Button_Creer_Click(object sender, EventArgs e)
