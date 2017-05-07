@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data;
+using System.Windows.Forms;
 
 namespace projetTournoi
 {
@@ -16,12 +17,13 @@ namespace projetTournoi
         SqlDataAdapter dtad;
         public TorDBDataSet UpDataSet()
         {
+            TorDBDataSet ds = new TorDBDataSet();
+            try { 
             conn = new SqlConnection();
             cmd = new SqlCommand();
             dtad = new SqlDataAdapter();
             conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
             conn.Open();
-            TorDBDataSet ds = new TorDBDataSet();
             cmd.Connection = conn;
             cmd.CommandText = "select * from Equipe";
             dtad.SelectCommand = cmd;
@@ -51,12 +53,17 @@ namespace projetTournoi
             dtad.SelectCommand = cmd;
             dtad.Fill(ds, "Utilisateur");
             conn.Close();
+            }
+            catch(Exception e) {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
             return ds;
         }
 
         public void CreeTournoiUpDB(string nom, string date, string tipe, int jeu, int organisation, string Ville, string pays, int numero, string rue)
         {
             TorDBDataSet ds = UpDataSet();
+            try { 
             DataRow[] frows = ds.Tables["Lieu"].Select("Ville like '" + Ville + "' and Pays like '" + pays + "' and Numero = '" + numero + "' and rue like '" + rue + "'", "[N°] ASC");
             bool exist = false;
             int idLieu = 0;
@@ -130,10 +137,16 @@ namespace projetTournoi
                 conn.Close();
             }
         }
+            catch (Exception e)
+            {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
+        }
 
         public DataSet rechercheDunTournoi(RechercheTournoi tournoi)
         {
             DataSet ds = new DataSet();
+            try { 
             conn = new SqlConnection();
             cmd = new SqlCommand();
             dtad = new SqlDataAdapter();
@@ -144,6 +157,11 @@ namespace projetTournoi
             dtad.SelectCommand = cmd;
             dtad.Fill(ds, "Tournoi");
             conn.Close();
+
+        }
+            catch(Exception e) {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
             return ds;
         }
 
