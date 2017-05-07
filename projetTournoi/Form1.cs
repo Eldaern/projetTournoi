@@ -201,6 +201,7 @@ namespace projetTournoi
             textes = JsonConvert.DeserializeObject<Textes>(file);
             Help_ToolTip_langage.Show(textes.Help_langage , Langue_EN_bt, dureeTooltip);
             Help_Tooltip_Connexion.Show(textes.Help_connexion, CP_BT_Connexion, dureeTooltip);
+            Help_Tooltip_Refresh.Show(textes.Help_BT_refresh, BT_Rafraîchir, dureeTooltip);
             if (CurentPanel != 1){
                 Help_Tooltip_Retour.Show(textes.Help_retour, BackButton, dureeTooltip);
             }
@@ -343,6 +344,7 @@ namespace projetTournoi
             CP_BT_Connexion.Text = textes.connexion;
             CP_BT_Inscription.Text = textes.inscription;
             BackButton.Text = textes.retour;
+            BT_Rafraîchir.Text = textes.rafraichir;
 
             MainMenu_BT_CherchTour.Text = textes.Cherch_Tour;
             MainMenu_BT_CreeOrg.Text = textes.Créer_Org;

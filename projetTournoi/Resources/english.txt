@@ -2,6 +2,7 @@
 	"connexion" : "sign in",
 	"inscription" : "register",
 	"retour" : "back",
+	"rafraichir" : "refresh",
 
 	"Cherch_Tour" : "Search a tounament",
 	"Créer_Org" : "Create an organisation",
@@ -34,5 +35,7 @@
 	"Help_créerTour" : "Create a new tournament",
 
 	"Help_rafraîchir" : "Clear all textfields",
-	"Help_LancerRecherche" : "Start the research" 
+	"Help_LancerRecherche" : "Start the research",
+
+	"Help_BT_refresh" : "Refresh the database" 
 }
