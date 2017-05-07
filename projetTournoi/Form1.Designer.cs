@@ -864,6 +864,7 @@
             this.BT_Rafraîchir.TabIndex = 10;
             this.BT_Rafraîchir.Text = "refresh";
             this.BT_Rafraîchir.UseVisualStyleBackColor = true;
+            this.BT_Rafraîchir.Click += new System.EventHandler(this.BT_Rafraîchir_Click);
             // 
             // Main_Forme
             // 
