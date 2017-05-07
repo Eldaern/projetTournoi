@@ -484,5 +484,10 @@ namespace projetTournoi
             CreeTour_CB_Type.SelectedIndex = 0;
             CreeTour_ComboBox_Pays.SelectedIndex = 0;
         }
+
+        private void BT_Rafraîchir_Click(object sender, EventArgs e)
+        {
+            dataClass.updTor();
+        }
     }
 }
