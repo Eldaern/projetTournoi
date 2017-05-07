@@ -458,6 +458,10 @@ namespace projetTournoi
             {
                 tournoi.ville = ChercheTour_TextBox_Ville.Text.ToString();
             }
+            if (ChercheTour_DTPicker.CustomFormat != " ")
+            {
+                tournoi.date = ChercheTour_DTPicker.Value.Date.ToString("yyyy-MM-dd HH:mm:ss");
+            }
             List_Tournoi_panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 6;
