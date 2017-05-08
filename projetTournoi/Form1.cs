@@ -523,7 +523,9 @@ namespace projetTournoi
             CurentPanel = 8;
             BackButton.Visible = true;
             DataSet ds =tournoiOBj.DetailTournoiDS((int)LT_DataGrid.CurrentRow.Cells["numéro"].Value);
-            
+            Detail_Tour_PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            Detail_Tour_PictureBox.Load("https://hackster.imgix.net/uploads/image/file/163168/google_api.GIF?auto=compress%2Cformat&w=680&h=510&fit=max");
+            Detail_Tour_Label_Nom.Text = ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(7).ToString().Replace("''", "'");
 
         }
     }
