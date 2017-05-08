@@ -518,6 +518,7 @@ namespace projetTournoi
 
         private void LT_BT_choisir_Click(object sender, EventArgs e)
         {
+            Detail_Tour_Listbox_Description.Items.Clear();
             Detail_Tournoi_Panel.BringToFront();
             PreviousPanel = 6;
             CurentPanel = 8;
@@ -526,7 +527,10 @@ namespace projetTournoi
             Detail_Tour_PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             Detail_Tour_PictureBox.Load(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(8).ToString());
             Detail_Tour_Label_Nom.Text = ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(7).ToString().Replace("''", "'");
-
+            Detail_Tour_Listbox_Description.Items.Add(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(0).ToString().Replace("''", "'"));
+            Detail_Tour_Listbox_Description.Items.Add(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(1).ToString().Replace("''", "'"));
+            Detail_Tour_Listbox_Description.Items.Add(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(2).ToString().Replace("''", "'")+", "+ ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(3).ToString().Replace("''", "'")+" | "+ ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(4).ToString().Replace("''", "'")+" | "+ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(5).ToString().Replace("''", "'"));
+            Detail_Tour_Listbox_Description.Items.Add(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(6).ToString().Replace("''", "'"));
         }
     }
 }

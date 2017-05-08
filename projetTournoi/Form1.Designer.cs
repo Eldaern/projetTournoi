@@ -911,7 +911,7 @@
             // 
             this.Detail_Tour_Label_Nom.AutoSize = true;
             this.Detail_Tour_Label_Nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Detail_Tour_Label_Nom.Location = new System.Drawing.Point(294, 16);
+            this.Detail_Tour_Label_Nom.Location = new System.Drawing.Point(294, 1);
             this.Detail_Tour_Label_Nom.Name = "Detail_Tour_Label_Nom";
             this.Detail_Tour_Label_Nom.Size = new System.Drawing.Size(68, 29);
             this.Detail_Tour_Label_Nom.TabIndex = 6;
