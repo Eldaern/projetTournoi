@@ -37,5 +37,5 @@
 	"Help_rafraîchir" : "Vider les champs de recherche",
 	"Help_LancerRecherche" : "Lancer la recherche",
 
-	"Help_BT_refresh" : "Rafraîchir la base de données" 
+	"Help_BT_refresh" : "Rafraîchir la\nbase de données" 
 }
