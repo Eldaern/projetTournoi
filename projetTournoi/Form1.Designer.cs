@@ -99,21 +99,22 @@
             this.List_Tournoi_panel = new System.Windows.Forms.Panel();
             this.LT_BT_choisir = new System.Windows.Forms.Button();
             this.LT_DataGrid = new System.Windows.Forms.DataGridView();
-            this.Detail_Tournoi_Panel = new System.Windows.Forms.Panel();
-            this.Detail_Tour_BT_InscrireJoueur = new System.Windows.Forms.Button();
-            this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
-            this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
-            this.BT_Rafraîchir = new System.Windows.Forms.Button();
-            this.Help_Tooltip_Refresh = new System.Windows.Forms.ToolTip(this.components);
-            this.Detail_Tour_Listbox_Description = new System.Windows.Forms.ListBox();
             this.NomJeu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomTournoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numéro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Detail_Tour_PictureBox = new System.Windows.Forms.PictureBox();
-            this.Detail_Tour_Label_Nom = new System.Windows.Forms.Label();
+            this.Detail_Tournoi_Panel = new System.Windows.Forms.Panel();
             this.Detail_Tour_BT_InscrireTeam = new System.Windows.Forms.Button();
+            this.Detail_Tour_Label_Nom = new System.Windows.Forms.Label();
+            this.Detail_Tour_PictureBox = new System.Windows.Forms.PictureBox();
+            this.Detail_Tour_Listbox_Description = new System.Windows.Forms.ListBox();
+            this.Detail_Tour_BT_InscrireJoueur = new System.Windows.Forms.Button();
+            this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
+            this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
+            this.BT_Rafraîchir = new System.Windows.Forms.Button();
+            this.Help_Tooltip_Refresh = new System.Windows.Forms.ToolTip(this.components);
+            this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -125,6 +126,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LT_DataGrid)).BeginInit();
             this.Detail_Tournoi_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -813,6 +815,37 @@
             this.LT_DataGrid.TabIndex = 0;
             this.LT_DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LT_DataGrid_CellContentClick);
             // 
+            // NomJeu
+            // 
+            this.NomJeu.HeaderText = "Jeu";
+            this.NomJeu.Name = "NomJeu";
+            this.NomJeu.ReadOnly = true;
+            // 
+            // NomTournoi
+            // 
+            this.NomTournoi.HeaderText = "Nom";
+            this.NomTournoi.Name = "NomTournoi";
+            this.NomTournoi.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // Lieu
+            // 
+            this.Lieu.HeaderText = "Lieu";
+            this.Lieu.Name = "Lieu";
+            this.Lieu.ReadOnly = true;
+            // 
+            // numéro
+            // 
+            this.numéro.HeaderText = "numéro";
+            this.numéro.Name = "numéro";
+            this.numéro.ReadOnly = true;
+            this.numéro.Visible = false;
+            // 
             // Detail_Tournoi_Panel
             // 
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_InscrireTeam);
@@ -826,6 +859,42 @@
             this.Detail_Tournoi_Panel.Name = "Detail_Tournoi_Panel";
             this.Detail_Tournoi_Panel.Size = new System.Drawing.Size(767, 303);
             this.Detail_Tournoi_Panel.TabIndex = 9;
+            // 
+            // Detail_Tour_BT_InscrireTeam
+            // 
+            this.Detail_Tour_BT_InscrireTeam.Location = new System.Drawing.Point(140, 256);
+            this.Detail_Tour_BT_InscrireTeam.Name = "Detail_Tour_BT_InscrireTeam";
+            this.Detail_Tour_BT_InscrireTeam.Size = new System.Drawing.Size(119, 23);
+            this.Detail_Tour_BT_InscrireTeam.TabIndex = 7;
+            this.Detail_Tour_BT_InscrireTeam.Text = "inscrire team";
+            this.Detail_Tour_BT_InscrireTeam.UseVisualStyleBackColor = true;
+            this.Detail_Tour_BT_InscrireTeam.Click += new System.EventHandler(this.Detail_Tour_BT_InscrireTeam_Click);
+            // 
+            // Detail_Tour_Label_Nom
+            // 
+            this.Detail_Tour_Label_Nom.AutoSize = true;
+            this.Detail_Tour_Label_Nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Detail_Tour_Label_Nom.Location = new System.Drawing.Point(294, 1);
+            this.Detail_Tour_Label_Nom.Name = "Detail_Tour_Label_Nom";
+            this.Detail_Tour_Label_Nom.Size = new System.Drawing.Size(68, 29);
+            this.Detail_Tour_Label_Nom.TabIndex = 6;
+            this.Detail_Tour_Label_Nom.Text = "Nom";
+            // 
+            // Detail_Tour_PictureBox
+            // 
+            this.Detail_Tour_PictureBox.Location = new System.Drawing.Point(140, 49);
+            this.Detail_Tour_PictureBox.Name = "Detail_Tour_PictureBox";
+            this.Detail_Tour_PictureBox.Size = new System.Drawing.Size(120, 69);
+            this.Detail_Tour_PictureBox.TabIndex = 5;
+            this.Detail_Tour_PictureBox.TabStop = false;
+            // 
+            // Detail_Tour_Listbox_Description
+            // 
+            this.Detail_Tour_Listbox_Description.FormattingEnabled = true;
+            this.Detail_Tour_Listbox_Description.Location = new System.Drawing.Point(299, 49);
+            this.Detail_Tour_Listbox_Description.Name = "Detail_Tour_Listbox_Description";
+            this.Detail_Tour_Listbox_Description.Size = new System.Drawing.Size(293, 69);
+            this.Detail_Tour_Listbox_Description.TabIndex = 4;
             // 
             // Detail_Tour_BT_InscrireJoueur
             // 
@@ -862,71 +931,10 @@
             this.BT_Rafraîchir.UseVisualStyleBackColor = true;
             this.BT_Rafraîchir.Click += new System.EventHandler(this.BT_Rafraîchir_Click);
             // 
-            // Detail_Tour_Listbox_Description
+            // torDBDataSet1
             // 
-            this.Detail_Tour_Listbox_Description.FormattingEnabled = true;
-            this.Detail_Tour_Listbox_Description.Location = new System.Drawing.Point(299, 49);
-            this.Detail_Tour_Listbox_Description.Name = "Detail_Tour_Listbox_Description";
-            this.Detail_Tour_Listbox_Description.Size = new System.Drawing.Size(293, 69);
-            this.Detail_Tour_Listbox_Description.TabIndex = 4;
-            // 
-            // NomJeu
-            // 
-            this.NomJeu.HeaderText = "Jeu";
-            this.NomJeu.Name = "NomJeu";
-            this.NomJeu.ReadOnly = true;
-            // 
-            // NomTournoi
-            // 
-            this.NomTournoi.HeaderText = "Nom";
-            this.NomTournoi.Name = "NomTournoi";
-            this.NomTournoi.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // Lieu
-            // 
-            this.Lieu.HeaderText = "Lieu";
-            this.Lieu.Name = "Lieu";
-            this.Lieu.ReadOnly = true;
-            // 
-            // numéro
-            // 
-            this.numéro.HeaderText = "numéro";
-            this.numéro.Name = "numéro";
-            this.numéro.ReadOnly = true;
-            this.numéro.Visible = false;
-            // 
-            // Detail_Tour_PictureBox
-            // 
-            this.Detail_Tour_PictureBox.Location = new System.Drawing.Point(140, 49);
-            this.Detail_Tour_PictureBox.Name = "Detail_Tour_PictureBox";
-            this.Detail_Tour_PictureBox.Size = new System.Drawing.Size(120, 69);
-            this.Detail_Tour_PictureBox.TabIndex = 5;
-            this.Detail_Tour_PictureBox.TabStop = false;
-            // 
-            // Detail_Tour_Label_Nom
-            // 
-            this.Detail_Tour_Label_Nom.AutoSize = true;
-            this.Detail_Tour_Label_Nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Detail_Tour_Label_Nom.Location = new System.Drawing.Point(294, 1);
-            this.Detail_Tour_Label_Nom.Name = "Detail_Tour_Label_Nom";
-            this.Detail_Tour_Label_Nom.Size = new System.Drawing.Size(68, 29);
-            this.Detail_Tour_Label_Nom.TabIndex = 6;
-            this.Detail_Tour_Label_Nom.Text = "Nom";
-            // 
-            // Detail_Tour_BT_InscrireTeam
-            // 
-            this.Detail_Tour_BT_InscrireTeam.Location = new System.Drawing.Point(140, 256);
-            this.Detail_Tour_BT_InscrireTeam.Name = "Detail_Tour_BT_InscrireTeam";
-            this.Detail_Tour_BT_InscrireTeam.Size = new System.Drawing.Size(119, 23);
-            this.Detail_Tour_BT_InscrireTeam.TabIndex = 7;
-            this.Detail_Tour_BT_InscrireTeam.Text = "inscrire team";
-            this.Detail_Tour_BT_InscrireTeam.UseVisualStyleBackColor = true;
+            this.torDBDataSet1.DataSetName = "TorDBDataSet";
+            this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // Main_Forme
             // 
@@ -967,6 +975,7 @@
             this.Detail_Tournoi_Panel.ResumeLayout(false);
             this.Detail_Tournoi_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1058,6 +1067,7 @@
         private System.Windows.Forms.Label Detail_Tour_Label_Nom;
         private System.Windows.Forms.PictureBox Detail_Tour_PictureBox;
         private System.Windows.Forms.Button Detail_Tour_BT_InscrireTeam;
+        private TorDBDataSet torDBDataSet1;
     }
 }
 

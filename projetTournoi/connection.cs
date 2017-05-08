@@ -52,7 +52,7 @@ namespace projetTournoi
             conn.Close();
             }
             catch(Exception e) {
-                MessageBox.Show("Impossible de contacter la base de donnée");
+                MessageBox.Show("Impossible de contacter la base de donnée\n"+e.ToString());
             }
             return ds;
         }
