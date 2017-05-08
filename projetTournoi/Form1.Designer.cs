@@ -111,6 +111,8 @@
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numéro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Detail_Tour_PictureBox = new System.Windows.Forms.PictureBox();
+            this.Detail_Tour_Label_Nom = new System.Windows.Forms.Label();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -121,6 +123,7 @@
             this.List_Tournoi_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LT_DataGrid)).BeginInit();
             this.Detail_Tournoi_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -811,6 +814,8 @@
             // 
             // Detail_Tournoi_Panel
             // 
+            this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Label_Nom);
+            this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_PictureBox);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Listbox_Description);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_Inscrire);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_listBox_Joueurs);
@@ -858,9 +863,9 @@
             // Detail_Tour_Listbox_Description
             // 
             this.Detail_Tour_Listbox_Description.FormattingEnabled = true;
-            this.Detail_Tour_Listbox_Description.Location = new System.Drawing.Point(139, 21);
+            this.Detail_Tour_Listbox_Description.Location = new System.Drawing.Point(299, 49);
             this.Detail_Tour_Listbox_Description.Name = "Detail_Tour_Listbox_Description";
-            this.Detail_Tour_Listbox_Description.Size = new System.Drawing.Size(453, 95);
+            this.Detail_Tour_Listbox_Description.Size = new System.Drawing.Size(293, 69);
             this.Detail_Tour_Listbox_Description.TabIndex = 4;
             // 
             // NomJeu
@@ -894,6 +899,24 @@
             this.numéro.ReadOnly = true;
             this.numéro.Visible = false;
             // 
+            // Detail_Tour_PictureBox
+            // 
+            this.Detail_Tour_PictureBox.Location = new System.Drawing.Point(140, 49);
+            this.Detail_Tour_PictureBox.Name = "Detail_Tour_PictureBox";
+            this.Detail_Tour_PictureBox.Size = new System.Drawing.Size(120, 69);
+            this.Detail_Tour_PictureBox.TabIndex = 5;
+            this.Detail_Tour_PictureBox.TabStop = false;
+            // 
+            // Detail_Tour_Label_Nom
+            // 
+            this.Detail_Tour_Label_Nom.AutoSize = true;
+            this.Detail_Tour_Label_Nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Detail_Tour_Label_Nom.Location = new System.Drawing.Point(294, 16);
+            this.Detail_Tour_Label_Nom.Name = "Detail_Tour_Label_Nom";
+            this.Detail_Tour_Label_Nom.Size = new System.Drawing.Size(68, 29);
+            this.Detail_Tour_Label_Nom.TabIndex = 6;
+            this.Detail_Tour_Label_Nom.Text = "Nom";
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -905,7 +928,6 @@
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
-            this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
@@ -913,6 +935,7 @@
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
+            this.Controls.Add(this.List_Tournoi_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -931,6 +954,8 @@
             this.List_Tournoi_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LT_DataGrid)).EndInit();
             this.Detail_Tournoi_Panel.ResumeLayout(false);
+            this.Detail_Tournoi_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1019,6 +1044,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lieu;
         private System.Windows.Forms.DataGridViewTextBoxColumn numéro;
+        private System.Windows.Forms.Label Detail_Tour_Label_Nom;
+        private System.Windows.Forms.PictureBox Detail_Tour_PictureBox;
     }
 }
 

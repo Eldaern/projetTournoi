@@ -522,7 +522,7 @@ namespace projetTournoi
             PreviousPanel = 6;
             CurentPanel = 8;
             BackButton.Visible = true;
-
+            //LT_DataGrid.CurrentRow.Cells["numéro"].Value;
         }
     }
 }
