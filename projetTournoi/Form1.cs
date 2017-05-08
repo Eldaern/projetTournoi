@@ -25,6 +25,7 @@ namespace projetTournoi
         dataTor dataClass=new dataTor();
         connection conn = new connection();
         RechercheTournoi tournoiOBj = new RechercheTournoi();
+        int NumeroTournoiSelect = 0;
         public Main_Forme()
         {
             InitializeComponent();
@@ -530,7 +531,8 @@ namespace projetTournoi
             PreviousPanel = 6;
             CurentPanel = 8;
             BackButton.Visible = true;
-            DataSet ds =tournoiOBj.DetailTournoiDS((int)LT_DataGrid.CurrentRow.Cells["numéro"].Value);
+            NumeroTournoiSelect = (int)LT_DataGrid.CurrentRow.Cells["numéro"].Value;
+            DataSet ds =tournoiOBj.DetailTournoiDS(NumeroTournoiSelect);
             Detail_Tour_PictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             Detail_Tour_PictureBox.Load(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(8).ToString());
             Detail_Tour_Label_Nom.Text = ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(7).ToString().Replace("''", "'");
@@ -544,7 +546,7 @@ namespace projetTournoi
         {
             String nom;
             nom = Interaction.InputBox("Nom de la team?", "coucou", "", 200, 200);
-
+            tournoiOBj.CreateEquipeTounroi(NumeroTournoiSelect, nom);
         }
     }
 }
