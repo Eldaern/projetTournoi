@@ -162,7 +162,7 @@ namespace projetTournoi
             }
             else
             {
-                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text, CreeTour_DTPicker.Value.ToString(), CreeTour_CB_Type.SelectedItem.ToString(), CreeTour_CB_Jeu.SelectedIndex + 1,0, CreeTour_TextBox_Ville.Text, CreeTour_ComboBox_Pays.SelectedItem.ToString(), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text);
+                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text.Replace("'", "''"), CreeTour_DTPicker.Value.ToString().Replace("'", "''"), CreeTour_CB_Type.SelectedItem.ToString().Replace("'", "''"), CreeTour_CB_Jeu.SelectedIndex + 1,0, CreeTour_TextBox_Ville.Text.Replace("'", "''"), CreeTour_ComboBox_Pays.SelectedItem.ToString().Replace("'", "''"), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text.Replace("'", "''"));
                 MessageBox.Show("Tournoi créé");
             }
         }
@@ -194,6 +194,7 @@ namespace projetTournoi
         {
             PreviousPanel = 1;
             creationTournoi();
+            
          }
 
         private void helpButton_Click(object sender, EventArgs e)
@@ -216,6 +217,10 @@ namespace projetTournoi
                     Help_toolTip_1.Show(textes.Help_rafraîchir, ChercheTour_BT_Rafraîchir, dureeTooltip);
                     Help_tooltip_2.Show(textes.Help_LancerRecherche, ChercheTour_BT_Chercher, dureeTooltip);
                     break;
+                case 6:
+                    Help_toolTip_1.Show(textes.Help_BT_choisir, LT_BT_choisir,dureeTooltip);
+                    break;
+                    
             }
         }
 
@@ -317,7 +322,7 @@ namespace projetTournoi
         {
             Gerer_Org_ListBox.Items.Clear();
             string rechercheNom="any";
-            rechercheNom = Gerer_Org_TextBox_Nom.Text.ToString();
+            rechercheNom = Gerer_Org_TextBox_Nom.Text.ToString().Replace("'", "''");
             int nbr = 0;
             DataSet tmp=new DataSet();
             tmp.Merge(dataClass.torDS.Tables["Utilisateur"].Select("LoginU like '%" + rechercheNom+"%'" ,"[N°] ASC"));
@@ -385,6 +390,8 @@ namespace projetTournoi
             MNG_BT_CherchTour.Text = textes.Cherch_Tour;
             MNG_BT_GererOrg.Text = textes.Gérer_org;
             MNG_BT_CreeTour.Text = textes.Créer_Tour;
+
+            LT_BT_choisir.Text = textes.choisir;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -431,6 +438,12 @@ namespace projetTournoi
                     CurentPanel = 7;
                     BackButton.Visible = false;
                     break;
+                case 8:
+                    Detail_Tournoi_Panel.BringToFront();
+                    PreviousPanel = 6;
+                    CurentPanel = 8;
+                    BackButton.Visible = true;
+                    break;
             }
         }
 
@@ -439,11 +452,11 @@ namespace projetTournoi
             RechercheTournoi tournoi = new RechercheTournoi();
             if (ChercheTour_TextBox_Nom.Text != "")
             {
-                tournoi.nom = ChercheTour_TextBox_Nom.Text.ToString();
+                tournoi.nom = ChercheTour_TextBox_Nom.Text.ToString().Replace("'","''");
             }
             if (ChercheTour_ComboBox_Type.SelectedIndex != -1)
             {
-                tournoi.type = ChercheTour_ComboBox_Type.SelectedItem.ToString();
+                tournoi.type = ChercheTour_ComboBox_Type.SelectedItem.ToString().Replace("'", "''");
             }
             if (ChercheTour_ComboBox_Jeu.SelectedIndex != -1)
             {
@@ -452,18 +465,18 @@ namespace projetTournoi
             }
             if (ChercheTour_ComboBox_Mode.SelectedIndex != -1)
             {
-                tournoi.mode = ChercheTour_ComboBox_Mode.SelectedItem.ToString();
+                tournoi.mode = ChercheTour_ComboBox_Mode.SelectedItem.ToString().Replace("'", "''");
             }
             if (ChercheTour_TextBox_Ville.Text != "")
             {
-                tournoi.ville = ChercheTour_TextBox_Ville.Text.ToString();
+                tournoi.ville = ChercheTour_TextBox_Ville.Text.ToString().Replace("'", "''");
             }
             if (ChercheTour_DTPicker.CustomFormat != " ")
             {
                 tournoi.date = ChercheTour_DTPicker.Value.Date.ToString("yyyy-MM-dd");
             }
             List_Tournoi_panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 1;
             CurentPanel = 6;
             DataSet ds = tournoiOBj.RechercheTournoiDS(tournoi);
             int cpt= ds.Tables["Tournoi"].Rows.Count;
@@ -471,7 +484,7 @@ namespace projetTournoi
             LT_DataGrid.Refresh();
             for (int i=0; i<cpt; i++)
             {
-                LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3));
+                LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1).ToString().Replace("''", "'"), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3).ToString().Replace("''", "'"));
             }
             BackButton.Visible = true;
 
@@ -501,7 +514,14 @@ namespace projetTournoi
 
         private void LT_DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MessageBox.Show("wololo");
+        }
+
+        private void LT_BT_choisir_Click(object sender, EventArgs e)
+        {
+            Detail_Tournoi_Panel.BringToFront();
+            PreviousPanel = 6;
+            CurentPanel = 8;
+            BackButton.Visible = true;
         }
     }
 }

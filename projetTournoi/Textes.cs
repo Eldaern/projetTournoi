@@ -25,5 +25,7 @@ namespace projetTournoi
         public string Help_rafraîchir, Help_LancerRecherche;
 
         public string Help_BT_refresh;
+
+        public string choisir, Help_BT_choisir;
     }
 }

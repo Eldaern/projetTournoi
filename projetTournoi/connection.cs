@@ -140,6 +140,7 @@ namespace projetTournoi
             catch (Exception e)
             {
                 MessageBox.Show("Impossible de contacter la base de donnée");
+                MessageBox.Show(e.ToString());
             }
         }
 

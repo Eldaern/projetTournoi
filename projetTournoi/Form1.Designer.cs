@@ -109,6 +109,7 @@
             this.Detail_Tour_Textbox_Description = new System.Windows.Forms.RichTextBox();
             this.BT_Rafraîchir = new System.Windows.Forms.Button();
             this.Help_Tooltip_Refresh = new System.Windows.Forms.ToolTip(this.components);
+            this.LT_BT_choisir = new System.Windows.Forms.Button();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -771,6 +772,7 @@
             // 
             // List_Tournoi_panel
             // 
+            this.List_Tournoi_panel.Controls.Add(this.LT_BT_choisir);
             this.List_Tournoi_panel.Controls.Add(this.LT_DataGrid);
             this.List_Tournoi_panel.Location = new System.Drawing.Point(12, 62);
             this.List_Tournoi_panel.Name = "List_Tournoi_panel";
@@ -790,6 +792,7 @@
             this.LT_DataGrid.Location = new System.Drawing.Point(3, 1);
             this.LT_DataGrid.Name = "LT_DataGrid";
             this.LT_DataGrid.ReadOnly = true;
+            this.LT_DataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LT_DataGrid.Size = new System.Drawing.Size(445, 287);
             this.LT_DataGrid.TabIndex = 0;
             this.LT_DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LT_DataGrid_CellContentClick);
@@ -871,6 +874,16 @@
             this.BT_Rafraîchir.Text = "refresh";
             this.BT_Rafraîchir.UseVisualStyleBackColor = true;
             this.BT_Rafraîchir.Click += new System.EventHandler(this.BT_Rafraîchir_Click);
+            // 
+            // LT_BT_choisir
+            // 
+            this.LT_BT_choisir.Location = new System.Drawing.Point(521, 85);
+            this.LT_BT_choisir.Name = "LT_BT_choisir";
+            this.LT_BT_choisir.Size = new System.Drawing.Size(140, 107);
+            this.LT_BT_choisir.TabIndex = 1;
+            this.LT_BT_choisir.Text = "choisir";
+            this.LT_BT_choisir.UseVisualStyleBackColor = true;
+            this.LT_BT_choisir.Click += new System.EventHandler(this.LT_BT_choisir_Click);
             // 
             // Main_Forme
             // 
@@ -995,6 +1008,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Lieu;
         private System.Windows.Forms.Button BT_Rafraîchir;
         private System.Windows.Forms.ToolTip Help_Tooltip_Refresh;
+        private System.Windows.Forms.Button LT_BT_choisir;
     }
 }
 

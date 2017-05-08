@@ -37,5 +37,8 @@
 	"Help_rafraîchir" : "Clear all textfields",
 	"Help_LancerRecherche" : "Start the research",
 
-	"Help_BT_refresh" : "Refresh\nthe database" 
+	"Help_BT_refresh" : "Refresh\nthe database" ,
+
+	"choisir" : "select",
+	"Help_BT_choisir" : "Show the details of the selected tournament"
 }

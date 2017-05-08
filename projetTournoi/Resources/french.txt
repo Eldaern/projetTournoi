@@ -37,5 +37,8 @@
 	"Help_rafraîchir" : "Vider les champs de recherche",
 	"Help_LancerRecherche" : "Lancer la recherche",
 
-	"Help_BT_refresh" : "Rafraîchir la\nbase de données" 
+	"Help_BT_refresh" : "Rafraîchir la\nbase de données",
+
+	"choisir" : "choisir",
+	"Help_BT_choisir" : "Afficher les détails du tournoi sélectioné"
 }
