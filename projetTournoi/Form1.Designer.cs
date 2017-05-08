@@ -97,19 +97,20 @@
             this.Help_Tooltip_Retour = new System.Windows.Forms.ToolTip(this.components);
             this.Help_tooltip_3 = new System.Windows.Forms.ToolTip(this.components);
             this.List_Tournoi_panel = new System.Windows.Forms.Panel();
+            this.LT_BT_choisir = new System.Windows.Forms.Button();
             this.LT_DataGrid = new System.Windows.Forms.DataGridView();
-            this.NomJeu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomTournoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detail_Tournoi_Panel = new System.Windows.Forms.Panel();
             this.Detail_Tour_BT_Inscrire = new System.Windows.Forms.Button();
             this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
             this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
-            this.Detail_Tour_Textbox_Description = new System.Windows.Forms.RichTextBox();
             this.BT_Rafraîchir = new System.Windows.Forms.Button();
             this.Help_Tooltip_Refresh = new System.Windows.Forms.ToolTip(this.components);
-            this.LT_BT_choisir = new System.Windows.Forms.Button();
+            this.Detail_Tour_Listbox_Description = new System.Windows.Forms.ListBox();
+            this.NomJeu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomTournoi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numéro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -779,6 +780,16 @@
             this.List_Tournoi_panel.Size = new System.Drawing.Size(767, 302);
             this.List_Tournoi_panel.TabIndex = 8;
             // 
+            // LT_BT_choisir
+            // 
+            this.LT_BT_choisir.Location = new System.Drawing.Point(521, 85);
+            this.LT_BT_choisir.Name = "LT_BT_choisir";
+            this.LT_BT_choisir.Size = new System.Drawing.Size(140, 107);
+            this.LT_BT_choisir.TabIndex = 1;
+            this.LT_BT_choisir.Text = "choisir";
+            this.LT_BT_choisir.UseVisualStyleBackColor = true;
+            this.LT_BT_choisir.Click += new System.EventHandler(this.LT_BT_choisir_Click);
+            // 
             // LT_DataGrid
             // 
             this.LT_DataGrid.AllowUserToAddRows = false;
@@ -788,7 +799,8 @@
             this.NomJeu,
             this.NomTournoi,
             this.Date,
-            this.Lieu});
+            this.Lieu,
+            this.numéro});
             this.LT_DataGrid.Location = new System.Drawing.Point(3, 1);
             this.LT_DataGrid.Name = "LT_DataGrid";
             this.LT_DataGrid.ReadOnly = true;
@@ -797,36 +809,12 @@
             this.LT_DataGrid.TabIndex = 0;
             this.LT_DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LT_DataGrid_CellContentClick);
             // 
-            // NomJeu
-            // 
-            this.NomJeu.HeaderText = "Jeu";
-            this.NomJeu.Name = "NomJeu";
-            this.NomJeu.ReadOnly = true;
-            // 
-            // NomTournoi
-            // 
-            this.NomTournoi.HeaderText = "Nom";
-            this.NomTournoi.Name = "NomTournoi";
-            this.NomTournoi.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // Lieu
-            // 
-            this.Lieu.HeaderText = "Lieu";
-            this.Lieu.Name = "Lieu";
-            this.Lieu.ReadOnly = true;
-            // 
             // Detail_Tournoi_Panel
             // 
+            this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Listbox_Description);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_Inscrire);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_listBox_Joueurs);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_listBox_Equipes);
-            this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Textbox_Description);
             this.Detail_Tournoi_Panel.Location = new System.Drawing.Point(12, 62);
             this.Detail_Tournoi_Panel.Name = "Detail_Tournoi_Panel";
             this.Detail_Tournoi_Panel.Size = new System.Drawing.Size(767, 303);
@@ -857,14 +845,6 @@
             this.Detail_Tour_listBox_Equipes.Size = new System.Drawing.Size(120, 95);
             this.Detail_Tour_listBox_Equipes.TabIndex = 1;
             // 
-            // Detail_Tour_Textbox_Description
-            // 
-            this.Detail_Tour_Textbox_Description.Location = new System.Drawing.Point(139, 21);
-            this.Detail_Tour_Textbox_Description.Name = "Detail_Tour_Textbox_Description";
-            this.Detail_Tour_Textbox_Description.Size = new System.Drawing.Size(453, 96);
-            this.Detail_Tour_Textbox_Description.TabIndex = 0;
-            this.Detail_Tour_Textbox_Description.Text = "";
-            // 
             // BT_Rafraîchir
             // 
             this.BT_Rafraîchir.Location = new System.Drawing.Point(517, 9);
@@ -875,15 +855,44 @@
             this.BT_Rafraîchir.UseVisualStyleBackColor = true;
             this.BT_Rafraîchir.Click += new System.EventHandler(this.BT_Rafraîchir_Click);
             // 
-            // LT_BT_choisir
+            // Detail_Tour_Listbox_Description
             // 
-            this.LT_BT_choisir.Location = new System.Drawing.Point(521, 85);
-            this.LT_BT_choisir.Name = "LT_BT_choisir";
-            this.LT_BT_choisir.Size = new System.Drawing.Size(140, 107);
-            this.LT_BT_choisir.TabIndex = 1;
-            this.LT_BT_choisir.Text = "choisir";
-            this.LT_BT_choisir.UseVisualStyleBackColor = true;
-            this.LT_BT_choisir.Click += new System.EventHandler(this.LT_BT_choisir_Click);
+            this.Detail_Tour_Listbox_Description.FormattingEnabled = true;
+            this.Detail_Tour_Listbox_Description.Location = new System.Drawing.Point(139, 21);
+            this.Detail_Tour_Listbox_Description.Name = "Detail_Tour_Listbox_Description";
+            this.Detail_Tour_Listbox_Description.Size = new System.Drawing.Size(453, 95);
+            this.Detail_Tour_Listbox_Description.TabIndex = 4;
+            // 
+            // NomJeu
+            // 
+            this.NomJeu.HeaderText = "Jeu";
+            this.NomJeu.Name = "NomJeu";
+            this.NomJeu.ReadOnly = true;
+            // 
+            // NomTournoi
+            // 
+            this.NomTournoi.HeaderText = "Nom";
+            this.NomTournoi.Name = "NomTournoi";
+            this.NomTournoi.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // Lieu
+            // 
+            this.Lieu.HeaderText = "Lieu";
+            this.Lieu.Name = "Lieu";
+            this.Lieu.ReadOnly = true;
+            // 
+            // numéro
+            // 
+            this.numéro.HeaderText = "numéro";
+            this.numéro.Name = "numéro";
+            this.numéro.ReadOnly = true;
+            this.numéro.Visible = false;
             // 
             // Main_Forme
             // 
@@ -1001,14 +1010,15 @@
         private System.Windows.Forms.Button Detail_Tour_BT_Inscrire;
         private System.Windows.Forms.ListBox Detail_Tour_listBox_Joueurs;
         private System.Windows.Forms.ListBox Detail_Tour_listBox_Equipes;
-        private System.Windows.Forms.RichTextBox Detail_Tour_Textbox_Description;
+        private System.Windows.Forms.Button BT_Rafraîchir;
+        private System.Windows.Forms.ToolTip Help_Tooltip_Refresh;
+        private System.Windows.Forms.Button LT_BT_choisir;
+        private System.Windows.Forms.ListBox Detail_Tour_Listbox_Description;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomJeu;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomTournoi;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Lieu;
-        private System.Windows.Forms.Button BT_Rafraîchir;
-        private System.Windows.Forms.ToolTip Help_Tooltip_Refresh;
-        private System.Windows.Forms.Button LT_BT_choisir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn numéro;
     }
 }
 
