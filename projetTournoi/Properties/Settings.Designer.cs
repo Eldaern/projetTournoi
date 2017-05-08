@@ -27,7 +27,7 @@ namespace projetTournoi.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=172.18.0.102;Initial Catalog=TorDB;Persist Security Info=True;User ID" +
-            "=Groupe21;Password=e11T22u33")]
+            "=Groupe21;Password=TorCompany12")]
         public string TorDBConnectionString {
             get {
                 return ((string)(this["TorDBConnectionString"]));
