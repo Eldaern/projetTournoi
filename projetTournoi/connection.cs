@@ -187,9 +187,9 @@ namespace projetTournoi
             }
             return ds;
         }
-        public void CreateTeam(string nom)
+        public void CreateTeam(string nom, int tournoi)
         {
-            string cmds = "INSERT INTO Equipe (Nom) VALUES (@val1)";
+            string cmds = "INSERT INTO Equipe (Nom,NumeroTournoi) VALUES (@val1,@val2)";
             using (SqlCommand comm2 = new SqlCommand())
             {
                 SqlConnection conn = new SqlConnection();
@@ -197,6 +197,7 @@ namespace projetTournoi
                 comm2.Connection = conn;
                 comm2.CommandText = cmds;
                 comm2.Parameters.AddWithValue("@val1", nom);
+                comm2.Parameters.AddWithValue("@val2", tournoi);
                 try
                 {
                     conn.Open();
