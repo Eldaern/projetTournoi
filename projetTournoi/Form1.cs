@@ -484,7 +484,7 @@ namespace projetTournoi
             LT_DataGrid.Refresh();
             for (int i=0; i<cpt; i++)
             {
-                LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1).ToString().Replace("''", "'"), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3).ToString().Replace("''", "'"));
+                LT_DataGrid.Rows.Add(ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(1).ToString().Replace("''", "'"), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(2), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(3).ToString().Replace("''", "'"), ds.Tables["Tournoi"].Rows[i].ItemArray.GetValue(4));
             }
             BackButton.Visible = true;
 
