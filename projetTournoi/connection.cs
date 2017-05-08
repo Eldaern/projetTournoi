@@ -28,12 +28,9 @@ namespace projetTournoi
             cmd.CommandText = "select * from Equipe";
             dtad.SelectCommand = cmd;
             dtad.Fill(ds, "Equipe");
-            cmd.CommandText = "select * from EquipeTournoi";
+            cmd.CommandText = "select * from EquipeUtilisateur";
             dtad.SelectCommand = cmd;
-            dtad.Fill(ds, "Equipe-Tournoi");
-            cmd.CommandText = "select * from Equipeutlisateur";
-            dtad.SelectCommand = cmd;
-            dtad.Fill(ds, "Equipe-utlisateur");
+            dtad.Fill(ds, "EquipeUtilisateur");
             cmd.CommandText = "select * from jeux";
             dtad.SelectCommand = cmd;
             dtad.Fill(ds, "jeux");

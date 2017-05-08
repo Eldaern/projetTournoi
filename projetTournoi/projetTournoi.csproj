@@ -62,9 +62,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RechercheTournoi.cs" />
     <Compile Include="Textes.cs" />
-    <Compile Include="TorDBDataSet.cs">
-      <DependentUpon>TorDBDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="TorDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
