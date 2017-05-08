@@ -220,7 +220,10 @@ namespace projetTournoi
                 case 6:
                     Help_toolTip_1.Show(textes.Help_BT_choisir, LT_BT_choisir,dureeTooltip);
                     break;
-                    
+                case 8:
+                    Help_toolTip_1.Show(textes.Help_inscrireJ, Detail_Tour_BT_InscrireJoueur, dureeTooltip);
+                    Help_tooltip_2.Show(textes.Help_inscrireE, Detail_Tour_BT_InscrireTeam, dureeTooltip);
+                    break;
             }
         }
 
@@ -392,6 +395,9 @@ namespace projetTournoi
             MNG_BT_CreeTour.Text = textes.Créer_Tour;
 
             LT_BT_choisir.Text = textes.choisir;
+
+            Detail_Tour_BT_InscrireJoueur.Text = textes.inscrireJ;
+            Detail_Tour_BT_InscrireTeam.Text = textes.inscrireE;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
