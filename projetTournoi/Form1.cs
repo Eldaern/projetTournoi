@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
+using Microsoft.VisualBasic;
 
 
 namespace projetTournoi
@@ -537,6 +538,13 @@ namespace projetTournoi
             Detail_Tour_Listbox_Description.Items.Add(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(1).ToString().Replace("''", "'"));
             Detail_Tour_Listbox_Description.Items.Add(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(2).ToString().Replace("''", "'")+", "+ ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(3).ToString().Replace("''", "'")+" | "+ ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(4).ToString().Replace("''", "'")+" | "+ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(5).ToString().Replace("''", "'"));
             Detail_Tour_Listbox_Description.Items.Add(ds.Tables["Tournoi"].Rows[0].ItemArray.GetValue(6).ToString().Replace("''", "'"));
+        }
+
+        private void Detail_Tour_BT_InscrireTeam_Click(object sender, EventArgs e)
+        {
+            String nom;
+            nom = Interaction.InputBox("Nom de la team?", "coucou", "", 200, 200);
+
         }
     }
 }

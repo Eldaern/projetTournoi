@@ -26,7 +26,7 @@ namespace projetTournoi {
         
         private EquipeDataTable tableEquipe;
         
-        private _Equipe_utlisateurDataTable _tableEquipe_utlisateur;
+        private EquipeUtilisateurDataTable tableEquipeUtilisateur;
         
         private jeuxDataTable tablejeux;
         
@@ -40,6 +40,12 @@ namespace projetTournoi {
         
         private UtilisateurDataTable tableUtilisateur;
         
+        private global::System.Data.DataRelation relationFK_Equipe_Tournoi;
+        
+        private global::System.Data.DataRelation relationEquipeUtilisateur_Equipe;
+        
+        private global::System.Data.DataRelation _relationFK_Equipe_Utilisateur_Equipe;
+        
         private global::System.Data.DataRelation relationFK_Organisation_Utilisateur;
         
         private global::System.Data.DataRelation relationFK_Resultat_Tournoi;
@@ -49,12 +55,6 @@ namespace projetTournoi {
         private global::System.Data.DataRelation relationFK_Tournoi_Lieu;
         
         private global::System.Data.DataRelation relationFK_Tournoi_Organisation;
-        
-        private global::System.Data.DataRelation _relationFK_Equipe_utlisateur_Utilisateur;
-        
-        private global::System.Data.DataRelation _relationFK_Equipe_utlisateur_Equipe;
-        
-        private global::System.Data.DataRelation relationTournoi_Equipe;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -87,8 +87,8 @@ namespace projetTournoi {
                 if ((ds.Tables["Equipe"] != null)) {
                     base.Tables.Add(new EquipeDataTable(ds.Tables["Equipe"]));
                 }
-                if ((ds.Tables["Equipe-utlisateur"] != null)) {
-                    base.Tables.Add(new _Equipe_utlisateurDataTable(ds.Tables["Equipe-utlisateur"]));
+                if ((ds.Tables["EquipeUtilisateur"] != null)) {
+                    base.Tables.Add(new EquipeUtilisateurDataTable(ds.Tables["EquipeUtilisateur"]));
                 }
                 if ((ds.Tables["jeux"] != null)) {
                     base.Tables.Add(new jeuxDataTable(ds.Tables["jeux"]));
@@ -140,9 +140,9 @@ namespace projetTournoi {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public _Equipe_utlisateurDataTable _Equipe_utlisateur {
+        public EquipeUtilisateurDataTable EquipeUtilisateur {
             get {
-                return this._tableEquipe_utlisateur;
+                return this.tableEquipeUtilisateur;
             }
         }
         
@@ -276,8 +276,8 @@ namespace projetTournoi {
                 if ((ds.Tables["Equipe"] != null)) {
                     base.Tables.Add(new EquipeDataTable(ds.Tables["Equipe"]));
                 }
-                if ((ds.Tables["Equipe-utlisateur"] != null)) {
-                    base.Tables.Add(new _Equipe_utlisateurDataTable(ds.Tables["Equipe-utlisateur"]));
+                if ((ds.Tables["EquipeUtilisateur"] != null)) {
+                    base.Tables.Add(new EquipeUtilisateurDataTable(ds.Tables["EquipeUtilisateur"]));
                 }
                 if ((ds.Tables["jeux"] != null)) {
                     base.Tables.Add(new jeuxDataTable(ds.Tables["jeux"]));
@@ -336,10 +336,10 @@ namespace projetTournoi {
                     this.tableEquipe.InitVars();
                 }
             }
-            this._tableEquipe_utlisateur = ((_Equipe_utlisateurDataTable)(base.Tables["Equipe-utlisateur"]));
+            this.tableEquipeUtilisateur = ((EquipeUtilisateurDataTable)(base.Tables["EquipeUtilisateur"]));
             if ((initTable == true)) {
-                if ((this._tableEquipe_utlisateur != null)) {
-                    this._tableEquipe_utlisateur.InitVars();
+                if ((this.tableEquipeUtilisateur != null)) {
+                    this.tableEquipeUtilisateur.InitVars();
                 }
             }
             this.tablejeux = ((jeuxDataTable)(base.Tables["jeux"]));
@@ -378,14 +378,14 @@ namespace projetTournoi {
                     this.tableUtilisateur.InitVars();
                 }
             }
+            this.relationFK_Equipe_Tournoi = this.Relations["FK_Equipe_Tournoi"];
+            this.relationEquipeUtilisateur_Equipe = this.Relations["EquipeUtilisateur Equipe"];
+            this._relationFK_Equipe_Utilisateur_Equipe = this.Relations["FK_Equipe-Utilisateur_Equipe"];
             this.relationFK_Organisation_Utilisateur = this.Relations["FK_Organisation_Utilisateur"];
             this.relationFK_Resultat_Tournoi = this.Relations["FK_Resultat_Tournoi"];
             this.relationFK_Tournoi_jeux = this.Relations["FK_Tournoi_jeux"];
             this.relationFK_Tournoi_Lieu = this.Relations["FK_Tournoi_Lieu"];
             this.relationFK_Tournoi_Organisation = this.Relations["FK_Tournoi_Organisation"];
-            this._relationFK_Equipe_utlisateur_Utilisateur = this.Relations["FK_Equipe-utlisateur_Utilisateur"];
-            this._relationFK_Equipe_utlisateur_Equipe = this.Relations["FK_Equipe-utlisateur_Equipe"];
-            this.relationTournoi_Equipe = this.Relations["Tournoi_Equipe"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -398,8 +398,8 @@ namespace projetTournoi {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableEquipe = new EquipeDataTable();
             base.Tables.Add(this.tableEquipe);
-            this._tableEquipe_utlisateur = new _Equipe_utlisateurDataTable();
-            base.Tables.Add(this._tableEquipe_utlisateur);
+            this.tableEquipeUtilisateur = new EquipeUtilisateurDataTable();
+            base.Tables.Add(this.tableEquipeUtilisateur);
             this.tablejeux = new jeuxDataTable();
             base.Tables.Add(this.tablejeux);
             this.tableLieu = new LieuDataTable();
@@ -412,6 +412,18 @@ namespace projetTournoi {
             base.Tables.Add(this.tableTournoi);
             this.tableUtilisateur = new UtilisateurDataTable();
             base.Tables.Add(this.tableUtilisateur);
+            this.relationFK_Equipe_Tournoi = new global::System.Data.DataRelation("FK_Equipe_Tournoi", new global::System.Data.DataColumn[] {
+                        this.tableTournoi._N_Column}, new global::System.Data.DataColumn[] {
+                        this.tableEquipe.NumeroTournoiColumn}, false);
+            this.Relations.Add(this.relationFK_Equipe_Tournoi);
+            this.relationEquipeUtilisateur_Equipe = new global::System.Data.DataRelation("EquipeUtilisateur Equipe", new global::System.Data.DataColumn[] {
+                        this.tableUtilisateur._N_Column}, new global::System.Data.DataColumn[] {
+                        this.tableEquipeUtilisateur.UtilisateurColumn}, false);
+            this.Relations.Add(this.relationEquipeUtilisateur_Equipe);
+            this._relationFK_Equipe_Utilisateur_Equipe = new global::System.Data.DataRelation("FK_Equipe-Utilisateur_Equipe", new global::System.Data.DataColumn[] {
+                        this.tableEquipe._N_Column}, new global::System.Data.DataColumn[] {
+                        this.tableEquipeUtilisateur.EquipeColumn}, false);
+            this.Relations.Add(this._relationFK_Equipe_Utilisateur_Equipe);
             this.relationFK_Organisation_Utilisateur = new global::System.Data.DataRelation("FK_Organisation_Utilisateur", new global::System.Data.DataColumn[] {
                         this.tableUtilisateur._N_Column}, new global::System.Data.DataColumn[] {
                         this.tableOrganisation.ResponsableColumn}, false);
@@ -432,18 +444,6 @@ namespace projetTournoi {
                         this.tableOrganisation._N_Column}, new global::System.Data.DataColumn[] {
                         this.tableTournoi.OrganisationColumn}, false);
             this.Relations.Add(this.relationFK_Tournoi_Organisation);
-            this._relationFK_Equipe_utlisateur_Utilisateur = new global::System.Data.DataRelation("FK_Equipe-utlisateur_Utilisateur", new global::System.Data.DataColumn[] {
-                        this.tableUtilisateur._N_Column}, new global::System.Data.DataColumn[] {
-                        this._tableEquipe_utlisateur.UtilisateurColumn}, false);
-            this.Relations.Add(this._relationFK_Equipe_utlisateur_Utilisateur);
-            this._relationFK_Equipe_utlisateur_Equipe = new global::System.Data.DataRelation("FK_Equipe-utlisateur_Equipe", new global::System.Data.DataColumn[] {
-                        this.tableEquipe._N_Column}, new global::System.Data.DataColumn[] {
-                        this._tableEquipe_utlisateur.EquipeColumn}, false);
-            this.Relations.Add(this._relationFK_Equipe_utlisateur_Equipe);
-            this.relationTournoi_Equipe = new global::System.Data.DataRelation("Tournoi_Equipe", new global::System.Data.DataColumn[] {
-                        this.tableTournoi._N_Column}, new global::System.Data.DataColumn[] {
-                        this.tableEquipe.NumeroTournoiColumn}, false);
-            this.Relations.Add(this.relationTournoi_Equipe);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -454,7 +454,7 @@ namespace projetTournoi {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerialize_Equipe_utlisateur() {
+        private bool ShouldSerializeEquipeUtilisateur() {
             return false;
         }
         
@@ -553,7 +553,7 @@ namespace projetTournoi {
         public delegate void EquipeRowChangeEventHandler(object sender, EquipeRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void _Equipe_utlisateurRowChangeEventHandler(object sender, _Equipe_utlisateurRowChangeEvent e);
+        public delegate void EquipeUtilisateurRowChangeEventHandler(object sender, EquipeUtilisateurRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void jeuxRowChangeEventHandler(object sender, jeuxRowChangeEvent e);
@@ -680,12 +680,15 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipeRow AddEquipeRow(int _N_, string Nom) {
+            public EquipeRow AddEquipeRow(string Nom, TournoiRow parentTournoiRowByFK_Equipe_Tournoi) {
                 EquipeRow rowEquipeRow = ((EquipeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        _N_,
+                        null,
                         Nom,
                         null};
+                if ((parentTournoiRowByFK_Equipe_Tournoi != null)) {
+                    columnValuesArray[2] = parentTournoiRowByFK_Equipe_Tournoi[0];
+                }
                 rowEquipeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEquipeRow);
                 return rowEquipeRow;
@@ -733,12 +736,13 @@ namespace projetTournoi {
                 base.Columns.Add(this.columnNumeroTournoi);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this._columnN_}, true));
+                this._columnN_.AutoIncrement = true;
+                this._columnN_.AutoIncrementSeed = -1;
+                this._columnN_.AutoIncrementStep = -1;
                 this._columnN_.AllowDBNull = false;
+                this._columnN_.ReadOnly = true;
                 this._columnN_.Unique = true;
                 this.columnNom.MaxLength = 2147483647;
-                this.columnNumeroTournoi.AutoIncrement = true;
-                this.columnNumeroTournoi.AutoIncrementSeed = -1;
-                this.columnNumeroTournoi.AutoIncrementStep = -1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -870,7 +874,7 @@ namespace projetTournoi {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class _Equipe_utlisateurDataTable : global::System.Data.TypedTableBase<_Equipe_utlisateurRow> {
+        public partial class EquipeUtilisateurDataTable : global::System.Data.TypedTableBase<EquipeUtilisateurRow> {
             
             private global::System.Data.DataColumn columnEquipe;
             
@@ -878,8 +882,8 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurDataTable() {
-                this.TableName = "Equipe-utlisateur";
+            public EquipeUtilisateurDataTable() {
+                this.TableName = "EquipeUtilisateur";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -887,7 +891,7 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal _Equipe_utlisateurDataTable(global::System.Data.DataTable table) {
+            internal EquipeUtilisateurDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -904,7 +908,7 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected _Equipe_utlisateurDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected EquipeUtilisateurDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -936,52 +940,52 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRow this[int index] {
+            public EquipeUtilisateurRow this[int index] {
                 get {
-                    return ((_Equipe_utlisateurRow)(this.Rows[index]));
+                    return ((EquipeUtilisateurRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_utlisateurRowChangeEventHandler _Equipe_utlisateurRowChanging;
+            public event EquipeUtilisateurRowChangeEventHandler EquipeUtilisateurRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_utlisateurRowChangeEventHandler _Equipe_utlisateurRowChanged;
+            public event EquipeUtilisateurRowChangeEventHandler EquipeUtilisateurRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_utlisateurRowChangeEventHandler _Equipe_utlisateurRowDeleting;
+            public event EquipeUtilisateurRowChangeEventHandler EquipeUtilisateurRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_utlisateurRowChangeEventHandler _Equipe_utlisateurRowDeleted;
+            public event EquipeUtilisateurRowChangeEventHandler EquipeUtilisateurRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Add_Equipe_utlisateurRow(_Equipe_utlisateurRow row) {
+            public void AddEquipeUtilisateurRow(EquipeUtilisateurRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRow Add_Equipe_utlisateurRow(EquipeRow _parentEquipeRowByFK_Equipe_utlisateur_Equipe, UtilisateurRow _parentUtilisateurRowByFK_Equipe_utlisateur_Utilisateur) {
-                _Equipe_utlisateurRow row_Equipe_utlisateurRow = ((_Equipe_utlisateurRow)(this.NewRow()));
+            public EquipeUtilisateurRow AddEquipeUtilisateurRow(EquipeRow _parentEquipeRowByFK_Equipe_Utilisateur_Equipe, UtilisateurRow parentUtilisateurRowByEquipeUtilisateur_Equipe) {
+                EquipeUtilisateurRow rowEquipeUtilisateurRow = ((EquipeUtilisateurRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null};
-                if ((_parentEquipeRowByFK_Equipe_utlisateur_Equipe != null)) {
-                    columnValuesArray[0] = _parentEquipeRowByFK_Equipe_utlisateur_Equipe[0];
+                if ((_parentEquipeRowByFK_Equipe_Utilisateur_Equipe != null)) {
+                    columnValuesArray[0] = _parentEquipeRowByFK_Equipe_Utilisateur_Equipe[0];
                 }
-                if ((_parentUtilisateurRowByFK_Equipe_utlisateur_Utilisateur != null)) {
-                    columnValuesArray[1] = _parentUtilisateurRowByFK_Equipe_utlisateur_Utilisateur[0];
+                if ((parentUtilisateurRowByEquipeUtilisateur_Equipe != null)) {
+                    columnValuesArray[1] = parentUtilisateurRowByEquipeUtilisateur_Equipe[0];
                 }
-                row_Equipe_utlisateurRow.ItemArray = columnValuesArray;
-                this.Rows.Add(row_Equipe_utlisateurRow);
-                return row_Equipe_utlisateurRow;
+                rowEquipeUtilisateurRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowEquipeUtilisateurRow);
+                return rowEquipeUtilisateurRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                _Equipe_utlisateurDataTable cln = ((_Equipe_utlisateurDataTable)(base.Clone()));
+                EquipeUtilisateurDataTable cln = ((EquipeUtilisateurDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -989,7 +993,7 @@ namespace projetTournoi {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new _Equipe_utlisateurDataTable();
+                return new EquipeUtilisateurDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1006,34 +1010,32 @@ namespace projetTournoi {
                 base.Columns.Add(this.columnEquipe);
                 this.columnUtilisateur = new global::System.Data.DataColumn("Utilisateur", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUtilisateur);
-                this.ExtendedProperties.Add("Generator_TableVarName", "_tableEquipe_utlisateur");
-                this.ExtendedProperties.Add("Generator_UserTableName", "Equipe-utlisateur");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRow New_Equipe_utlisateurRow() {
-                return ((_Equipe_utlisateurRow)(this.NewRow()));
+            public EquipeUtilisateurRow NewEquipeUtilisateurRow() {
+                return ((EquipeUtilisateurRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new _Equipe_utlisateurRow(builder);
+                return new EquipeUtilisateurRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(_Equipe_utlisateurRow);
+                return typeof(EquipeUtilisateurRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this._Equipe_utlisateurRowChanged != null)) {
-                    this._Equipe_utlisateurRowChanged(this, new _Equipe_utlisateurRowChangeEvent(((_Equipe_utlisateurRow)(e.Row)), e.Action));
+                if ((this.EquipeUtilisateurRowChanged != null)) {
+                    this.EquipeUtilisateurRowChanged(this, new EquipeUtilisateurRowChangeEvent(((EquipeUtilisateurRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1041,8 +1043,8 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this._Equipe_utlisateurRowChanging != null)) {
-                    this._Equipe_utlisateurRowChanging(this, new _Equipe_utlisateurRowChangeEvent(((_Equipe_utlisateurRow)(e.Row)), e.Action));
+                if ((this.EquipeUtilisateurRowChanging != null)) {
+                    this.EquipeUtilisateurRowChanging(this, new EquipeUtilisateurRowChangeEvent(((EquipeUtilisateurRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1050,8 +1052,8 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this._Equipe_utlisateurRowDeleted != null)) {
-                    this._Equipe_utlisateurRowDeleted(this, new _Equipe_utlisateurRowChangeEvent(((_Equipe_utlisateurRow)(e.Row)), e.Action));
+                if ((this.EquipeUtilisateurRowDeleted != null)) {
+                    this.EquipeUtilisateurRowDeleted(this, new EquipeUtilisateurRowChangeEvent(((EquipeUtilisateurRow)(e.Row)), e.Action));
                 }
             }
             
@@ -1059,14 +1061,14 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this._Equipe_utlisateurRowDeleting != null)) {
-                    this._Equipe_utlisateurRowDeleting(this, new _Equipe_utlisateurRowChangeEvent(((_Equipe_utlisateurRow)(e.Row)), e.Action));
+                if ((this.EquipeUtilisateurRowDeleting != null)) {
+                    this.EquipeUtilisateurRowDeleting(this, new EquipeUtilisateurRowChangeEvent(((EquipeUtilisateurRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Remove_Equipe_utlisateurRow(_Equipe_utlisateurRow row) {
+            public void RemoveEquipeUtilisateurRow(EquipeUtilisateurRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -1093,7 +1095,7 @@ namespace projetTournoi {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "_Equipe_utlisateurDataTable";
+                attribute2.FixedValue = "EquipeUtilisateurDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -2748,7 +2750,7 @@ namespace projetTournoi {
             
             private global::System.Data.DataColumn _columnN_;
             
-            private global::System.Data.DataColumn columnLogin;
+            private global::System.Data.DataColumn columnLoginU;
             
             private global::System.Data.DataColumn columnemail;
             
@@ -2799,9 +2801,9 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LoginColumn {
+            public global::System.Data.DataColumn LoginUColumn {
                 get {
-                    return this.columnLogin;
+                    return this.columnLoginU;
                 }
             }
             
@@ -2866,11 +2868,11 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public UtilisateurRow AddUtilisateurRow(int _N_, string Login, string email, int nbr_connexion_reussies, int nbr_connexion_ratees) {
+            public UtilisateurRow AddUtilisateurRow(int _N_, string LoginU, string email, int nbr_connexion_reussies, int nbr_connexion_ratees) {
                 UtilisateurRow rowUtilisateurRow = ((UtilisateurRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         _N_,
-                        Login,
+                        LoginU,
                         email,
                         nbr_connexion_reussies,
                         nbr_connexion_ratees};
@@ -2904,7 +2906,7 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this._columnN_ = base.Columns["N°"];
-                this.columnLogin = base.Columns["Login"];
+                this.columnLoginU = base.Columns["LoginU"];
                 this.columnemail = base.Columns["email"];
                 this.columnnbr_connexion_reussies = base.Columns["nbr connexion reussies"];
                 this.columnnbr_connexion_ratees = base.Columns["nbr connexion ratees"];
@@ -2917,8 +2919,8 @@ namespace projetTournoi {
                 this._columnN_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnN_");
                 this._columnN_.ExtendedProperties.Add("Generator_UserColumnName", "N°");
                 base.Columns.Add(this._columnN_);
-                this.columnLogin = new global::System.Data.DataColumn("Login", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLogin);
+                this.columnLoginU = new global::System.Data.DataColumn("LoginU", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLoginU);
                 this.columnemail = new global::System.Data.DataColumn("email", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnemail);
                 this.columnnbr_connexion_reussies = new global::System.Data.DataColumn("nbr connexion reussies", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2929,7 +2931,7 @@ namespace projetTournoi {
                                 this._columnN_}, true));
                 this._columnN_.AllowDBNull = false;
                 this._columnN_.Unique = true;
-                this.columnLogin.MaxLength = 2147483647;
+                this.columnLoginU.MaxLength = 2147483647;
                 this.columnemail.MaxLength = 2147483647;
             }
             
@@ -3118,10 +3120,10 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TournoiRow TournoiRow {
                 get {
-                    return ((TournoiRow)(this.GetParentRow(this.Table.ParentRelations["Tournoi_Equipe"])));
+                    return ((TournoiRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe_Tournoi"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Tournoi_Equipe"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe_Tournoi"]);
                 }
             }
             
@@ -3151,12 +3153,12 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRow[] _GetEquipe_utlisateurRows() {
-                if ((this.Table.ChildRelations["FK_Equipe-utlisateur_Equipe"] == null)) {
-                    return new _Equipe_utlisateurRow[0];
+            public EquipeUtilisateurRow[] GetEquipeUtilisateurRows() {
+                if ((this.Table.ChildRelations["FK_Equipe-Utilisateur_Equipe"] == null)) {
+                    return new EquipeUtilisateurRow[0];
                 }
                 else {
-                    return ((_Equipe_utlisateurRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-utlisateur_Equipe"])));
+                    return ((EquipeUtilisateurRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-Utilisateur_Equipe"])));
                 }
             }
         }
@@ -3164,15 +3166,15 @@ namespace projetTournoi {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class _Equipe_utlisateurRow : global::System.Data.DataRow {
+        public partial class EquipeUtilisateurRow : global::System.Data.DataRow {
             
-            private _Equipe_utlisateurDataTable _tableEquipe_utlisateur;
+            private EquipeUtilisateurDataTable tableEquipeUtilisateur;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal _Equipe_utlisateurRow(global::System.Data.DataRowBuilder rb) : 
+            internal EquipeUtilisateurRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this._tableEquipe_utlisateur = ((_Equipe_utlisateurDataTable)(this.Table));
+                this.tableEquipeUtilisateur = ((EquipeUtilisateurDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3180,14 +3182,14 @@ namespace projetTournoi {
             public int Equipe {
                 get {
                     try {
-                        return ((int)(this[this._tableEquipe_utlisateur.EquipeColumn]));
+                        return ((int)(this[this.tableEquipeUtilisateur.EquipeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Equipe\' dans la table \'Equipe-utlisateur\' est DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Equipe\' dans la table \'EquipeUtilisateur\' est DBNull.", e);
                     }
                 }
                 set {
-                    this[this._tableEquipe_utlisateur.EquipeColumn] = value;
+                    this[this.tableEquipeUtilisateur.EquipeColumn] = value;
                 }
             }
             
@@ -3196,15 +3198,15 @@ namespace projetTournoi {
             public int Utilisateur {
                 get {
                     try {
-                        return ((int)(this[this._tableEquipe_utlisateur.UtilisateurColumn]));
+                        return ((int)(this[this.tableEquipeUtilisateur.UtilisateurColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Utilisateur\' dans la table \'Equipe-utlisateur\' est DBN" +
+                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Utilisateur\' dans la table \'EquipeUtilisateur\' est DBN" +
                                 "ull.", e);
                     }
                 }
                 set {
-                    this[this._tableEquipe_utlisateur.UtilisateurColumn] = value;
+                    this[this.tableEquipeUtilisateur.UtilisateurColumn] = value;
                 }
             }
             
@@ -3212,10 +3214,10 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UtilisateurRow UtilisateurRow {
                 get {
-                    return ((UtilisateurRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-utlisateur_Utilisateur"])));
+                    return ((UtilisateurRow)(this.GetParentRow(this.Table.ParentRelations["EquipeUtilisateur Equipe"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-utlisateur_Utilisateur"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["EquipeUtilisateur Equipe"]);
                 }
             }
             
@@ -3223,35 +3225,35 @@ namespace projetTournoi {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public EquipeRow EquipeRow {
                 get {
-                    return ((EquipeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-utlisateur_Equipe"])));
+                    return ((EquipeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-Utilisateur_Equipe"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-utlisateur_Equipe"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-Utilisateur_Equipe"]);
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEquipeNull() {
-                return this.IsNull(this._tableEquipe_utlisateur.EquipeColumn);
+                return this.IsNull(this.tableEquipeUtilisateur.EquipeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEquipeNull() {
-                this[this._tableEquipe_utlisateur.EquipeColumn] = global::System.Convert.DBNull;
+                this[this.tableEquipeUtilisateur.EquipeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsUtilisateurNull() {
-                return this.IsNull(this._tableEquipe_utlisateur.UtilisateurColumn);
+                return this.IsNull(this.tableEquipeUtilisateur.UtilisateurColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetUtilisateurNull() {
-                this[this._tableEquipe_utlisateur.UtilisateurColumn] = global::System.Convert.DBNull;
+                this[this.tableEquipeUtilisateur.UtilisateurColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4034,23 +4036,23 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EquipeRow[] GetEquipeRows() {
+                if ((this.Table.ChildRelations["FK_Equipe_Tournoi"] == null)) {
+                    return new EquipeRow[0];
+                }
+                else {
+                    return ((EquipeRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe_Tournoi"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ResultatRow[] GetResultatRows() {
                 if ((this.Table.ChildRelations["FK_Resultat_Tournoi"] == null)) {
                     return new ResultatRow[0];
                 }
                 else {
                     return ((ResultatRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Resultat_Tournoi"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipeRow[] GetEquipeRows() {
-                if ((this.Table.ChildRelations["Tournoi_Equipe"] == null)) {
-                    return new EquipeRow[0];
-                }
-                else {
-                    return ((EquipeRow[])(base.GetChildRows(this.Table.ChildRelations["Tournoi_Equipe"])));
                 }
             }
         }
@@ -4082,17 +4084,17 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Login {
+            public string LoginU {
                 get {
                     try {
-                        return ((string)(this[this.tableUtilisateur.LoginColumn]));
+                        return ((string)(this[this.tableUtilisateur.LoginUColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Login\' dans la table \'Utilisateur\' est DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'LoginU\' dans la table \'Utilisateur\' est DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableUtilisateur.LoginColumn] = value;
+                    this[this.tableUtilisateur.LoginUColumn] = value;
                 }
             }
             
@@ -4148,14 +4150,14 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLoginNull() {
-                return this.IsNull(this.tableUtilisateur.LoginColumn);
+            public bool IsLoginUNull() {
+                return this.IsNull(this.tableUtilisateur.LoginUColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLoginNull() {
-                this[this.tableUtilisateur.LoginColumn] = global::System.Convert.DBNull;
+            public void SetLoginUNull() {
+                this[this.tableUtilisateur.LoginUColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4196,23 +4198,23 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EquipeUtilisateurRow[] _GetEquipe_UtilisateurRows() {
+                if ((this.Table.ChildRelations["EquipeUtilisateur Equipe"] == null)) {
+                    return new EquipeUtilisateurRow[0];
+                }
+                else {
+                    return ((EquipeUtilisateurRow[])(base.GetChildRows(this.Table.ChildRelations["EquipeUtilisateur Equipe"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public OrganisationRow[] GetOrganisationRows() {
                 if ((this.Table.ChildRelations["FK_Organisation_Utilisateur"] == null)) {
                     return new OrganisationRow[0];
                 }
                 else {
                     return ((OrganisationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Organisation_Utilisateur"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRow[] _GetEquipe_utlisateurRows() {
-                if ((this.Table.ChildRelations["FK_Equipe-utlisateur_Utilisateur"] == null)) {
-                    return new _Equipe_utlisateurRow[0];
-                }
-                else {
-                    return ((_Equipe_utlisateurRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-utlisateur_Utilisateur"])));
                 }
             }
         }
@@ -4255,22 +4257,22 @@ namespace projetTournoi {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class _Equipe_utlisateurRowChangeEvent : global::System.EventArgs {
+        public class EquipeUtilisateurRowChangeEvent : global::System.EventArgs {
             
-            private _Equipe_utlisateurRow eventRow;
+            private EquipeUtilisateurRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRowChangeEvent(_Equipe_utlisateurRow row, global::System.Data.DataRowAction action) {
+            public EquipeUtilisateurRowChangeEvent(EquipeUtilisateurRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRow Row {
+            public EquipeUtilisateurRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4616,28 +4618,33 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
             tableMapping.DataSetTable = "Equipe";
             tableMapping.ColumnMappings.Add("N°", "N°");
             tableMapping.ColumnMappings.Add("Nom", "Nom");
+            tableMapping.ColumnMappings.Add("NumeroTournoi", "NumeroTournoi");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Equipe] WHERE (([N°] = @p2))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Equipe] WHERE (([N°] = @p2) AND ((@IsNull_NumeroTournoi = 1 AN" +
+                "D [NumeroTournoi] IS NULL) OR ([NumeroTournoi] = @Original_NumeroTournoi)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NumeroTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumeroTournoi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NumeroTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumeroTournoi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Equipe] ([N°], [Nom]) VALUES (@p1, @Nom);\r\nSELECT [N°], Nom FR" +
-                "OM Equipe WHERE ([N°] = @N_)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Equipe] ([Nom], [NumeroTournoi]) VALUES (@Nom, @NumeroTournoi)" +
+                ";\r\nSELECT [N°], Nom, NumeroTournoi FROM Equipe WHERE ([N°] = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nom", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@N_", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumeroTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumeroTournoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Equipe] SET [N°] = @p1, [Nom] = @Nom WHERE (([N°] = @p2));\r\nSELECT " +
-                "[N°], Nom FROM Equipe WHERE ([N°] = @N_)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Equipe] SET [Nom] = @Nom, [NumeroTournoi] = @NumeroTournoi WHERE (([N°] = @p2) AND ((@IsNull_NumeroTournoi = 1 AND [NumeroTournoi] IS NULL) OR ([NumeroTournoi] = @Original_NumeroTournoi)));
+SELECT [N°], Nom, NumeroTournoi FROM Equipe WHERE ([N°] = @N_)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nom", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumeroTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumeroTournoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NumeroTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumeroTournoi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NumeroTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NumeroTournoi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@N_", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -4654,7 +4661,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [N°], Nom FROM Equipe";
+            this._commandCollection[0].CommandText = "SELECT [N°], Nom, NumeroTournoi FROM dbo.Equipe";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4715,8 +4722,16 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int p2) {
+        public virtual int Delete(int p2, global::System.Nullable<int> Original_NumeroTournoi) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p2));
+            if ((Original_NumeroTournoi.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_NumeroTournoi.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4737,15 +4752,19 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int p1, string Nom, int N_) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
+        public virtual int Insert(string Nom, global::System.Nullable<int> NumeroTournoi) {
             if ((Nom == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Nom));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Nom));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(N_));
+            if ((NumeroTournoi.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(NumeroTournoi.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4766,16 +4785,29 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p1, string Nom, int p2, int N_) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
+        public virtual int Update(string Nom, global::System.Nullable<int> NumeroTournoi, int p2, global::System.Nullable<int> Original_NumeroTournoi, int N_) {
             if ((Nom == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Nom));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Nom));
+            }
+            if ((NumeroTournoi.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(NumeroTournoi.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(p2));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(N_));
+            if ((Original_NumeroTournoi.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_NumeroTournoi.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(N_));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4796,8 +4828,8 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nom, int p2) {
-            return this.Update(p2, Nom, p2, p2);
+        public virtual int Update(string Nom, global::System.Nullable<int> NumeroTournoi, int p2, global::System.Nullable<int> Original_NumeroTournoi) {
+            return this.Update(Nom, NumeroTournoi, p2, Original_NumeroTournoi, p2);
         }
     }
     
@@ -4810,7 +4842,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class Equipe_utlisateurTableAdapter : global::System.ComponentModel.Component {
+    public partial class EquipeUtilisateurTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -4824,7 +4856,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public Equipe_utlisateurTableAdapter() {
+        public EquipeUtilisateurTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -4921,14 +4953,14 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Equipe-utlisateur";
+            tableMapping.DataSetTable = "EquipeUtilisateur";
             tableMapping.ColumnMappings.Add("Equipe", "Equipe");
             tableMapping.ColumnMappings.Add("Utilisateur", "Utilisateur");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Equipe-utlisateur] ([Equipe], [Utilisateur]) VALUES (@Equipe, " +
-                "@Utilisateur)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Equipe-Utilisateur] ([Equipe], [Utilisateur]) VALUES (@Equipe," +
+                " @Utilisateur)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Equipe", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Equipe", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Utilisateur", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Utilisateur", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4947,7 +4979,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Equipe, Utilisateur FROM dbo.[Equipe-utlisateur]";
+            this._commandCollection[0].CommandText = "SELECT Equipe, Utilisateur FROM dbo.[Equipe-Utilisateur]";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4955,7 +4987,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(TorDBDataSet._Equipe_utlisateurDataTable dataTable) {
+        public virtual int Fill(TorDBDataSet.EquipeUtilisateurDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -4968,9 +5000,9 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual TorDBDataSet._Equipe_utlisateurDataTable GetData() {
+        public virtual TorDBDataSet.EquipeUtilisateurDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            TorDBDataSet._Equipe_utlisateurDataTable dataTable = new TorDBDataSet._Equipe_utlisateurDataTable();
+            TorDBDataSet.EquipeUtilisateurDataTable dataTable = new TorDBDataSet.EquipeUtilisateurDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -4978,7 +5010,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TorDBDataSet._Equipe_utlisateurDataTable dataTable) {
+        public virtual int Update(TorDBDataSet.EquipeUtilisateurDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
@@ -4986,7 +5018,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual int Update(TorDBDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Equipe-utlisateur");
+            return this.Adapter.Update(dataSet, "EquipeUtilisateur");
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6731,64 +6763,58 @@ SELECT [N°], Tournoi, Position, Equipe FROM Resultat WHERE ([N°] = @N_)";
             tableMapping.ColumnMappings.Add("N°", "N°");
             tableMapping.ColumnMappings.Add("Nom", "Nom");
             tableMapping.ColumnMappings.Add("DateTournoi", "DateTournoi");
-            tableMapping.ColumnMappings.Add("Type", "tipe");
+            tableMapping.ColumnMappings.Add("tipe", "tipe");
             tableMapping.ColumnMappings.Add("Jeux", "Jeux");
             tableMapping.ColumnMappings.Add("Lieu", "Lieu");
             tableMapping.ColumnMappings.Add("Organisation", "Organisation");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tournoi] WHERE (([N°] = @p2) AND ((@IsNull_DateTournoi = 1 AND [DateTournoi] IS NULL) OR ([DateTournoi] = @Original_DateTournoi)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Jeux = 1 AND [Jeux] IS NULL) OR ([Jeux] = @Original_Jeux)) AND ((@IsNull_HeureTournoi = 1 AND [HeureTournoi] IS NULL) OR ([HeureTournoi] = @Original_HeureTournoi)) AND ((@IsNull_Lieu = 1 AND [Lieu] IS NULL) OR ([Lieu] = @Original_Lieu)) AND ((@IsNull_Organisation = 1 AND [Organisation] IS NULL) OR ([Organisation] = @Original_Organisation)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Tournoi] WHERE (([N°] = @p2) AND ((@IsNull_DateTournoi = 1 AND [DateTournoi] IS NULL) OR ([DateTournoi] = @Original_DateTournoi)) AND ((@IsNull_tipe = 1 AND [tipe] IS NULL) OR ([tipe] = @Original_tipe)) AND ((@IsNull_Jeux = 1 AND [Jeux] IS NULL) OR ([Jeux] = @Original_Jeux)) AND ((@IsNull_Lieu = 1 AND [Lieu] IS NULL) OR ([Lieu] = @Original_Lieu)) AND ((@IsNull_Organisation = 1 AND [Organisation] IS NULL) OR ([Organisation] = @Original_Organisation)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTournoi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTournoi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tipe", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipe", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tipe", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipe", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Jeux", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Jeux", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Jeux", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Jeux", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HeureTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeureTournoi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HeureTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeureTournoi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Lieu", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lieu", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Lieu", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lieu", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Organisation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Organisation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Organisation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Organisation", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tournoi] ([N°], [Nom], [DateTournoi], [Type], [Jeux], [HeureTournoi], [Lieu], [Organisation]) VALUES (@p1, @Nom, @DateTournoi, @Type, @Jeux, @HeureTournoi, @Lieu, @Organisation);
-SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FROM Tournoi WHERE ([N°] = @N_)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Tournoi] ([N°], [Nom], [DateTournoi], [tipe], [Jeux], [Lieu], [Organisation]) VALUES (@p1, @Nom, @DateTournoi, @tipe, @Jeux, @Lieu, @Organisation);
+SELECT [N°], Nom, DateTournoi, tipe, Jeux, Lieu, Organisation FROM Tournoi WHERE ([N°] = @N_)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nom", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTournoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipe", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipe", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Jeux", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Jeux", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HeureTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeureTournoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lieu", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lieu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Organisation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Organisation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@N_", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tournoi] SET [N°] = @p1, [Nom] = @Nom, [DateTournoi] = @DateTournoi, [Type] = @Type, [Jeux] = @Jeux, [HeureTournoi] = @HeureTournoi, [Lieu] = @Lieu, [Organisation] = @Organisation WHERE (([N°] = @p2) AND ((@IsNull_DateTournoi = 1 AND [DateTournoi] IS NULL) OR ([DateTournoi] = @Original_DateTournoi)) AND ((@IsNull_Type = 1 AND [Type] IS NULL) OR ([Type] = @Original_Type)) AND ((@IsNull_Jeux = 1 AND [Jeux] IS NULL) OR ([Jeux] = @Original_Jeux)) AND ((@IsNull_HeureTournoi = 1 AND [HeureTournoi] IS NULL) OR ([HeureTournoi] = @Original_HeureTournoi)) AND ((@IsNull_Lieu = 1 AND [Lieu] IS NULL) OR ([Lieu] = @Original_Lieu)) AND ((@IsNull_Organisation = 1 AND [Organisation] IS NULL) OR ([Organisation] = @Original_Organisation)));
-SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FROM Tournoi WHERE ([N°] = @N_)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Tournoi] SET [N°] = @p1, [Nom] = @Nom, [DateTournoi] = @DateTournoi, [tipe] = @tipe, [Jeux] = @Jeux, [Lieu] = @Lieu, [Organisation] = @Organisation WHERE (([N°] = @p2) AND ((@IsNull_DateTournoi = 1 AND [DateTournoi] IS NULL) OR ([DateTournoi] = @Original_DateTournoi)) AND ((@IsNull_tipe = 1 AND [tipe] IS NULL) OR ([tipe] = @Original_tipe)) AND ((@IsNull_Jeux = 1 AND [Jeux] IS NULL) OR ([Jeux] = @Original_Jeux)) AND ((@IsNull_Lieu = 1 AND [Lieu] IS NULL) OR ([Lieu] = @Original_Lieu)) AND ((@IsNull_Organisation = 1 AND [Organisation] IS NULL) OR ([Organisation] = @Original_Organisation)));
+SELECT [N°], Nom, DateTournoi, tipe, Jeux, Lieu, Organisation FROM Tournoi WHERE ([N°] = @N_)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Nom", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Nom", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DateTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTournoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipe", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipe", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Jeux", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Jeux", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HeureTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeureTournoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Lieu", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lieu", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Organisation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Organisation", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DateTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTournoi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DateTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DateTournoi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Type", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Type", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tipe", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipe", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tipe", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipe", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Jeux", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Jeux", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Jeux", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Jeux", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HeureTournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeureTournoi", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_HeureTournoi", global::System.Data.SqlDbType.DateTime2, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HeureTournoi", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Lieu", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lieu", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Lieu", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Lieu", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Organisation", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Organisation", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -6809,7 +6835,7 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [N°], Nom, DateTournoi, Type, Jeux, Lieu, Organisation FROM Tournoi";
+            this._commandCollection[0].CommandText = "SELECT [N°], Nom, DateTournoi, tipe, Jeux, Lieu, Organisation FROM dbo.Tournoi";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6870,7 +6896,7 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int p2, global::System.Nullable<global::System.DateTime> Original_DateTournoi, string Original_Type, global::System.Nullable<int> Original_Jeux, global::System.Nullable<global::System.DateTime> Original_HeureTournoi, global::System.Nullable<int> Original_Lieu, global::System.Nullable<int> Original_Organisation) {
+        public virtual int Delete(int p2, global::System.Nullable<global::System.DateTime> Original_DateTournoi, string Original_tipe, global::System.Nullable<int> Original_Jeux, global::System.Nullable<int> Original_Lieu, global::System.Nullable<int> Original_Organisation) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(p2));
             if ((Original_DateTournoi.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
@@ -6880,13 +6906,13 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Original_Type == null)) {
+            if ((Original_tipe == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Type));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_tipe));
             }
             if ((Original_Jeux.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
@@ -6896,29 +6922,21 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_HeureTournoi.HasValue == true)) {
+            if ((Original_Lieu.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_HeureTournoi.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((int)(Original_Lieu.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
-            if ((Original_Lieu.HasValue == true)) {
+            if ((Original_Organisation.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_Lieu.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_Organisation.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Organisation.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_Organisation.Value));
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -6940,7 +6958,7 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int p1, string Nom, global::System.Nullable<global::System.DateTime> DateTournoi, string Type, global::System.Nullable<int> Jeux, global::System.Nullable<global::System.DateTime> HeureTournoi, global::System.Nullable<int> Lieu, global::System.Nullable<int> Organisation, int N_) {
+        public virtual int Insert(int p1, string Nom, global::System.Nullable<global::System.DateTime> DateTournoi, string tipe, global::System.Nullable<int> Jeux, global::System.Nullable<int> Lieu, global::System.Nullable<int> Organisation, int N_) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
             if ((Nom == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -6954,11 +6972,11 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Type == null)) {
+            if ((tipe == null)) {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Type));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(tipe));
             }
             if ((Jeux.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((int)(Jeux.Value));
@@ -6966,25 +6984,19 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((HeureTournoi.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(HeureTournoi.Value));
+            if ((Lieu.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Lieu.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Lieu.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Lieu.Value));
+            if ((Organisation.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(Organisation.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Organisation.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(Organisation.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(N_));
+            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(N_));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7005,23 +7017,7 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(
-                    int p1, 
-                    string Nom, 
-                    global::System.Nullable<global::System.DateTime> DateTournoi, 
-                    string Type, 
-                    global::System.Nullable<int> Jeux, 
-                    global::System.Nullable<global::System.DateTime> HeureTournoi, 
-                    global::System.Nullable<int> Lieu, 
-                    global::System.Nullable<int> Organisation, 
-                    int p2, 
-                    global::System.Nullable<global::System.DateTime> Original_DateTournoi, 
-                    string Original_Type, 
-                    global::System.Nullable<int> Original_Jeux, 
-                    global::System.Nullable<global::System.DateTime> Original_HeureTournoi, 
-                    global::System.Nullable<int> Original_Lieu, 
-                    global::System.Nullable<int> Original_Organisation, 
-                    int N_) {
+        public virtual int Update(int p1, string Nom, global::System.Nullable<global::System.DateTime> DateTournoi, string tipe, global::System.Nullable<int> Jeux, global::System.Nullable<int> Lieu, global::System.Nullable<int> Organisation, int p2, global::System.Nullable<global::System.DateTime> Original_DateTournoi, string Original_tipe, global::System.Nullable<int> Original_Jeux, global::System.Nullable<int> Original_Lieu, global::System.Nullable<int> Original_Organisation, int N_) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
             if ((Nom == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -7035,11 +7031,11 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Type == null)) {
+            if ((tipe == null)) {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Type));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(tipe));
             }
             if ((Jeux.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Jeux.Value));
@@ -7047,74 +7043,60 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((HeureTournoi.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(HeureTournoi.Value));
+            if ((Lieu.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Lieu.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Lieu.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Lieu.Value));
+            if ((Organisation.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Organisation.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Organisation.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Organisation.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(p2));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(p2));
             if ((Original_DateTournoi.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((System.DateTime)(Original_DateTournoi.Value));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((System.DateTime)(Original_DateTournoi.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            if ((Original_Type == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            if ((Original_tipe == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Type));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(Original_tipe));
             }
             if ((Original_Jeux.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_Jeux.Value));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(Original_Jeux.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
-            }
-            if ((Original_HeureTournoi.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(Original_HeureTournoi.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             if ((Original_Lieu.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_Lieu.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((int)(Original_Lieu.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_Organisation.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(Original_Organisation.Value));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_Organisation.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(N_));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(N_));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7135,8 +7117,8 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Nom, global::System.Nullable<global::System.DateTime> DateTournoi, string Type, global::System.Nullable<int> Jeux, global::System.Nullable<global::System.DateTime> HeureTournoi, global::System.Nullable<int> Lieu, global::System.Nullable<int> Organisation, int p2, global::System.Nullable<global::System.DateTime> Original_DateTournoi, string Original_Type, global::System.Nullable<int> Original_Jeux, global::System.Nullable<global::System.DateTime> Original_HeureTournoi, global::System.Nullable<int> Original_Lieu, global::System.Nullable<int> Original_Organisation) {
-            return this.Update(p2, Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation, p2, Original_DateTournoi, Original_Type, Original_Jeux, Original_HeureTournoi, Original_Lieu, Original_Organisation, p2);
+        public virtual int Update(string Nom, global::System.Nullable<global::System.DateTime> DateTournoi, string tipe, global::System.Nullable<int> Jeux, global::System.Nullable<int> Lieu, global::System.Nullable<int> Organisation, int p2, global::System.Nullable<global::System.DateTime> Original_DateTournoi, string Original_tipe, global::System.Nullable<int> Original_Jeux, global::System.Nullable<int> Original_Lieu, global::System.Nullable<int> Original_Organisation) {
+            return this.Update(p2, Nom, DateTournoi, tipe, Jeux, Lieu, Organisation, p2, Original_DateTournoi, Original_tipe, Original_Jeux, Original_Lieu, Original_Organisation, p2);
         }
     }
     
@@ -7262,7 +7244,7 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Utilisateur";
             tableMapping.ColumnMappings.Add("N°", "N°");
-            tableMapping.ColumnMappings.Add("Login", "Login");
+            tableMapping.ColumnMappings.Add("LoginU", "LoginU");
             tableMapping.ColumnMappings.Add("email", "email");
             tableMapping.ColumnMappings.Add("nbr connexion reussies", "nbr connexion reussies");
             tableMapping.ColumnMappings.Add("nbr connexion ratees", "nbr connexion ratees");
@@ -7278,24 +7260,22 @@ SELECT [N°], Nom, DateTournoi, Type, Jeux, HeureTournoi, Lieu, Organisation FRO
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_nbr_connexion_ratees", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nbr connexion ratees", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Utilisateur] ([N°], [Login], [MDP], [email], [nbr connexion reussies], [nbr connexion ratees]) VALUES (@p1, @Login, @MDP, @email, @nbr_connexion_reussies, @nbr_connexion_ratees);
-SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees] FROM Utilisateur WHERE ([N°] = @N_)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Utilisateur] ([N°], [LoginU], [email], [nbr connexion reussies], [nbr connexion ratees]) VALUES (@p1, @LoginU, @email, @nbr_connexion_reussies, @nbr_connexion_ratees);
+SELECT [N°], LoginU, email, [nbr connexion reussies], [nbr connexion ratees] FROM Utilisateur WHERE ([N°] = @N_)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MDP", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MDP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoginU", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoginU", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nbr_connexion_reussies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nbr connexion reussies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nbr_connexion_ratees", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nbr connexion ratees", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@N_", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Utilisateur] SET [N°] = @p1, [Login] = @Login, [MDP] = @MDP, [email] = @email, [nbr connexion reussies] = @nbr_connexion_reussies, [nbr connexion ratees] = @nbr_connexion_ratees WHERE (([N°] = @p2) AND ((@IsNull_nbr_connexion_reussies = 1 AND [nbr connexion reussies] IS NULL) OR ([nbr connexion reussies] = @Original_nbr_connexion_reussies)) AND ((@IsNull_nbr_connexion_ratees = 1 AND [nbr connexion ratees] IS NULL) OR ([nbr connexion ratees] = @Original_nbr_connexion_ratees)));
-SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees] FROM Utilisateur WHERE ([N°] = @N_)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Utilisateur] SET [N°] = @p1, [LoginU] = @LoginU, [email] = @email, [nbr connexion reussies] = @nbr_connexion_reussies, [nbr connexion ratees] = @nbr_connexion_ratees WHERE (([N°] = @p2) AND ((@IsNull_nbr_connexion_reussies = 1 AND [nbr connexion reussies] IS NULL) OR ([nbr connexion reussies] = @Original_nbr_connexion_reussies)) AND ((@IsNull_nbr_connexion_ratees = 1 AND [nbr connexion ratees] IS NULL) OR ([nbr connexion ratees] = @Original_nbr_connexion_ratees)));
+SELECT [N°], LoginU, email, [nbr connexion reussies], [nbr connexion ratees] FROM Utilisateur WHERE ([N°] = @N_)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "N°", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Login", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Login", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MDP", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MDP", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LoginU", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LoginU", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@email", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "email", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nbr_connexion_reussies", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nbr connexion reussies", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nbr_connexion_ratees", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "nbr connexion ratees", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7320,8 +7300,8 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [N°], Login, email, [nbr connexion reussies], [nbr connexion ratees] FROM " +
-                "Utilisateur";
+            this._commandCollection[0].CommandText = "SELECT [N°], LoginU, email, [nbr connexion reussies], [nbr connexion ratees] FROM" +
+                " dbo.Utilisateur";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -7420,39 +7400,33 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int p1, string Login, string MDP, string email, global::System.Nullable<int> nbr_connexion_reussies, global::System.Nullable<int> nbr_connexion_ratees, int N_) {
+        public virtual int Insert(int p1, string LoginU, string email, global::System.Nullable<int> nbr_connexion_reussies, global::System.Nullable<int> nbr_connexion_ratees, int N_) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(p1));
-            if ((Login == null)) {
+            if ((LoginU == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Login));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(LoginU));
             }
-            if ((MDP == null)) {
+            if ((email == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(MDP));
-            }
-            if ((email == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(email));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(email));
             }
             if ((nbr_connexion_reussies.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(nbr_connexion_reussies.Value));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(nbr_connexion_reussies.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((nbr_connexion_ratees.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(nbr_connexion_ratees.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((nbr_connexion_ratees.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(nbr_connexion_ratees.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(N_));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(N_));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7473,56 +7447,50 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int p1, string Login, string MDP, string email, global::System.Nullable<int> nbr_connexion_reussies, global::System.Nullable<int> nbr_connexion_ratees, int p2, global::System.Nullable<int> Original_nbr_connexion_reussies, global::System.Nullable<int> Original_nbr_connexion_ratees, int N_) {
+        public virtual int Update(int p1, string LoginU, string email, global::System.Nullable<int> nbr_connexion_reussies, global::System.Nullable<int> nbr_connexion_ratees, int p2, global::System.Nullable<int> Original_nbr_connexion_reussies, global::System.Nullable<int> Original_nbr_connexion_ratees, int N_) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(p1));
-            if ((Login == null)) {
+            if ((LoginU == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Login));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(LoginU));
             }
-            if ((MDP == null)) {
+            if ((email == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(MDP));
-            }
-            if ((email == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(email));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(email));
             }
             if ((nbr_connexion_reussies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(nbr_connexion_reussies.Value));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(nbr_connexion_reussies.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((nbr_connexion_ratees.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(nbr_connexion_ratees.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((nbr_connexion_ratees.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(nbr_connexion_ratees.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(p2));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(p2));
             if ((Original_nbr_connexion_reussies.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_nbr_connexion_reussies.Value));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_nbr_connexion_reussies.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((Original_nbr_connexion_ratees.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_nbr_connexion_ratees.Value));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_nbr_connexion_ratees.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(N_));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(N_));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7543,8 +7511,8 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Login, string MDP, string email, global::System.Nullable<int> nbr_connexion_reussies, global::System.Nullable<int> nbr_connexion_ratees, int p2, global::System.Nullable<int> Original_nbr_connexion_reussies, global::System.Nullable<int> Original_nbr_connexion_ratees) {
-            return this.Update(p2, Login, MDP, email, nbr_connexion_reussies, nbr_connexion_ratees, p2, Original_nbr_connexion_reussies, Original_nbr_connexion_ratees, p2);
+        public virtual int Update(string LoginU, string email, global::System.Nullable<int> nbr_connexion_reussies, global::System.Nullable<int> nbr_connexion_ratees, int p2, global::System.Nullable<int> Original_nbr_connexion_reussies, global::System.Nullable<int> Original_nbr_connexion_ratees) {
+            return this.Update(p2, LoginU, email, nbr_connexion_reussies, nbr_connexion_ratees, p2, Original_nbr_connexion_reussies, Original_nbr_connexion_ratees, p2);
         }
     }
     
@@ -7562,7 +7530,7 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         
         private EquipeTableAdapter _equipeTableAdapter;
         
-        private Equipe_utlisateurTableAdapter _equipe_utlisateurTableAdapter;
+        private EquipeUtilisateurTableAdapter _equipeUtilisateurTableAdapter;
         
         private jeuxTableAdapter _jeuxTableAdapter;
         
@@ -7610,12 +7578,12 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public Equipe_utlisateurTableAdapter Equipe_utlisateurTableAdapter {
+        public EquipeUtilisateurTableAdapter EquipeUtilisateurTableAdapter {
             get {
-                return this._equipe_utlisateurTableAdapter;
+                return this._equipeUtilisateurTableAdapter;
             }
             set {
-                this._equipe_utlisateurTableAdapter = value;
+                this._equipeUtilisateurTableAdapter = value;
             }
         }
         
@@ -7726,9 +7694,9 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                             && (this._equipeTableAdapter.Connection != null))) {
                     return this._equipeTableAdapter.Connection;
                 }
-                if (((this._equipe_utlisateurTableAdapter != null) 
-                            && (this._equipe_utlisateurTableAdapter.Connection != null))) {
-                    return this._equipe_utlisateurTableAdapter.Connection;
+                if (((this._equipeUtilisateurTableAdapter != null) 
+                            && (this._equipeUtilisateurTableAdapter.Connection != null))) {
+                    return this._equipeUtilisateurTableAdapter.Connection;
                 }
                 if (((this._jeuxTableAdapter != null) 
                             && (this._jeuxTableAdapter.Connection != null))) {
@@ -7770,7 +7738,7 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                 if ((this._equipeTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._equipe_utlisateurTableAdapter != null)) {
+                if ((this._equipeUtilisateurTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._jeuxTableAdapter != null)) {
@@ -7856,21 +7824,21 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._equipeUtilisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.EquipeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._equipeUtilisateurTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._resultatTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Resultat.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._resultatTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._equipe_utlisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._equipe_utlisateurTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -7932,19 +7900,19 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._equipeUtilisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.EquipeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._equipeUtilisateurTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._resultatTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Resultat.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._resultatTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._equipe_utlisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._equipe_utlisateurTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -7958,19 +7926,19 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(TorDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._equipe_utlisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._equipe_utlisateurTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._resultatTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Resultat.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._resultatTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._equipeUtilisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.EquipeUtilisateur.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._equipeUtilisateurTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -8066,8 +8034,8 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                 throw new global::System.ArgumentException("Tous les TableAdapters managés par un TableAdapterManager doivent utiliser la mêm" +
                         "e chaîne de connexion.");
             }
-            if (((this._equipe_utlisateurTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._equipe_utlisateurTableAdapter.Connection) == false))) {
+            if (((this._equipeUtilisateurTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._equipeUtilisateurTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Tous les TableAdapters managés par un TableAdapterManager doivent utiliser la mêm" +
                         "e chaîne de connexion.");
             }
@@ -8144,13 +8112,13 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                         adaptersWithAcceptChangesDuringUpdate.Add(this._equipeTableAdapter.Adapter);
                     }
                 }
-                if ((this._equipe_utlisateurTableAdapter != null)) {
-                    revertConnections.Add(this._equipe_utlisateurTableAdapter, this._equipe_utlisateurTableAdapter.Connection);
-                    this._equipe_utlisateurTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._equipe_utlisateurTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._equipe_utlisateurTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._equipe_utlisateurTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._equipe_utlisateurTableAdapter.Adapter);
+                if ((this._equipeUtilisateurTableAdapter != null)) {
+                    revertConnections.Add(this._equipeUtilisateurTableAdapter, this._equipeUtilisateurTableAdapter.Connection);
+                    this._equipeUtilisateurTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._equipeUtilisateurTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._equipeUtilisateurTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._equipeUtilisateurTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._equipeUtilisateurTableAdapter.Adapter);
                     }
                 }
                 if ((this._jeuxTableAdapter != null)) {
@@ -8269,9 +8237,9 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     this._equipeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipeTableAdapter]));
                     this._equipeTableAdapter.Transaction = null;
                 }
-                if ((this._equipe_utlisateurTableAdapter != null)) {
-                    this._equipe_utlisateurTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipe_utlisateurTableAdapter]));
-                    this._equipe_utlisateurTableAdapter.Transaction = null;
+                if ((this._equipeUtilisateurTableAdapter != null)) {
+                    this._equipeUtilisateurTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipeUtilisateurTableAdapter]));
+                    this._equipeUtilisateurTableAdapter.Transaction = null;
                 }
                 if ((this._jeuxTableAdapter != null)) {
                     this._jeuxTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._jeuxTableAdapter]));

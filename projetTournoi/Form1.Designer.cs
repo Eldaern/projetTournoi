@@ -868,6 +868,7 @@
             this.Detail_Tour_BT_InscrireTeam.TabIndex = 7;
             this.Detail_Tour_BT_InscrireTeam.Text = "inscrire team";
             this.Detail_Tour_BT_InscrireTeam.UseVisualStyleBackColor = true;
+            this.Detail_Tour_BT_InscrireTeam.Click += new System.EventHandler(this.Detail_Tour_BT_InscrireTeam_Click);
             // 
             // Detail_Tour_Label_Nom
             // 
