@@ -187,7 +187,28 @@ namespace projetTournoi
             }
             return ds;
         }
+        public void CreateTeam(string nom)
+        {
+            string cmds = "INSERT INTO Equipe (Nom) VALUES (@val1)";
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                comm2.Parameters.AddWithValue("@val1", nom);
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
 
+                }
+                conn.Close();
+            }
+        }
     }
 
 
