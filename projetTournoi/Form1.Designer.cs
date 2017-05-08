@@ -100,7 +100,7 @@
             this.LT_BT_choisir = new System.Windows.Forms.Button();
             this.LT_DataGrid = new System.Windows.Forms.DataGridView();
             this.Detail_Tournoi_Panel = new System.Windows.Forms.Panel();
-            this.Detail_Tour_BT_Inscrire = new System.Windows.Forms.Button();
+            this.Detail_Tour_BT_InscrireJoueur = new System.Windows.Forms.Button();
             this.Detail_Tour_listBox_Joueurs = new System.Windows.Forms.ListBox();
             this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
             this.BT_Rafraîchir = new System.Windows.Forms.Button();
@@ -113,6 +113,7 @@
             this.numéro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detail_Tour_PictureBox = new System.Windows.Forms.PictureBox();
             this.Detail_Tour_Label_Nom = new System.Windows.Forms.Label();
+            this.Detail_Tour_BT_InscrireTeam = new System.Windows.Forms.Button();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -814,10 +815,11 @@
             // 
             // Detail_Tournoi_Panel
             // 
+            this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_InscrireTeam);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Label_Nom);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_PictureBox);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Listbox_Description);
-            this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_Inscrire);
+            this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_InscrireJoueur);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_listBox_Joueurs);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_listBox_Equipes);
             this.Detail_Tournoi_Panel.Location = new System.Drawing.Point(12, 62);
@@ -825,14 +827,14 @@
             this.Detail_Tournoi_Panel.Size = new System.Drawing.Size(767, 303);
             this.Detail_Tournoi_Panel.TabIndex = 9;
             // 
-            // Detail_Tour_BT_Inscrire
+            // Detail_Tour_BT_InscrireJoueur
             // 
-            this.Detail_Tour_BT_Inscrire.Location = new System.Drawing.Point(472, 146);
-            this.Detail_Tour_BT_Inscrire.Name = "Detail_Tour_BT_Inscrire";
-            this.Detail_Tour_BT_Inscrire.Size = new System.Drawing.Size(120, 95);
-            this.Detail_Tour_BT_Inscrire.TabIndex = 3;
-            this.Detail_Tour_BT_Inscrire.Text = "Inscrire";
-            this.Detail_Tour_BT_Inscrire.UseVisualStyleBackColor = true;
+            this.Detail_Tour_BT_InscrireJoueur.Location = new System.Drawing.Point(472, 146);
+            this.Detail_Tour_BT_InscrireJoueur.Name = "Detail_Tour_BT_InscrireJoueur";
+            this.Detail_Tour_BT_InscrireJoueur.Size = new System.Drawing.Size(120, 95);
+            this.Detail_Tour_BT_InscrireJoueur.TabIndex = 3;
+            this.Detail_Tour_BT_InscrireJoueur.Text = "Inscrire";
+            this.Detail_Tour_BT_InscrireJoueur.UseVisualStyleBackColor = true;
             // 
             // Detail_Tour_listBox_Joueurs
             // 
@@ -916,6 +918,15 @@
             this.Detail_Tour_Label_Nom.Size = new System.Drawing.Size(68, 29);
             this.Detail_Tour_Label_Nom.TabIndex = 6;
             this.Detail_Tour_Label_Nom.Text = "Nom";
+            // 
+            // Detail_Tour_BT_InscrireTeam
+            // 
+            this.Detail_Tour_BT_InscrireTeam.Location = new System.Drawing.Point(140, 256);
+            this.Detail_Tour_BT_InscrireTeam.Name = "Detail_Tour_BT_InscrireTeam";
+            this.Detail_Tour_BT_InscrireTeam.Size = new System.Drawing.Size(119, 23);
+            this.Detail_Tour_BT_InscrireTeam.TabIndex = 7;
+            this.Detail_Tour_BT_InscrireTeam.Text = "inscrire team";
+            this.Detail_Tour_BT_InscrireTeam.UseVisualStyleBackColor = true;
             // 
             // Main_Forme
             // 
@@ -1032,7 +1043,7 @@
         private System.Windows.Forms.ComboBox ChercheTour_ComboBox_Type;
         private System.Windows.Forms.ComboBox ChercheTour_ComboBox_Mode;
         private System.Windows.Forms.Panel Detail_Tournoi_Panel;
-        private System.Windows.Forms.Button Detail_Tour_BT_Inscrire;
+        private System.Windows.Forms.Button Detail_Tour_BT_InscrireJoueur;
         private System.Windows.Forms.ListBox Detail_Tour_listBox_Joueurs;
         private System.Windows.Forms.ListBox Detail_Tour_listBox_Equipes;
         private System.Windows.Forms.Button BT_Rafraîchir;
@@ -1046,6 +1057,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numéro;
         private System.Windows.Forms.Label Detail_Tour_Label_Nom;
         private System.Windows.Forms.PictureBox Detail_Tour_PictureBox;
+        private System.Windows.Forms.Button Detail_Tour_BT_InscrireTeam;
     }
 }
 

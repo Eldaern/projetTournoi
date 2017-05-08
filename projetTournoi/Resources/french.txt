@@ -40,5 +40,10 @@
 	"Help_BT_refresh" : "Rafraîchir la\nbase de données",
 
 	"choisir" : "choisir",
-	"Help_BT_choisir" : "Afficher les détails du tournoi sélectioné"
+	"Help_BT_choisir" : "Afficher les détails du tournoi sélectioné",
+
+	"inscrireJ" : "rejoindre l'équipe",
+	"inscrireE" : "créer une équipe",
+	"Help_inscrireJ" : "S'inscrire en temps que joueur\nde l'équipe sélectionnée\n(sous réserve du nombre de places disponibles)",
+	"Help_inscrireE" : "Créer une équipe qui disputera le tournoi"
 }

@@ -40,5 +40,10 @@
 	"Help_BT_refresh" : "Refresh\nthe database" ,
 
 	"choisir" : "select",
-	"Help_BT_choisir" : "Show the details of the selected tournament"
+	"Help_BT_choisir" : "Show the details of the selected tournament",
+
+	"inscrireJ" : "join the team",
+	"inscrireE" : "create a team",
+	"Help_inscrireJ" : "Join the selected team (if there is enough places)",
+	"Help_inscrireE" : "Create a new team in the tournament"
 }
