@@ -26,8 +26,6 @@ namespace projetTournoi {
         
         private EquipeDataTable tableEquipe;
         
-        private _Equipe_TournoiDataTable _tableEquipe_Tournoi;
-        
         private _Equipe_utlisateurDataTable _tableEquipe_utlisateur;
         
         private jeuxDataTable tablejeux;
@@ -42,14 +40,6 @@ namespace projetTournoi {
         
         private UtilisateurDataTable tableUtilisateur;
         
-        private global::System.Data.DataRelation _relationFK_Equipe_Tournoi_Equipe;
-        
-        private global::System.Data.DataRelation _relationFK_Equipe_Tournoi_Tournoi;
-        
-        private global::System.Data.DataRelation _relationFK_Equipe_utlisateur_Equipe;
-        
-        private global::System.Data.DataRelation _relationFK_Equipe_utlisateur_Utilisateur;
-        
         private global::System.Data.DataRelation relationFK_Organisation_Utilisateur;
         
         private global::System.Data.DataRelation relationFK_Resultat_Tournoi;
@@ -59,6 +49,12 @@ namespace projetTournoi {
         private global::System.Data.DataRelation relationFK_Tournoi_Lieu;
         
         private global::System.Data.DataRelation relationFK_Tournoi_Organisation;
+        
+        private global::System.Data.DataRelation _relationFK_Equipe_utlisateur_Utilisateur;
+        
+        private global::System.Data.DataRelation _relationFK_Equipe_utlisateur_Equipe;
+        
+        private global::System.Data.DataRelation relationTournoi_Equipe;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -90,9 +86,6 @@ namespace projetTournoi {
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
                 if ((ds.Tables["Equipe"] != null)) {
                     base.Tables.Add(new EquipeDataTable(ds.Tables["Equipe"]));
-                }
-                if ((ds.Tables["Equipe-Tournoi"] != null)) {
-                    base.Tables.Add(new _Equipe_TournoiDataTable(ds.Tables["Equipe-Tournoi"]));
                 }
                 if ((ds.Tables["Equipe-utlisateur"] != null)) {
                     base.Tables.Add(new _Equipe_utlisateurDataTable(ds.Tables["Equipe-utlisateur"]));
@@ -140,16 +133,6 @@ namespace projetTournoi {
         public EquipeDataTable Equipe {
             get {
                 return this.tableEquipe;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public _Equipe_TournoiDataTable _Equipe_Tournoi {
-            get {
-                return this._tableEquipe_Tournoi;
             }
         }
         
@@ -293,9 +276,6 @@ namespace projetTournoi {
                 if ((ds.Tables["Equipe"] != null)) {
                     base.Tables.Add(new EquipeDataTable(ds.Tables["Equipe"]));
                 }
-                if ((ds.Tables["Equipe-Tournoi"] != null)) {
-                    base.Tables.Add(new _Equipe_TournoiDataTable(ds.Tables["Equipe-Tournoi"]));
-                }
                 if ((ds.Tables["Equipe-utlisateur"] != null)) {
                     base.Tables.Add(new _Equipe_utlisateurDataTable(ds.Tables["Equipe-utlisateur"]));
                 }
@@ -356,12 +336,6 @@ namespace projetTournoi {
                     this.tableEquipe.InitVars();
                 }
             }
-            this._tableEquipe_Tournoi = ((_Equipe_TournoiDataTable)(base.Tables["Equipe-Tournoi"]));
-            if ((initTable == true)) {
-                if ((this._tableEquipe_Tournoi != null)) {
-                    this._tableEquipe_Tournoi.InitVars();
-                }
-            }
             this._tableEquipe_utlisateur = ((_Equipe_utlisateurDataTable)(base.Tables["Equipe-utlisateur"]));
             if ((initTable == true)) {
                 if ((this._tableEquipe_utlisateur != null)) {
@@ -404,15 +378,14 @@ namespace projetTournoi {
                     this.tableUtilisateur.InitVars();
                 }
             }
-            this._relationFK_Equipe_Tournoi_Equipe = this.Relations["FK_Equipe-Tournoi_Equipe"];
-            this._relationFK_Equipe_Tournoi_Tournoi = this.Relations["FK_Equipe-Tournoi_Tournoi"];
-            this._relationFK_Equipe_utlisateur_Equipe = this.Relations["FK_Equipe-utlisateur_Equipe"];
-            this._relationFK_Equipe_utlisateur_Utilisateur = this.Relations["FK_Equipe-utlisateur_Utilisateur"];
             this.relationFK_Organisation_Utilisateur = this.Relations["FK_Organisation_Utilisateur"];
             this.relationFK_Resultat_Tournoi = this.Relations["FK_Resultat_Tournoi"];
             this.relationFK_Tournoi_jeux = this.Relations["FK_Tournoi_jeux"];
             this.relationFK_Tournoi_Lieu = this.Relations["FK_Tournoi_Lieu"];
             this.relationFK_Tournoi_Organisation = this.Relations["FK_Tournoi_Organisation"];
+            this._relationFK_Equipe_utlisateur_Utilisateur = this.Relations["FK_Equipe-utlisateur_Utilisateur"];
+            this._relationFK_Equipe_utlisateur_Equipe = this.Relations["FK_Equipe-utlisateur_Equipe"];
+            this.relationTournoi_Equipe = this.Relations["Tournoi_Equipe"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -425,8 +398,6 @@ namespace projetTournoi {
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableEquipe = new EquipeDataTable();
             base.Tables.Add(this.tableEquipe);
-            this._tableEquipe_Tournoi = new _Equipe_TournoiDataTable();
-            base.Tables.Add(this._tableEquipe_Tournoi);
             this._tableEquipe_utlisateur = new _Equipe_utlisateurDataTable();
             base.Tables.Add(this._tableEquipe_utlisateur);
             this.tablejeux = new jeuxDataTable();
@@ -441,22 +412,6 @@ namespace projetTournoi {
             base.Tables.Add(this.tableTournoi);
             this.tableUtilisateur = new UtilisateurDataTable();
             base.Tables.Add(this.tableUtilisateur);
-            this._relationFK_Equipe_Tournoi_Equipe = new global::System.Data.DataRelation("FK_Equipe-Tournoi_Equipe", new global::System.Data.DataColumn[] {
-                        this.tableEquipe._N_Column}, new global::System.Data.DataColumn[] {
-                        this._tableEquipe_Tournoi.EquipeColumn}, false);
-            this.Relations.Add(this._relationFK_Equipe_Tournoi_Equipe);
-            this._relationFK_Equipe_Tournoi_Tournoi = new global::System.Data.DataRelation("FK_Equipe-Tournoi_Tournoi", new global::System.Data.DataColumn[] {
-                        this.tableTournoi._N_Column}, new global::System.Data.DataColumn[] {
-                        this._tableEquipe_Tournoi.TournoiColumn}, false);
-            this.Relations.Add(this._relationFK_Equipe_Tournoi_Tournoi);
-            this._relationFK_Equipe_utlisateur_Equipe = new global::System.Data.DataRelation("FK_Equipe-utlisateur_Equipe", new global::System.Data.DataColumn[] {
-                        this.tableEquipe._N_Column}, new global::System.Data.DataColumn[] {
-                        this._tableEquipe_utlisateur.EquipeColumn}, false);
-            this.Relations.Add(this._relationFK_Equipe_utlisateur_Equipe);
-            this._relationFK_Equipe_utlisateur_Utilisateur = new global::System.Data.DataRelation("FK_Equipe-utlisateur_Utilisateur", new global::System.Data.DataColumn[] {
-                        this.tableUtilisateur._N_Column}, new global::System.Data.DataColumn[] {
-                        this._tableEquipe_utlisateur.UtilisateurColumn}, false);
-            this.Relations.Add(this._relationFK_Equipe_utlisateur_Utilisateur);
             this.relationFK_Organisation_Utilisateur = new global::System.Data.DataRelation("FK_Organisation_Utilisateur", new global::System.Data.DataColumn[] {
                         this.tableUtilisateur._N_Column}, new global::System.Data.DataColumn[] {
                         this.tableOrganisation.ResponsableColumn}, false);
@@ -477,17 +432,23 @@ namespace projetTournoi {
                         this.tableOrganisation._N_Column}, new global::System.Data.DataColumn[] {
                         this.tableTournoi.OrganisationColumn}, false);
             this.Relations.Add(this.relationFK_Tournoi_Organisation);
+            this._relationFK_Equipe_utlisateur_Utilisateur = new global::System.Data.DataRelation("FK_Equipe-utlisateur_Utilisateur", new global::System.Data.DataColumn[] {
+                        this.tableUtilisateur._N_Column}, new global::System.Data.DataColumn[] {
+                        this._tableEquipe_utlisateur.UtilisateurColumn}, false);
+            this.Relations.Add(this._relationFK_Equipe_utlisateur_Utilisateur);
+            this._relationFK_Equipe_utlisateur_Equipe = new global::System.Data.DataRelation("FK_Equipe-utlisateur_Equipe", new global::System.Data.DataColumn[] {
+                        this.tableEquipe._N_Column}, new global::System.Data.DataColumn[] {
+                        this._tableEquipe_utlisateur.EquipeColumn}, false);
+            this.Relations.Add(this._relationFK_Equipe_utlisateur_Equipe);
+            this.relationTournoi_Equipe = new global::System.Data.DataRelation("Tournoi_Equipe", new global::System.Data.DataColumn[] {
+                        this.tableTournoi._N_Column}, new global::System.Data.DataColumn[] {
+                        this.tableEquipe.NumeroTournoiColumn}, false);
+            this.Relations.Add(this.relationTournoi_Equipe);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeEquipe() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerialize_Equipe_Tournoi() {
             return false;
         }
         
@@ -592,9 +553,6 @@ namespace projetTournoi {
         public delegate void EquipeRowChangeEventHandler(object sender, EquipeRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void _Equipe_TournoiRowChangeEventHandler(object sender, _Equipe_TournoiRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void _Equipe_utlisateurRowChangeEventHandler(object sender, _Equipe_utlisateurRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -625,6 +583,8 @@ namespace projetTournoi {
             private global::System.Data.DataColumn _columnN_;
             
             private global::System.Data.DataColumn columnNom;
+            
+            private global::System.Data.DataColumn columnNumeroTournoi;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -677,6 +637,14 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NumeroTournoiColumn {
+                get {
+                    return this.columnNumeroTournoi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -716,7 +684,8 @@ namespace projetTournoi {
                 EquipeRow rowEquipeRow = ((EquipeRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         _N_,
-                        Nom};
+                        Nom,
+                        null};
                 rowEquipeRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEquipeRow);
                 return rowEquipeRow;
@@ -748,6 +717,7 @@ namespace projetTournoi {
             internal void InitVars() {
                 this._columnN_ = base.Columns["N°"];
                 this.columnNom = base.Columns["Nom"];
+                this.columnNumeroTournoi = base.Columns["NumeroTournoi"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -759,11 +729,16 @@ namespace projetTournoi {
                 base.Columns.Add(this._columnN_);
                 this.columnNom = new global::System.Data.DataColumn("Nom", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNom);
+                this.columnNumeroTournoi = new global::System.Data.DataColumn("NumeroTournoi", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNumeroTournoi);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this._columnN_}, true));
                 this._columnN_.AllowDBNull = false;
                 this._columnN_.Unique = true;
                 this.columnNom.MaxLength = 2147483647;
+                this.columnNumeroTournoi.AutoIncrement = true;
+                this.columnNumeroTournoi.AutoIncrementSeed = -1;
+                this.columnNumeroTournoi.AutoIncrementStep = -1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -850,275 +825,6 @@ namespace projetTournoi {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "EquipeDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class _Equipe_TournoiDataTable : global::System.Data.TypedTableBase<_Equipe_TournoiRow> {
-            
-            private global::System.Data.DataColumn columnEquipe;
-            
-            private global::System.Data.DataColumn columnTournoi;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiDataTable() {
-                this.TableName = "Equipe-Tournoi";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal _Equipe_TournoiDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected _Equipe_TournoiDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EquipeColumn {
-                get {
-                    return this.columnEquipe;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TournoiColumn {
-                get {
-                    return this.columnTournoi;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiRow this[int index] {
-                get {
-                    return ((_Equipe_TournoiRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_TournoiRowChangeEventHandler _Equipe_TournoiRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_TournoiRowChangeEventHandler _Equipe_TournoiRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_TournoiRowChangeEventHandler _Equipe_TournoiRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event _Equipe_TournoiRowChangeEventHandler _Equipe_TournoiRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Add_Equipe_TournoiRow(_Equipe_TournoiRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiRow Add_Equipe_TournoiRow(EquipeRow _parentEquipeRowByFK_Equipe_Tournoi_Equipe, TournoiRow _parentTournoiRowByFK_Equipe_Tournoi_Tournoi) {
-                _Equipe_TournoiRow row_Equipe_TournoiRow = ((_Equipe_TournoiRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        null,
-                        null};
-                if ((_parentEquipeRowByFK_Equipe_Tournoi_Equipe != null)) {
-                    columnValuesArray[0] = _parentEquipeRowByFK_Equipe_Tournoi_Equipe[0];
-                }
-                if ((_parentTournoiRowByFK_Equipe_Tournoi_Tournoi != null)) {
-                    columnValuesArray[1] = _parentTournoiRowByFK_Equipe_Tournoi_Tournoi[0];
-                }
-                row_Equipe_TournoiRow.ItemArray = columnValuesArray;
-                this.Rows.Add(row_Equipe_TournoiRow);
-                return row_Equipe_TournoiRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                _Equipe_TournoiDataTable cln = ((_Equipe_TournoiDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new _Equipe_TournoiDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnEquipe = base.Columns["Equipe"];
-                this.columnTournoi = base.Columns["Tournoi"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnEquipe = new global::System.Data.DataColumn("Equipe", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEquipe);
-                this.columnTournoi = new global::System.Data.DataColumn("Tournoi", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTournoi);
-                this.ExtendedProperties.Add("Generator_TableVarName", "_tableEquipe_Tournoi");
-                this.ExtendedProperties.Add("Generator_UserTableName", "Equipe-Tournoi");
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiRow New_Equipe_TournoiRow() {
-                return ((_Equipe_TournoiRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new _Equipe_TournoiRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(_Equipe_TournoiRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this._Equipe_TournoiRowChanged != null)) {
-                    this._Equipe_TournoiRowChanged(this, new _Equipe_TournoiRowChangeEvent(((_Equipe_TournoiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this._Equipe_TournoiRowChanging != null)) {
-                    this._Equipe_TournoiRowChanging(this, new _Equipe_TournoiRowChangeEvent(((_Equipe_TournoiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this._Equipe_TournoiRowDeleted != null)) {
-                    this._Equipe_TournoiRowDeleted(this, new _Equipe_TournoiRowChangeEvent(((_Equipe_TournoiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this._Equipe_TournoiRowDeleting != null)) {
-                    this._Equipe_TournoiRowDeleting(this, new _Equipe_TournoiRowChangeEvent(((_Equipe_TournoiRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void Remove_Equipe_TournoiRow(_Equipe_TournoiRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                TorDBDataSet ds = new TorDBDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "_Equipe_TournoiDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -3394,6 +3100,33 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int NumeroTournoi {
+                get {
+                    try {
+                        return ((int)(this[this.tableEquipe.NumeroTournoiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'NumeroTournoi\' dans la table \'Equipe\' est DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEquipe.NumeroTournoiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public TournoiRow TournoiRow {
+                get {
+                    return ((TournoiRow)(this.GetParentRow(this.Table.ParentRelations["Tournoi_Equipe"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Tournoi_Equipe"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNomNull() {
                 return this.IsNull(this.tableEquipe.NomColumn);
             }
@@ -3406,13 +3139,14 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiRow[] _GetEquipe_TournoiRows() {
-                if ((this.Table.ChildRelations["FK_Equipe-Tournoi_Equipe"] == null)) {
-                    return new _Equipe_TournoiRow[0];
-                }
-                else {
-                    return ((_Equipe_TournoiRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-Tournoi_Equipe"])));
-                }
+            public bool IsNumeroTournoiNull() {
+                return this.IsNull(this.tableEquipe.NumeroTournoiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNumeroTournoiNull() {
+                this[this.tableEquipe.NumeroTournoiColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3424,99 +3158,6 @@ namespace projetTournoi {
                 else {
                     return ((_Equipe_utlisateurRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-utlisateur_Equipe"])));
                 }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class _Equipe_TournoiRow : global::System.Data.DataRow {
-            
-            private _Equipe_TournoiDataTable _tableEquipe_Tournoi;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal _Equipe_TournoiRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this._tableEquipe_Tournoi = ((_Equipe_TournoiDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Equipe {
-                get {
-                    try {
-                        return ((int)(this[this._tableEquipe_Tournoi.EquipeColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Equipe\' dans la table \'Equipe-Tournoi\' est DBNull.", e);
-                    }
-                }
-                set {
-                    this[this._tableEquipe_Tournoi.EquipeColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Tournoi {
-                get {
-                    try {
-                        return ((int)(this[this._tableEquipe_Tournoi.TournoiColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("La valeur pour la colonne \'Tournoi\' dans la table \'Equipe-Tournoi\' est DBNull.", e);
-                    }
-                }
-                set {
-                    this[this._tableEquipe_Tournoi.TournoiColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipeRow EquipeRow {
-                get {
-                    return ((EquipeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-Tournoi_Equipe"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-Tournoi_Equipe"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public TournoiRow TournoiRow {
-                get {
-                    return ((TournoiRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-Tournoi_Tournoi"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-Tournoi_Tournoi"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEquipeNull() {
-                return this.IsNull(this._tableEquipe_Tournoi.EquipeColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEquipeNull() {
-                this[this._tableEquipe_Tournoi.EquipeColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTournoiNull() {
-                return this.IsNull(this._tableEquipe_Tournoi.TournoiColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTournoiNull() {
-                this[this._tableEquipe_Tournoi.TournoiColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3569,23 +3210,23 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EquipeRow EquipeRow {
-                get {
-                    return ((EquipeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-utlisateur_Equipe"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-utlisateur_Equipe"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UtilisateurRow UtilisateurRow {
                 get {
                     return ((UtilisateurRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-utlisateur_Utilisateur"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-utlisateur_Utilisateur"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EquipeRow EquipeRow {
+                get {
+                    return ((EquipeRow)(this.GetParentRow(this.Table.ParentRelations["FK_Equipe-utlisateur_Equipe"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Equipe-utlisateur_Equipe"]);
                 }
             }
             
@@ -4393,23 +4034,23 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiRow[] _GetEquipe_TournoiRows() {
-                if ((this.Table.ChildRelations["FK_Equipe-Tournoi_Tournoi"] == null)) {
-                    return new _Equipe_TournoiRow[0];
-                }
-                else {
-                    return ((_Equipe_TournoiRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-Tournoi_Tournoi"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ResultatRow[] GetResultatRows() {
                 if ((this.Table.ChildRelations["FK_Resultat_Tournoi"] == null)) {
                     return new ResultatRow[0];
                 }
                 else {
                     return ((ResultatRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Resultat_Tournoi"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EquipeRow[] GetEquipeRows() {
+                if ((this.Table.ChildRelations["Tournoi_Equipe"] == null)) {
+                    return new EquipeRow[0];
+                }
+                else {
+                    return ((EquipeRow[])(base.GetChildRows(this.Table.ChildRelations["Tournoi_Equipe"])));
                 }
             }
         }
@@ -4555,23 +4196,23 @@ namespace projetTournoi {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_utlisateurRow[] _GetEquipe_utlisateurRows() {
-                if ((this.Table.ChildRelations["FK_Equipe-utlisateur_Utilisateur"] == null)) {
-                    return new _Equipe_utlisateurRow[0];
-                }
-                else {
-                    return ((_Equipe_utlisateurRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-utlisateur_Utilisateur"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public OrganisationRow[] GetOrganisationRows() {
                 if ((this.Table.ChildRelations["FK_Organisation_Utilisateur"] == null)) {
                     return new OrganisationRow[0];
                 }
                 else {
                     return ((OrganisationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Organisation_Utilisateur"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public _Equipe_utlisateurRow[] _GetEquipe_utlisateurRows() {
+                if ((this.Table.ChildRelations["FK_Equipe-utlisateur_Utilisateur"] == null)) {
+                    return new _Equipe_utlisateurRow[0];
+                }
+                else {
+                    return ((_Equipe_utlisateurRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Equipe-utlisateur_Utilisateur"])));
                 }
             }
         }
@@ -4596,40 +4237,6 @@ namespace projetTournoi {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public EquipeRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class _Equipe_TournoiRowChangeEvent : global::System.EventArgs {
-            
-            private _Equipe_TournoiRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiRowChangeEvent(_Equipe_TournoiRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public _Equipe_TournoiRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -5047,7 +4654,7 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [N°], Nom FROM dbo.Equipe";
+            this._commandCollection[0].CommandText = "SELECT [N°], Nom FROM Equipe";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5191,243 +4798,6 @@ namespace projetTournoi.TorDBDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Nom, int p2) {
             return this.Update(p2, Nom, p2, p2);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class Equipe_TournoiTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public Equipe_TournoiTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Equipe-Tournoi";
-            tableMapping.ColumnMappings.Add("Equipe", "Equipe");
-            tableMapping.ColumnMappings.Add("Tournoi", "Tournoi");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Equipe-Tournoi] ([Equipe], [Tournoi]) VALUES (@Equipe, @Tourno" +
-                "i)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Equipe", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Equipe", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tournoi", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tournoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::projetTournoi.Properties.Settings.Default.TorDBConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Equipe, Tournoi FROM dbo.[Equipe-Tournoi]";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(TorDBDataSet._Equipe_TournoiDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual TorDBDataSet._Equipe_TournoiDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            TorDBDataSet._Equipe_TournoiDataTable dataTable = new TorDBDataSet._Equipe_TournoiDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TorDBDataSet._Equipe_TournoiDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(TorDBDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Equipe-Tournoi");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> Equipe, global::System.Nullable<int> Tournoi) {
-            if ((Equipe.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Equipe.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((Tournoi.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Tournoi.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
         }
     }
     
@@ -8192,8 +7562,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         
         private EquipeTableAdapter _equipeTableAdapter;
         
-        private Equipe_TournoiTableAdapter _equipe_TournoiTableAdapter;
-        
         private Equipe_utlisateurTableAdapter _equipe_utlisateurTableAdapter;
         
         private jeuxTableAdapter _jeuxTableAdapter;
@@ -8234,20 +7602,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
             }
             set {
                 this._equipeTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
-        public Equipe_TournoiTableAdapter Equipe_TournoiTableAdapter {
-            get {
-                return this._equipe_TournoiTableAdapter;
-            }
-            set {
-                this._equipe_TournoiTableAdapter = value;
             }
         }
         
@@ -8372,10 +7726,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                             && (this._equipeTableAdapter.Connection != null))) {
                     return this._equipeTableAdapter.Connection;
                 }
-                if (((this._equipe_TournoiTableAdapter != null) 
-                            && (this._equipe_TournoiTableAdapter.Connection != null))) {
-                    return this._equipe_TournoiTableAdapter.Connection;
-                }
                 if (((this._equipe_utlisateurTableAdapter != null) 
                             && (this._equipe_utlisateurTableAdapter.Connection != null))) {
                     return this._equipe_utlisateurTableAdapter.Connection;
@@ -8418,9 +7768,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
             get {
                 int count = 0;
                 if ((this._equipeTableAdapter != null)) {
-                    count = (count + 1);
-                }
-                if ((this._equipe_TournoiTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._equipe_utlisateurTableAdapter != null)) {
@@ -8491,15 +7838,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._equipeTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Equipe.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._equipeTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._tournoiTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Tournoi.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -8509,21 +7847,12 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._equipe_TournoiTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet._Equipe_Tournoi.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._equipeTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Equipe.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._equipe_TournoiTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._equipe_utlisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._equipe_utlisateurTableAdapter.Update(updatedRows));
+                    result = (result + this._equipeTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -8533,6 +7862,15 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._resultatTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._equipe_utlisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._equipe_utlisateurTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -8578,14 +7916,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._equipeTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Equipe.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._equipeTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._tournoiTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Tournoi.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -8594,19 +7924,11 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._equipe_TournoiTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet._Equipe_Tournoi.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._equipeTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Equipe.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._equipe_TournoiTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._equipe_utlisateurTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._equipe_utlisateurTableAdapter.Update(addedRows));
+                    result = (result + this._equipeTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -8615,6 +7937,14 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._resultatTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._equipe_utlisateurTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._equipe_utlisateurTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -8628,14 +7958,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateDeletedRows(TorDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
-            if ((this._resultatTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Resultat.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._resultatTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._equipe_utlisateurTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet._Equipe_utlisateur.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -8644,19 +7966,11 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._equipe_TournoiTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet._Equipe_Tournoi.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._resultatTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Resultat.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._equipe_TournoiTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._tournoiTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Tournoi.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._tournoiTableAdapter.Update(deletedRows));
+                    result = (result + this._resultatTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -8665,6 +7979,14 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._equipeTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._tournoiTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Tournoi.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._tournoiTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -8744,11 +8066,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                 throw new global::System.ArgumentException("Tous les TableAdapters managés par un TableAdapterManager doivent utiliser la mêm" +
                         "e chaîne de connexion.");
             }
-            if (((this._equipe_TournoiTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._equipe_TournoiTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("Tous les TableAdapters managés par un TableAdapterManager doivent utiliser la mêm" +
-                        "e chaîne de connexion.");
-            }
             if (((this._equipe_utlisateurTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._equipe_utlisateurTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("Tous les TableAdapters managés par un TableAdapterManager doivent utiliser la mêm" +
@@ -8825,15 +8142,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                     if (this._equipeTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._equipeTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._equipeTableAdapter.Adapter);
-                    }
-                }
-                if ((this._equipe_TournoiTableAdapter != null)) {
-                    revertConnections.Add(this._equipe_TournoiTableAdapter, this._equipe_TournoiTableAdapter.Connection);
-                    this._equipe_TournoiTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._equipe_TournoiTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._equipe_TournoiTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._equipe_TournoiTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._equipe_TournoiTableAdapter.Adapter);
                     }
                 }
                 if ((this._equipe_utlisateurTableAdapter != null)) {
@@ -8960,10 +8268,6 @@ SELECT [N°], Login, MDP, email, [nbr connexion reussies], [nbr connexion ratees
                 if ((this._equipeTableAdapter != null)) {
                     this._equipeTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipeTableAdapter]));
                     this._equipeTableAdapter.Transaction = null;
-                }
-                if ((this._equipe_TournoiTableAdapter != null)) {
-                    this._equipe_TournoiTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipe_TournoiTableAdapter]));
-                    this._equipe_TournoiTableAdapter.Transaction = null;
                 }
                 if ((this._equipe_utlisateurTableAdapter != null)) {
                     this._equipe_utlisateurTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._equipe_utlisateurTableAdapter]));
