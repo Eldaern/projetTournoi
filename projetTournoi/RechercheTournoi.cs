@@ -26,6 +26,11 @@ namespace projetTournoi
             return ConDD.rechercheDunTournoi(tournoi);
         }
 
+        public DataSet DetailTournoiDS(int n)
+        {
+            return ConDD.DetailDunTournoi(n);
+        }
+
         ~RechercheTournoi()
         {
 
