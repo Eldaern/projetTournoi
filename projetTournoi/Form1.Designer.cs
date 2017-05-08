@@ -789,28 +789,34 @@
             this.Lieu});
             this.LT_DataGrid.Location = new System.Drawing.Point(3, 1);
             this.LT_DataGrid.Name = "LT_DataGrid";
+            this.LT_DataGrid.ReadOnly = true;
             this.LT_DataGrid.Size = new System.Drawing.Size(445, 287);
             this.LT_DataGrid.TabIndex = 0;
+            this.LT_DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LT_DataGrid_CellContentClick);
             // 
             // NomJeu
             // 
             this.NomJeu.HeaderText = "Jeu";
             this.NomJeu.Name = "NomJeu";
+            this.NomJeu.ReadOnly = true;
             // 
             // NomTournoi
             // 
             this.NomTournoi.HeaderText = "Nom";
             this.NomTournoi.Name = "NomTournoi";
+            this.NomTournoi.ReadOnly = true;
             // 
             // Date
             // 
             this.Date.HeaderText = "Date";
             this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // Lieu
             // 
             this.Lieu.HeaderText = "Lieu";
             this.Lieu.Name = "Lieu";
+            this.Lieu.ReadOnly = true;
             // 
             // Detail_Tournoi_Panel
             // 
@@ -877,14 +883,14 @@
             this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
+            this.Controls.Add(this.List_Tournoi_panel);
+            this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
-            this.Controls.Add(this.List_Tournoi_panel);
-            this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";

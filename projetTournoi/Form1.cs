@@ -247,7 +247,7 @@ namespace projetTournoi
         private void ChercheTour_DTPicker_ValueChanged(object sender, EventArgs e)
         {
             ChercheTour_DTPicker.Format = DateTimePickerFormat.Custom;
-            ChercheTour_DTPicker.CustomFormat = "yyyy-MM-dd HH:mm:ss";
+            ChercheTour_DTPicker.CustomFormat = "yyyy-MM-dd";
         }
 
         private void ChercheTour_Label_Mode_Click(object sender, EventArgs e)
@@ -458,6 +458,10 @@ namespace projetTournoi
             {
                 tournoi.ville = ChercheTour_TextBox_Ville.Text.ToString();
             }
+            if (ChercheTour_DTPicker.CustomFormat != " ")
+            {
+                tournoi.date = ChercheTour_DTPicker.Value.Date.ToString("yyyy-MM-dd");
+            }
             List_Tournoi_panel.BringToFront();
             PreviousPanel = CurentPanel;
             CurentPanel = 6;
@@ -493,6 +497,11 @@ namespace projetTournoi
         private void BT_Rafraîchir_Click(object sender, EventArgs e)
         {
             dataClass.updTor();
+        }
+
+        private void LT_DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            MessageBox.Show("wololo");
         }
     }
 }

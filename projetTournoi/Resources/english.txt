@@ -37,5 +37,5 @@
 	"Help_rafraîchir" : "Clear all textfields",
 	"Help_LancerRecherche" : "Start the research",
 
-	"Help_BT_refresh" : "Refresh the database" 
+	"Help_BT_refresh" : "Refresh\nthe database" 
 }
