@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.DirectoryServices;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
@@ -564,7 +565,29 @@ namespace projetTournoi
 
         private void LP_BT_Valider_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string nomCompte = "", motDePasse = "";
+                nomCompte = LP_TextBox_Username.Text;
+                motDePasse = LP_TextBox_Password.Text;
+                DirectoryEntry Ldap = new DirectoryEntry("LDAP://192.168.140.133", nomCompte, motDePasse);
+                DirectorySearcher searcher = new DirectorySearcher(Ldap);
+                searcher.Filter = "(SAMAccountName=" + nomCompte + ")";
+                foreach (SearchResult result in searcher.FindAll())
 
+                {
+                    DirectoryEntry DirEntry = result.GetDirectoryEntry();
+                    MessageBox.Show("Bonjour " + DirEntry.Properties["SAMAccountName"].Value +", vous êtes bien connecté");
+                    MainMenu_Panel.BringToFront();
+                    PreviousPanel = 1;
+                    CurentPanel = 1;
+                    BackButton.Visible = false;
+                }
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
     }
 }
