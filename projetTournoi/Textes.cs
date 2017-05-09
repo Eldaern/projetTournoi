@@ -31,5 +31,7 @@ namespace projetTournoi
         public string inscrireJ, inscrireE, Help_inscrireJ, Help_inscrireE;
 
         public string username, password, valider;
+
+        public string nomdeFamille, prénom;
     }
 }

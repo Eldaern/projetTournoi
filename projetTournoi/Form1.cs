@@ -408,6 +408,12 @@ namespace projetTournoi
             LP_Label_Username.Text = textes.username;
             LP_Label_Password.Text = textes.password;
             LP_BT_Valider.Text = textes.valider;
+
+            IP_Label_NomdeCompte.Text = textes.username;
+            IP_Label_Nom.Text = textes.nomdeFamille;
+            IP_Label_Prénom.Text = textes.prénom;
+            IP_Label_motdepasse.Text = textes.password;
+            IP_BT_valider.Text = textes.valider;
         }
 
         private void BackButton_Click(object sender, EventArgs e)

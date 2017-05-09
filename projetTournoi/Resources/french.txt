@@ -49,5 +49,8 @@
 
 	"username" : "Nom d'utilisateur :",
 	"password" : "Mot de passe :",
-	"valider" : "Valider"
+	"valider" : "Valider",
+
+	"nomdeFamille" : "Nom :",
+	"prénom" : "Prénom :"
 }
