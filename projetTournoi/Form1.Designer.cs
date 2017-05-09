@@ -114,7 +114,6 @@
             this.Detail_Tour_listBox_Equipes = new System.Windows.Forms.ListBox();
             this.BT_Rafraîchir = new System.Windows.Forms.Button();
             this.Help_Tooltip_Refresh = new System.Windows.Forms.ToolTip(this.components);
-            this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
             this.Connecté_Panel = new System.Windows.Forms.Panel();
             this.ConnP_BT_Déco = new System.Windows.Forms.Button();
             this.Logging_Panel = new System.Windows.Forms.Panel();
@@ -123,6 +122,17 @@
             this.LP_Label_Username = new System.Windows.Forms.Label();
             this.LP_TextBox_Password = new System.Windows.Forms.TextBox();
             this.LP_TextBox_Username = new System.Windows.Forms.TextBox();
+            this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
+            this.Inscription_Panel = new System.Windows.Forms.Panel();
+            this.IP_TextBox_NomdeCompte = new System.Windows.Forms.TextBox();
+            this.IP_Label_NomdeCompte = new System.Windows.Forms.Label();
+            this.IP_Label_Nom = new System.Windows.Forms.Label();
+            this.IP_TextBox_Nom = new System.Windows.Forms.TextBox();
+            this.IP_Label_Prénom = new System.Windows.Forms.Label();
+            this.IP_TextBox_Prénom = new System.Windows.Forms.TextBox();
+            this.IP_Label_motdepasse = new System.Windows.Forms.Label();
+            this.IP_TextBox_motdepasse = new System.Windows.Forms.TextBox();
+            this.IP_BT_valider = new System.Windows.Forms.Button();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -134,9 +144,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.LT_DataGrid)).BeginInit();
             this.Detail_Tournoi_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
             this.Connecté_Panel.SuspendLayout();
             this.Logging_Panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
+            this.Inscription_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -231,6 +242,7 @@
             this.CP_BT_Inscription.TabIndex = 1;
             this.CP_BT_Inscription.Text = "inscription";
             this.CP_BT_Inscription.UseVisualStyleBackColor = true;
+            this.CP_BT_Inscription.Click += new System.EventHandler(this.CP_BT_Inscription_Click);
             // 
             // CP_BT_Connexion
             // 
@@ -941,11 +953,6 @@
             this.BT_Rafraîchir.UseVisualStyleBackColor = true;
             this.BT_Rafraîchir.Click += new System.EventHandler(this.BT_Rafraîchir_Click);
             // 
-            // torDBDataSet1
-            // 
-            this.torDBDataSet1.DataSetName = "TorDBDataSet";
-            this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // Connecté_Panel
             // 
             this.Connecté_Panel.Controls.Add(this.ConnP_BT_Déco);
@@ -1007,6 +1014,7 @@
             // 
             this.LP_TextBox_Password.Location = new System.Drawing.Point(315, 125);
             this.LP_TextBox_Password.Name = "LP_TextBox_Password";
+            this.LP_TextBox_Password.PasswordChar = '*';
             this.LP_TextBox_Password.Size = new System.Drawing.Size(188, 20);
             this.LP_TextBox_Password.TabIndex = 1;
             // 
@@ -1017,11 +1025,107 @@
             this.LP_TextBox_Username.Size = new System.Drawing.Size(188, 20);
             this.LP_TextBox_Username.TabIndex = 0;
             // 
+            // torDBDataSet1
+            // 
+            this.torDBDataSet1.DataSetName = "TorDBDataSet";
+            this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // Inscription_Panel
+            // 
+            this.Inscription_Panel.Controls.Add(this.IP_BT_valider);
+            this.Inscription_Panel.Controls.Add(this.IP_TextBox_motdepasse);
+            this.Inscription_Panel.Controls.Add(this.IP_Label_motdepasse);
+            this.Inscription_Panel.Controls.Add(this.IP_TextBox_Prénom);
+            this.Inscription_Panel.Controls.Add(this.IP_Label_Prénom);
+            this.Inscription_Panel.Controls.Add(this.IP_TextBox_Nom);
+            this.Inscription_Panel.Controls.Add(this.IP_Label_Nom);
+            this.Inscription_Panel.Controls.Add(this.IP_Label_NomdeCompte);
+            this.Inscription_Panel.Controls.Add(this.IP_TextBox_NomdeCompte);
+            this.Inscription_Panel.Location = new System.Drawing.Point(12, 63);
+            this.Inscription_Panel.Name = "Inscription_Panel";
+            this.Inscription_Panel.Size = new System.Drawing.Size(767, 302);
+            this.Inscription_Panel.TabIndex = 13;
+            // 
+            // IP_TextBox_NomdeCompte
+            // 
+            this.IP_TextBox_NomdeCompte.Location = new System.Drawing.Point(412, 64);
+            this.IP_TextBox_NomdeCompte.Name = "IP_TextBox_NomdeCompte";
+            this.IP_TextBox_NomdeCompte.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_NomdeCompte.TabIndex = 0;
+            // 
+            // IP_Label_NomdeCompte
+            // 
+            this.IP_Label_NomdeCompte.AutoSize = true;
+            this.IP_Label_NomdeCompte.Location = new System.Drawing.Point(296, 67);
+            this.IP_Label_NomdeCompte.Name = "IP_Label_NomdeCompte";
+            this.IP_Label_NomdeCompte.Size = new System.Drawing.Size(80, 13);
+            this.IP_Label_NomdeCompte.TabIndex = 1;
+            this.IP_Label_NomdeCompte.Text = "nom de compte";
+            // 
+            // IP_Label_Nom
+            // 
+            this.IP_Label_Nom.AutoSize = true;
+            this.IP_Label_Nom.Location = new System.Drawing.Point(298, 116);
+            this.IP_Label_Nom.Name = "IP_Label_Nom";
+            this.IP_Label_Nom.Size = new System.Drawing.Size(27, 13);
+            this.IP_Label_Nom.TabIndex = 2;
+            this.IP_Label_Nom.Text = "nom";
+            this.IP_Label_Nom.Click += new System.EventHandler(this.IP_Label_Nom_Click);
+            // 
+            // IP_TextBox_Nom
+            // 
+            this.IP_TextBox_Nom.Location = new System.Drawing.Point(412, 113);
+            this.IP_TextBox_Nom.Name = "IP_TextBox_Nom";
+            this.IP_TextBox_Nom.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_Nom.TabIndex = 3;
+            // 
+            // IP_Label_Prénom
+            // 
+            this.IP_Label_Prénom.AutoSize = true;
+            this.IP_Label_Prénom.Location = new System.Drawing.Point(298, 160);
+            this.IP_Label_Prénom.Name = "IP_Label_Prénom";
+            this.IP_Label_Prénom.Size = new System.Drawing.Size(43, 13);
+            this.IP_Label_Prénom.TabIndex = 4;
+            this.IP_Label_Prénom.Text = "Prénom";
+            // 
+            // IP_TextBox_Prénom
+            // 
+            this.IP_TextBox_Prénom.Location = new System.Drawing.Point(412, 157);
+            this.IP_TextBox_Prénom.Name = "IP_TextBox_Prénom";
+            this.IP_TextBox_Prénom.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_Prénom.TabIndex = 5;
+            // 
+            // IP_Label_motdepasse
+            // 
+            this.IP_Label_motdepasse.AutoSize = true;
+            this.IP_Label_motdepasse.Location = new System.Drawing.Point(298, 208);
+            this.IP_Label_motdepasse.Name = "IP_Label_motdepasse";
+            this.IP_Label_motdepasse.Size = new System.Drawing.Size(71, 13);
+            this.IP_Label_motdepasse.TabIndex = 6;
+            this.IP_Label_motdepasse.Text = "Mot de passe";
+            // 
+            // IP_TextBox_motdepasse
+            // 
+            this.IP_TextBox_motdepasse.Location = new System.Drawing.Point(412, 205);
+            this.IP_TextBox_motdepasse.Name = "IP_TextBox_motdepasse";
+            this.IP_TextBox_motdepasse.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_motdepasse.TabIndex = 7;
+            // 
+            // IP_BT_valider
+            // 
+            this.IP_BT_valider.Location = new System.Drawing.Point(452, 253);
+            this.IP_BT_valider.Name = "IP_BT_valider";
+            this.IP_BT_valider.Size = new System.Drawing.Size(75, 23);
+            this.IP_BT_valider.TabIndex = 8;
+            this.IP_BT_valider.Text = "valider";
+            this.IP_BT_valider.UseVisualStyleBackColor = true;
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
+            this.Controls.Add(this.Inscription_Panel);
             this.Controls.Add(this.Logging_Panel);
             this.Controls.Add(this.BT_Rafraîchir);
             this.Controls.Add(this.BackButton);
@@ -1058,10 +1162,12 @@
             this.Detail_Tournoi_Panel.ResumeLayout(false);
             this.Detail_Tournoi_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
             this.Connecté_Panel.ResumeLayout(false);
             this.Logging_Panel.ResumeLayout(false);
             this.Logging_Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
+            this.Inscription_Panel.ResumeLayout(false);
+            this.Inscription_Panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1162,6 +1268,16 @@
         private System.Windows.Forms.Label LP_Label_Username;
         private System.Windows.Forms.TextBox LP_TextBox_Password;
         private System.Windows.Forms.TextBox LP_TextBox_Username;
+        private System.Windows.Forms.Panel Inscription_Panel;
+        private System.Windows.Forms.Label IP_Label_Nom;
+        private System.Windows.Forms.Label IP_Label_NomdeCompte;
+        private System.Windows.Forms.TextBox IP_TextBox_NomdeCompte;
+        private System.Windows.Forms.TextBox IP_TextBox_Nom;
+        private System.Windows.Forms.Button IP_BT_valider;
+        private System.Windows.Forms.TextBox IP_TextBox_motdepasse;
+        private System.Windows.Forms.Label IP_Label_motdepasse;
+        private System.Windows.Forms.TextBox IP_TextBox_Prénom;
+        private System.Windows.Forms.Label IP_Label_Prénom;
     }
 }
 

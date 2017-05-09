@@ -589,5 +589,18 @@ namespace projetTournoi
                 MessageBox.Show(Ex.Message);
             }
         }
+
+        private void IP_Label_Nom_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CP_BT_Inscription_Click(object sender, EventArgs e)
+        {
+            Inscription_Panel.BringToFront();
+            PreviousPanel = CurentPanel;
+            CurentPanel = 10;
+            BackButton.Visible = true;
+        }
     }
 }
