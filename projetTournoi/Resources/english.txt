@@ -45,5 +45,9 @@
 	"inscrireJ" : "join the team",
 	"inscrireE" : "create a team",
 	"Help_inscrireJ" : "Join the selected team (if there is enough places)",
-	"Help_inscrireE" : "Create a new team in the tournament"
+	"Help_inscrireE" : "Create a new team in the tournament",
+
+	"username" : "Username :",
+	"password" : "Password :",
+	"valider" : "Validate"
 }

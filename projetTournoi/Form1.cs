@@ -72,7 +72,10 @@ namespace projetTournoi
 
         private void CP_BT_Connexion_Click(object sender, EventArgs e)
         {
-
+            Logging_Panel.BringToFront();
+            PreviousPanel = CurentPanel;
+            CurentPanel = 9;
+            BackButton.Visible = true;
         }
        
 
@@ -400,6 +403,10 @@ namespace projetTournoi
 
             Detail_Tour_BT_InscrireJoueur.Text = textes.inscrireJ;
             Detail_Tour_BT_InscrireTeam.Text = textes.inscrireE;
+
+            LP_Label_Username.Text = textes.username;
+            LP_Label_Password.Text = textes.password;
+            LP_BT_Valider.Text = textes.valider;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -450,6 +457,12 @@ namespace projetTournoi
                     Detail_Tournoi_Panel.BringToFront();
                     PreviousPanel = 6;
                     CurentPanel = 8;
+                    BackButton.Visible = true;
+                    break;
+                case 9:
+                    Logging_Panel.BringToFront();
+                    PreviousPanel = CurentPanel;
+                    CurentPanel = 9;
                     BackButton.Visible = true;
                     break;
             }
@@ -547,6 +560,11 @@ namespace projetTournoi
             String nom;
             nom = Interaction.InputBox("Nom de la team?", "coucou", "", 200, 200);
             tournoiOBj.CreateEquipeTounroi(NumeroTournoiSelect, nom);
+        }
+
+        private void LP_BT_Valider_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

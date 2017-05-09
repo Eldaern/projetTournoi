@@ -115,6 +115,14 @@
             this.BT_Rafraîchir = new System.Windows.Forms.Button();
             this.Help_Tooltip_Refresh = new System.Windows.Forms.ToolTip(this.components);
             this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
+            this.Connecté_Panel = new System.Windows.Forms.Panel();
+            this.ConnP_BT_Déco = new System.Windows.Forms.Button();
+            this.Logging_Panel = new System.Windows.Forms.Panel();
+            this.LP_BT_Valider = new System.Windows.Forms.Button();
+            this.LP_Label_Password = new System.Windows.Forms.Label();
+            this.LP_Label_Username = new System.Windows.Forms.Label();
+            this.LP_TextBox_Password = new System.Windows.Forms.TextBox();
+            this.LP_TextBox_Username = new System.Windows.Forms.TextBox();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -127,6 +135,8 @@
             this.Detail_Tournoi_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
+            this.Connecté_Panel.SuspendLayout();
+            this.Logging_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -936,15 +946,86 @@
             this.torDBDataSet1.DataSetName = "TorDBDataSet";
             this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // Connecté_Panel
+            // 
+            this.Connecté_Panel.Controls.Add(this.ConnP_BT_Déco);
+            this.Connecté_Panel.Location = new System.Drawing.Point(12, 13);
+            this.Connecté_Panel.Name = "Connecté_Panel";
+            this.Connecté_Panel.Size = new System.Drawing.Size(316, 35);
+            this.Connecté_Panel.TabIndex = 11;
+            // 
+            // ConnP_BT_Déco
+            // 
+            this.ConnP_BT_Déco.Location = new System.Drawing.Point(14, 4);
+            this.ConnP_BT_Déco.Name = "ConnP_BT_Déco";
+            this.ConnP_BT_Déco.Size = new System.Drawing.Size(94, 23);
+            this.ConnP_BT_Déco.TabIndex = 1;
+            this.ConnP_BT_Déco.Text = "Se déconnecter";
+            this.ConnP_BT_Déco.UseVisualStyleBackColor = true;
+            // 
+            // Logging_Panel
+            // 
+            this.Logging_Panel.Controls.Add(this.LP_BT_Valider);
+            this.Logging_Panel.Controls.Add(this.LP_Label_Password);
+            this.Logging_Panel.Controls.Add(this.LP_Label_Username);
+            this.Logging_Panel.Controls.Add(this.LP_TextBox_Password);
+            this.Logging_Panel.Controls.Add(this.LP_TextBox_Username);
+            this.Logging_Panel.Location = new System.Drawing.Point(12, 62);
+            this.Logging_Panel.Name = "Logging_Panel";
+            this.Logging_Panel.Size = new System.Drawing.Size(767, 303);
+            this.Logging_Panel.TabIndex = 12;
+            // 
+            // LP_BT_Valider
+            // 
+            this.LP_BT_Valider.Location = new System.Drawing.Point(315, 204);
+            this.LP_BT_Valider.Name = "LP_BT_Valider";
+            this.LP_BT_Valider.Size = new System.Drawing.Size(75, 23);
+            this.LP_BT_Valider.TabIndex = 4;
+            this.LP_BT_Valider.Text = "valider";
+            this.LP_BT_Valider.UseVisualStyleBackColor = true;
+            this.LP_BT_Valider.Click += new System.EventHandler(this.LP_BT_Valider_Click);
+            // 
+            // LP_Label_Password
+            // 
+            this.LP_Label_Password.AutoSize = true;
+            this.LP_Label_Password.Location = new System.Drawing.Point(189, 127);
+            this.LP_Label_Password.Name = "LP_Label_Password";
+            this.LP_Label_Password.Size = new System.Drawing.Size(70, 13);
+            this.LP_Label_Password.TabIndex = 3;
+            this.LP_Label_Password.Text = "mot de passe";
+            // 
+            // LP_Label_Username
+            // 
+            this.LP_Label_Username.AutoSize = true;
+            this.LP_Label_Username.Location = new System.Drawing.Point(189, 82);
+            this.LP_Label_Username.Name = "LP_Label_Username";
+            this.LP_Label_Username.Size = new System.Drawing.Size(82, 13);
+            this.LP_Label_Username.TabIndex = 2;
+            this.LP_Label_Username.Text = "nom d\'utilisateur";
+            // 
+            // LP_TextBox_Password
+            // 
+            this.LP_TextBox_Password.Location = new System.Drawing.Point(315, 125);
+            this.LP_TextBox_Password.Name = "LP_TextBox_Password";
+            this.LP_TextBox_Password.Size = new System.Drawing.Size(188, 20);
+            this.LP_TextBox_Password.TabIndex = 1;
+            // 
+            // LP_TextBox_Username
+            // 
+            this.LP_TextBox_Username.Location = new System.Drawing.Point(315, 79);
+            this.LP_TextBox_Username.Name = "LP_TextBox_Username";
+            this.LP_TextBox_Username.Size = new System.Drawing.Size(188, 20);
+            this.LP_TextBox_Username.TabIndex = 0;
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
+            this.Controls.Add(this.Logging_Panel);
             this.Controls.Add(this.BT_Rafraîchir);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.helpButton);
-            this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
             this.Controls.Add(this.Detail_Tournoi_Panel);
@@ -955,6 +1036,8 @@
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
             this.Controls.Add(this.List_Tournoi_panel);
+            this.Controls.Add(this.Connexion_Panel);
+            this.Controls.Add(this.Connecté_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -976,6 +1059,9 @@
             this.Detail_Tournoi_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Detail_Tour_PictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
+            this.Connecté_Panel.ResumeLayout(false);
+            this.Logging_Panel.ResumeLayout(false);
+            this.Logging_Panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1068,6 +1154,14 @@
         private System.Windows.Forms.PictureBox Detail_Tour_PictureBox;
         private System.Windows.Forms.Button Detail_Tour_BT_InscrireTeam;
         private TorDBDataSet torDBDataSet1;
+        private System.Windows.Forms.Panel Connecté_Panel;
+        private System.Windows.Forms.Button ConnP_BT_Déco;
+        private System.Windows.Forms.Panel Logging_Panel;
+        private System.Windows.Forms.Button LP_BT_Valider;
+        private System.Windows.Forms.Label LP_Label_Password;
+        private System.Windows.Forms.Label LP_Label_Username;
+        private System.Windows.Forms.TextBox LP_TextBox_Password;
+        private System.Windows.Forms.TextBox LP_TextBox_Username;
     }
 }
 

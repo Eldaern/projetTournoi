@@ -29,5 +29,7 @@ namespace projetTournoi
         public string choisir, Help_BT_choisir;
 
         public string inscrireJ, inscrireE, Help_inscrireJ, Help_inscrireE;
+
+        public string username, password, valider;
     }
 }

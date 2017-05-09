@@ -45,5 +45,9 @@
 	"inscrireJ" : "rejoindre l'équipe",
 	"inscrireE" : "créer une équipe",
 	"Help_inscrireJ" : "S'inscrire en temps que joueur\nde l'équipe sélectionnée\n(sous réserve du nombre de places disponibles)",
-	"Help_inscrireE" : "Créer une équipe qui disputera le tournoi"
+	"Help_inscrireE" : "Créer une équipe qui disputera le tournoi",
+
+	"username" : "Nom d'utilisateur :",
+	"password" : "Mot de passe :",
+	"valider" : "Valider"
 }
