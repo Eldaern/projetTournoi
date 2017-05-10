@@ -123,15 +123,15 @@
             this.LP_TextBox_Password = new System.Windows.Forms.TextBox();
             this.LP_TextBox_Username = new System.Windows.Forms.TextBox();
             this.Inscription_Panel = new System.Windows.Forms.Panel();
-            this.IP_TextBox_NomdeCompte = new System.Windows.Forms.TextBox();
-            this.IP_Label_NomdeCompte = new System.Windows.Forms.Label();
-            this.IP_Label_Nom = new System.Windows.Forms.Label();
-            this.IP_TextBox_Nom = new System.Windows.Forms.TextBox();
-            this.IP_Label_Prénom = new System.Windows.Forms.Label();
-            this.IP_TextBox_Prénom = new System.Windows.Forms.TextBox();
-            this.IP_Label_motdepasse = new System.Windows.Forms.Label();
-            this.IP_TextBox_motdepasse = new System.Windows.Forms.TextBox();
             this.IP_BT_valider = new System.Windows.Forms.Button();
+            this.IP_TextBox_motdepasse = new System.Windows.Forms.TextBox();
+            this.IP_Label_motdepasse = new System.Windows.Forms.Label();
+            this.IP_TextBox_Prénom = new System.Windows.Forms.TextBox();
+            this.IP_Label_Prénom = new System.Windows.Forms.Label();
+            this.IP_TextBox_Nom = new System.Windows.Forms.TextBox();
+            this.IP_Label_Nom = new System.Windows.Forms.Label();
+            this.IP_Label_NomdeCompte = new System.Windows.Forms.Label();
+            this.IP_TextBox_NomdeCompte = new System.Windows.Forms.TextBox();
             this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
@@ -1041,21 +1041,55 @@
             this.Inscription_Panel.Size = new System.Drawing.Size(767, 302);
             this.Inscription_Panel.TabIndex = 13;
             // 
-            // IP_TextBox_NomdeCompte
+            // IP_BT_valider
             // 
-            this.IP_TextBox_NomdeCompte.Location = new System.Drawing.Point(363, 59);
-            this.IP_TextBox_NomdeCompte.Name = "IP_TextBox_NomdeCompte";
-            this.IP_TextBox_NomdeCompte.Size = new System.Drawing.Size(143, 20);
-            this.IP_TextBox_NomdeCompte.TabIndex = 0;
+            this.IP_BT_valider.Location = new System.Drawing.Point(393, 244);
+            this.IP_BT_valider.Name = "IP_BT_valider";
+            this.IP_BT_valider.Size = new System.Drawing.Size(75, 23);
+            this.IP_BT_valider.TabIndex = 8;
+            this.IP_BT_valider.Text = "valider";
+            this.IP_BT_valider.UseVisualStyleBackColor = true;
+            this.IP_BT_valider.Click += new System.EventHandler(this.IP_BT_valider_Click);
             // 
-            // IP_Label_NomdeCompte
+            // IP_TextBox_motdepasse
             // 
-            this.IP_Label_NomdeCompte.AutoSize = true;
-            this.IP_Label_NomdeCompte.Location = new System.Drawing.Point(261, 62);
-            this.IP_Label_NomdeCompte.Name = "IP_Label_NomdeCompte";
-            this.IP_Label_NomdeCompte.Size = new System.Drawing.Size(80, 13);
-            this.IP_Label_NomdeCompte.TabIndex = 1;
-            this.IP_Label_NomdeCompte.Text = "nom de compte";
+            this.IP_TextBox_motdepasse.Location = new System.Drawing.Point(363, 193);
+            this.IP_TextBox_motdepasse.Name = "IP_TextBox_motdepasse";
+            this.IP_TextBox_motdepasse.PasswordChar = '*';
+            this.IP_TextBox_motdepasse.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_motdepasse.TabIndex = 7;
+            // 
+            // IP_Label_motdepasse
+            // 
+            this.IP_Label_motdepasse.AutoSize = true;
+            this.IP_Label_motdepasse.Location = new System.Drawing.Point(261, 196);
+            this.IP_Label_motdepasse.Name = "IP_Label_motdepasse";
+            this.IP_Label_motdepasse.Size = new System.Drawing.Size(71, 13);
+            this.IP_Label_motdepasse.TabIndex = 6;
+            this.IP_Label_motdepasse.Text = "Mot de passe";
+            // 
+            // IP_TextBox_Prénom
+            // 
+            this.IP_TextBox_Prénom.Location = new System.Drawing.Point(363, 145);
+            this.IP_TextBox_Prénom.Name = "IP_TextBox_Prénom";
+            this.IP_TextBox_Prénom.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_Prénom.TabIndex = 5;
+            // 
+            // IP_Label_Prénom
+            // 
+            this.IP_Label_Prénom.AutoSize = true;
+            this.IP_Label_Prénom.Location = new System.Drawing.Point(259, 148);
+            this.IP_Label_Prénom.Name = "IP_Label_Prénom";
+            this.IP_Label_Prénom.Size = new System.Drawing.Size(43, 13);
+            this.IP_Label_Prénom.TabIndex = 4;
+            this.IP_Label_Prénom.Text = "Prénom";
+            // 
+            // IP_TextBox_Nom
+            // 
+            this.IP_TextBox_Nom.Location = new System.Drawing.Point(363, 103);
+            this.IP_TextBox_Nom.Name = "IP_TextBox_Nom";
+            this.IP_TextBox_Nom.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_Nom.TabIndex = 3;
             // 
             // IP_Label_Nom
             // 
@@ -1067,54 +1101,21 @@
             this.IP_Label_Nom.Text = "nom";
             this.IP_Label_Nom.Click += new System.EventHandler(this.IP_Label_Nom_Click);
             // 
-            // IP_TextBox_Nom
+            // IP_Label_NomdeCompte
             // 
-            this.IP_TextBox_Nom.Location = new System.Drawing.Point(363, 103);
-            this.IP_TextBox_Nom.Name = "IP_TextBox_Nom";
-            this.IP_TextBox_Nom.Size = new System.Drawing.Size(143, 20);
-            this.IP_TextBox_Nom.TabIndex = 3;
+            this.IP_Label_NomdeCompte.AutoSize = true;
+            this.IP_Label_NomdeCompte.Location = new System.Drawing.Point(261, 62);
+            this.IP_Label_NomdeCompte.Name = "IP_Label_NomdeCompte";
+            this.IP_Label_NomdeCompte.Size = new System.Drawing.Size(80, 13);
+            this.IP_Label_NomdeCompte.TabIndex = 1;
+            this.IP_Label_NomdeCompte.Text = "nom de compte";
             // 
-            // IP_Label_Prénom
+            // IP_TextBox_NomdeCompte
             // 
-            this.IP_Label_Prénom.AutoSize = true;
-            this.IP_Label_Prénom.Location = new System.Drawing.Point(259, 148);
-            this.IP_Label_Prénom.Name = "IP_Label_Prénom";
-            this.IP_Label_Prénom.Size = new System.Drawing.Size(43, 13);
-            this.IP_Label_Prénom.TabIndex = 4;
-            this.IP_Label_Prénom.Text = "Prénom";
-            // 
-            // IP_TextBox_Prénom
-            // 
-            this.IP_TextBox_Prénom.Location = new System.Drawing.Point(363, 145);
-            this.IP_TextBox_Prénom.Name = "IP_TextBox_Prénom";
-            this.IP_TextBox_Prénom.Size = new System.Drawing.Size(143, 20);
-            this.IP_TextBox_Prénom.TabIndex = 5;
-            // 
-            // IP_Label_motdepasse
-            // 
-            this.IP_Label_motdepasse.AutoSize = true;
-            this.IP_Label_motdepasse.Location = new System.Drawing.Point(261, 196);
-            this.IP_Label_motdepasse.Name = "IP_Label_motdepasse";
-            this.IP_Label_motdepasse.Size = new System.Drawing.Size(71, 13);
-            this.IP_Label_motdepasse.TabIndex = 6;
-            this.IP_Label_motdepasse.Text = "Mot de passe";
-            // 
-            // IP_TextBox_motdepasse
-            // 
-            this.IP_TextBox_motdepasse.Location = new System.Drawing.Point(363, 193);
-            this.IP_TextBox_motdepasse.Name = "IP_TextBox_motdepasse";
-            this.IP_TextBox_motdepasse.PasswordChar = '*';
-            this.IP_TextBox_motdepasse.Size = new System.Drawing.Size(143, 20);
-            this.IP_TextBox_motdepasse.TabIndex = 7;
-            // 
-            // IP_BT_valider
-            // 
-            this.IP_BT_valider.Location = new System.Drawing.Point(393, 244);
-            this.IP_BT_valider.Name = "IP_BT_valider";
-            this.IP_BT_valider.Size = new System.Drawing.Size(75, 23);
-            this.IP_BT_valider.TabIndex = 8;
-            this.IP_BT_valider.Text = "valider";
-            this.IP_BT_valider.UseVisualStyleBackColor = true;
+            this.IP_TextBox_NomdeCompte.Location = new System.Drawing.Point(363, 59);
+            this.IP_TextBox_NomdeCompte.Name = "IP_TextBox_NomdeCompte";
+            this.IP_TextBox_NomdeCompte.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_NomdeCompte.TabIndex = 0;
             // 
             // torDBDataSet1
             // 

@@ -609,10 +609,52 @@ namespace projetTournoi
 
         private void CP_BT_Inscription_Click(object sender, EventArgs e)
         {
-            Inscription_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
-            CurentPanel = 10;
-            BackButton.Visible = true;
+                Inscription_Panel.BringToFront();
+                PreviousPanel = CurentPanel;
+                CurentPanel = 10;
+                BackButton.Visible = true;
+            
+        }
+
+        private void IP_BT_valider_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                string nomComplet, nom, prenom, motDePasse;
+                nomComplet = IP_TextBox_NomdeCompte.Text;
+                nom = IP_TextBox_Nom.Text;
+                prenom = IP_TextBox_Prénom.Text;
+                motDePasse = IP_TextBox_motdepasse.Text;
+                DirectoryEntry Ldap = new DirectoryEntry("LDAP://192.168.140.133", "Administrateur", "e11T22u33+");
+                DirectoryEntry user2 = Ldap.Children.Add("cn=" + nomComplet, "user");
+
+                user2.Properties["SAMAccountName"].Add(nomComplet);
+
+                user2.Properties["sn"].Add(prenom);
+
+                user2.Properties["givenName"].Add(nom);
+
+                user2.Properties["description"].Add("Compte utilisateur");
+
+                user2.CommitChanges();
+
+                user2.Invoke("SetPassword", new object[] { motDePasse });
+
+                user2.Properties["userAccountControl"].Value = 0x0200;
+
+                user2.CommitChanges();
+
+                MessageBox.Show("Utilisateur créé");
+                MainMenu_Panel.BringToFront();
+                PreviousPanel = 1;
+                CurentPanel = 1;
+                BackButton.Visible = false;
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.Message);
+            }
         }
     }
 }
