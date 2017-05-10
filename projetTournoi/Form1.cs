@@ -591,6 +591,7 @@ namespace projetTournoi
                     DirectoryEntry DirEntry = result.GetDirectoryEntry();
                     MessageBox.Show("Bonjour " + DirEntry.Properties["SAMAccountName"].Value +", vous êtes bien connecté");
                     MainMenu_Panel.BringToFront();
+                    Connecté_Panel.BringToFront();
                     PreviousPanel = 1;
                     CurentPanel = 1;
                     BackButton.Visible = false;
@@ -647,6 +648,7 @@ namespace projetTournoi
 
                 MessageBox.Show("Utilisateur créé");
                 MainMenu_Panel.BringToFront();
+                Connecté_Panel.BringToFront();
                 PreviousPanel = 1;
                 CurentPanel = 1;
                 BackButton.Visible = false;
