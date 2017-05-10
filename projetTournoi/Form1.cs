@@ -472,6 +472,12 @@ namespace projetTournoi
                     CurentPanel = 9;
                     BackButton.Visible = true;
                     break;
+                case 10:
+                    Logging_Panel.BringToFront();
+                    PreviousPanel = CurentPanel;
+                    CurentPanel = 10;
+                    BackButton.Visible = true;
+                    break;
             }
         }
 
