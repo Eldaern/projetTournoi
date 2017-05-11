@@ -210,6 +210,11 @@ namespace projetTournoi
                 conn.Close();
             }
         }
+
+        public void CreateUser(UtilisateurConnecté user)
+        {
+
+        }
     }
 
 

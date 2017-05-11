@@ -133,6 +133,8 @@
             this.IP_Label_NomdeCompte = new System.Windows.Forms.Label();
             this.IP_TextBox_NomdeCompte = new System.Windows.Forms.TextBox();
             this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
+            this.IP_TextBox_mail = new System.Windows.Forms.TextBox();
+            this.IP_Label_mail = new System.Windows.Forms.Label();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -1028,6 +1030,8 @@
             // 
             // Inscription_Panel
             // 
+            this.Inscription_Panel.Controls.Add(this.IP_Label_mail);
+            this.Inscription_Panel.Controls.Add(this.IP_TextBox_mail);
             this.Inscription_Panel.Controls.Add(this.IP_BT_valider);
             this.Inscription_Panel.Controls.Add(this.IP_TextBox_motdepasse);
             this.Inscription_Panel.Controls.Add(this.IP_Label_motdepasse);
@@ -1054,7 +1058,7 @@
             // 
             // IP_TextBox_motdepasse
             // 
-            this.IP_TextBox_motdepasse.Location = new System.Drawing.Point(363, 193);
+            this.IP_TextBox_motdepasse.Location = new System.Drawing.Point(363, 137);
             this.IP_TextBox_motdepasse.Name = "IP_TextBox_motdepasse";
             this.IP_TextBox_motdepasse.PasswordChar = '*';
             this.IP_TextBox_motdepasse.Size = new System.Drawing.Size(143, 20);
@@ -1063,7 +1067,7 @@
             // IP_Label_motdepasse
             // 
             this.IP_Label_motdepasse.AutoSize = true;
-            this.IP_Label_motdepasse.Location = new System.Drawing.Point(261, 196);
+            this.IP_Label_motdepasse.Location = new System.Drawing.Point(259, 140);
             this.IP_Label_motdepasse.Name = "IP_Label_motdepasse";
             this.IP_Label_motdepasse.Size = new System.Drawing.Size(71, 13);
             this.IP_Label_motdepasse.TabIndex = 6;
@@ -1071,7 +1075,7 @@
             // 
             // IP_TextBox_Prénom
             // 
-            this.IP_TextBox_Prénom.Location = new System.Drawing.Point(363, 145);
+            this.IP_TextBox_Prénom.Location = new System.Drawing.Point(363, 98);
             this.IP_TextBox_Prénom.Name = "IP_TextBox_Prénom";
             this.IP_TextBox_Prénom.Size = new System.Drawing.Size(143, 20);
             this.IP_TextBox_Prénom.TabIndex = 5;
@@ -1079,7 +1083,7 @@
             // IP_Label_Prénom
             // 
             this.IP_Label_Prénom.AutoSize = true;
-            this.IP_Label_Prénom.Location = new System.Drawing.Point(259, 148);
+            this.IP_Label_Prénom.Location = new System.Drawing.Point(259, 101);
             this.IP_Label_Prénom.Name = "IP_Label_Prénom";
             this.IP_Label_Prénom.Size = new System.Drawing.Size(43, 13);
             this.IP_Label_Prénom.TabIndex = 4;
@@ -1087,7 +1091,7 @@
             // 
             // IP_TextBox_Nom
             // 
-            this.IP_TextBox_Nom.Location = new System.Drawing.Point(363, 103);
+            this.IP_TextBox_Nom.Location = new System.Drawing.Point(363, 62);
             this.IP_TextBox_Nom.Name = "IP_TextBox_Nom";
             this.IP_TextBox_Nom.Size = new System.Drawing.Size(143, 20);
             this.IP_TextBox_Nom.TabIndex = 3;
@@ -1095,7 +1099,7 @@
             // IP_Label_Nom
             // 
             this.IP_Label_Nom.AutoSize = true;
-            this.IP_Label_Nom.Location = new System.Drawing.Point(259, 106);
+            this.IP_Label_Nom.Location = new System.Drawing.Point(259, 65);
             this.IP_Label_Nom.Name = "IP_Label_Nom";
             this.IP_Label_Nom.Size = new System.Drawing.Size(27, 13);
             this.IP_Label_Nom.TabIndex = 2;
@@ -1105,7 +1109,7 @@
             // IP_Label_NomdeCompte
             // 
             this.IP_Label_NomdeCompte.AutoSize = true;
-            this.IP_Label_NomdeCompte.Location = new System.Drawing.Point(261, 62);
+            this.IP_Label_NomdeCompte.Location = new System.Drawing.Point(259, 31);
             this.IP_Label_NomdeCompte.Name = "IP_Label_NomdeCompte";
             this.IP_Label_NomdeCompte.Size = new System.Drawing.Size(80, 13);
             this.IP_Label_NomdeCompte.TabIndex = 1;
@@ -1113,7 +1117,7 @@
             // 
             // IP_TextBox_NomdeCompte
             // 
-            this.IP_TextBox_NomdeCompte.Location = new System.Drawing.Point(363, 59);
+            this.IP_TextBox_NomdeCompte.Location = new System.Drawing.Point(363, 28);
             this.IP_TextBox_NomdeCompte.Name = "IP_TextBox_NomdeCompte";
             this.IP_TextBox_NomdeCompte.Size = new System.Drawing.Size(143, 20);
             this.IP_TextBox_NomdeCompte.TabIndex = 0;
@@ -1122,6 +1126,22 @@
             // 
             this.torDBDataSet1.DataSetName = "TorDBDataSet";
             this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // IP_TextBox_mail
+            // 
+            this.IP_TextBox_mail.Location = new System.Drawing.Point(363, 177);
+            this.IP_TextBox_mail.Name = "IP_TextBox_mail";
+            this.IP_TextBox_mail.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_mail.TabIndex = 9;
+            // 
+            // IP_Label_mail
+            // 
+            this.IP_Label_mail.AutoSize = true;
+            this.IP_Label_mail.Location = new System.Drawing.Point(262, 182);
+            this.IP_Label_mail.Name = "IP_Label_mail";
+            this.IP_Label_mail.Size = new System.Drawing.Size(31, 13);
+            this.IP_Label_mail.TabIndex = 10;
+            this.IP_Label_mail.Text = "mail :";
             // 
             // Main_Forme
             // 
@@ -1133,9 +1153,6 @@
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
-            this.Controls.Add(this.MainMenu_Panel);
-            this.Controls.Add(this.List_Tournoi_panel);
-            this.Controls.Add(this.Connecté_Panel);
             this.Controls.Add(this.Inscription_Panel);
             this.Controls.Add(this.Logging_Panel);
             this.Controls.Add(this.Detail_Tournoi_Panel);
@@ -1145,6 +1162,9 @@
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.Connexion_Panel);
+            this.Controls.Add(this.MainMenu_Panel);
+            this.Controls.Add(this.List_Tournoi_panel);
+            this.Controls.Add(this.Connecté_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -1281,6 +1301,8 @@
         private System.Windows.Forms.Label IP_Label_motdepasse;
         private System.Windows.Forms.TextBox IP_TextBox_Prénom;
         private System.Windows.Forms.Label IP_Label_Prénom;
+        private System.Windows.Forms.Label IP_Label_mail;
+        private System.Windows.Forms.TextBox IP_TextBox_mail;
     }
 }
 

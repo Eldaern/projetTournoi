@@ -29,6 +29,7 @@ namespace projetTournoi
         int NumeroTournoiSelect = 0;
 
         bool isConnected = false;
+        UtilisateurConnecté user;
         public Main_Forme()
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace projetTournoi
         {
             //Debut
             MainMenu_Panel.BringToFront();
+            Connexion_Panel.BringToFront();
             //Main_Menu_Gerer_Panel.BringToFront();
             PreviousPanel = 1;
             CurentPanel = 1;
@@ -77,7 +79,7 @@ namespace projetTournoi
         private void CP_BT_Connexion_Click(object sender, EventArgs e)
         {
             Logging_Panel.BringToFront();
-            PreviousPanel = CurentPanel;
+            PreviousPanel = 1;
             CurentPanel = 9;
             BackButton.Visible = true;
         }
@@ -471,13 +473,13 @@ namespace projetTournoi
                     break;
                 case 9:
                     Logging_Panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    PreviousPanel = 1;
                     CurentPanel = 9;
                     BackButton.Visible = true;
                     break;
                 case 10:
-                    Logging_Panel.BringToFront();
-                    PreviousPanel = CurentPanel;
+                    Inscription_Panel.BringToFront();
+                    PreviousPanel = 1;
                     CurentPanel = 10;
                     BackButton.Visible = true;
                     break;
@@ -616,7 +618,7 @@ namespace projetTournoi
         private void CP_BT_Inscription_Click(object sender, EventArgs e)
         {
                 Inscription_Panel.BringToFront();
-                PreviousPanel = CurentPanel;
+                PreviousPanel = 1;
                 CurentPanel = 10;
                 BackButton.Visible = true;
             
@@ -627,11 +629,12 @@ namespace projetTournoi
             try
             {
 
-                string nomComplet, nom, prenom, motDePasse;
+                string nomComplet, nom, prenom, motDePasse, mail;
                 nomComplet = IP_TextBox_NomdeCompte.Text;
                 nom = IP_TextBox_Nom.Text;
                 prenom = IP_TextBox_Prénom.Text;
                 motDePasse = IP_TextBox_motdepasse.Text;
+                mail = IP_TextBox_mail.Text;
                 DirectoryEntry Ldap = new DirectoryEntry("LDAP://192.168.140.133", "Administrateur", "e11T22u33+");
                 DirectoryEntry user2 = Ldap.Children.Add("cn=" + nomComplet, "user");
 
@@ -650,6 +653,9 @@ namespace projetTournoi
                 user2.Properties["userAccountControl"].Value = 0x0200;
 
                 user2.CommitChanges();
+
+                user = new UtilisateurConnecté(nomComplet, mail);
+                conn.CreateUser(user);
 
                 MessageBox.Show("Utilisateur créé");
                 MainMenu_Panel.BringToFront();

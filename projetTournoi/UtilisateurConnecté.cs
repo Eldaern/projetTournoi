@@ -8,13 +8,12 @@ namespace projetTournoi
 {
     class UtilisateurConnecté
     {
-        private string username;
-        private int numéro;
+        private string username,mail;
 
-        public UtilisateurConnecté(string username, int numéro)
+        public UtilisateurConnecté(string username, string mail)
         {
             this.username = username;
-            this.numéro = numéro;
+            this.mail = mail;
         }
     }
 }
