@@ -27,6 +27,8 @@ namespace projetTournoi
         connection conn = new connection();
         RechercheTournoi tournoiOBj = new RechercheTournoi();
         int NumeroTournoiSelect = 0;
+
+        bool isConnected;
         public Main_Forme()
         {
             InitializeComponent();
@@ -652,6 +654,7 @@ namespace projetTournoi
                 PreviousPanel = 1;
                 CurentPanel = 1;
                 BackButton.Visible = false;
+
             }
             catch (Exception Ex)
             {
