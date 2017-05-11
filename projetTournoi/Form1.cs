@@ -28,7 +28,7 @@ namespace projetTournoi
         RechercheTournoi tournoiOBj = new RechercheTournoi();
         int NumeroTournoiSelect = 0;
 
-        bool isConnected;
+        bool isConnected = false;
         public Main_Forme()
         {
             InitializeComponent();
@@ -49,6 +49,7 @@ namespace projetTournoi
             ChercheTour_DTPicker.Format = DateTimePickerFormat.Custom;
             ChercheTour_DTPicker.CustomFormat = " ";
 
+            desactiverBoutonsConnexion();
         }
 
         private void Langue_EN_bt_Click(object sender, EventArgs e)
@@ -597,6 +598,8 @@ namespace projetTournoi
                     PreviousPanel = 1;
                     CurentPanel = 1;
                     BackButton.Visible = false;
+                    isConnected = true;
+                    activerBoutonsConnexion();
                 }
             }
             catch (Exception Ex)
@@ -654,12 +657,36 @@ namespace projetTournoi
                 PreviousPanel = 1;
                 CurentPanel = 1;
                 BackButton.Visible = false;
-
+                isConnected = true;
+                activerBoutonsConnexion();
             }
             catch (Exception Ex)
             {
                 MessageBox.Show(Ex.Message);
             }
+        }
+
+        private void ConnP_BT_Déco_Click(object sender, EventArgs e)
+        {
+            isConnected = false;
+            Connexion_Panel.BringToFront();
+            desactiverBoutonsConnexion();
+        }
+
+        private void activerBoutonsConnexion()
+        {
+            MainMenu_BT_CreeOrg.Enabled = true;
+            MainMenu_BT_CreeTour.Enabled = true;
+            Detail_Tour_BT_InscrireJoueur.Enabled = true;
+            Detail_Tour_BT_InscrireTeam.Enabled = true;
+        }
+
+        private void desactiverBoutonsConnexion()
+        {
+            MainMenu_BT_CreeOrg.Enabled = false;
+            MainMenu_BT_CreeTour.Enabled = false;
+            Detail_Tour_BT_InscrireJoueur.Enabled = false;
+            Detail_Tour_BT_InscrireTeam.Enabled = false;
         }
     }
 }

@@ -969,6 +969,7 @@
             this.ConnP_BT_Déco.TabIndex = 1;
             this.ConnP_BT_Déco.Text = "Se déconnecter";
             this.ConnP_BT_Déco.UseVisualStyleBackColor = true;
+            this.ConnP_BT_Déco.Click += new System.EventHandler(this.ConnP_BT_Déco_Click);
             // 
             // Logging_Panel
             // 
@@ -1127,23 +1128,23 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
-            this.Controls.Add(this.Inscription_Panel);
-            this.Controls.Add(this.Logging_Panel);
             this.Controls.Add(this.BT_Rafraîchir);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
+            this.Controls.Add(this.MainMenu_Panel);
+            this.Controls.Add(this.List_Tournoi_panel);
+            this.Controls.Add(this.Connecté_Panel);
+            this.Controls.Add(this.Inscription_Panel);
+            this.Controls.Add(this.Logging_Panel);
             this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
-            this.Controls.Add(this.MainMenu_Panel);
-            this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Connexion_Panel);
-            this.Controls.Add(this.Connecté_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
