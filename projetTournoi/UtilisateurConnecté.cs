@@ -8,7 +8,7 @@ namespace projetTournoi
 {
     public class UtilisateurConnecté
     {
-        private string username,mail;
+        public string username,mail;
 
         public UtilisateurConnecté(string username, string mail)
         {
