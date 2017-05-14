@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace projetTournoi
 {
-    class UtilisateurConnecté
+    public class UtilisateurConnecté
     {
-        private string username,mail;
+        public string username,mail;
 
         public UtilisateurConnecté(string username, string mail)
         {

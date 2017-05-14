@@ -187,7 +187,7 @@ namespace projetTournoi
             }
             return ds;
         }
-        public void CreateTeam(string nom, int tournoi)
+        public void CreateTeam(string nom, int tournoi, UtilisateurConnecté user)
         {
             string cmds = "INSERT INTO Equipe (Nom,NumeroTournoi) VALUES (@val1,@val2)";
             using (SqlCommand comm2 = new SqlCommand())
@@ -209,13 +209,92 @@ namespace projetTournoi
                 }
                 conn.Close();
             }
+             cmds = "insert into EquipeUtilisateur (Equipe, Utilisateur) VALUES((select[N°] from Equipe where Equipe.Nom like '"+nom+"' and Equipe.NumeroTournoi = "+tournoi+"), (select[N°] from Utilisateur where Utilisateur.LoginU like '"+user.username+"'))";
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                }
+                conn.Close();
+            }
         }
 
         public void CreateUser(UtilisateurConnecté user)
         {
+            string cmds = "INSERT INTO Utilisateur (LoginU, email, [nbr connexion reussies],[nbr connexion ratees]) VALUES ('"+user.username+"','"+user.mail+"',0,0)";
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
 
+                }
+                conn.Close();
+            }
         }
+
+        public void ConnectionReussi(String nom)
+        {
+            string cmds = "update Utilisateur set [nbr connexion reussies]=[nbr connexion reussies]+1 where LoginU like '"+nom+"'";
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                }
+                conn.Close();
+            }
+        }
+
+        public void ConnectionRate(String nom)
+        {
+            string cmds = "update Utilisateur set [nbr connexion ratees]=[nbr connexion ratees]+1 where LoginU like '" + nom + "'";
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                }
+                conn.Close();
+            }
+        }
+
+
     }
-
-
 }

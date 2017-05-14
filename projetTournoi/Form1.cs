@@ -577,7 +577,7 @@ namespace projetTournoi
         {
             String nom;
             nom = Interaction.InputBox("Nom de la team?", "coucou", "", 200, 200);
-            tournoiOBj.CreateEquipeTounroi(NumeroTournoiSelect, nom);
+            tournoiOBj.CreateEquipeTounroi(NumeroTournoiSelect, nom,user);
         }
 
         private void LP_BT_Valider_Click(object sender, EventArgs e)
@@ -635,7 +635,7 @@ namespace projetTournoi
                 prenom = IP_TextBox_Prénom.Text;
                 motDePasse = IP_TextBox_motdepasse.Text;
                 mail = IP_TextBox_mail.Text;
-                DirectoryEntry Ldap = new DirectoryEntry("LDAP://192.168.140.133", "Administrateur", "e11T22u33+");
+               /* DirectoryEntry Ldap = new DirectoryEntry("LDAP://192.168.140.133", "Administrateur", "e11T22u33+");
                 DirectoryEntry user2 = Ldap.Children.Add("cn=" + nomComplet, "user");
 
                 user2.Properties["SAMAccountName"].Add(nomComplet);
@@ -653,7 +653,7 @@ namespace projetTournoi
                 user2.Properties["userAccountControl"].Value = 0x0200;
 
                 user2.CommitChanges();
-
+*/
                 user = new UtilisateurConnecté(nomComplet, mail);
                 conn.CreateUser(user);
 
