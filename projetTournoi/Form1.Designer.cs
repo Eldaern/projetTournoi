@@ -123,6 +123,8 @@
             this.LP_TextBox_Password = new System.Windows.Forms.TextBox();
             this.LP_TextBox_Username = new System.Windows.Forms.TextBox();
             this.Inscription_Panel = new System.Windows.Forms.Panel();
+            this.IP_Label_mail = new System.Windows.Forms.Label();
+            this.IP_TextBox_mail = new System.Windows.Forms.TextBox();
             this.IP_BT_valider = new System.Windows.Forms.Button();
             this.IP_TextBox_motdepasse = new System.Windows.Forms.TextBox();
             this.IP_Label_motdepasse = new System.Windows.Forms.Label();
@@ -133,8 +135,6 @@
             this.IP_Label_NomdeCompte = new System.Windows.Forms.Label();
             this.IP_TextBox_NomdeCompte = new System.Windows.Forms.TextBox();
             this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
-            this.IP_TextBox_mail = new System.Windows.Forms.TextBox();
-            this.IP_Label_mail = new System.Windows.Forms.Label();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -1046,6 +1046,22 @@
             this.Inscription_Panel.Size = new System.Drawing.Size(767, 302);
             this.Inscription_Panel.TabIndex = 13;
             // 
+            // IP_Label_mail
+            // 
+            this.IP_Label_mail.AutoSize = true;
+            this.IP_Label_mail.Location = new System.Drawing.Point(262, 182);
+            this.IP_Label_mail.Name = "IP_Label_mail";
+            this.IP_Label_mail.Size = new System.Drawing.Size(31, 13);
+            this.IP_Label_mail.TabIndex = 10;
+            this.IP_Label_mail.Text = "mail :";
+            // 
+            // IP_TextBox_mail
+            // 
+            this.IP_TextBox_mail.Location = new System.Drawing.Point(363, 177);
+            this.IP_TextBox_mail.Name = "IP_TextBox_mail";
+            this.IP_TextBox_mail.Size = new System.Drawing.Size(143, 20);
+            this.IP_TextBox_mail.TabIndex = 9;
+            // 
             // IP_BT_valider
             // 
             this.IP_BT_valider.Location = new System.Drawing.Point(393, 244);
@@ -1127,22 +1143,6 @@
             this.torDBDataSet1.DataSetName = "TorDBDataSet";
             this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // IP_TextBox_mail
-            // 
-            this.IP_TextBox_mail.Location = new System.Drawing.Point(363, 177);
-            this.IP_TextBox_mail.Name = "IP_TextBox_mail";
-            this.IP_TextBox_mail.Size = new System.Drawing.Size(143, 20);
-            this.IP_TextBox_mail.TabIndex = 9;
-            // 
-            // IP_Label_mail
-            // 
-            this.IP_Label_mail.AutoSize = true;
-            this.IP_Label_mail.Location = new System.Drawing.Point(262, 182);
-            this.IP_Label_mail.Name = "IP_Label_mail";
-            this.IP_Label_mail.Size = new System.Drawing.Size(31, 13);
-            this.IP_Label_mail.TabIndex = 10;
-            this.IP_Label_mail.Text = "mail :";
-            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1153,8 +1153,6 @@
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
-            this.Controls.Add(this.Inscription_Panel);
-            this.Controls.Add(this.Logging_Panel);
             this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
@@ -1165,6 +1163,8 @@
             this.Controls.Add(this.MainMenu_Panel);
             this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Connecté_Panel);
+            this.Controls.Add(this.Inscription_Panel);
+            this.Controls.Add(this.Logging_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
