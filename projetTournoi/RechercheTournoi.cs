@@ -31,7 +31,7 @@ namespace projetTournoi
             return ConDD.DetailDunTournoi(n);
         }
 
-        public void CreateEquipeTounroi(int n,string nom)
+        public void CreateEquipeTounroi(int n,string nom, UtilisateurConnecté user)
         {
             ConDD.CreateTeam(nom,n);
         }

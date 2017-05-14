@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projetTournoi
 {
-    class UtilisateurConnecté
+    public class UtilisateurConnecté
     {
         private string username,mail;
 

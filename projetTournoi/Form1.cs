@@ -603,6 +603,7 @@ namespace projetTournoi
                     isConnected = true;
                     activerBoutonsConnexion();
                 }
+                user = new UtilisateurConnecté(nomCompte, motDePasse);
             }
             catch (Exception Ex)
             {
@@ -682,7 +683,6 @@ namespace projetTournoi
         private void activerBoutonsConnexion()
         {
             MainMenu_BT_CreeOrg.Enabled = true;
-            MainMenu_BT_CreeTour.Enabled = true;
             Detail_Tour_BT_InscrireJoueur.Enabled = true;
             Detail_Tour_BT_InscrireTeam.Enabled = true;
         }
