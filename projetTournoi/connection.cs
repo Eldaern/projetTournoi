@@ -305,7 +305,7 @@ namespace projetTournoi
                 conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "select Equipe.nom from Equie where NumeroTournoi=" + n;
+                cmd.CommandText = "select Equipe.Nom from Equipe where NumeroTournoi=" + n;
                 dtad.SelectCommand = cmd;
                 dtad.Fill(ds, "Equipe");
                 conn.Close();

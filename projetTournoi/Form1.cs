@@ -576,7 +576,7 @@ namespace projetTournoi
             Detail_Tour_listBox_Equipes.Items.Clear();
             for (int i = 0; i < cpt; i++)
             {
-                Detail_Tour_listBox_Equipes.Items.Add(ds.Tables["Equipe"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
+                Detail_Tour_listBox_Equipes.Items.Add(dsEquipes.Tables["Equipe"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
             }
         }
 
