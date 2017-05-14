@@ -294,7 +294,29 @@ namespace projetTournoi
                 conn.Close();
             }
         }
+        public DataSet EquipeDUNTournoi(int n)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                conn = new SqlConnection();
+                cmd = new SqlCommand();
+                dtad = new SqlDataAdapter();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "select Equipe.nom from Equie where NumeroTournoi=" + n;
+                dtad.SelectCommand = cmd;
+                dtad.Fill(ds, "Equipe");
+                conn.Close();
 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
+            return ds;
+        }
 
     }
 }

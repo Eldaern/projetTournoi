@@ -35,6 +35,11 @@ namespace projetTournoi
         {
             ConDD.CreateTeam(nom,n,use);
         }
+
+        public DataSet EquipeTournoi(int n)
+        {
+            return ConDD.EquipeDUNTournoi(n);
+        }
         ~RechercheTournoi()
         {
 
