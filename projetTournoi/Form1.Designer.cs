@@ -928,6 +928,7 @@
             this.Detail_Tour_BT_InscrireJoueur.TabIndex = 3;
             this.Detail_Tour_BT_InscrireJoueur.Text = "Inscrire";
             this.Detail_Tour_BT_InscrireJoueur.UseVisualStyleBackColor = true;
+            this.Detail_Tour_BT_InscrireJoueur.Click += new System.EventHandler(this.Detail_Tour_BT_InscrireJoueur_Click);
             // 
             // Detail_Tour_listBox_Joueurs
             // 

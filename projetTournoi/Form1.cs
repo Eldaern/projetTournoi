@@ -723,5 +723,10 @@ namespace projetTournoi
                 Detail_Tour_listBox_Joueurs.Items.Add(dsJoueurs.Tables["Joueur"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
             }
         }
+
+        private void Detail_Tour_BT_InscrireJoueur_Click(object sender, EventArgs e)
+        {
+            tournoiOBj.CreateUtilisateurEquipe(NumeroTournoiSelect, Detail_Tour_listBox_Equipes.SelectedItem.ToString(),user);
+        }
     }
 }
