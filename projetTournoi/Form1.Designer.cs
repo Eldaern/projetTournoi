@@ -1147,6 +1147,8 @@
             // 
             // resultat_DataGrid
             // 
+            this.resultat_DataGrid.AllowUserToAddRows = false;
+            this.resultat_DataGrid.AllowUserToDeleteRows = false;
             this.resultat_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.resultat_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Equipe,
@@ -1176,6 +1178,7 @@
             this.Résultats_valider.TabIndex = 1;
             this.Résultats_valider.Text = "button1";
             this.Résultats_valider.UseVisualStyleBackColor = true;
+            this.Résultats_valider.Click += new System.EventHandler(this.Résultats_valider_Click);
             // 
             // Main_Forme
             // 
