@@ -36,6 +36,11 @@ namespace projetTournoi
             ConDD.CreateTeam(nom,n,use);
         }
 
+        public void CreateUtilisateurEquipe(int n, string nom, UtilisateurConnecté use)
+        {
+            ConDD.AjoutUtilisateurEquipe(nom, n, use);
+        }
+
         public DataSet EquipeTournoi(int n)
         {
             return ConDD.EquipeDUNTournoi(n);

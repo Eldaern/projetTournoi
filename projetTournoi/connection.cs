@@ -250,7 +250,27 @@ namespace projetTournoi
                 conn.Close();
             }
         }
+        public void AjoutUtilisateurEquipe(string nom, int tournoi, UtilisateurConnecté user)
+        {
+            string cmds = "insert into EquipeUtilisateur (Equipe, Utilisateur) VALUES((select[N°] from Equipe where Equipe.Nom like '" + nom + "' and Equipe.NumeroTournoi = " + tournoi + "), (select[N°] from Utilisateur where Utilisateur.LoginU like '" + user.username + "'))";
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
 
+                }
+                conn.Close();
+            }
+        }
         public void ConnectionReussi(String nom)
         {
             string cmds = "update Utilisateur set [nbr connexion reussies]=[nbr connexion reussies]+1 where LoginU like '"+nom+"'";
