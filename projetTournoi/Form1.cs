@@ -733,10 +733,9 @@ namespace projetTournoi
             {
                 DataSet dsJoueurs = tournoiOBj.JoueurEquipe(NumeroTournoiSelect, Detail_Tour_listBox_Equipes.SelectedItem.ToString());
                 int cpt = dsJoueurs.Tables["Joueur"].Rows.Count;
-                Detail_Tour_listBox_Joueurs.Items.Clear();
                 for (int y = 0; y < cpt; y++)
                 {
-                    if(user.username == dsJoueurs.Tables["Joueur"].Rows[i].ItemArray.GetValue(0).ToString())
+                    if(user.username == dsJoueurs.Tables["Joueur"].Rows[y].ItemArray.GetValue(0).ToString())
                     {
                         isAlreadyThere = true;
                     }
