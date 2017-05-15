@@ -331,7 +331,7 @@ namespace projetTournoi
             {
                 tournoiOBj.OrganisationCree(CO_Textbox_Nom.Text.ToString().Replace("'", "''"), CO_RTB_Description.Text.ToString(), user);
                 estResponsable = true;
-                organisation = cpt + 1;
+                organisation = cpt;
             }
         }
 
@@ -387,8 +387,8 @@ namespace projetTournoi
             CurentPanel = 5;
             BackButton.Visible = true;
             DataSet dsOrg = tournoiOBj.OrganisationCherche();
-            Gerer_Org_Label_Nom.Text = dsOrg.Tables["Organisation"].Rows[organisation].ItemArray.GetValue(0).ToString();
-            Gerer_Org_RTB_Description.Text = dsOrg.Tables["Organisation"].Rows[organisation].ItemArray.GetValue(1).ToString().Replace("''", "'");
+            Gerer_Org_Label_Nom.Text = dsOrg.Tables["Organisation"].Rows[organisation-2].ItemArray.GetValue(0).ToString();
+            Gerer_Org_RTB_Description.Text = dsOrg.Tables["Organisation"].Rows[organisation-2].ItemArray.GetValue(1).ToString().Replace("''", "'");
         }
 
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
@@ -717,7 +717,7 @@ namespace projetTournoi
                     if (user.username == dsOrg.Tables["Organisation"].Rows[i].ItemArray.GetValue(2).ToString())
                     {
                         estResponsable = true;
-                        organisation = i;
+                        organisation = (int)dsOrg.Tables["Organisation"].Rows[i].ItemArray.GetValue(3);
                     }
                 }
             }
