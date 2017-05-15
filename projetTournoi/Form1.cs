@@ -393,7 +393,7 @@ namespace projetTournoi
 
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
         {
-            tournoiOBj.OrganisationModifier(organisation, Gerer_Org_RTB_Description.Text.ToString().Replace("'", "''"));
+            tournoiOBj.OrganisationModifier(organisation+1, Gerer_Org_RTB_Description.Text.ToString().Replace("'", "''"));
         }
 
         private void chargerTexte()
