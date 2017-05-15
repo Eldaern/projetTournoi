@@ -351,7 +351,7 @@ namespace projetTournoi
                 conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "select LoginU from Utilisateur,EquipeUtilisateur,Equipe where EquipeUtilisateur.Utilisateur=Utilisateur.[N°] and EquipeUtilisateur.Equipe=Equipe.[N°] and Equipe.NumeroTournoi"+n+"1 and Equipe.Nom like '"+nom+"'";
+                cmd.CommandText = "select LoginU from Utilisateur,EquipeUtilisateur,Equipe where EquipeUtilisateur.Utilisateur=Utilisateur.[N°] and EquipeUtilisateur.Equipe=Equipe.[N°] and Equipe.NumeroTournoi="+n+" and Equipe.Nom like '"+nom+"'";
                 dtad.SelectCommand = cmd;
                 dtad.Fill(ds, "Joueur");
                 conn.Close();
