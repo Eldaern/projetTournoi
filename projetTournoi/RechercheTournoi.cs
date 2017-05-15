@@ -71,6 +71,11 @@ namespace projetTournoi
             ConDD.CreeResultat(nom, tournoi, position);
         }
 
+        public DataSet afficheResultat(int n)
+        {
+            return ConDD.AfficheResultat(n);
+        }
+
         ~RechercheTournoi()
         {
 

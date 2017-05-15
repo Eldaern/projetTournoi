@@ -140,6 +140,10 @@
             this.Equipe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.résultats = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Détail_tournoi_BT_résultats = new System.Windows.Forms.Button();
+            this.affiche_resultats = new System.Windows.Forms.Panel();
+            this.affichage_résultats_datagrid = new System.Windows.Forms.DataGridView();
+            this.Team = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.results = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -157,6 +161,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
             this.Resultats_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultat_DataGrid)).BeginInit();
+            this.affiche_resultats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.affichage_résultats_datagrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -860,6 +866,7 @@
             // 
             // Detail_Tournoi_Panel
             // 
+            this.Detail_Tournoi_Panel.Controls.Add(this.affiche_resultats);
             this.Detail_Tournoi_Panel.Controls.Add(this.Détail_tournoi_BT_résultats);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_InscrireTeam);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Label_Nom);
@@ -1192,6 +1199,39 @@
             this.Détail_tournoi_BT_résultats.UseVisualStyleBackColor = true;
             this.Détail_tournoi_BT_résultats.Click += new System.EventHandler(this.Détail_tournoi_BT_résultats_Click);
             // 
+            // affiche_resultats
+            // 
+            this.affiche_resultats.Controls.Add(this.affichage_résultats_datagrid);
+            this.affiche_resultats.Location = new System.Drawing.Point(0, 0);
+            this.affiche_resultats.Name = "affiche_resultats";
+            this.affiche_resultats.Size = new System.Drawing.Size(767, 303);
+            this.affiche_resultats.TabIndex = 9;
+            // 
+            // affichage_résultats_datagrid
+            // 
+            this.affichage_résultats_datagrid.AllowUserToAddRows = false;
+            this.affichage_résultats_datagrid.AllowUserToDeleteRows = false;
+            this.affichage_résultats_datagrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.affichage_résultats_datagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Team,
+            this.results});
+            this.affichage_résultats_datagrid.Location = new System.Drawing.Point(0, 0);
+            this.affichage_résultats_datagrid.Name = "affichage_résultats_datagrid";
+            this.affichage_résultats_datagrid.Size = new System.Drawing.Size(764, 288);
+            this.affichage_résultats_datagrid.TabIndex = 0;
+            // 
+            // Team
+            // 
+            this.Team.HeaderText = "Team";
+            this.Team.Name = "Team";
+            this.Team.ReadOnly = true;
+            // 
+            // results
+            // 
+            this.results.HeaderText = "results";
+            this.results.Name = "results";
+            this.results.ReadOnly = true;
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1243,6 +1283,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
             this.Resultats_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.resultat_DataGrid)).EndInit();
+            this.affiche_resultats.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.affichage_résultats_datagrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1360,6 +1402,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Equipe;
         private System.Windows.Forms.DataGridViewTextBoxColumn résultats;
         private System.Windows.Forms.Button Détail_tournoi_BT_résultats;
+        private System.Windows.Forms.Panel affiche_resultats;
+        private System.Windows.Forms.DataGridView affichage_résultats_datagrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Team;
+        private System.Windows.Forms.DataGridViewTextBoxColumn results;
     }
 }
 
