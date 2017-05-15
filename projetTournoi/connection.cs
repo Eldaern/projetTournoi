@@ -108,7 +108,7 @@ namespace projetTournoi
                 idLieu = (int)frows[0].ItemArray.GetValue(0);
 
             }
-            string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7)";
+            string cmds2 = "INSERT INTO Tournoi ([N°],Nom,DateTournoi,tipe,Jeux,Lieu,Organisation) VALUES (@val1, @val2, @val3, @val4, @val5, @val6, @val7)";
             using (SqlCommand comm2 = new SqlCommand())
             {
                 SqlConnection conn = new SqlConnection();
@@ -121,7 +121,7 @@ namespace projetTournoi
                 comm2.Parameters.AddWithValue("@val4", tipe);
                 comm2.Parameters.AddWithValue("@val5", jeu);
                 comm2.Parameters.AddWithValue("@val6", idLieu);
-                comm2.Parameters.AddWithValue("@val7", organisation); //Remplacer
+                comm2.Parameters.AddWithValue("@val7", organisation);
                 try
                 {
                     conn.Open();
