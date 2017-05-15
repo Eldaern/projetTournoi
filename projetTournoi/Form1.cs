@@ -579,6 +579,7 @@ namespace projetTournoi
             {
                 Detail_Tour_listBox_Equipes.Items.Add(dsEquipes.Tables["Equipe"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
             }
+            Detail_Tour_listBox_Joueurs.Items.Clear();
         }
 
         private void Detail_Tour_BT_InscrireTeam_Click(object sender, EventArgs e)
@@ -711,10 +712,16 @@ namespace projetTournoi
             Detail_Tour_BT_InscrireJoueur.Enabled = false;
             Detail_Tour_BT_InscrireTeam.Enabled = false;
         }
-
+        
         private void Detail_Tour_listBox_Equipes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            DataSet dsJoueurs = tournoiOBj.JoueurEquipe(NumeroTournoiSelect,Detail_Tour_listBox_Equipes.SelectedItem.ToString());
+            int cpt = dsJoueurs.Tables["Joueur"].Rows.Count;
+            Detail_Tour_listBox_Joueurs.Items.Clear();
+            for (int i = 0; i < cpt; i++)
+            {
+                Detail_Tour_listBox_Joueurs.Items.Add(dsJoueurs.Tables["Joueur"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
+            }
         }
     }
 }
