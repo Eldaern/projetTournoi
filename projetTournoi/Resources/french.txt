@@ -54,5 +54,6 @@
 	"nomdeFamille" : "Nom :",
 	"prénom" : "Prénom :",
 
-	"resultats" : "inscrire les résultats"
+	"resultats" : "inscrire les résultats",
+	"BT_resultats" : "résultats"
 }

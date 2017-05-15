@@ -34,6 +34,6 @@ namespace projetTournoi
 
         public string nomdeFamille, prénom;
 
-        public string resultats;
+        public string resultats,BT_resultats;
     }
 }

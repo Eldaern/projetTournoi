@@ -135,10 +135,11 @@
             this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
             this.resultatTableAdapter1 = new projetTournoi.TorDBDataSetTableAdapters.ResultatTableAdapter();
             this.Resultats_panel = new System.Windows.Forms.Panel();
+            this.Résultats_valider = new System.Windows.Forms.Button();
             this.resultat_DataGrid = new System.Windows.Forms.DataGridView();
             this.Equipe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.résultats = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Résultats_valider = new System.Windows.Forms.Button();
+            this.Détail_tournoi_BT_résultats = new System.Windows.Forms.Button();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -859,6 +860,7 @@
             // 
             // Detail_Tournoi_Panel
             // 
+            this.Detail_Tournoi_Panel.Controls.Add(this.Détail_tournoi_BT_résultats);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_InscrireTeam);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Label_Nom);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_PictureBox);
@@ -1145,6 +1147,16 @@
             this.Resultats_panel.Size = new System.Drawing.Size(767, 303);
             this.Resultats_panel.TabIndex = 8;
             // 
+            // Résultats_valider
+            // 
+            this.Résultats_valider.Location = new System.Drawing.Point(572, 103);
+            this.Résultats_valider.Name = "Résultats_valider";
+            this.Résultats_valider.Size = new System.Drawing.Size(107, 89);
+            this.Résultats_valider.TabIndex = 1;
+            this.Résultats_valider.Text = "button1";
+            this.Résultats_valider.UseVisualStyleBackColor = true;
+            this.Résultats_valider.Click += new System.EventHandler(this.Résultats_valider_Click);
+            // 
             // resultat_DataGrid
             // 
             this.resultat_DataGrid.AllowUserToAddRows = false;
@@ -1170,15 +1182,15 @@
             this.résultats.HeaderText = "Results";
             this.résultats.Name = "résultats";
             // 
-            // Résultats_valider
+            // Détail_tournoi_BT_résultats
             // 
-            this.Résultats_valider.Location = new System.Drawing.Point(572, 103);
-            this.Résultats_valider.Name = "Résultats_valider";
-            this.Résultats_valider.Size = new System.Drawing.Size(107, 89);
-            this.Résultats_valider.TabIndex = 1;
-            this.Résultats_valider.Text = "button1";
-            this.Résultats_valider.UseVisualStyleBackColor = true;
-            this.Résultats_valider.Click += new System.EventHandler(this.Résultats_valider_Click);
+            this.Détail_tournoi_BT_résultats.Location = new System.Drawing.Point(472, 255);
+            this.Détail_tournoi_BT_résultats.Name = "Détail_tournoi_BT_résultats";
+            this.Détail_tournoi_BT_résultats.Size = new System.Drawing.Size(120, 23);
+            this.Détail_tournoi_BT_résultats.TabIndex = 8;
+            this.Détail_tournoi_BT_résultats.Text = "résultats";
+            this.Détail_tournoi_BT_résultats.UseVisualStyleBackColor = true;
+            this.Détail_tournoi_BT_résultats.Click += new System.EventHandler(this.Détail_tournoi_BT_résultats_Click);
             // 
             // Main_Forme
             // 
@@ -1192,7 +1204,6 @@
             this.Controls.Add(this.Langue_FR_bt);
             this.Controls.Add(this.Connecté_Panel);
             this.Controls.Add(this.Connexion_Panel);
-            this.Controls.Add(this.Resultats_panel);
             this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
@@ -1203,6 +1214,7 @@
             this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Inscription_Panel);
             this.Controls.Add(this.Logging_Panel);
+            this.Controls.Add(this.Resultats_panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -1347,6 +1359,7 @@
         private System.Windows.Forms.DataGridView resultat_DataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Equipe;
         private System.Windows.Forms.DataGridViewTextBoxColumn résultats;
+        private System.Windows.Forms.Button Détail_tournoi_BT_résultats;
     }
 }
 
