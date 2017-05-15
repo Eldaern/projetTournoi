@@ -43,7 +43,14 @@ namespace projetTournoi
             MainMenu_Panel.BringToFront();
             Connexion_Panel.BringToFront();
             //Main_Menu_Gerer_Panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 1;
             chargerTexte();
             BackButton.Visible = false;
@@ -81,7 +88,14 @@ namespace projetTournoi
         private void CP_BT_Connexion_Click(object sender, EventArgs e)
         {
             Logging_Panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 9;
             BackButton.Visible = true;
             LP_TextBox_Password.Clear();
@@ -176,7 +190,7 @@ namespace projetTournoi
             }
             else
             {
-                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text.Replace("'", "''"), CreeTour_DTPicker.Value.ToString().Replace("'", "''"), CreeTour_CB_Type.SelectedItem.ToString().Replace("'", "''"), CreeTour_CB_Jeu.SelectedIndex + 1,0, CreeTour_TextBox_Ville.Text.Replace("'", "''"), CreeTour_ComboBox_Pays.SelectedItem.ToString().Replace("'", "''"), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text.Replace("'", "''"));
+                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text.Replace("'", "''"), CreeTour_DTPicker.Value.ToString().Replace("'", "''"), CreeTour_CB_Type.SelectedItem.ToString().Replace("'", "''"), CreeTour_CB_Jeu.SelectedIndex + 1,organisation, CreeTour_TextBox_Ville.Text.Replace("'", "''"), CreeTour_ComboBox_Pays.SelectedItem.ToString().Replace("'", "''"), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text.Replace("'", "''"));
                 MessageBox.Show("Tournoi créé");
             }
         }
@@ -331,7 +345,9 @@ namespace projetTournoi
             {
                 tournoiOBj.OrganisationCree(CO_Textbox_Nom.Text.ToString().Replace("'", "''"), CO_RTB_Description.Text.ToString(), user);
                 estResponsable = true;
-                organisation = cpt + 1;
+                organisation = cpt+1;
+                MessageBox.Show("Organisation créée");
+                PreviousPanel = 7;
             }
         }
 
@@ -387,13 +403,14 @@ namespace projetTournoi
             CurentPanel = 5;
             BackButton.Visible = true;
             DataSet dsOrg = tournoiOBj.OrganisationCherche();
-            Gerer_Org_Label_Nom.Text = dsOrg.Tables["Organisation"].Rows[organisation].ItemArray.GetValue(0).ToString();
-            Gerer_Org_RTB_Description.Text = dsOrg.Tables["Organisation"].Rows[organisation].ItemArray.GetValue(1).ToString().Replace("''", "'");
+            Gerer_Org_Label_Nom.Text = dsOrg.Tables["Organisation"].Rows[organisation-1].ItemArray.GetValue(0).ToString();
+            Gerer_Org_RTB_Description.Text = dsOrg.Tables["Organisation"].Rows[organisation-1].ItemArray.GetValue(1).ToString().Replace("''", "'");
         }
 
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
         {
-            tournoiOBj.OrganisationModifier(organisation+1, Gerer_Org_RTB_Description.Text.ToString().Replace("'", "''"));
+            tournoiOBj.OrganisationModifier(organisation, Gerer_Org_RTB_Description.Text.ToString().Replace("'", "''"));
+            MessageBox.Show("Description modifiée.");
         }
 
         private void chargerTexte()
@@ -605,14 +622,7 @@ namespace projetTournoi
                 tournoi.date = ChercheTour_DTPicker.Value.Date.ToString("yyyy-MM-dd");
             }
             List_Tournoi_panel.BringToFront();
-            if (estResponsable)
-            {
-                PreviousPanel = 7;
-            }
-            else
-            {
-                PreviousPanel = 1;
-            }
+            PreviousPanel = 2;
             CurentPanel = 6;
             DataSet ds = tournoiOBj.RechercheTournoiDS(tournoi);
             int cpt= ds.Tables["Tournoi"].Rows.Count;
@@ -701,10 +711,7 @@ namespace projetTournoi
                     DirectoryEntry DirEntry = result.GetDirectoryEntry();
                     MessageBox.Show("Bonjour " + DirEntry.Properties["SAMAccountName"].Value +", vous êtes bien connecté");
                     conn.ConnectionReussi(nomCompte);
-                    MainMenu_Panel.BringToFront();
                     Connecté_Panel.BringToFront();
-                    PreviousPanel = 1;
-                    CurentPanel = 1;
                     BackButton.Visible = false;
                     isConnected = true;
                     activerBoutonsConnexion();
@@ -717,7 +724,7 @@ namespace projetTournoi
                     if (user.username == dsOrg.Tables["Organisation"].Rows[i].ItemArray.GetValue(2).ToString())
                     {
                         estResponsable = true;
-                        organisation = i;
+                        organisation = (int)dsOrg.Tables["Organisation"].Rows[i].ItemArray.GetValue(3);
                     }
                 }
             }
@@ -728,6 +735,17 @@ namespace projetTournoi
                 nomCompte = LP_TextBox_Username.Text;
                 conn.ConnectionRate(nomCompte);
             }
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+                Main_Menu_Gerer_Panel.BringToFront();
+            }
+            else
+            {
+                PreviousPanel = 1;
+                MainMenu_Panel.BringToFront();
+            }
+            CurentPanel = 1;
         }
 
         private void IP_Label_Nom_Click(object sender, EventArgs e)
@@ -792,7 +810,14 @@ namespace projetTournoi
                 MessageBox.Show("Utilisateur créé");
                 MainMenu_Panel.BringToFront();
                 Connecté_Panel.BringToFront();
-                PreviousPanel = 1;
+                if (estResponsable)
+                {
+                    PreviousPanel = 7;
+                }
+                else
+                {
+                    PreviousPanel = 1;
+                }
                 CurentPanel = 1;
                 BackButton.Visible = false;
                 isConnected = true;
@@ -809,6 +834,7 @@ namespace projetTournoi
             isConnected = false;
             estResponsable = false;
             Connexion_Panel.BringToFront();
+            MainMenu_Panel.BringToFront();
             desactiverBoutonsConnexion();
         }
 
