@@ -934,7 +934,7 @@ namespace projetTournoi
             CurentPanel = 12;
             DataSet ds = tournoiOBj.afficheResultat(NumeroTournoiSelect);
             int cpt = ds.Tables["Resultat"].Rows.Count;
-            resultat_DataGrid.Rows.Clear();
+            affichage_résultats_datagrid.Rows.Clear();
             for (int i = 0;i< cpt; i++)
             {
                 affichage_résultats_datagrid.Rows.Add(ds.Tables["Resultat"].Rows[i].ItemArray.GetValue(2).ToString().Replace("''", "'"), ds.Tables["Resultat"].Rows[i].ItemArray.GetValue(0).ToString());

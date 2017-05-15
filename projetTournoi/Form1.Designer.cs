@@ -103,6 +103,7 @@
             this.Lieu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numéro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Detail_Tournoi_Panel = new System.Windows.Forms.Panel();
+            this.Détail_tournoi_BT_résultats = new System.Windows.Forms.Button();
             this.Detail_Tour_BT_InscrireTeam = new System.Windows.Forms.Button();
             this.Detail_Tour_Label_Nom = new System.Windows.Forms.Label();
             this.Detail_Tour_PictureBox = new System.Windows.Forms.PictureBox();
@@ -132,18 +133,17 @@
             this.IP_Label_Nom = new System.Windows.Forms.Label();
             this.IP_Label_NomdeCompte = new System.Windows.Forms.Label();
             this.IP_TextBox_NomdeCompte = new System.Windows.Forms.TextBox();
-            this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
-            this.resultatTableAdapter1 = new projetTournoi.TorDBDataSetTableAdapters.ResultatTableAdapter();
             this.Resultats_panel = new System.Windows.Forms.Panel();
             this.Résultats_valider = new System.Windows.Forms.Button();
             this.resultat_DataGrid = new System.Windows.Forms.DataGridView();
             this.Equipe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.résultats = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Détail_tournoi_BT_résultats = new System.Windows.Forms.Button();
             this.affiche_resultats = new System.Windows.Forms.Panel();
             this.affichage_résultats_datagrid = new System.Windows.Forms.DataGridView();
             this.Team = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.results = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
+            this.resultatTableAdapter1 = new projetTournoi.TorDBDataSetTableAdapters.ResultatTableAdapter();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -158,11 +158,11 @@
             this.Connecté_Panel.SuspendLayout();
             this.Logging_Panel.SuspendLayout();
             this.Inscription_Panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
             this.Resultats_panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resultat_DataGrid)).BeginInit();
             this.affiche_resultats.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.affichage_résultats_datagrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -866,7 +866,6 @@
             // 
             // Detail_Tournoi_Panel
             // 
-            this.Detail_Tournoi_Panel.Controls.Add(this.affiche_resultats);
             this.Detail_Tournoi_Panel.Controls.Add(this.Détail_tournoi_BT_résultats);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_BT_InscrireTeam);
             this.Detail_Tournoi_Panel.Controls.Add(this.Detail_Tour_Label_Nom);
@@ -879,6 +878,16 @@
             this.Detail_Tournoi_Panel.Name = "Detail_Tournoi_Panel";
             this.Detail_Tournoi_Panel.Size = new System.Drawing.Size(767, 303);
             this.Detail_Tournoi_Panel.TabIndex = 9;
+            // 
+            // Détail_tournoi_BT_résultats
+            // 
+            this.Détail_tournoi_BT_résultats.Location = new System.Drawing.Point(472, 255);
+            this.Détail_tournoi_BT_résultats.Name = "Détail_tournoi_BT_résultats";
+            this.Détail_tournoi_BT_résultats.Size = new System.Drawing.Size(120, 23);
+            this.Détail_tournoi_BT_résultats.TabIndex = 8;
+            this.Détail_tournoi_BT_résultats.Text = "résultats";
+            this.Détail_tournoi_BT_résultats.UseVisualStyleBackColor = true;
+            this.Détail_tournoi_BT_résultats.Click += new System.EventHandler(this.Détail_tournoi_BT_résultats_Click);
             // 
             // Detail_Tour_BT_InscrireTeam
             // 
@@ -1136,15 +1145,6 @@
             this.IP_TextBox_NomdeCompte.Size = new System.Drawing.Size(143, 20);
             this.IP_TextBox_NomdeCompte.TabIndex = 0;
             // 
-            // torDBDataSet1
-            // 
-            this.torDBDataSet1.DataSetName = "TorDBDataSet";
-            this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // resultatTableAdapter1
-            // 
-            this.resultatTableAdapter1.ClearBeforeFill = true;
-            // 
             // Resultats_panel
             // 
             this.Resultats_panel.Controls.Add(this.Résultats_valider);
@@ -1189,20 +1189,10 @@
             this.résultats.HeaderText = "Results";
             this.résultats.Name = "résultats";
             // 
-            // Détail_tournoi_BT_résultats
-            // 
-            this.Détail_tournoi_BT_résultats.Location = new System.Drawing.Point(472, 255);
-            this.Détail_tournoi_BT_résultats.Name = "Détail_tournoi_BT_résultats";
-            this.Détail_tournoi_BT_résultats.Size = new System.Drawing.Size(120, 23);
-            this.Détail_tournoi_BT_résultats.TabIndex = 8;
-            this.Détail_tournoi_BT_résultats.Text = "résultats";
-            this.Détail_tournoi_BT_résultats.UseVisualStyleBackColor = true;
-            this.Détail_tournoi_BT_résultats.Click += new System.EventHandler(this.Détail_tournoi_BT_résultats_Click);
-            // 
             // affiche_resultats
             // 
             this.affiche_resultats.Controls.Add(this.affichage_résultats_datagrid);
-            this.affiche_resultats.Location = new System.Drawing.Point(0, 0);
+            this.affiche_resultats.Location = new System.Drawing.Point(12, 62);
             this.affiche_resultats.Name = "affiche_resultats";
             this.affiche_resultats.Size = new System.Drawing.Size(767, 303);
             this.affiche_resultats.TabIndex = 9;
@@ -1232,11 +1222,21 @@
             this.results.Name = "results";
             this.results.ReadOnly = true;
             // 
+            // torDBDataSet1
+            // 
+            this.torDBDataSet1.DataSetName = "TorDBDataSet";
+            this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // resultatTableAdapter1
+            // 
+            this.resultatTableAdapter1.ClearBeforeFill = true;
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
+            this.Controls.Add(this.affiche_resultats);
             this.Controls.Add(this.BT_Rafraîchir);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.helpButton);
@@ -1280,11 +1280,11 @@
             this.Logging_Panel.PerformLayout();
             this.Inscription_Panel.ResumeLayout(false);
             this.Inscription_Panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
             this.Resultats_panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.resultat_DataGrid)).EndInit();
             this.affiche_resultats.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.affichage_résultats_datagrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
