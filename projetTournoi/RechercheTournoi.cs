@@ -10,6 +10,7 @@ namespace projetTournoi
     public class RechercheTournoi
     {
         public string nom, type, date, jeu, mode, ville;
+        public int organisation;
         connection ConDD=new connection();
         public RechercheTournoi()
         {

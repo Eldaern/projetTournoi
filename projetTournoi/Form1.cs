@@ -866,28 +866,34 @@ namespace projetTournoi
 
         private void Detail_Tour_BT_InscrireJoueur_Click(object sender, EventArgs e)
         {
-            bool isAlreadyThere = false;
-            DataSet dsEquipes = tournoiOBj.EquipeTournoi(NumeroTournoiSelect);
-            int cptEquipes = dsEquipes.Tables["Equipe"].Rows.Count;
-            for (int i = 0; i < cptEquipes; i++)
+            if ((int)tournoiOBj.DetailTournoiDS(NumeroTournoiSelect).Tables["Tournoi"].Rows[0].ItemArray.GetValue(9) == organisation)
             {
-                DataSet dsJoueurs = tournoiOBj.JoueurEquipe(NumeroTournoiSelect, Detail_Tour_listBox_Equipes.SelectedItem.ToString());
-                int cpt = dsJoueurs.Tables["Joueur"].Rows.Count;
-                for (int y = 0; y < cpt; y++)
-                {
-                    if(user.username == dsJoueurs.Tables["Joueur"].Rows[y].ItemArray.GetValue(0).ToString())
-                    {
-                        isAlreadyThere = true;
-                    }
-                }
-            }
-            if (isAlreadyThere)
-            {
-                MessageBox.Show("Vous participez déjà à ce tournoi.");
+                Detail_Tour_BT_InscrireJoueur.Text = "wolololololololololololololo";
             }
             else {
-                tournoiOBj.CreateUtilisateurEquipe(NumeroTournoiSelect, Detail_Tour_listBox_Equipes.SelectedItem.ToString(), user);
-                Detail_Tour_listBox_Joueurs.Items.Add(user.username);
+                bool isAlreadyThere = false;
+                DataSet dsEquipes = tournoiOBj.EquipeTournoi(NumeroTournoiSelect);
+                int cptEquipes = dsEquipes.Tables["Equipe"].Rows.Count;
+                for (int i = 0; i < cptEquipes; i++)
+                {
+                    DataSet dsJoueurs = tournoiOBj.JoueurEquipe(NumeroTournoiSelect, Detail_Tour_listBox_Equipes.SelectedItem.ToString());
+                    int cpt = dsJoueurs.Tables["Joueur"].Rows.Count;
+                    for (int y = 0; y < cpt; y++)
+                    {
+                        if (user.username == dsJoueurs.Tables["Joueur"].Rows[y].ItemArray.GetValue(0).ToString())
+                        {
+                            isAlreadyThere = true;
+                        }
+                    }
+                }
+                if (isAlreadyThere)
+                {
+                    MessageBox.Show("Vous participez déjà à ce tournoi.");
+                }
+                else {
+                    tournoiOBj.CreateUtilisateurEquipe(NumeroTournoiSelect, Detail_Tour_listBox_Equipes.SelectedItem.ToString(), user);
+                    Detail_Tour_listBox_Joueurs.Items.Add(user.username);
+                }
             }
         }
     }

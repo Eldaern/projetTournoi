@@ -133,6 +133,12 @@
             this.IP_Label_NomdeCompte = new System.Windows.Forms.Label();
             this.IP_TextBox_NomdeCompte = new System.Windows.Forms.TextBox();
             this.torDBDataSet1 = new projetTournoi.TorDBDataSet();
+            this.resultatTableAdapter1 = new projetTournoi.TorDBDataSetTableAdapters.ResultatTableAdapter();
+            this.Resultats_panel = new System.Windows.Forms.Panel();
+            this.resultat_DataGrid = new System.Windows.Forms.DataGridView();
+            this.Equipe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.résultats = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Résultats_valider = new System.Windows.Forms.Button();
             this.MainMenu_Panel.SuspendLayout();
             this.Connexion_Panel.SuspendLayout();
             this.Cree_Tournoi_Panel.SuspendLayout();
@@ -148,6 +154,8 @@
             this.Logging_Panel.SuspendLayout();
             this.Inscription_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).BeginInit();
+            this.Resultats_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.resultat_DataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Langue_EN_bt
@@ -1124,19 +1132,66 @@
             this.torDBDataSet1.DataSetName = "TorDBDataSet";
             this.torDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // resultatTableAdapter1
+            // 
+            this.resultatTableAdapter1.ClearBeforeFill = true;
+            // 
+            // Resultats_panel
+            // 
+            this.Resultats_panel.Controls.Add(this.Résultats_valider);
+            this.Resultats_panel.Controls.Add(this.resultat_DataGrid);
+            this.Resultats_panel.Location = new System.Drawing.Point(12, 62);
+            this.Resultats_panel.Name = "Resultats_panel";
+            this.Resultats_panel.Size = new System.Drawing.Size(767, 303);
+            this.Resultats_panel.TabIndex = 8;
+            // 
+            // resultat_DataGrid
+            // 
+            this.resultat_DataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.resultat_DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Equipe,
+            this.résultats});
+            this.resultat_DataGrid.Location = new System.Drawing.Point(1, 0);
+            this.resultat_DataGrid.Name = "resultat_DataGrid";
+            this.resultat_DataGrid.Size = new System.Drawing.Size(500, 303);
+            this.resultat_DataGrid.TabIndex = 0;
+            // 
+            // Equipe
+            // 
+            this.Equipe.HeaderText = "Team";
+            this.Equipe.Name = "Equipe";
+            this.Equipe.ReadOnly = true;
+            // 
+            // résultats
+            // 
+            this.résultats.HeaderText = "Results";
+            this.résultats.Name = "résultats";
+            // 
+            // Résultats_valider
+            // 
+            this.Résultats_valider.Location = new System.Drawing.Point(572, 103);
+            this.Résultats_valider.Name = "Résultats_valider";
+            this.Résultats_valider.Size = new System.Drawing.Size(107, 89);
+            this.Résultats_valider.TabIndex = 1;
+            this.Résultats_valider.Text = "button1";
+            this.Résultats_valider.UseVisualStyleBackColor = true;
+            // 
             // Main_Forme
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
+            this.Controls.Add(this.Resultats_panel);
             this.Controls.Add(this.BT_Rafraîchir);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
             this.Controls.Add(this.Connecté_Panel);
-            this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.Connexion_Panel);
+            this.Controls.Add(this.Detail_Tournoi_Panel);
+            this.Controls.Add(this.Chercher_Tournoi_Panel);
+            this.Controls.Add(this.Cree_Tournoi_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
@@ -1144,8 +1199,6 @@
             this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Inscription_Panel);
             this.Controls.Add(this.Logging_Panel);
-            this.Controls.Add(this.Detail_Tournoi_Panel);
-            this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -1172,6 +1225,8 @@
             this.Inscription_Panel.ResumeLayout(false);
             this.Inscription_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.torDBDataSet1)).EndInit();
+            this.Resultats_panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.resultat_DataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1282,6 +1337,12 @@
         private System.Windows.Forms.TextBox IP_TextBox_mail;
         private System.Windows.Forms.RichTextBox Gerer_Org_RTB_Description;
         private System.Windows.Forms.Label Gerer_Org_Label_Nom;
+        private TorDBDataSetTableAdapters.ResultatTableAdapter resultatTableAdapter1;
+        private System.Windows.Forms.Panel Resultats_panel;
+        private System.Windows.Forms.Button Résultats_valider;
+        private System.Windows.Forms.DataGridView resultat_DataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Equipe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn résultats;
     }
 }
 
