@@ -82,6 +82,7 @@ namespace projetTournoi
             PreviousPanel = 1;
             CurentPanel = 9;
             BackButton.Visible = true;
+            LP_TextBox_Password.Clear();
         }
        
 
@@ -629,11 +630,15 @@ namespace projetTournoi
 
         private void CP_BT_Inscription_Click(object sender, EventArgs e)
         {
-                Inscription_Panel.BringToFront();
-                PreviousPanel = 1;
-                CurentPanel = 10;
-                BackButton.Visible = true;
-            
+            Inscription_Panel.BringToFront();
+            PreviousPanel = 1;
+            CurentPanel = 10;
+            BackButton.Visible = true;
+            IP_TextBox_NomdeCompte.Clear();
+            IP_TextBox_Nom.Clear();
+            IP_TextBox_Prénom.Clear();
+            IP_TextBox_motdepasse.Clear();
+            IP_TextBox_mail.Clear();
         }
 
         private void IP_BT_valider_Click(object sender, EventArgs e)
@@ -705,6 +710,11 @@ namespace projetTournoi
             MainMenu_BT_CreeTour.Enabled = false;
             Detail_Tour_BT_InscrireJoueur.Enabled = false;
             Detail_Tour_BT_InscrireTeam.Enabled = false;
+        }
+
+        private void Detail_Tour_listBox_Equipes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

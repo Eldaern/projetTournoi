@@ -944,6 +944,7 @@
             this.Detail_Tour_listBox_Equipes.Name = "Detail_Tour_listBox_Equipes";
             this.Detail_Tour_listBox_Equipes.Size = new System.Drawing.Size(120, 95);
             this.Detail_Tour_listBox_Equipes.TabIndex = 1;
+            this.Detail_Tour_listBox_Equipes.SelectedIndexChanged += new System.EventHandler(this.Detail_Tour_listBox_Equipes_SelectedIndexChanged);
             // 
             // BT_Rafraîchir
             // 
