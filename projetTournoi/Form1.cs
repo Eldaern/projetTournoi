@@ -868,7 +868,6 @@ namespace projetTournoi
         {
             if ((int)tournoiOBj.DetailTournoiDS(NumeroTournoiSelect).Tables["Tournoi"].Rows[0].ItemArray.GetValue(9) == organisation)
             {
-                Detail_Tour_BT_InscrireJoueur.Text = "wolololololololololololololo";
                 Resultats_panel.BringToFront();
                 PreviousPanel = 6;
                 CurentPanel = 11;
@@ -908,6 +907,11 @@ namespace projetTournoi
         }
 
         private void resultat_DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Résultats_valider_Click(object sender, EventArgs e)
         {
 
         }
