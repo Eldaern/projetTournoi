@@ -43,7 +43,14 @@ namespace projetTournoi
             MainMenu_Panel.BringToFront();
             Connexion_Panel.BringToFront();
             //Main_Menu_Gerer_Panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 1;
             chargerTexte();
             BackButton.Visible = false;
@@ -340,6 +347,7 @@ namespace projetTournoi
                 estResponsable = true;
                 organisation = cpt;
                 MessageBox.Show("Organisation créée");
+                PreviousPanel = 7;
             }
         }
 
@@ -711,7 +719,7 @@ namespace projetTournoi
                     }
                     else
                     {
-                    PreviousPanel = 1;
+                        PreviousPanel = 1;
                     }
                     CurentPanel = 1;
                     BackButton.Visible = false;
@@ -807,7 +815,7 @@ namespace projetTournoi
                 }
                 else
                 {
-                PreviousPanel = 1;
+                    PreviousPanel = 1;
                 }
                 CurentPanel = 1;
                 BackButton.Visible = false;
