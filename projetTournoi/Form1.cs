@@ -470,6 +470,8 @@ namespace projetTournoi
             IP_Label_Prénom.Text = textes.prénom;
             IP_Label_motdepasse.Text = textes.password;
             IP_BT_valider.Text = textes.valider;
+
+            Résultats_valider.Text = textes.valider;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -686,6 +688,10 @@ namespace projetTournoi
                 Detail_Tour_listBox_Equipes.Items.Add(dsEquipes.Tables["Equipe"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
             }
             Detail_Tour_listBox_Joueurs.Items.Clear();
+            if ((int)tournoiOBj.DetailTournoiDS(NumeroTournoiSelect).Tables["Tournoi"].Rows[0].ItemArray.GetValue(9) == organisation)
+            {
+                Detail_Tour_BT_InscrireJoueur.Text = textes.resultats;
+            }
         }
 
         private void Detail_Tour_BT_InscrireTeam_Click(object sender, EventArgs e)

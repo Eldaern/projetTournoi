@@ -52,5 +52,7 @@
 	"valider" : "Valider",
 
 	"nomdeFamille" : "Nom :",
-	"prénom" : "Prénom :"
+	"prénom" : "Prénom :",
+
+	"resultats" : "inscrire les résultats"
 }
