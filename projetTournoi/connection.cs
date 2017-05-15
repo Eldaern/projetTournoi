@@ -318,5 +318,31 @@ namespace projetTournoi
             return ds;
         }
 
+
+
+        public DataSet JoueurDUNEEquipe(int n,string nom)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                conn = new SqlConnection();
+                cmd = new SqlCommand();
+                dtad = new SqlDataAdapter();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "select LoginU from Utilisateur,EquipeUtilisateur,Equipe where EquipeUtilisateur.Utilisateur=Utilisateur.[N°] and EquipeUtilisateur.Equipe=Equipe.[N°] and Equipe.NumeroTournoi"+n+"1 and Equipe.Nom like '"+nom+"'";
+                dtad.SelectCommand = cmd;
+                dtad.Fill(ds, "Joueur");
+                conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
+            return ds;
+        }
+
     }
 }
