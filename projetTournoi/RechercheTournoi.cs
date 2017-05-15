@@ -60,7 +60,10 @@ namespace projetTournoi
             ConDD.OrganisationCree(nom, description, user);
         }
 
-
+        public void OrganisationModifier(int n, string description)
+        {
+            ConDD.OrganisationModifier(n, description);
+        }
 
 
         ~RechercheTournoi()

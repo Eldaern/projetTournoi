@@ -30,6 +30,8 @@ namespace projetTournoi
 
         bool isConnected = false;
         UtilisateurConnecté user;
+        bool estResponsable;
+        int organisation;
         public Main_Forme()
         {
             InitializeComponent();
@@ -182,7 +184,14 @@ namespace projetTournoi
         private void MainMenu_BT_CherchTour_Click(object sender, EventArgs e)
         {
             Chercher_Tournoi_Panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 2;
             BackButton.Visible = true;
             ChercheTour_ComboBox_Jeu.Items.Clear();
@@ -197,16 +206,22 @@ namespace projetTournoi
         private void MainMenu_BT_CreeOrg_Click(object sender, EventArgs e)
         {
             CreeOrg_Panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 3;
             BackButton.Visible = true;
         }
 
         private void MainMenu_BT_CreeTour_Click(object sender, EventArgs e)
         {
-            PreviousPanel = 1;
+            PreviousPanel = 7;
             creationTournoi();
-            
          }
 
         private void helpButton_Click(object sender, EventArgs e)
@@ -298,7 +313,26 @@ namespace projetTournoi
 
         private void CO_Button_Creer_Click(object sender, EventArgs e)
         {
-
+            bool existe = false;
+            DataSet dsOrg = tournoiOBj.OrganisationCherche();
+            int cpt = dsOrg.Tables["Organisation"].Rows.Count;
+            for (int i = 0; i < cpt; i++)
+            {
+                if (CO_Textbox_Nom.Text.ToString() == dsOrg.Tables["Organisation"].Rows[i].ItemArray.GetValue(0).ToString())
+                {
+                    existe = true;
+                }
+            }
+            if (existe)
+            {
+                MessageBox.Show("Ce nom est déjà pris");
+            }
+            else
+            {
+                tournoiOBj.OrganisationCree(CO_Textbox_Nom.Text.ToString().Replace("'", "''"), CO_RTB_Description.Text.ToString(), user);
+                estResponsable = true;
+                organisation = cpt + 1;
+            }
         }
 
         private void CO_RTB_Description_TextChanged(object sender, EventArgs e)
@@ -314,51 +348,52 @@ namespace projetTournoi
         private void MNG_BT_CherchTour_Click(object sender, EventArgs e)
         {
             Chercher_Tournoi_Panel.BringToFront();
-            PreviousPanel = 7;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 2;
             BackButton.Visible = true;
         }
 
         private void MNG_BT_CreeTour_Click(object sender, EventArgs e)
         {
-            PreviousPanel = 7;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             creationTournoi();
         }
 
         private void MNG_BT_GererOrg_Click(object sender, EventArgs e)
         {
             Gerer_Org_Panel.BringToFront();
-            PreviousPanel = 7;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 5;
             BackButton.Visible = true;
-        }
-
-        private void Gerer_Org_BT_Chercher_Click(object sender, EventArgs e)
-        {
-            Gerer_Org_ListBox.Items.Clear();
-            string rechercheNom="any";
-            rechercheNom = Gerer_Org_TextBox_Nom.Text.ToString().Replace("'", "''");
-            int nbr = 0;
-            DataSet tmp=new DataSet();
-            tmp.Merge(dataClass.torDS.Tables["Utilisateur"].Select("LoginU like '%" + rechercheNom+"%'" ,"[N°] ASC"));
-            try
-            {
-                nbr = tmp.Tables["Utilisateur"].Rows.Count;
-            }
-            catch(Exception ex)
-            {
-                Gerer_Org_ListBox.Items.Clear();
-                MessageBox.Show("Utilisater inconnu");
-            }
-            for (int cpt = 0; cpt < nbr; cpt++)
-            {
-             string nomAdd = (string)tmp.Tables["Utilisateur"].Rows[cpt].ItemArray.GetValue(6);
-                Gerer_Org_ListBox.Items.Add(nomAdd);
-            }
+            DataSet dsOrg = tournoiOBj.OrganisationCherche();
+            Gerer_Org_Label_Nom.Text = dsOrg.Tables["Organisation"].Rows[organisation].ItemArray.GetValue(0).ToString();
+            Gerer_Org_RTB_Description.Text = dsOrg.Tables["Organisation"].Rows[organisation].ItemArray.GetValue(1).ToString().Replace("''", "'");
         }
 
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
         {
+            tournoiOBj.OrganisationModifier(organisation, Gerer_Org_RTB_Description.Text.ToString().Replace("'", "''"));
         }
 
         private void chargerTexte()
@@ -398,8 +433,6 @@ namespace projetTournoi
             CO_Button_Creer.Text = textes.Créer;
 
             Gerer_Org_Label_Title.Text = textes.Gérer_org;
-            Gerer_Org_Label_Nom.Text = textes.Nom + " :";
-            Gerer_Org_BT_Chercher.Text = textes.Chercher;
             Gerer_Org_BT_Ajouter.Text = textes.Ajouter;
 
             MNG_BT_CherchTour.Text = textes.Cherch_Tour;
@@ -428,29 +461,64 @@ namespace projetTournoi
             {
                 case 1:
                     MainMenu_Panel.BringToFront();
-                    PreviousPanel = 1;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     CurentPanel = 1;
                     BackButton.Visible = false;
                     break;
                 case 2:
                     Chercher_Tournoi_Panel.BringToFront();
-                    PreviousPanel = 1;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     CurentPanel = 2;
                     BackButton.Visible = true;
                     break;
                 case 3:
                     CreeOrg_Panel.BringToFront();
-                    PreviousPanel = 1;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     CurentPanel = 3;
                     BackButton.Visible = true;
                     break;
                 case 4:
-                    PreviousPanel = 1;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     creationTournoi();
                     break;
                 case 5:
                     Gerer_Org_Panel.BringToFront();
-                    PreviousPanel = 7;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     CurentPanel = 5;
                     BackButton.Visible = true;
                     break;
@@ -462,7 +530,14 @@ namespace projetTournoi
                     break;
                 case 7:
                     Main_Menu_Gerer_Panel.BringToFront();
-                    PreviousPanel = 7;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     CurentPanel = 7;
                     BackButton.Visible = false;
                     break;
@@ -474,13 +549,27 @@ namespace projetTournoi
                     break;
                 case 9:
                     Logging_Panel.BringToFront();
-                    PreviousPanel = 1;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     CurentPanel = 9;
                     BackButton.Visible = true;
                     break;
                 case 10:
                     Inscription_Panel.BringToFront();
-                    PreviousPanel = 1;
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
+                        PreviousPanel = 1;
+                    }
                     CurentPanel = 10;
                     BackButton.Visible = true;
                     break;
@@ -516,7 +605,14 @@ namespace projetTournoi
                 tournoi.date = ChercheTour_DTPicker.Value.Date.ToString("yyyy-MM-dd");
             }
             List_Tournoi_panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 6;
             DataSet ds = tournoiOBj.RechercheTournoiDS(tournoi);
             int cpt= ds.Tables["Tournoi"].Rows.Count;
@@ -614,6 +710,16 @@ namespace projetTournoi
                     activerBoutonsConnexion();
                 }
                 user = new UtilisateurConnecté(nomCompte, motDePasse);
+                DataSet dsOrg = tournoiOBj.OrganisationCherche();
+                int cpt = dsOrg.Tables["Organisation"].Rows.Count;
+                for (int i = 0; i < cpt; i++)
+                {
+                    if (user.username == dsOrg.Tables["Organisation"].Rows[i].ItemArray.GetValue(2).ToString())
+                    {
+                        estResponsable = true;
+                        organisation = i;
+                    }
+                }
             }
             catch (Exception Ex)
             {
@@ -632,7 +738,14 @@ namespace projetTournoi
         private void CP_BT_Inscription_Click(object sender, EventArgs e)
         {
             Inscription_Panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 10;
             BackButton.Visible = true;
             IP_TextBox_NomdeCompte.Clear();
@@ -694,6 +807,7 @@ namespace projetTournoi
         private void ConnP_BT_Déco_Click(object sender, EventArgs e)
         {
             isConnected = false;
+            estResponsable = false;
             Connexion_Panel.BringToFront();
             desactiverBoutonsConnexion();
         }

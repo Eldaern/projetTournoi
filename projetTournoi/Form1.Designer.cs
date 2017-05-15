@@ -83,10 +83,8 @@
             this.MNG_BT_GererOrg = new System.Windows.Forms.Button();
             this.MNG_BT_CherchTour = new System.Windows.Forms.Button();
             this.Gerer_Org_Panel = new System.Windows.Forms.Panel();
+            this.Gerer_Org_RTB_Description = new System.Windows.Forms.RichTextBox();
             this.Gerer_Org_BT_Ajouter = new System.Windows.Forms.Button();
-            this.Gerer_Org_ListBox = new System.Windows.Forms.ListBox();
-            this.Gerer_Org_BT_Chercher = new System.Windows.Forms.Button();
-            this.Gerer_Org_TextBox_Nom = new System.Windows.Forms.TextBox();
             this.Gerer_Org_Label_Nom = new System.Windows.Forms.Label();
             this.Gerer_Org_Label_Title = new System.Windows.Forms.Label();
             this.Help_ToolTip_langage = new System.Windows.Forms.ToolTip(this.components);
@@ -725,16 +723,22 @@
             // 
             // Gerer_Org_Panel
             // 
+            this.Gerer_Org_Panel.Controls.Add(this.Gerer_Org_RTB_Description);
             this.Gerer_Org_Panel.Controls.Add(this.Gerer_Org_BT_Ajouter);
-            this.Gerer_Org_Panel.Controls.Add(this.Gerer_Org_ListBox);
-            this.Gerer_Org_Panel.Controls.Add(this.Gerer_Org_BT_Chercher);
-            this.Gerer_Org_Panel.Controls.Add(this.Gerer_Org_TextBox_Nom);
             this.Gerer_Org_Panel.Controls.Add(this.Gerer_Org_Label_Nom);
             this.Gerer_Org_Panel.Controls.Add(this.Gerer_Org_Label_Title);
             this.Gerer_Org_Panel.Location = new System.Drawing.Point(13, 62);
             this.Gerer_Org_Panel.Name = "Gerer_Org_Panel";
             this.Gerer_Org_Panel.Size = new System.Drawing.Size(766, 303);
             this.Gerer_Org_Panel.TabIndex = 6;
+            // 
+            // Gerer_Org_RTB_Description
+            // 
+            this.Gerer_Org_RTB_Description.Location = new System.Drawing.Point(201, 112);
+            this.Gerer_Org_RTB_Description.Name = "Gerer_Org_RTB_Description";
+            this.Gerer_Org_RTB_Description.Size = new System.Drawing.Size(298, 115);
+            this.Gerer_Org_RTB_Description.TabIndex = 11;
+            this.Gerer_Org_RTB_Description.Text = "";
             // 
             // Gerer_Org_BT_Ajouter
             // 
@@ -746,36 +750,11 @@
             this.Gerer_Org_BT_Ajouter.UseVisualStyleBackColor = true;
             this.Gerer_Org_BT_Ajouter.Click += new System.EventHandler(this.Gerer_Org_BT_Ajouter_Click);
             // 
-            // Gerer_Org_ListBox
-            // 
-            this.Gerer_Org_ListBox.FormattingEnabled = true;
-            this.Gerer_Org_ListBox.Location = new System.Drawing.Point(201, 124);
-            this.Gerer_Org_ListBox.Name = "Gerer_Org_ListBox";
-            this.Gerer_Org_ListBox.Size = new System.Drawing.Size(298, 108);
-            this.Gerer_Org_ListBox.TabIndex = 9;
-            // 
-            // Gerer_Org_BT_Chercher
-            // 
-            this.Gerer_Org_BT_Chercher.Location = new System.Drawing.Point(424, 83);
-            this.Gerer_Org_BT_Chercher.Name = "Gerer_Org_BT_Chercher";
-            this.Gerer_Org_BT_Chercher.Size = new System.Drawing.Size(75, 23);
-            this.Gerer_Org_BT_Chercher.TabIndex = 8;
-            this.Gerer_Org_BT_Chercher.Text = "Chercher";
-            this.Gerer_Org_BT_Chercher.UseVisualStyleBackColor = true;
-            this.Gerer_Org_BT_Chercher.Click += new System.EventHandler(this.Gerer_Org_BT_Chercher_Click);
-            // 
-            // Gerer_Org_TextBox_Nom
-            // 
-            this.Gerer_Org_TextBox_Nom.Location = new System.Drawing.Point(283, 84);
-            this.Gerer_Org_TextBox_Nom.Name = "Gerer_Org_TextBox_Nom";
-            this.Gerer_Org_TextBox_Nom.Size = new System.Drawing.Size(108, 20);
-            this.Gerer_Org_TextBox_Nom.TabIndex = 7;
-            // 
             // Gerer_Org_Label_Nom
             // 
             this.Gerer_Org_Label_Nom.AutoSize = true;
             this.Gerer_Org_Label_Nom.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Gerer_Org_Label_Nom.Location = new System.Drawing.Point(196, 79);
+            this.Gerer_Org_Label_Nom.Location = new System.Drawing.Point(313, 79);
             this.Gerer_Org_Label_Nom.Name = "Gerer_Org_Label_Nom";
             this.Gerer_Org_Label_Nom.Size = new System.Drawing.Size(68, 25);
             this.Gerer_Org_Label_Nom.TabIndex = 6;
@@ -1155,18 +1134,18 @@
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
-            this.Controls.Add(this.Connexion_Panel);
-            this.Controls.Add(this.Connecté_Panel);
-            this.Controls.Add(this.Detail_Tournoi_Panel);
-            this.Controls.Add(this.Chercher_Tournoi_Panel);
-            this.Controls.Add(this.Cree_Tournoi_Panel);
-            this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
             this.Controls.Add(this.Main_Menu_Gerer_Panel);
             this.Controls.Add(this.MainMenu_Panel);
             this.Controls.Add(this.List_Tournoi_panel);
             this.Controls.Add(this.Inscription_Panel);
             this.Controls.Add(this.Logging_Panel);
+            this.Controls.Add(this.Detail_Tournoi_Panel);
+            this.Controls.Add(this.Chercher_Tournoi_Panel);
+            this.Controls.Add(this.Cree_Tournoi_Panel);
+            this.Controls.Add(this.CreeOrg_Panel);
+            this.Controls.Add(this.Connexion_Panel);
+            this.Controls.Add(this.Connecté_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
@@ -1250,12 +1229,8 @@
         private System.Windows.Forms.Button MNG_BT_GererOrg;
         private System.Windows.Forms.Button MNG_BT_CherchTour;
         private System.Windows.Forms.Panel Gerer_Org_Panel;
-        private System.Windows.Forms.Button Gerer_Org_BT_Chercher;
-        private System.Windows.Forms.TextBox Gerer_Org_TextBox_Nom;
-        private System.Windows.Forms.Label Gerer_Org_Label_Nom;
         private System.Windows.Forms.Label Gerer_Org_Label_Title;
         private System.Windows.Forms.Button Gerer_Org_BT_Ajouter;
-        private System.Windows.Forms.ListBox Gerer_Org_ListBox;
         private System.Windows.Forms.ToolTip Help_ToolTip_langage;
         private System.Windows.Forms.ToolTip Help_toolTip_1;
         private System.Windows.Forms.Button BackButton;
@@ -1305,6 +1280,8 @@
         private System.Windows.Forms.Label IP_Label_Prénom;
         private System.Windows.Forms.Label IP_Label_mail;
         private System.Windows.Forms.TextBox IP_TextBox_mail;
+        private System.Windows.Forms.RichTextBox Gerer_Org_RTB_Description;
+        private System.Windows.Forms.Label Gerer_Org_Label_Nom;
     }
 }
 

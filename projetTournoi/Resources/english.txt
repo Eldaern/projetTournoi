@@ -25,7 +25,7 @@
 	"Description" : "Description",
 
 	"Gérer_org" : "Manage the organisation",
-	"Ajouter" : "Add",
+	"Ajouter" : "Change",
 
 	"Help_langage" : "Change the Application's language",
 	"Help_connexion" : "login or sign in",
