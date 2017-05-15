@@ -364,5 +364,56 @@ namespace projetTournoi
             return ds;
         }
 
+
+        public void OrganisationCree(string nom, string description, UtilisateurConnecté user)
+        {
+            string cmds = "insert into Organisation (nom,[Description], Responsable) VALUES('"+nom+"', '"+description+"', (select[N°] from Utilisateur where Utilisateur.LoginU = '" + user.username + "'))";
+             using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                }
+                conn.Close();
+            }
+        }
+
+        public DataSet Organisation()
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                conn = new SqlConnection();
+                cmd = new SqlCommand();
+                dtad = new SqlDataAdapter();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "select * from Organisation";
+                dtad.SelectCommand = cmd;
+                dtad.Fill(ds, "Organisation");
+                conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
+            return ds;
+        }
+
+
+
+
+
     }
 }

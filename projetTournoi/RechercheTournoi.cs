@@ -50,6 +50,19 @@ namespace projetTournoi
         {
             return ConDD.JoueurDUNEEquipe(n,nom);
         }
+        public DataSet OrganisationCherche()
+        {
+            return ConDD.Organisation();
+        }
+
+        public void OrganisationCree(string nom, string description, UtilisateurConnecté user)
+        {
+            ConDD.OrganisationCree(nom, description, user);
+        }
+
+
+
+
         ~RechercheTournoi()
         {
 
