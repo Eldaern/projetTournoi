@@ -66,6 +66,10 @@ namespace projetTournoi
             ConDD.OrganisationModifier(n, description);
         }
 
+        public void CreeResultat(String nom, int tournoi, int position)
+        {
+            ConDD.CreeResultat(nom, tournoi, position);
+        }
 
         ~RechercheTournoi()
         {
