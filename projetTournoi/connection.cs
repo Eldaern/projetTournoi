@@ -456,7 +456,29 @@ namespace projetTournoi
         }
 
 
+        public DataSet AfficheResultat(int n)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                conn = new SqlConnection();
+                cmd = new SqlCommand();
+                dtad = new SqlDataAdapter();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "select Resultat.Position,Tournoi.Nom,Equipe.Nom from Resultat,Tournoi,Equipe where Tournoi.[N°]=Resultat.Tournoi and Equipe.[N°]=Resultat.Equipe and Resultat.Tournoi="+n;
+                dtad.SelectCommand = cmd;
+                dtad.Fill(ds, "Resultat");
+                conn.Close();
 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
+            return ds;
+        }
 
 
     }
