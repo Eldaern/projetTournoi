@@ -869,6 +869,16 @@ namespace projetTournoi
             if ((int)tournoiOBj.DetailTournoiDS(NumeroTournoiSelect).Tables["Tournoi"].Rows[0].ItemArray.GetValue(9) == organisation)
             {
                 Detail_Tour_BT_InscrireJoueur.Text = "wolololololololololololololo";
+                Resultats_panel.BringToFront();
+                PreviousPanel = 6;
+                CurentPanel = 11;
+                DataSet dsEquipes = tournoiOBj.EquipeTournoi(NumeroTournoiSelect);
+                int cpt = dsEquipes.Tables["Equipe"].Rows.Count;
+                Detail_Tour_listBox_Equipes.Items.Clear();
+                for (int i = 0; i < cpt; i++)
+                {
+                    resultat_DataGrid.Rows.Add(dsEquipes.Tables["Equipe"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
+                }
             }
             else {
                 bool isAlreadyThere = false;
@@ -895,6 +905,11 @@ namespace projetTournoi
                     Detail_Tour_listBox_Joueurs.Items.Add(user.username);
                 }
             }
+        }
+
+        private void resultat_DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

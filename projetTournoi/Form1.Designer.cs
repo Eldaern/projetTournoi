@@ -1155,6 +1155,7 @@
             this.resultat_DataGrid.Name = "resultat_DataGrid";
             this.resultat_DataGrid.Size = new System.Drawing.Size(500, 303);
             this.resultat_DataGrid.TabIndex = 0;
+            this.resultat_DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.resultat_DataGrid_CellContentClick);
             // 
             // Equipe
             // 
