@@ -345,7 +345,7 @@ namespace projetTournoi
             {
                 tournoiOBj.OrganisationCree(CO_Textbox_Nom.Text.ToString().Replace("'", "''"), CO_RTB_Description.Text.ToString(), user);
                 estResponsable = true;
-                organisation = cpt;
+                organisation = cpt+1;
                 MessageBox.Show("Organisation créée");
                 PreviousPanel = 7;
             }
@@ -711,17 +711,7 @@ namespace projetTournoi
                     DirectoryEntry DirEntry = result.GetDirectoryEntry();
                     MessageBox.Show("Bonjour " + DirEntry.Properties["SAMAccountName"].Value +", vous êtes bien connecté");
                     conn.ConnectionReussi(nomCompte);
-                    MainMenu_Panel.BringToFront();
                     Connecté_Panel.BringToFront();
-                    if (estResponsable)
-                    {
-                        PreviousPanel = 7;
-                    }
-                    else
-                    {
-                        PreviousPanel = 1;
-                    }
-                    CurentPanel = 1;
                     BackButton.Visible = false;
                     isConnected = true;
                     activerBoutonsConnexion();
@@ -745,6 +735,17 @@ namespace projetTournoi
                 nomCompte = LP_TextBox_Username.Text;
                 conn.ConnectionRate(nomCompte);
             }
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+                Main_Menu_Gerer_Panel.BringToFront();
+            }
+            else
+            {
+                PreviousPanel = 1;
+                MainMenu_Panel.BringToFront();
+            }
+            CurentPanel = 1;
         }
 
         private void IP_Label_Nom_Click(object sender, EventArgs e)
@@ -833,6 +834,7 @@ namespace projetTournoi
             isConnected = false;
             estResponsable = false;
             Connexion_Panel.BringToFront();
+            MainMenu_Panel.BringToFront();
             desactiverBoutonsConnexion();
         }
 

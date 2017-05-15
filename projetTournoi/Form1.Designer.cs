@@ -1134,7 +1134,6 @@
             this.Controls.Add(this.helpButton);
             this.Controls.Add(this.Langue_EN_bt);
             this.Controls.Add(this.Langue_FR_bt);
-            this.Controls.Add(this.Connexion_Panel);
             this.Controls.Add(this.Connecté_Panel);
             this.Controls.Add(this.CreeOrg_Panel);
             this.Controls.Add(this.Gerer_Org_Panel);
@@ -1146,6 +1145,7 @@
             this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
+            this.Controls.Add(this.Connexion_Panel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main_Forme";
             this.Text = "Gestion tournoi";
