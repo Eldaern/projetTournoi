@@ -873,7 +873,7 @@ namespace projetTournoi
                 CurentPanel = 11;
                 DataSet dsEquipes = tournoiOBj.EquipeTournoi(NumeroTournoiSelect);
                 int cpt = dsEquipes.Tables["Equipe"].Rows.Count;
-                Detail_Tour_listBox_Equipes.Items.Clear();
+                resultat_DataGrid.Rows.Clear();
                 for (int i = 0; i < cpt; i++)
                 {
                     resultat_DataGrid.Rows.Add(dsEquipes.Tables["Equipe"].Rows[i].ItemArray.GetValue(0).ToString().Replace("''", "'"));
