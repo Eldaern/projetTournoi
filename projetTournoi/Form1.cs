@@ -339,6 +339,7 @@ namespace projetTournoi
                 tournoiOBj.OrganisationCree(CO_Textbox_Nom.Text.ToString().Replace("'", "''"), CO_RTB_Description.Text.ToString(), user);
                 estResponsable = true;
                 organisation = cpt;
+                MessageBox.Show("Organisation créée");
             }
         }
 
@@ -401,6 +402,7 @@ namespace projetTournoi
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
         {
             tournoiOBj.OrganisationModifier(organisation, Gerer_Org_RTB_Description.Text.ToString().Replace("'", "''"));
+            MessageBox.Show("Description modifiée.");
         }
 
         private void chargerTexte()
@@ -703,7 +705,14 @@ namespace projetTournoi
                     conn.ConnectionReussi(nomCompte);
                     MainMenu_Panel.BringToFront();
                     Connecté_Panel.BringToFront();
+                    if (estResponsable)
+                    {
+                        PreviousPanel = 7;
+                    }
+                    else
+                    {
                     PreviousPanel = 1;
+                    }
                     CurentPanel = 1;
                     BackButton.Visible = false;
                     isConnected = true;
@@ -792,7 +801,14 @@ namespace projetTournoi
                 MessageBox.Show("Utilisateur créé");
                 MainMenu_Panel.BringToFront();
                 Connecté_Panel.BringToFront();
+                if (estResponsable)
+                {
+                    PreviousPanel = 7;
+                }
+                else
+                {
                 PreviousPanel = 1;
+                }
                 CurentPanel = 1;
                 BackButton.Visible = false;
                 isConnected = true;
