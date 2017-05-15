@@ -175,7 +175,7 @@ namespace projetTournoi
                 conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "select jeux.Nom, Tournoi.DateTournoi, Lieu.Numero, Lieu.rue, Lieu.Ville, Lieu.Pays, Tournoi.tipe,Tournoi.Nom, jeux.ImageURL from Tournoi, Lieu, jeux where Lieu.[N°]=Tournoi.Lieu and jeux.[N°]=Tournoi.Jeux and Tournoi.[N°]=" +n;
+                cmd.CommandText = "select jeux.Nom, Tournoi.DateTournoi, Lieu.Numero, Lieu.rue, Lieu.Ville, Lieu.Pays, Tournoi.tipe,Tournoi.Nom, jeux.ImageURL, Tournoi.Organisation from Tournoi, Lieu, jeux where Lieu.[N°]=Tournoi.Lieu and jeux.[N°]=Tournoi.Jeux and Tournoi.[N°]=" +n;
                 dtad.SelectCommand = cmd;
                 dtad.Fill(ds, "Tournoi");
                 conn.Close();
