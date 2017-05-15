@@ -82,6 +82,7 @@ namespace projetTournoi
             PreviousPanel = 1;
             CurentPanel = 9;
             BackButton.Visible = true;
+            LP_TextBox_Password.Clear();
         }
        
 
@@ -602,6 +603,7 @@ namespace projetTournoi
                 {
                     DirectoryEntry DirEntry = result.GetDirectoryEntry();
                     MessageBox.Show("Bonjour " + DirEntry.Properties["SAMAccountName"].Value +", vous êtes bien connecté");
+                    conn.ConnectionReussi(nomCompte);
                     MainMenu_Panel.BringToFront();
                     Connecté_Panel.BringToFront();
                     PreviousPanel = 1;
@@ -614,7 +616,10 @@ namespace projetTournoi
             }
             catch (Exception Ex)
             {
+                string nomCompte = "";
                 MessageBox.Show(Ex.Message);
+                nomCompte = LP_TextBox_Username.Text;
+                conn.ConnectionRate(nomCompte);
             }
         }
 
@@ -625,11 +630,15 @@ namespace projetTournoi
 
         private void CP_BT_Inscription_Click(object sender, EventArgs e)
         {
-                Inscription_Panel.BringToFront();
-                PreviousPanel = 1;
-                CurentPanel = 10;
-                BackButton.Visible = true;
-            
+            Inscription_Panel.BringToFront();
+            PreviousPanel = 1;
+            CurentPanel = 10;
+            BackButton.Visible = true;
+            IP_TextBox_NomdeCompte.Clear();
+            IP_TextBox_Nom.Clear();
+            IP_TextBox_Prénom.Clear();
+            IP_TextBox_motdepasse.Clear();
+            IP_TextBox_mail.Clear();
         }
 
         private void IP_BT_valider_Click(object sender, EventArgs e)
@@ -643,7 +652,7 @@ namespace projetTournoi
                 prenom = IP_TextBox_Prénom.Text;
                 motDePasse = IP_TextBox_motdepasse.Text;
                 mail = IP_TextBox_mail.Text;
-               /* DirectoryEntry Ldap = new DirectoryEntry("LDAP://192.168.140.133", "Administrateur", "e11T22u33+");
+                DirectoryEntry Ldap = new DirectoryEntry("LDAP://192.168.140.133", "Administrateur", "e11T22u33+");
                 DirectoryEntry user2 = Ldap.Children.Add("cn=" + nomComplet, "user");
 
                 user2.Properties["SAMAccountName"].Add(nomComplet);
@@ -661,9 +670,10 @@ namespace projetTournoi
                 user2.Properties["userAccountControl"].Value = 0x0200;
 
                 user2.CommitChanges();
-*/
+
                 user = new UtilisateurConnecté(nomComplet, mail);
                 conn.CreateUser(user);
+                conn.ConnectionReussi(nomComplet);
 
                 MessageBox.Show("Utilisateur créé");
                 MainMenu_Panel.BringToFront();
@@ -700,6 +710,11 @@ namespace projetTournoi
             MainMenu_BT_CreeTour.Enabled = false;
             Detail_Tour_BT_InscrireJoueur.Enabled = false;
             Detail_Tour_BT_InscrireTeam.Enabled = false;
+        }
+
+        private void Detail_Tour_listBox_Equipes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
