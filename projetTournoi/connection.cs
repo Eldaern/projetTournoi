@@ -398,7 +398,7 @@ namespace projetTournoi
                 conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "select * from Organisation";
+                cmd.CommandText = "select Organisation.Nom,Organisation.[Description],Utilisateur.LoginU from Organisation,Utilisateur where Utilisateur.[N°]=Organisation.Responsable";
                 dtad.SelectCommand = cmd;
                 dtad.Fill(ds, "Organisation");
                 conn.Close();
