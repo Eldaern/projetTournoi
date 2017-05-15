@@ -435,7 +435,7 @@ namespace projetTournoi
 
         public void CreeResultat(String nom,int tournoi,int position)
         {
-            string cmds = "insert into Resultat (Tournoi,Position,Equipe) VALUES ("+tournoi+","+position+",(select Equipe.[N°] from Equipe where Equipe.NumeroTournoi="+tournoi+"and Equipe.Nom like '"+nom+"'))";
+            string cmds = "insert into Resultat (Tournoi,Position,Equipe) VALUES ("+tournoi+","+position+",(select Equipe.[N°] from Equipe where Equipe.NumeroTournoi="+tournoi+" and Equipe.Nom like '"+nom+"'))";
             using (SqlCommand comm2 = new SqlCommand())
             {
                 SqlConnection conn = new SqlConnection();

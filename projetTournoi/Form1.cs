@@ -923,7 +923,7 @@ namespace projetTournoi
             int cpt = dsEquipes.Tables["Equipe"].Rows.Count;
             for (int i = 0; i < cpt; i++)
             {
-                tournoiOBj.CreeResultat(resultat_DataGrid.Rows[i].Cells["Equipe"].Value.ToString(),NumeroTournoiSelect,(int) resultat_DataGrid.Rows[i].Cells["résultats"].Value);
+                tournoiOBj.CreeResultat(resultat_DataGrid.Rows[i].Cells["Equipe"].Value.ToString(),NumeroTournoiSelect,(int)resultat_DataGrid.Rows[i].Cells["résultats"].Value);
             }
         }
 
