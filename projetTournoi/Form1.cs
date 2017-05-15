@@ -81,7 +81,14 @@ namespace projetTournoi
         private void CP_BT_Connexion_Click(object sender, EventArgs e)
         {
             Logging_Panel.BringToFront();
-            PreviousPanel = 1;
+            if (estResponsable)
+            {
+                PreviousPanel = 7;
+            }
+            else
+            {
+                PreviousPanel = 1;
+            }
             CurentPanel = 9;
             BackButton.Visible = true;
             LP_TextBox_Password.Clear();
@@ -605,14 +612,7 @@ namespace projetTournoi
                 tournoi.date = ChercheTour_DTPicker.Value.Date.ToString("yyyy-MM-dd");
             }
             List_Tournoi_panel.BringToFront();
-            if (estResponsable)
-            {
-                PreviousPanel = 7;
-            }
-            else
-            {
-                PreviousPanel = 1;
-            }
+            PreviousPanel = 2;
             CurentPanel = 6;
             DataSet ds = tournoiOBj.RechercheTournoiDS(tournoi);
             int cpt= ds.Tables["Tournoi"].Rows.Count;
