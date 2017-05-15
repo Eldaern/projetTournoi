@@ -394,8 +394,8 @@ namespace projetTournoi
             CurentPanel = 5;
             BackButton.Visible = true;
             DataSet dsOrg = tournoiOBj.OrganisationCherche();
-            Gerer_Org_Label_Nom.Text = dsOrg.Tables["Organisation"].Rows[organisation-2].ItemArray.GetValue(0).ToString();
-            Gerer_Org_RTB_Description.Text = dsOrg.Tables["Organisation"].Rows[organisation-2].ItemArray.GetValue(1).ToString().Replace("''", "'");
+            Gerer_Org_Label_Nom.Text = dsOrg.Tables["Organisation"].Rows[organisation-1].ItemArray.GetValue(0).ToString();
+            Gerer_Org_RTB_Description.Text = dsOrg.Tables["Organisation"].Rows[organisation-1].ItemArray.GetValue(1).ToString().Replace("''", "'");
         }
 
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
