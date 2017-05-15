@@ -387,6 +387,28 @@ namespace projetTournoi
             }
         }
 
+        public void OrganisationModifier(int n, string description)
+        {
+           string cmds = "update Organisation set [Description]='"+description+"' where Organisation.[N°]="+n;
+            using (SqlCommand comm2 = new SqlCommand())
+            {
+                SqlConnection conn = new SqlConnection();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                comm2.Connection = conn;
+                comm2.CommandText = cmds;
+                try
+                {
+                    conn.Open();
+                    comm2.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+
+                }
+                conn.Close();
+            }
+        }
+
         public DataSet Organisation()
         {
             DataSet ds = new DataSet();
@@ -398,7 +420,7 @@ namespace projetTournoi
                 conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
                 conn.Open();
                 cmd.Connection = conn;
-                cmd.CommandText = "select Organisation.Nom,Organisation.[Description],Utilisateur.LoginU from Organisation,Utilisateur where Utilisateur.[N°]=Organisation.Responsable";
+                cmd.CommandText = "select Organisation.Nom,Organisation.[Description],Utilisateur.LoginU,Organisation.[N°] from Organisation,Utilisateur where Utilisateur.[N°]=Organisation.Responsable";
                 dtad.SelectCommand = cmd;
                 dtad.Fill(ds, "Organisation");
                 conn.Close();
