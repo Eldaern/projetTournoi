@@ -190,7 +190,7 @@ namespace projetTournoi
             }
             else
             {
-                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text.Replace("'", "''"), CreeTour_DTPicker.Value.ToString().Replace("'", "''"), CreeTour_CB_Type.SelectedItem.ToString().Replace("'", "''"), CreeTour_CB_Jeu.SelectedIndex + 1,0, CreeTour_TextBox_Ville.Text.Replace("'", "''"), CreeTour_ComboBox_Pays.SelectedItem.ToString().Replace("'", "''"), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text.Replace("'", "''"));
+                conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text.Replace("'", "''"), CreeTour_DTPicker.Value.ToString().Replace("'", "''"), CreeTour_CB_Type.SelectedItem.ToString().Replace("'", "''"), CreeTour_CB_Jeu.SelectedIndex + 1,organisation, CreeTour_TextBox_Ville.Text.Replace("'", "''"), CreeTour_ComboBox_Pays.SelectedItem.ToString().Replace("'", "''"), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text.Replace("'", "''"));
                 MessageBox.Show("Tournoi créé");
             }
         }
