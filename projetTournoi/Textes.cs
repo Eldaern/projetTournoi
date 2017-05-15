@@ -33,5 +33,7 @@ namespace projetTournoi
         public string username, password, valider;
 
         public string nomdeFamille, prénom;
+
+        public string resultats;
     }
 }

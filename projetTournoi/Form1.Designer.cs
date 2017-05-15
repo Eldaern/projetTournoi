@@ -1185,7 +1185,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 405);
-            this.Controls.Add(this.Resultats_panel);
             this.Controls.Add(this.BT_Rafraîchir);
             this.Controls.Add(this.BackButton);
             this.Controls.Add(this.helpButton);
@@ -1193,6 +1192,7 @@
             this.Controls.Add(this.Langue_FR_bt);
             this.Controls.Add(this.Connecté_Panel);
             this.Controls.Add(this.Connexion_Panel);
+            this.Controls.Add(this.Resultats_panel);
             this.Controls.Add(this.Detail_Tournoi_Panel);
             this.Controls.Add(this.Chercher_Tournoi_Panel);
             this.Controls.Add(this.Cree_Tournoi_Panel);
