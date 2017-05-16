@@ -472,6 +472,10 @@ namespace projetTournoi
             IP_BT_valider.Text = textes.valider;
 
             Résultats_valider.Text = textes.valider;
+
+            Détail_tournoi_BT_résultats.Text = textes.BT_resultats;
+
+            ConnP_BT_Déco.Text = textes.déconnecter;
         }
 
         private void BackButton_Click(object sender, EventArgs e)

@@ -54,7 +54,7 @@
 	"nomdeFamille" : "Lastname :",
 	"prénom" : "Firstname :",
 
-	"resultats" : "inscrire les résultats",
+	"resultats" : "record results",
 	"BT_resultats" : "results",
 
 	"Info_Incomplète" : "Uncompleted informations",
@@ -67,5 +67,7 @@
 	"resultatsMod" : "The results have been modified",
 
 	"bonjour" : "Hello ",
-	"vousEtesCo" : ", You're connected"
+	"vousEtesCo" : ", You're connected",
+
+	"déconnecter" : "disconect"
 }

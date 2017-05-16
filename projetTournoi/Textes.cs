@@ -39,5 +39,7 @@ namespace projetTournoi
         public string Info_Incomplète, TournoiCréé, CeNomPris, OrgCréé, DescrMod, UtilCréer, VousParticipez, resultatsMod;
 
         public string bonjour, vousEtesCo;
+
+        public string déconnecter;
     }
 }

@@ -67,5 +67,7 @@
 	"resultatsMod" : "Les résultats ont bien été modifiés",
 
 	"bonjour" : "Bonjour ",
-	"vousEtesCo" : ", vous êtes bien connecté"
+	"vousEtesCo" : ", vous êtes bien connecté",
+
+	"déconnecter" : "Se déconnecter"
 }
