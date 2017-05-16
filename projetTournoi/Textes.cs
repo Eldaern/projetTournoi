@@ -35,5 +35,9 @@ namespace projetTournoi
         public string nomdeFamille, prénom;
 
         public string resultats,BT_resultats;
+
+        public string Info_Incomplète, TournoiCréé, CeNomPris, OrgCréé, DescrMod, UtilCréer, VousParticipez, resultatsMod;
+
+        public string bonjour, vousEtesCo;
     }
 }

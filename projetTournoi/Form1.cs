@@ -186,12 +186,12 @@ namespace projetTournoi
         {
             if (CreeTour_TextBox_Nom.Text == "" || CreeTour_CB_Jeu.SelectedIndex == -1 || CreeTour_CB_Type.SelectedIndex == -1 || CreeTour_ComboBox_Pays.SelectedIndex == -1 || CreeTour_TextBox_Ville.Text == "" || CreeTour_TextBox_Rue.Text == "" || CreeTour_TextBox_Num.Text == "")
             {
-                MessageBox.Show("informations incomplètes");
+                MessageBox.Show(textes.Info_Incomplète);
             }
             else
             {
                 conn.CreeTournoiUpDB(CreeTour_TextBox_Nom.Text.Replace("'", "''"), CreeTour_DTPicker.Value.ToString().Replace("'", "''"), CreeTour_CB_Type.SelectedItem.ToString().Replace("'", "''"), CreeTour_CB_Jeu.SelectedIndex + 1,organisation, CreeTour_TextBox_Ville.Text.Replace("'", "''"), CreeTour_ComboBox_Pays.SelectedItem.ToString().Replace("'", "''"), Int32.Parse(CreeTour_TextBox_Num.Text), CreeTour_TextBox_Rue.Text.Replace("'", "''"));
-                MessageBox.Show("Tournoi créé");
+                MessageBox.Show(textes.TournoiCréé);
             }
         }
 
@@ -339,14 +339,14 @@ namespace projetTournoi
             }
             if (existe)
             {
-                MessageBox.Show("Ce nom est déjà pris");
+                MessageBox.Show(textes.CeNomPris);
             }
             else
             {
                 tournoiOBj.OrganisationCree(CO_Textbox_Nom.Text.ToString().Replace("'", "''"), CO_RTB_Description.Text.ToString(), user);
                 estResponsable = true;
                 organisation = cpt+1;
-                MessageBox.Show("Organisation créée");
+                MessageBox.Show(textes.OrgCréé);
                 PreviousPanel = 7;
             }
         }
@@ -410,7 +410,7 @@ namespace projetTournoi
         private void Gerer_Org_BT_Ajouter_Click(object sender, EventArgs e)
         {
             tournoiOBj.OrganisationModifier(organisation, Gerer_Org_RTB_Description.Text.ToString().Replace("'", "''"));
-            MessageBox.Show("Description modifiée.");
+            MessageBox.Show(textes.DescrMod);
         }
 
         private void chargerTexte()
@@ -715,7 +715,7 @@ namespace projetTournoi
 
                 {
                     DirectoryEntry DirEntry = result.GetDirectoryEntry();
-                    MessageBox.Show("Bonjour " + DirEntry.Properties["SAMAccountName"].Value +", vous êtes bien connecté");
+                    MessageBox.Show(textes.bonjour + DirEntry.Properties["SAMAccountName"].Value +textes.vousEtesCo);
                     conn.ConnectionReussi(nomCompte);
                     Connecté_Panel.BringToFront();
                     BackButton.Visible = false;
@@ -813,7 +813,7 @@ namespace projetTournoi
                 conn.CreateUser(user);
                 conn.ConnectionReussi(nomComplet);
 
-                MessageBox.Show("Utilisateur créé");
+                MessageBox.Show(textes.UtilCréer);
                 MainMenu_Panel.BringToFront();
                 Connecté_Panel.BringToFront();
                 if (estResponsable)
@@ -903,7 +903,7 @@ namespace projetTournoi
                 }
                 if (isAlreadyThere)
                 {
-                    MessageBox.Show("Vous participez déjà à ce tournoi.");
+                    MessageBox.Show(textes.VousParticipez);
                 }
                 else {
                     tournoiOBj.CreateUtilisateurEquipe(NumeroTournoiSelect, Detail_Tour_listBox_Equipes.SelectedItem.ToString(), user);
@@ -923,8 +923,9 @@ namespace projetTournoi
             int cpt = dsEquipes.Tables["Equipe"].Rows.Count;
             for (int i = 0; i < cpt; i++)
             {
-                tournoiOBj.CreeResultat(resultat_DataGrid.Rows[i].Cells["Equipe"].Value.ToString(),NumeroTournoiSelect,(int) resultat_DataGrid.Rows[i].Cells["résultats"].Value);
+                tournoiOBj.CreeResultat(resultat_DataGrid.Rows[i].Cells["Equipe"].Value.ToString(), NumeroTournoiSelect, Int32.Parse(resultat_DataGrid.Rows[i].Cells["résultats"].Value.ToString()));
             }
+            MessageBox.Show(textes.resultatsMod);
         }
 
         private void Détail_tournoi_BT_résultats_Click(object sender, EventArgs e)

@@ -55,5 +55,17 @@
 	"prénom" : "Prénom :",
 
 	"resultats" : "inscrire les résultats",
-	"BT_resultats" : "résultats"
+	"BT_resultats" : "résultats",
+
+	"Info_Incomplète" : "informations incomplètes",
+	"TournoiCréé" : "Tournoi créé",
+	"CeNomPris" : "Ce nom est déjà pris",
+	"OrgCréé" : "Organisation créée",
+	"DescrMod" : "Description modifiée.",
+	"UtilCréer" : "Utilisateur créé",
+	"VousParticipez" : "Vous participez déjà à ce tournoi.",
+	"resultatsMod" : "Les résultats ont bien été modifiés",
+
+	"bonjour" : "Bonjour ",
+	"vousEtesCo" : ", vous êtes bien connecté"
 }

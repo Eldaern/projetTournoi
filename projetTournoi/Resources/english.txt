@@ -55,5 +55,17 @@
 	"prénom" : "Firstname :",
 
 	"resultats" : "inscrire les résultats",
-	"BT_resultats" : "results"
+	"BT_resultats" : "results",
+
+	"Info_Incomplète" : "Uncompleted informations",
+	"TournoiCréé" : "Tournament created",
+	"CeNomPris" : "This name is already used",
+	"OrgCréé" : "Organisation created",
+	"DescrMod" : "Description modified.",
+	"UtilCréer" : "User created",
+	"VousParticipez" : "You already participate at this tournament.",
+	"resultatsMod" : "The results have been modified",
+
+	"bonjour" : "Hello ",
+	"vousEtesCo" : ", You're connected"
 }
