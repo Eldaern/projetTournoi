@@ -480,6 +480,29 @@ namespace projetTournoi
             return ds;
         }
 
+        public DataSet getEmail(string nom)
+        {
+            DataSet ds = new DataSet();
+            try
+            {
+                conn = new SqlConnection();
+                cmd = new SqlCommand();
+                dtad = new SqlDataAdapter();
+                conn.ConnectionString = Properties.Settings.Default.TorDBConnectionString;
+                conn.Open();
+                cmd.Connection = conn;
+                cmd.CommandText = "select Utilisateur.email from Utilisateur where Utilisateur.LoginU like '" + nom+"'";
+                dtad.SelectCommand = cmd;
+                dtad.Fill(ds, "email");
+                conn.Close();
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Impossible de contacter la base de donnée");
+            }
+            return ds;
+        }
 
     }
 }

@@ -726,7 +726,8 @@ namespace projetTournoi
                     isConnected = true;
                     activerBoutonsConnexion();
                 }
-                user = new UtilisateurConnecté(nomCompte, motDePasse);
+                DataSet dsMail = tournoiOBj.getMail(nomCompte);
+                user = new UtilisateurConnecté(nomCompte, dsMail.Tables["email"].Rows[0].ItemArray.GetValue(0).ToString());
                 DataSet dsOrg = tournoiOBj.OrganisationCherche();
                 int cpt = dsOrg.Tables["Organisation"].Rows.Count;
                 for (int i = 0; i < cpt; i++)
@@ -930,6 +931,15 @@ namespace projetTournoi
                 tournoiOBj.CreeResultat(resultat_DataGrid.Rows[i].Cells["Equipe"].Value.ToString(), NumeroTournoiSelect, Int32.Parse(resultat_DataGrid.Rows[i].Cells["résultats"].Value.ToString()));
             }
             MessageBox.Show(textes.resultatsMod);
+            ServiceReference1.ServiceSoapClient mws = new ServiceReference1.ServiceSoapClient("ServiceSoap");
+            string contenu = "Voici les résultats de votre tournoi | ";
+            DataSet ds = tournoiOBj.afficheResultat(NumeroTournoiSelect);
+            int cptMail = ds.Tables["Resultat"].Rows.Count;
+            for (int i = 0; i < cpt; i++)
+            {
+                contenu = contenu+ds.Tables["Resultat"].Rows[i].ItemArray.GetValue(2).ToString().Replace("''", "'")+" : "+ ds.Tables["Resultat"].Rows[i].ItemArray.GetValue(0).ToString()+" | ";
+            }
+            mws.MailSending(user.mail, contenu);
         }
 
         private void Détail_tournoi_BT_résultats_Click(object sender, EventArgs e)

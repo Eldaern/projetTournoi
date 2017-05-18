@@ -76,6 +76,10 @@ namespace projetTournoi
             return ConDD.AfficheResultat(n);
         }
 
+        public DataSet getMail(string userName)
+        {
+            return ConDD.getEmail(userName);
+        }
         ~RechercheTournoi()
         {
 
